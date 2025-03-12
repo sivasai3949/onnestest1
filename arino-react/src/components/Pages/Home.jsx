@@ -15,6 +15,18 @@ import TeamSlider from '../Slider/TeamSlider';
 import VideoModal from '../VideoModal';
 import TimelineSlider from '../Slider/TimelineSlider';
 import { pageTitle } from '../../helper';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+
+
+const heroImages = [
+  '/images/Home_1.jpg',
+  '/images/Home_2.jpg',
+  '/images/Home_3.jpg',
+  '/images/Home_4.jpg',
+];
 // Hero Social Links
 const heroSocialLinks = [
   {
@@ -80,30 +92,46 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
 
+  const sliderSettings = {
+    dots: false, // Hides dots for a cleaner look
+    infinite: true, // Ensures looping
+    speed: 1000, // Smooth transition speed
+    slidesToShow: 1, // Shows one image at a time
+    slidesToScroll: 1, // Scrolls one image at a time
+    autoplay: true, // Enables automatic sliding
+    autoplaySpeed: 2500, // Adjusts speed for a natural feel
+    pauseOnHover: false, // Prevents pausing when hovered
+    swipeToSlide: true, // Allows smooth swiping
+    arrows: false, // Hides arrows for a cleaner look
+    cssEase: "ease-in-out", // Ensures smooth easing
+  };
+  
+
+
   return (
     <>
       {/* Start Hero Section */}
-      <Hero
-        title="Creativity In <br/>Our Blood Line"
-        subtitle="We deliver best problem solving solution for our client and provide finest finishing product in present and upcoming future."
-        btnText="Get a Quote"
-        btnLink="/contact"
-        scrollDownId="#service"
-        socialLinksHeading="Follow Us"
-        heroSocialLinks={heroSocialLinks}
-        bgImageUrl="/images/hero_bg.jpeg"
-      />
+      <div className="hero-slider" style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
+  <Slider {...sliderSettings}>
+    {heroImages.map((image, index) => (
+      <div key={index} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+        <img src={image} alt={`Hero ${index + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </div>
+    ))}
+  </Slider>
+</div>
+
       {/* End Hero Section */}
 
       {/* Start FunFact Section */}
-      <div className="container">
+      {/* <div className="container">
         <FunFact
           variant="cs-type1"
           title="Our fun fact"
           subtitle="Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
           data={funfaceData}
         />
-      </div>
+      </div> */}
       {/* End FunFact Section */}
 
       {/* Start Service Section */}

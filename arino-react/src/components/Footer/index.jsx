@@ -6,6 +6,7 @@ import Newsletter from '../Widget/Newsletter';
 import SocialWidget from '../Widget/SocialWidget';
 import TextWidget from '../Widget/TextWidget';
 import './footer.scss';
+import Logo from "../../logos/OnnesLogo.png"
 const copyrightLinks = [
   {
     title: 'Terms of Use',
@@ -45,7 +46,7 @@ export default function Footer({ copyrightText, logoSrc, logoAlt, text }) {
             <Div className="col-lg-3 col-sm-6">
               <Div className="cs-footer_item">
                 <TextWidget
-                  logoSrc="/images/footer_logo.svg"
+                  logoSrc={Logo}
                   logoAlt="Logo"
                   text="Welcome to arino sed ut perspiciae omunde omnis iste natus error sitort voluptatem accusantium."
                 />

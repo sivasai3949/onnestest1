@@ -1,0 +1,64 @@
+/* Hero.css */
+.hero-slider {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .hero-slide-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Small devices - phones */
+@media (max-width: 767px) {
+    .hero-slider,
+    .hero-slide-wrapper,
+    .hero-image {
+      height: 35vh;
+    }
+  }
+  
+  /* iPad Mini Portrait */
+  @media (min-width: 768px) and (max-width: 819px) {
+    .hero-slider,
+    .hero-slide-wrapper,
+    .hero-image {
+      height: 50vh;
+    }
+  }
+  
+  /* iPad Air Portrait */
+  @media (min-width: 820px) and (max-width: 833px) {
+    .hero-slider,
+    .hero-slide-wrapper,
+    .hero-image {
+      height: 55vh;
+    }
+  }
+  
+  /* iPad Pro 11" Portrait */
+  @media (min-width: 834px) and (max-width: 1023px) {
+    .hero-slider,
+    .hero-slide-wrapper,
+    .hero-image {
+      height: 60vh;
+    }
+  }
+  
+  /* iPad Pro 12.9" Portrait and Small Desktops */
+  @media (min-width: 1024px) and (max-width: 1199px) {
+    .hero-slider,
+    .hero-slide-wrapper,
+    .hero-image {
+      height: 75vh;
+    }
+  }

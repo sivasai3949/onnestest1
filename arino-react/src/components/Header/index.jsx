@@ -6,7 +6,7 @@ import './header.scss';
 import ContactInfoWidget from '../Widget/ContactInfoWidget';
 import Div from '../Div';
 import DropDown from './DropDown';
-
+import logos from "../../../src/logos/OnnesLogo.png";
 export default function Header({ variant }) {
   const [isSticky, setIsSticky] = useState(false);
   const [sideHeaderToggle, setSideHeaderToggle] = useState(false);
@@ -33,7 +33,7 @@ export default function Header({ variant }) {
             <Div className="cs-main_header_in">
               <Div className="cs-main_header_left">
                 <Link className="cs-site_branding" to="/">
-                  <img src="/images/logo.svg" alt="Logo" />
+                  <img src={logos} alt="Logo" />
                 </Link>
               </Div>
               <Div className="cs-main_header_center">
@@ -331,7 +331,7 @@ export default function Header({ variant }) {
         <Div className="cs-side_header_in">
           <Div className="cs-side_header_shape" />
           <Link className="cs-site_branding" to="/">
-            <img src="/images/footer_logo.svg" alt="Logo" />
+            <img src={logos} alt="Logo" />
           </Link>
           <Div className="cs-side_header_box">
             <h2 className="cs-side_header_heading">

@@ -18,6 +18,8 @@ import { pageTitle } from '../../helper';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import "./Home.css"; 
+
 
 
 
@@ -111,12 +113,14 @@ export default function Home() {
   return (
     <>
       {/* Start Hero Section */}
-      <div className="hero-slider" style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
+      <div className="hero-slider">
+
   <Slider {...sliderSettings}>
     {heroImages.map((image, index) => (
-      <div key={index} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-        <img src={image} alt={`Hero ${index + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-      </div>
+      <div key={index} className="hero-slide-wrapper">
+      <img src={image} alt={`Hero ${index + 1}`} className="hero-image" />
+    </div>
+    
     ))}
   </Slider>
 </div>

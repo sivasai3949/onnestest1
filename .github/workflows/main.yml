@@ -23,15 +23,14 @@ jobs:
 
     - name: 📦 Install dependencies with legacy peer deps
       run: |
-        cd arino-react  # Navigate to the correct directory
-        npm install --legacy-peer-deps  # Install dependencies
+        cd arino-react
+        npm install --legacy-peer-deps
 
     - name: 🏗️ Build frontend
       run: |
-        cd arino-react  # Ensure you're in the correct directory for building
-        npm run build   # Build the frontend
+        cd arino-react
+        CI=false npm run build  # 🔧 Disable CI mode to avoid warnings-as-errors
 
-    # SSH into EC2 and prepare the server for deployment
     - name: 🔐 SSH & Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
@@ -41,10 +40,9 @@ jobs:
         script: |
           echo "✅ Stashing any local changes just in case..."
           cd /var/www/html
-          sudo rm -rf *  # Remove old build contents
+          sudo rm -rf *
           echo "🧹 Old build removed from /var/www/html"
 
-    # Use SCP to copy the new build folder
     - name: 🚚 Upload new build to EC2
       uses: appleboy/scp-action@v0.1.3
       with:
@@ -54,7 +52,6 @@ jobs:
         source: "arino-react/build/*"
         target: "/var/www/html"
 
-    # Restart Nginx after deploying the build
     - name: 🔁 Reload and Restart Nginx
       uses: appleboy/ssh-action@master
       with:

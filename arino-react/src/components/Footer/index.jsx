@@ -24,7 +24,7 @@ const serviceMenu = [
     href: '/service/service-details',
   },
   {
-    title: 'WP development',
+    title: 'Web development',
     href: '/service/service-details',
   },
   {

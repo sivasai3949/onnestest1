@@ -49,8 +49,9 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
-        source: "arino-react/build/*"
+        source: "arino-react/build"
         target: "/var/www/html"
+        strip_components: 2  # 👈 Ensures only build/* content is placed in /var/www/html
 
     - name: 🔁 Reload and Restart Nginx
       uses: appleboy/ssh-action@master

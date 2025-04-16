@@ -1,10 +1,12 @@
 name: 🚀 Frontend Live Deployment
 
-# Trigger only when a tag is pushed — like "live-deploy"
+# Trigger only when a push to the default branch OR a tag is pushed
 on:
   push:
+    branches:
+      - '16-04-25'  # Your default branch name
     tags:
-      - 'live-deploy'  # You can change this tag pattern if needed
+      - 'live-deploy'  # Trigger only when a tag is pushed (e.g., 'live-deploy')
 
 jobs:
   deploy:

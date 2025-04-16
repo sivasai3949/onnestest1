@@ -1,12 +1,11 @@
 name: 🚀 Frontend Live Deployment
 
-# Trigger only when a push to the default branch OR a tag is pushed
 on:
   push:
     branches:
-      - '16-04-25'  # Your default branch name
+      - '16-04-25'
     tags:
-      - 'live-deploy'  # Trigger only when a tag is pushed (e.g., 'live-deploy')
+      - 'live-deploy'
 
 jobs:
   deploy:
@@ -23,10 +22,14 @@ jobs:
         node-version: '18'
 
     - name: 📦 Install dependencies with legacy peer deps
-      run: npm install --legacy-peer-deps
+      run: |
+        cd arino-react  # Navigate to the correct directory
+        npm install --legacy-peer-deps  # Install dependencies
 
     - name: 🏗️ Build frontend
-      run: npm run build
+      run: |
+        cd arino-react  # Ensure you're in the correct directory for building
+        npm run build   # Build the frontend
 
     # SSH into EC2 and prepare the server for deployment
     - name: 🔐 SSH & Deploy to EC2
@@ -48,7 +51,7 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
-        source: "build/*"
+        source: "arino-react/build/*"
         target: "/var/www/html"
 
     # Restart Nginx after deploying the build

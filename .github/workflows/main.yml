@@ -29,38 +29,29 @@ jobs:
     - name: 🏗️ Build frontend
       run: |
         cd arino-react
-        CI=false npm run build  # 🔧 Disable CI mode to avoid warnings-as-errors
+        CI=false npm run build
 
-    - name: 🔐 SSH & Deploy to EC2
+    - name: 🚚 Upload new build to EC2 (temp folder)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        source: "arino-react/build/*"
+        target: "/home/ubuntu/temp_build"
+
+    - name: 🔐 SSH - Move files with sudo
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          echo "✅ Stashing any local changes just in case..."
-          cd /var/www/html
-          sudo rm -rf *
-          echo "🧹 Old build removed from /var/www/html"
-
-    - name: 🚚 Upload new build to EC2
-      uses: appleboy/scp-action@v0.1.3
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        source: "arino-react/build"
-        target: "/var/www/html"
-        strip_components: 2  # 👈 Ensures only build/* content is placed in /var/www/html
-
-    - name: 🔁 Reload and Restart Nginx
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          echo "🔁 Reloading and Restarting Nginx..."
-          sudo systemctl reload nginx
+          echo "✅ Cleaning old build..."
+          sudo rm -rf /var/www/html/*
+          echo "🚚 Copying new build to /var/www/html..."
+          sudo cp -r /home/ubuntu/temp_build/* /var/www/html/
+          sudo chown -R www-data:www-data /var/www/html
+          sudo chmod -R 755 /var/www/html
+          echo "✅ Restarting Nginx..."
           sudo systemctl restart nginx
-          echo "✅ Deployment completed and Nginx restarted!"

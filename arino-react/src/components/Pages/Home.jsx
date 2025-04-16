@@ -24,10 +24,13 @@ import "./Home.css";
 
 
 const heroImages = [
-  '/images/Home_1.jpg',
+  '/images/Home_1.jpeg',
   '/images/Home_2.jpg',
   '/images/Home_3.jpg',
-  '/images/Home_4.jpg',
+  '/images/Home_4.jpeg',
+  '/images/Home_5.jpeg',
+  '/images/Home_6.jpg',
+  '/images/Home_7.jpg',
 ];
 // Hero Social Links
 const heroSocialLinks = [
@@ -270,7 +273,7 @@ export default function Home() {
       {/* End Team Section */}
 
       {/* Start Testimonial Section */}
-      <TestimonialSlider />
+      {/* <TestimonialSlider /> */}
       {/* End Testimonial Section */}
 
       {/* Start Blog Section */}

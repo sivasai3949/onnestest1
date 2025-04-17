@@ -1,23 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Icon } from '@iconify/react';
 import Div from '../Div';
 
 export default function SocialWidget() {
   return (
     <Div className="cs-social_btns cs-style1">
-      <Link to='/' className="cs-center">
+      <a href="https://www.linkedin.com/company/onnes-cryogenics/" className="cs-center" target="_blank" rel="noopener noreferrer">
         <Icon icon="fa6-brands:linkedin-in" />
-      </Link>
-      <Link to='/' className="cs-center">
-        <Icon icon="fa6-brands:twitter" />               
-      </Link>
-      <Link to='/' className="cs-center">
-        <Icon icon="fa6-brands:youtube" />              
-      </Link>
-      <Link to='/' className="cs-center">
-        <Icon icon="fa6-brands:slack" />
-      </Link>
+      </a>
+      <a href="https://www.instagram.com/onnes.cryogenics/" className="cs-center" target="_blank" rel="noopener noreferrer">
+        <Icon icon="fa6-brands:instagram" />
+      </a>
+      <a href="https://www.facebook.com/onnescryogenics" className="cs-center" target="_blank" rel="noopener noreferrer">
+        <Icon icon="fa6-brands:facebook-f" />
+      </a>
+      <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FOCryogenics" className="cs-center" target="_blank" rel="noopener noreferrer">
+        <Icon icon="fa6-brands:twitter" />
+      </a>
     </Div>
   )
 }

@@ -1,3 +1,3 @@
-export const pageTitle = (title) => {
-  return ( document.title = title + " - Creative Agency");
-}
+export const pageTitle = () => {
+  document.title = "Onnes Cryogenics - Ultra Cool Engineering!";
+};

@@ -96,3 +96,4 @@ export default function Footer({ copyrightText, logoSrc, logoAlt, text }) {
     </footer>
   );
 }
+// djfnefewjfnfenfe

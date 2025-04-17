@@ -351,11 +351,11 @@
 
     .cs-nav_list {
       display: flex !important;
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
       height: inherit;
 
       > li {
-        margin-right: 50px;
+        margin-right: 40px;
         height: inherit;
 
         &:last-child {

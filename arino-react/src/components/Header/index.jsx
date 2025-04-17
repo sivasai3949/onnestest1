@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import SocialWidget from '../Widget/SocialWidget';
-import Newsletter from '../Widget/Newsletter';
-import './header.scss';
-import ContactInfoWidget from '../Widget/ContactInfoWidget';
-import Div from '../Div';
-import DropDown from './DropDown';
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import SocialWidget from "../Widget/SocialWidget";
+import Newsletter from "../Widget/Newsletter";
+import "./header.scss";
+import ContactInfoWidget from "../Widget/ContactInfoWidget";
+import Div from "../Div";
+import DropDown from "./DropDown";
 import logos from "../../../src/logos/OnnesLogo.png";
 export default function Header({ variant }) {
   const [isSticky, setIsSticky] = useState(false);
   const [sideHeaderToggle, setSideHeaderToggle] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
         setIsSticky(true);
       } else {
@@ -25,8 +25,8 @@ export default function Header({ variant }) {
     <>
       <header
         className={`cs-site_header cs-style1 text-uppercase ${
-          variant ? variant : ''
-        } cs-sticky_header ${isSticky ? 'cs-sticky_header_active' : ''}`}
+          variant ? variant : ""
+        } cs-sticky_header ${isSticky ? "cs-sticky_header_active" : ""}`}
       >
         <Div className="cs-main_header">
           <Div className="container">
@@ -40,7 +40,7 @@ export default function Header({ variant }) {
                 <Div className="cs-nav cs-primary_font cs-medium">
                   <ul
                     className="cs-nav_list"
-                    style={{ display: `${mobileToggle ? 'block' : 'none'}` }}
+                    style={{ display: `${mobileToggle ? "block" : "none"}` }}
                   >
                     <li>
                       <NavLink to="/" onClick={() => setMobileToggle(false)}>
@@ -144,49 +144,124 @@ export default function Header({ variant }) {
                         </ul>
                       </DropDown> */}
                     </li>
-                    <li>
+                    <li className="menu-item-has-children">
                       <NavLink
                         to="about"
                         onClick={() => setMobileToggle(false)}
                       >
                         About
                       </NavLink>
+                      <DropDown>
+                        <ul>
+                          <li>
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              About Us
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              Why Onnes
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              Vision & Mission
+                            </Link>
+                          </li>
+                        </ul>
+                      </DropDown>
                     </li>
-                    <li>
+                    <li className="menu-item-has-children">
                       <NavLink
                         to="service"
                         onClick={() => setMobileToggle(false)}
                       >
                         TEAM
                       </NavLink>
-                      {/* <DropDown>
+                      <DropDown>
                         <ul>
                           <li>
-                            <Link
-                              to="service"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Services
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              Founders
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              to="/service/service-details"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Service Details
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              Team Members
                             </Link>
                           </li>
+                          <li className="relative group">
+                            <Link
+                              to=""
+                              className="flex items-center gap-1"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Partners <span>›</span>
+                            </Link>
+                            <DropDown className="absolute left-full top-0 ml-1 group-hover:block hidden">
+                              <ul>
+                                <li>
+                                  <Link
+                                    to=""
+                                    onClick={() => setMobileToggle(false)}
+                                  >
+                                    Partners
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    to=""
+                                    onClick={() => setMobileToggle(false)}
+                                  >
+                                    Clients
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    to=""
+                                    onClick={() => setMobileToggle(false)}
+                                  >
+                                    Investors
+                                  </Link>
+                                </li>
+                              </ul>
+                            </DropDown>
+                          </li>
                         </ul>
-                      </DropDown> */}
+                      </DropDown>
                     </li>
-                    <li>
+                    <li className="menu-item-has-children">
+                    
                       <NavLink
                         to="about"
                         onClick={() => setMobileToggle(false)}
                       >
                         TECHNOLOGY
                       </NavLink>
+                      <DropDown>
+                        <ul>
+                          <li>
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              Carbon Fiber Tanks
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              Cryogenics Systems
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              Thermal Management
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="" onClick={() => setMobileToggle(false)}>
+                              Recycling of CFs
+                            </Link>
+                          </li>
+                        </ul>
+                      </DropDown>
                     </li>
                     <li className="menu-item-has-children">
                       <NavLink
@@ -199,18 +274,34 @@ export default function Header({ variant }) {
                         <ul>
                           <li>
                             <Link
-                              to="portfolio"
+                              to="portfolio/portfolio-details"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Portfolio
+                              Product Portfolio
                             </Link>
                           </li>
                           <li>
                             <Link
-                              to="portfolio/portfolio-details"
+                              to="portfolio/space-aerospace-defence"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Portfolio Details
+                              Space - Aerospace - Defence
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="portfolio/ground-based-storage"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Ground Based Storage
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="portfolio/under-water-applications"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Under Water Applications
                             </Link>
                           </li>
                         </ul>
@@ -224,18 +315,26 @@ export default function Header({ variant }) {
                         <ul>
                           <li>
                             <Link
-                              to="blog"
+                              to="blog/cfm"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Blog
+                              CFM
                             </Link>
                           </li>
                           <li>
                             <Link
-                              to="blog/blog-details"
+                              to="blog/quantum-cfd"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Blog Details
+                              Quantum CFD
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="blog/new-materials"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              New Materials
                             </Link>
                           </li>
                         </ul>
@@ -249,7 +348,23 @@ export default function Header({ variant }) {
                         <ul>
                           <li>
                             <Link
-                              to="/contact"
+                              to="upcoming-events"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Upcoming Events
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="blog-news"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Blog & News
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="contact"
                               onClick={() => setMobileToggle(false)}
                             >
                               Contact
@@ -257,42 +372,18 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="/team"
+                              to="founders"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Team
+                              Founders
                             </Link>
                           </li>
                           <li>
                             <Link
-                              to="/blog"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              BLOG
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="/team/team-details"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Team Details
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="/case-study/case-study-details"
+                              to="case-study-details"
                               onClick={() => setMobileToggle(false)}
                             >
                               Case Study Details
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="/faq"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              FAQ
                             </Link>
                           </li>
                         </ul>
@@ -302,8 +393,8 @@ export default function Header({ variant }) {
                   <span
                     className={
                       mobileToggle
-                        ? 'cs-munu_toggle cs-toggle_active'
-                        : 'cs-munu_toggle'
+                        ? "cs-munu_toggle cs-toggle_active"
+                        : "cs-munu_toggle"
                     }
                     onClick={() => setMobileToggle(!mobileToggle)}
                   >
@@ -333,7 +424,7 @@ export default function Header({ variant }) {
 
       <Div
         className={
-          sideHeaderToggle ? 'cs-side_header active' : 'cs-side_header'
+          sideHeaderToggle ? "cs-side_header active" : "cs-side_header"
         }
       >
         <button

@@ -4,34 +4,42 @@ import Cta from '../Cta';
 import FunFact from '../FunFact';
 import PageHeading from '../PageHeading';
 import Div from '../Div';
-import SectionHeading from '../SectionHeading';
-import TeamSlider from '../Slider/TeamSlider';
 import Spacing from '../Spacing';
+
 const funfaceData = [
-  {
-    title: 'Global Happy Clients',
-    factNumber: '40K',
-  },
-  {
-    title: 'Project Completed',
-    factNumber: '50K',
-  },
-  {
-    title: 'Team Members',
-    factNumber: '245',
-  },
-  {
-    title: 'Digital products',
-    factNumber: '550',
-  },
+  { title: 'Global Happy Clients', factNumber: '40K' },
+  { title: 'Project Completed', factNumber: '50K' },
+  { title: 'Team Members', factNumber: '245' },
+  { title: 'Digital products', factNumber: '550' },
 ];
 
 export default function AboutPage() {
   pageTitle('About');
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Handle scroll to section when URL hash changes
+    const handleScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    // Scroll to section on component mount
+    handleScroll();
+
+    // Event listener to handle hash change
+    window.addEventListener('hashchange', handleScroll);
+
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener('hashchange', handleScroll);
+    };
   }, []);
+
   return (
     <>
       {/* Start Page Heading Section */}
@@ -42,28 +50,25 @@ export default function AboutPage() {
       />
       {/* End Page Heading Section */}
 
-      {/* Start About Section */}
+      {/* Start About Us Section */}
       <Spacing lg="150" md="80" />
-      <Div className="container">
+      <Div className="container" id="about-us">
         <Div className="row">
           <Div className="col-xl-5 col-lg-7">
-            <SectionHeading
-              title="Your trusted partner for business"
-              subtitle="About Our Agency"
-            >
-              <Spacing lg="30" md="20" />
-              <p className="cs-m0">
-                This is the main factor that sets us apart from our competition
-                and allows us to deliver a specialist business consultancy
-                service. Our team applies its wide-ranging experience to
-                determining. Through our years of experience, we’ve also learned
-                that while each channel.
-              </p>
-              <Spacing lg="30" md="30" />
-              <Div className="cs-separator cs-accent_bg"></Div>
-              <Spacing lg="25" md="40" />
-            </SectionHeading>
+            <h1>ABOUT US</h1>
+            <Spacing lg="30" md="20" />
+            <p className="cs-m0">
+              This is the main factor that sets us apart from our competition
+              and allows us to deliver a specialist business consultancy
+              service. Our team applies its wide-ranging experience to
+              determining. Through our years of experience, we’ve also learned
+              that while each channel.
+            </p>
+            <Spacing lg="30" md="30" />
+            <Div className="cs-separator cs-accent_bg"></Div>
+            <Spacing lg="25" md="40" />
           </Div>
+
           <Div className="col-lg-5 offset-xl-2">
             <img
               src="/images/about_img_1.jpeg"
@@ -72,6 +77,7 @@ export default function AboutPage() {
             />
             <Spacing lg="25" md="25" />
           </Div>
+
           <Div className="col-lg-7">
             <img
               src="/images/about_img_2.jpeg"
@@ -80,6 +86,7 @@ export default function AboutPage() {
             />
             <Spacing lg="25" md="25" />
           </Div>
+
           <Div className="col-lg-5">
             <img
               src="/images/about_img_3.jpeg"
@@ -91,7 +98,7 @@ export default function AboutPage() {
         </Div>
       </Div>
       <Spacing lg="75" md="55" />
-      {/* End About Section */}
+      {/* End About Us Section */}
 
       {/* Start Fun Fact Section */}
       <Div className="container">
@@ -103,9 +110,9 @@ export default function AboutPage() {
       </Div>
       {/* End Fun Fact Section */}
 
-      {/* Start Why Choose Section */}
+      {/* Start Why Onnes Section */}
       <Spacing lg="100" md="80" />
-      <Div className="container">
+      <Div className="container" id="why-onnes">
         <Div className="row">
           <Div className="col-xl-5 col-lg-6">
             <Div className="cs-image_layer cs-style1">
@@ -120,52 +127,46 @@ export default function AboutPage() {
             <Spacing lg="0" md="40" />
           </Div>
           <Div className="col-xl-5 offset-xl-1 col-lg-6">
-            <SectionHeading
-              title="Highly experienced pepole with us"
-              subtitle="Why Choose Us"
-            >
-              <Spacing lg="30" md="20" />
-              <p className="cs-m0">
-                This is the main factor that sets us apart from our competition
-                and allows us to deliver a specialist business consultancy
-                service. Our team applies its wide-ranging experience to
-                determining. Through our years of experience, we’ve also learned
-                that while each channel.
-              </p>
-              <Spacing lg="15" md="15" />
-              <p className="cs-m0">
-                This is the main factor that sets us apart from our competition
-                and allows us to deliver a specialist business consultancy
-                service. Our team applies its wide-ranging experience to
-                determining.
-              </p>
-              <Spacing lg="30" md="30" />
-              <Div className="cs-separator cs-accent_bg"></Div>
-              <Spacing lg="25" md="0" />
-            </SectionHeading>
+            <h2>Why Onnes</h2>
+            <Spacing lg="30" md="20" />
+            <p className="cs-m0">
+              This is the main factor that sets us apart from our competition
+              and allows us to deliver a specialist business consultancy
+              service. Our team applies its wide-ranging experience to
+              determining. Through our years of experience, we’ve also learned
+              that while each channel.
+            </p>
+            <Spacing lg="15" md="15" />
+            <p className="cs-m0">
+              This is the main factor that sets us apart from our competition
+              and allows us to deliver a specialist business consultancy
+              service. Our team applies its wide-ranging experience to
+              determining.
+            </p>
+            <Spacing lg="30" md="30" />
+            <Div className="cs-separator cs-accent_bg"></Div>
+            <Spacing lg="25" md="0" />
           </Div>
         </Div>
       </Div>
-      {/* End Why Choose Section */}
+      {/* End Why Onnes Section */}
 
-      {/* Start Team Section */}
+      {/* Start Vision & Mission Section */}
       <Spacing lg="145" md="80" />
-      <Div className="container">
-        <SectionHeading
-          title="Awesome team <br/>members"
-          subtitle="Our Team"
-          variant="cs-style1"
-        />
-        <Spacing lg="85" md="45" />
-        <TeamSlider />
+      <Div className="container" id="vision-mission">
+        <h2>Vision & Mission</h2>
+        <p className="cs-m0">
+          Our vision is to build scalable, efficient, and impactful solutions for businesses.
+          Our mission is to empower organizations through creative and smart digital experiences.
+        </p>
       </Div>
-      {/* End Team Section */}
+      {/* End Vision & Mission Section */}
 
       {/* Start CTA Section */}
       <Spacing lg="150" md="80" />
       <Div className="container">
         <Cta
-          title="Let’s disscuse make <br />something <i>cool</i> together"
+          title="Let’s discuss make <br />something <i>cool</i> together"
           btnText="Apply For Meeting"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"

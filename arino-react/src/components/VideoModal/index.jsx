@@ -5,15 +5,38 @@ import Div from '../Div';
 export default function VideoModal({ videoSrc, bgUrl, variant }) {
   const [iframeSrc, setIframeSrc] = useState('about:blank');
   const [toggle, setToggle] = useState(false);
+
   const handelClick = () => {
-    const video = videoSrc.split('?v=')[1].trim();
-    setIframeSrc(`https://www.youtube.com/embed/${video}`);
+    if (videoSrc) {
+      let videoId = null;
+
+      if (videoSrc.includes("youtube.com/watch?v=")) {
+        // Extract video ID from "youtube.com/watch?v=" format
+        videoId = videoSrc.split("?v=")[1].split("&")[0];
+      } else if (videoSrc.includes("youtu.be/")) {
+        // Extract video ID from "youtu.be" format
+        videoId = videoSrc.split("youtu.be/")[1].split("?")[0];
+      }
+
+      if (videoId) {
+        setIframeSrc(`https://www.youtube.com/embed/${videoId}`);
+      } else {
+        console.error("Could not extract video ID from:", videoSrc);
+        setIframeSrc("about:blank");
+      }
+    } else {
+      console.error("videoSrc is undefined");
+      setIframeSrc("about:blank");
+    }
+
     setToggle(!toggle);
   };
+
   const handelClose = () => {
     setIframeSrc('about:blank');
     setToggle(!toggle);
   };
+
   return (
     <>
       <Div

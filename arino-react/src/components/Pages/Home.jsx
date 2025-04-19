@@ -142,67 +142,68 @@ export default function Home() {
       {/* End FunFact Section */}
 
       {/* Start Service Section */}
-      <Spacing lg="150" md="80" />
-      <Div id="service">
-        <Div className="container">
-          <Div className="row">
-            <Div className="col-xl-4">
-              <SectionHeading
-                title="Services we can help you with"
-                subtitle="What Can We Do"
-                btnText="See All Services"
-                btnLink="/service"
-              />
-              <Spacing lg="90" md="45" />
-            </Div>
-            <Div className="col-xl-8">
-              <Div className="row">
-                <Div className="col-lg-3 col-sm-6 cs-hidden_mobile"></Div>
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="UI/UX design"
-                    link="/service/service-details"
-                    src="/images/service_1.jpeg"
-                    alt="Service"
-                  />
-                  <Spacing lg="0" md="30" />
-                </Div>
-                <Div className="col-lg-3 col-sm-6 cs-hidden_mobile"></Div>
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="React.js Development"
-                    link="/service/service-details"
-                    src="/images/service_2.jpeg"
-                    alt="Service"
-                  />
-                  <Spacing lg="0" md="30" />
-                </Div>
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="Digital Marketing"
-                    link="/service/service-details"
-                    src="/images/service_3.jpeg"
-                    alt="Service"
-                  />
-                  <Spacing lg="0" md="30" />
-                </Div>
-                <Div className="col-lg-3 col-sm-6 cs-hidden_mobile"></Div>
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="Technology"
-                    link="/service/service-details"
-                    src="/images/service_4.jpeg"
-                    alt="Service"
-                  />
-                  <Spacing lg="0" md="30" />
-                </Div>
-                <Div className="col-lg-3 col-sm-6 cs-hidden_mobile"></Div>
-              </Div>
-            </Div>
+<Spacing lg="150" md="80" />
+<Div id="service">
+  <Div className="container">
+    <Div className="row">
+      <Div className="col-xl-4">
+        <SectionHeading
+          title="Next Generation Tank Technology Integrated with Cryogenics" 
+          subtitle="Onnes Expertise Lies In "
+          btnText="See All Products"
+          btnLink="/portfolio/portfolio-details"
+        />
+        <Spacing lg="90" md="45" />
+      </Div>
+      <Div className="col-xl-8">
+        <Div className="row">
+          <Div className="col-lg-4 col-sm-6 mb-4">
+            <Card
+              title="Product Design"
+              link="/service/service-details"
+              src="/images/productdesign.jpg"
+              alt="Service"
+            />
+          </Div>
+          <Div className="col-lg-4 col-sm-6 mb-4">
+            <Card
+              title="Manufacturing"
+              link="/service/service-details"
+              src="/images/manufacturing.jpg"
+              alt="Service"
+            />
+          </Div>
+          <Div className="col-lg-4 col-sm-6 mb-4">
+            <Card
+              title="Material Simulations"
+              link="/service/service-details"
+              src="/images/materialsimulation.jpg"
+              alt="Service"
+            />
+          </Div>
+          <Div className="col-lg-4 col-sm-6 mb-4">
+            <Card
+              title="Assembly"
+              link="/service/service-details"
+              src="/images/assembly.jpg"
+              alt="Service"
+            />
+          </Div>
+          <Div className="col-lg-4 col-sm-6 mb-4">
+            <Card
+              title="Cryogenic Testing"
+              link="/service/service-details"
+              src="/images/cryogenictesting.jpg"
+              alt="Service"
+            />
           </Div>
         </Div>
       </Div>
-      {/* End Service Section */}
+    </Div>
+  </Div>
+</Div>
+{/* End Service Section */}
+
 
       {/* Start Portfolio Section */}
       <Spacing lg="150" md="50" />
@@ -252,7 +253,7 @@ export default function Home() {
         </h2>
         <Spacing lg="70" md="70" />
         <VideoModal
-          videoSrc="https://www.youtube.com/watch?v=VcaAVWtP48A"
+          videoSrc="https://youtu.be/JRl4n6nj4HM?si=-zoX4xFuMUAhEqwL"
           bgUrl="/images/video_bg.jpeg"
         />
       </Div>
@@ -304,7 +305,7 @@ export default function Home() {
 
       {/* Start MovingText Section */}
       <Spacing lg="125" md="70" />
-      <MovingText text="Our reputed world wide partners" />
+      <MovingText text="Onnes thanks its partners , clients and investors for their continued support! " />
       <Spacing lg="105" md="70" />
       {/* End MovingText Section */}
 
@@ -318,7 +319,7 @@ export default function Home() {
       {/* Start CTA Section */}
       <Div className="container">
         <Cta
-          title="Let’s disscuse make <br />something <i>cool</i> together"
+          title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> integrated with bespoke cryogenic systems"
           btnText="Apply For Meeting"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"

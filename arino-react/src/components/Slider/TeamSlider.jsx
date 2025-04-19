@@ -6,8 +6,8 @@ import Team from '../Team';
 const teamData = [
   {
     memberImage: '/images/ram-k-aluru.jpg',
-    memberName: 'Dr. Ram K Aluru',
-    memberDesignation: 'Chief Executive Officer',
+    memberName: 'Ram K Aluru ',
+    memberDesignation: 'Founder & CEO',
     memberSocial: {
       linkedin: '/',
       // twitter: '/',
@@ -17,8 +17,8 @@ const teamData = [
   },
   {
     memberImage: '/images/vikram-srinivasa-raghavan.jpg',
-    memberName: 'Dr. Vikram Srinivasa Raghavan',
-    memberDesignation: 'Chief Technology Officer',
+    memberName: 'Vikram Raghavan',
+    memberDesignation: 'Founder & CTO ',
     memberSocial: {
       linkedin: '/',
       // twitter: '/',
@@ -28,7 +28,7 @@ const teamData = [
   },
   {
     memberImage: '/images/rajamani-athimotlu-raju.jpg',
-    memberName: 'Dr. Rajamani Athimotlu Raju',
+    memberName: 'Rajamani AR',
     memberDesignation: 'Head, Polymer Chemistry',
     memberSocial: {
       linkedin: '/',
@@ -38,20 +38,9 @@ const teamData = [
     },
   },
   {
-    memberImage: '/images/swati-soni.jpg',
-    memberName: 'Dr. Swati Soni',
-    memberDesignation: 'Head, Material Science and Nanotechnology',
-    memberSocial: {
-      linkedin: '/',
-      // twitter: '/',
-      // youtube: '/',
-      // facebook: '/',
-    },
-  },
-  {
     memberImage: '/images/aditya.jpg',
-    memberName: 'Mr. Aditya AS',
-    memberDesignation: 'Quasi AI & Quantum Expert',
+    memberName: 'Aditya AS ',
+    memberDesignation: 'AI & Quantum Expert',
     memberSocial: {
       linkedin: '/',
       // twitter: '/',
@@ -61,7 +50,7 @@ const teamData = [
   },
   {
     memberImage: '/images/manikanda.png',
-    memberName: 'Mr. Manikanda P',
+    memberName: 'Manikanda',
     memberDesignation: 'Design Engineer',
     memberSocial: {
       linkedin: '/',

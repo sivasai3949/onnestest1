@@ -33,6 +33,15 @@
   .cs-member_name {
     font-size: 22px;
     margin-bottom: 6px;
+    a {
+      color: black !important; /* Keep this line */
+      &:hover {
+        color: #00B5F9ff !important; /* Add this line */
+      }
+    }
+  }
+  .cs-member_designation {
+    color:  #00B5F9ff !important; /* Add this line */
   }
   .cs-member_info {
     position: absolute;
@@ -55,6 +64,15 @@
       transform: scale(0) rotate(45deg);
       opacity: 0;
       transition: all 0.4s ease;
+      svg {
+        height: 20px;
+        width: 20px;
+        color: black !important; /* Default color: black */
+        transition: color 0.3s ease; /* Add a transition for smooth hover */
+      }
+      &:hover svg {
+        color:  #00B5F9ff !important; /* Hover color: blue */
+     }
     }
   }
   &:hover {

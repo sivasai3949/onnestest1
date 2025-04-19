@@ -24,13 +24,13 @@ import "./Home.css";
 
 
 const heroImages = [
-  '/images/Home_1.jpeg',
-  '/images/Home_2.jpg',
-  '/images/Home_3.jpg',
-  '/images/Home_4.jpeg',
-  '/images/Home_5.jpeg',
-  '/images/Home_6.jpg',
-  '/images/Home_7.jpg',
+  '/images/Home_1.webp',
+  '/images/Home_2.webp',
+  '/images/Home_3.webp',
+  '/images/Home_4.webp',
+  '/images/Home_5.webp',
+  '/images/Home_6.webp',
+  '/images/Home_7.webp',
 ];
 // Hero Social Links
 const heroSocialLinks = [

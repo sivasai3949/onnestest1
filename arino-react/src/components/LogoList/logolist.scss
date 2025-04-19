@@ -1,11 +1,33 @@
+.cs-partner_logo_wrap_outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; // Vertical space between rows
+}
+
 .cs-partner_logo_wrap {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin: 0 -15px;
+  width: 100%;
+  max-width: 1000px;
 }
+
+.cs-partner_logo_wrap.bottom {
+  justify-content: center;
+}
+
 .cs-partner_logo {
   padding: 15px;
 }
+
+.cs-partner_logo img {
+  max-width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1); // Makes logos appear white
+}
+
 @media screen and (max-width: 575px) {
   .cs-partner_logo_wrap {
     margin: 0 -10px;

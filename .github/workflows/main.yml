@@ -3,7 +3,7 @@ name: 🚀 Frontend Live Deployment
 on:
   push:
     branches:
-      - 'merge1'
+      - '21-04-25'
     tags:
       - 'live-deploy'
 

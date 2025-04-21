@@ -25,6 +25,7 @@ import ArchitectureAgencyHome from './components/Pages/ArchitectureAgencyHome';
 import CreativeSolutionHome from './components/Pages/CreativeSolutionHome';
 import PersonalPortfolioHome from './components/Pages/PersonalPortfolioHome';
 import VideoShowcaseHome from './components/Pages/VideoShowcaseHome';
+import TechnologyPage from './components/Pages/TechnologyPage'; // ✅ TechnologyPage import added
 
 
 function App() {
@@ -70,7 +71,11 @@ function App() {
             element={<CaseStudyDetailsPage />}
           />
           <Route path="faq" element={<FaqPage />} />
+
+          {/* ✅ Technology route added here */}
+          <Route path="technology" element={<TechnologyPage />} />
         </Route>
+
         <Route
           path="/"
           element={<Layout headerVariant="cs-site_header_full_width" />}

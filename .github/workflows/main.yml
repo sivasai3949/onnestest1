@@ -3,7 +3,7 @@ name: 🚀 Frontend Live Deployment
 on:
   push:
     branches:
-      - 'Homepage_changes'
+      - 'merge1'
     tags:
       - 'live-deploy'
 

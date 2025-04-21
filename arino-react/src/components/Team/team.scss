@@ -34,23 +34,21 @@
     font-size: 22px;
     margin-bottom: 6px;
     a {
-      color: black !important; /* Keep this line */
+      color: white !important; /* Keep this line */
       &:hover {
         color: #00B5F9ff !important; /* Add this line */
       }
     }
   }
   .cs-member_designation {
-    color:  #00B5F9ff !important; /* Add this line */
+    color:  white !important; /* Add this line */
   }
   .cs-member_info {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 3;
-    padding: 30px 25px;
+    position: static;
+    padding: 15px 0 0; // Optional spacing from image
+    text-align: center; // Optional: Center align text
   }
+  
   .cs-member_social {
     position: absolute;
     z-index: 2;

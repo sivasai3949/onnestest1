@@ -25,8 +25,8 @@ import ArchitectureAgencyHome from './components/Pages/ArchitectureAgencyHome';
 import CreativeSolutionHome from './components/Pages/CreativeSolutionHome';
 import PersonalPortfolioHome from './components/Pages/PersonalPortfolioHome';
 import VideoShowcaseHome from './components/Pages/VideoShowcaseHome';
-import TechnologyPage from './components/Pages/TechnologyPage'; // ✅ TechnologyPage import added
-
+import TechnologyPage from './components/Pages/TechnologyPage';
+import AISimulation from './components/Pages/AISimulation'; // ✅ Import added here
 
 function App() {
   return (
@@ -34,66 +34,36 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route
-            path="photography-agency"
-            element={<PhotographyAgencyHome />}
-          />
+          <Route path="photography-agency" element={<PhotographyAgencyHome />} />
           <Route path="digital-agency" element={<DigitalAgencyHome />} />
           <Route path="marketing-agency" element={<MarketingAgencyHome />} />
           <Route path="freelancer-agency" element={<FreelancerAgencyHome />} />
-          <Route
-            path="architecture-agency"
-            element={<ArchitectureAgencyHome />}
-          />
+          <Route path="architecture-agency" element={<ArchitectureAgencyHome />} />
           <Route path="creative-solution" element={<CreativeSolutionHome />} />
-          <Route
-            path="personal-portfolio"
-            element={<PersonalPortfolioHome />}
-          />
+          <Route path="personal-portfolio" element={<PersonalPortfolioHome />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="service" element={<ServicesPage />} />
-          <Route
-            path="service/:serviceDetailsId"
-            element={<ServiceDetailsPage />}
-          />
+          <Route path="service/:serviceDetailsId" element={<ServiceDetailsPage />} />
           <Route path="portfolio" element={<PortfolioPage />} />
-          <Route
-            path="portfolio/:portfolioDetailsId"
-            element={<PortfolioDetailsPage />}
-          />
+          <Route path="portfolio/:portfolioDetailsId" element={<PortfolioDetailsPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:blogDetailsId" element={<BlogDetailsPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="team" element={<TeamPage />} />
           <Route path="team/:teamDetails" element={<TeamDetails />} />
-          <Route
-            path="/case-study/:caseStudyDetailsId"
-            element={<CaseStudyDetailsPage />}
-          />
+          <Route path="/case-study/:caseStudyDetailsId" element={<CaseStudyDetailsPage />} />
           <Route path="faq" element={<FaqPage />} />
-
-          {/* ✅ Technology route added here */}
           <Route path="technology" element={<TechnologyPage />} />
+          <Route path="ai-simulation" element={<AISimulation />} /> {/* ✅ New route added */}
         </Route>
 
-        <Route
-          path="/"
-          element={<Layout headerVariant="cs-site_header_full_width" />}
-        >
-          <Route
-            path="creative-portfolio"
-            element={<CreativePortfolioHome />}
-          />
-          <Route
-            path="showcase-portfolio"
-            element={<ShowcasePortfolioHome />}
-          />
-          <Route
-            path="case-study-showcase"
-            element={<CaseStudyShowcaseHome />}
-          />
+        <Route path="/" element={<Layout headerVariant="cs-site_header_full_width" />}>
+          <Route path="creative-portfolio" element={<CreativePortfolioHome />} />
+          <Route path="showcase-portfolio" element={<ShowcasePortfolioHome />} />
+          <Route path="case-study-showcase" element={<CaseStudyShowcaseHome />} />
           <Route path="video-showcase" element={<VideoShowcaseHome />} />
         </Route>
+
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

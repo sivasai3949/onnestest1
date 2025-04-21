@@ -154,17 +154,26 @@ export default function Header({ variant }) {
                       <DropDown>
                         <ul>
                           <li>
-                            <Link to="about" onClick={() => setMobileToggle(false)}>
+                            <Link
+                              to="about"
+                              onClick={() => setMobileToggle(false)}
+                            >
                               About Us
                             </Link>
                           </li>
                           <li>
-                            <Link to="about" onClick={() => setMobileToggle(false)}>
+                            <Link
+                              to="about"
+                              onClick={() => setMobileToggle(false)}
+                            >
                               Why Onnes
                             </Link>
                           </li>
                           <li>
-                            <Link to="about" onClick={() => setMobileToggle(false)}>
+                            <Link
+                              to="about"
+                              onClick={() => setMobileToggle(false)}
+                            >
                               Vision & Mission
                             </Link>
                           </li>
@@ -172,10 +181,7 @@ export default function Header({ variant }) {
                       </DropDown>
                     </li>
                     <li className="menu-item-has-children">
-                      <NavLink
-                        to="team"
-                        onClick={() => setMobileToggle(false)}
-                      >
+                      <NavLink to="team" onClick={() => setMobileToggle(false)}>
                         TEAM
                       </NavLink>
                       <DropDown>
@@ -231,43 +237,52 @@ export default function Header({ variant }) {
                       </DropDown>
                     </li>
                     <li className="menu-item-has-children">
-  <NavLink
-    to="/technology"
-    onClick={() => setMobileToggle(false)}
-  >
-    TECHNOLOGY
-  </NavLink>
-  <DropDown>
-    <ul>
-      <li>
-        <Link to="/technology#carbon-fiber" onClick={() => setMobileToggle(false)}>
-          Carbon Fiber Tanks
-        </Link>
-      </li>
-      <li>
-        <Link to="/technology#cryogenics" onClick={() => setMobileToggle(false)}>
-          Cryogenics Systems
-        </Link>
-      </li>
-      <li>
-        <Link to="/technology#thermal" onClick={() => setMobileToggle(false)}>
-          Thermal Management
-        </Link>
-      </li>
-      <li>
-        <Link to="/technology#recycling" onClick={() => setMobileToggle(false)}>
-          Recycling of CFs
-        </Link>
-      </li>
-    </ul>
-  </DropDown>
-</li>
-
-                    <li className="menu-item-has-children">
                       <NavLink
-                        to=""
+                        to="/technology"
                         onClick={() => setMobileToggle(false)}
                       >
+                        TECHNOLOGY
+                      </NavLink>
+                      <DropDown>
+                        <ul>
+                          <li>
+                            <Link
+                              to="/technology#carbon-fiber"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Carbon Fiber Tanks
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/technology#cryogenics"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Cryogenics Systems
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/technology#thermal"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Thermal Management
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/technology#recycling"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Recycling of CFs
+                            </Link>
+                          </li>
+                        </ul>
+                      </DropDown>
+                    </li>
+
+                    <li className="menu-item-has-children">
+                      <NavLink to="" onClick={() => setMobileToggle(false)}>
                         Portfolio
                       </NavLink>
                       <DropDown>
@@ -308,14 +323,17 @@ export default function Header({ variant }) {
                       </DropDown>
                     </li>
                     <li className="menu-item-has-children">
-                      <NavLink to="blog" onClick={() => setMobileToggle(false)}>
+                      <NavLink
+                        to="ai-simulation"
+                        onClick={() => setMobileToggle(false)}
+                      >
                         AI SIMULATION
                       </NavLink>
                       <DropDown>
                         <ul>
                           <li>
                             <Link
-                              to="blog/cfm"
+                              to="ai-simulation"
                               onClick={() => setMobileToggle(false)}
                             >
                               CFM
@@ -323,7 +341,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="blog/quantum-cfd"
+                              to="ai-simulation"
                               onClick={() => setMobileToggle(false)}
                             >
                               Quantum CFD
@@ -331,7 +349,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="blog/new-materials"
+                              to="ai-simulation"
                               onClick={() => setMobileToggle(false)}
                             >
                               New Materials
@@ -340,6 +358,7 @@ export default function Header({ variant }) {
                         </ul>
                       </DropDown>
                     </li>
+
                     <li className="menu-item-has-children">
                       <Link to="/" onClick={() => setMobileToggle(false)}>
                         MORE

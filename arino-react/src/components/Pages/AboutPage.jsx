@@ -152,15 +152,50 @@ export default function AboutPage() {
       {/* End Why Onnes Section */}
 
       {/* Start Vision & Mission Section */}
-      <Spacing lg="145" md="80" />
-      <Div className="container" id="vision-mission">
-        <h2>Vision & Mission</h2>
-        <p className="cs-m0">
-          Our vision is to build scalable, efficient, and impactful solutions for businesses.
-          Our mission is to empower organizations through creative and smart digital experiences.
-        </p>
-      </Div>
-      {/* End Vision & Mission Section */}
+<Spacing lg="145" md="80" />
+<Div className="container" id="vision-mission">
+  <h2>Vision & Mission</h2>
+  <p className="cs-m0">
+    Our vision is to build scalable, efficient, and impactful solutions for businesses.
+    Our mission is to empower organizations through creative and smart digital experiences.
+  </p>
+
+  {/* Image Row - Responsive */}
+  <Div className="cs-image-row" style={{
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '20px',
+    marginTop: '40px',
+    justifyContent: 'space-between',
+  }}>
+    <img
+      src="/images/example1.jpg"
+      alt="Example 1"
+      style={{
+        flex: '1 1 48%',
+        width: '100%',
+        height: 'auto',
+        borderRadius: '12px',
+        objectFit: 'cover',
+        minWidth: '250px',
+      }}
+    />
+    <img
+      src="/images/example2.jpg"
+      alt="Example 2"
+      style={{
+        flex: '1 1 48%',
+        width: '100%',
+        height: 'auto',
+        borderRadius: '12px',
+        objectFit: 'cover',
+        minWidth: '250px',
+      }}
+    />
+  </Div>
+</Div>
+{/* End Vision & Mission Section */}
+
 
       {/* Start CTA Section */}
       <Spacing lg="150" md="80" />

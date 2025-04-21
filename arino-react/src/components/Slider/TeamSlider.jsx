@@ -1,29 +1,28 @@
 import { Icon } from '@iconify/react';
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import Div from '../Div';
 import Team from '../Team';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importing FontAwesome
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'; 
+
 const teamData = [
   {
     memberImage: '/images/ram-k-aluru.jpg',
     memberName: 'Ram K Aluru ',
     memberDesignation: 'Founder & CEO',
+    description: `Ram’s background is in low-temperature physics and quantum material science engineering, he holds a Ph.D. from the Max Planck Institute, Germany and Uni. St Andrews, UK for working on high-temperature superconductors and semiconductor electronics at cryogenic temperatures such as 1.6 K and 30 mK. After his Ph.D., Ram worked as a Research Scientist at the Leiden Institute of Physics in the Netherlands. Apart from having the tech edge in cryogenics and superconducting electronics, Ram also built an EdTech company from scratch and managed Bluetooth technology projects in Industry 4.0. During his doctoral studies, Ram has published his research findings in prestigious journals such as Science, Nature and American Physics Society Journals and he is an avid science communicator and takes an active part in science outreach activities and committed to net zero emissions through his energy ventures.`,
     memberSocial: {
       linkedin: '/',
-      // twitter: '/',
-      // youtube: '/',
-      // facebook: '/',
     },
   },
   {
     memberImage: '/images/vikram-srinivasa-raghavan.jpg',
     memberName: 'Vikram Raghavan',
     memberDesignation: 'Founder & CTO ',
+    description: `VIKRAM has a background in Applied Physics and Instrumentation with 10 yrs. of R&D and 4 yrs. of Industry experience in the carbon composites engineering sector. He has extensive experience in Materials science and specifically in Nanotechnology from Indian Institute of Science, Bangalore. He published 10 papers and has 4 patents in the area of Nanomaterials. He has deep insights into design, fabrication, and quality assurance that will be very useful to build efficient carbon fiber reinforced plastic composite fuel tanks for space and allied applications. Dr. Vikram is part of National Award Winning Team which developed the design and development of digitally controlled heating gloves and pads for soldiers in high mountain areas using carbon fiber composites. Vikram is the winner of the prestigious Global Challengers Research Funding Grant from University of Plymouth, UK.`,
     memberSocial: {
       linkedin: '/',
-      // twitter: '/',
-      // youtube: '/',
-      // facebook: '/',
     },
   },
   {
@@ -32,9 +31,6 @@ const teamData = [
     memberDesignation: 'Head, Polymer Chemistry',
     memberSocial: {
       linkedin: '/',
-      // twitter: '/',
-      // youtube: '/',
-      // facebook: '/',
     },
   },
   {
@@ -43,9 +39,6 @@ const teamData = [
     memberDesignation: 'AI & Quantum Expert',
     memberSocial: {
       linkedin: '/',
-      // twitter: '/',
-      // youtube: '/',
-      // facebook: '/',
     },
   },
   {
@@ -54,17 +47,24 @@ const teamData = [
     memberDesignation: 'Design Engineer',
     memberSocial: {
       linkedin: '/',
-      // twitter: '/',
-      // youtube: '/',
-      // facebook: '/',
     },
   },
 ];
 
 export default function TeamSlider() {
-  /** Team Member Data **/
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedMember, setSelectedMember] = useState(null);
 
-  /** Slider Settings **/
+  const openModal = (member) => {
+    setSelectedMember(member);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedMember(null);
+  };
+
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <div
       {...props}
@@ -77,6 +77,7 @@ export default function TeamSlider() {
       <Icon icon="bi:arrow-left" />
     </div>
   );
+
   const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
     <div
       {...props}
@@ -90,14 +91,18 @@ export default function TeamSlider() {
       <Icon icon="bi:arrow-right" />
     </div>
   );
+
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 3000,               // Makes the scroll slower (larger = slower)
+    autoplay: true,
+    autoplaySpeed: 0,          // Must be 0 for continuous scrolling
+    cssEase: 'linear',         // Ensures smooth continuous scroll
     slidesToShow: 4,
     slidesToScroll: 1,
-    prevArrow: <SlickArrowLeft />,
-    nextArrow: <SlickArrowRight />,
+    arrows: false,             // Optional: removes manual arrows
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1200,
@@ -123,19 +128,160 @@ export default function TeamSlider() {
       },
     ],
   };
+  
 
   return (
-    <Slider {...settings} className="cs-gap-24 cs-arrow_style2">
-      {teamData.map((item, index) => (
-        <Div key={index}>
-          <Team
-            memberImage={item.memberImage}
-            memberName={item.memberName}
-            memberDesignation={item.memberDesignation}
-            memberSocial={item.memberSocial}
+    <>
+      <Slider {...settings} className="cs-gap-24 cs-arrow_style2">
+        {teamData.map((item, index) => (
+          <Div key={index}>
+            <Team
+              memberImage={item.memberImage}
+              memberName={item.memberName}
+              memberDesignation={item.memberDesignation}
+              memberSocial={item.memberSocial}
+            />
+            {(item.memberName.includes('Ram') || item.memberName.includes('Vikram')) && (
+              <div style={{ marginTop: '10px', textAlign: 'center' }}>
+                <button
+                  onClick={() => openModal(item)}
+                  style={{
+                    background: 'transparent',
+                    color: '#007bff',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Read More
+                </button>
+              </div>
+            )}
+          </Div>
+        ))}
+      </Slider>
+
+      {modalOpen && selectedMember && (
+  <div
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: 'rgba(0,0,0,0.6)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1000,
+    }}
+    onClick={closeModal}
+  >
+    <div
+      style={{
+        backgroundColor: '#fff',
+        width: '400px',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        padding: '20px',
+        borderRadius: '10px',
+        position: 'relative',
+        textAlign: 'center',
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <img
+        src={selectedMember.memberImage}
+        alt={selectedMember.memberName}
+        style={{
+          width: '150px',
+          height: '150px',
+          borderRadius: '50%',
+          objectFit: 'cover',
+          marginBottom: '0px', // No gap between image and LinkedIn box
+          border: '2px solid #ccc',
+        }}
+      />
+      <h3 style={{ margin: '2px 0' }}>{selectedMember.memberName}</h3>
+      <p style={{ fontWeight: 'bold', margin: '0 0 4px' }}>
+        {selectedMember.memberDesignation}
+      </p>
+
+      {/* LinkedIn Icon and Text (No gap between image and LinkedIn box) */}
+      {selectedMember.memberSocial && selectedMember.memberSocial.linkedin && (
+        <div
+          style={{
+            margin: '6px 0', // Keep minimal margin between LinkedIn box and profile picture
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#0077b5', // Blue background for LinkedIn box
+            padding: '10px',
+            borderRadius: '5px',
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faLinkedin} // LinkedIn logo icon
+            style={{
+              fontSize: '20px', // Icon size
+              color: '#fff', // White color for the icon
+              marginRight: '10px', // Space between the icon and the text
+            }}
           />
-        </Div>
-      ))}
-    </Slider>
+          <a
+            href={selectedMember.memberName.includes('Ram') ? "https://www.linkedin.com/in/dr-ram-k-aluru-77608a3b/" : "https://www.linkedin.com/in/vikram-srinivasa-raghavan-ph-d-5293481a3/"}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: '#fff',
+              textDecoration: 'none',
+              fontSize: '14px',
+              fontWeight: 'bold',
+            }}
+          >
+            Connect on LinkedIn
+          </a>
+        </div>
+      )}
+
+      {/* Description immediately after LinkedIn icon */}
+      {selectedMember.description && (
+        <div
+          style={{
+            textAlign: 'left',
+            marginTop: '12px', // Some margin between LinkedIn box and description
+          }}
+        >
+          <h4 style={{ marginBottom: '4px', color: '#000' }}>Description:</h4>
+          <p
+            style={{
+              fontSize: '14px',
+              whiteSpace: 'pre-line',
+              color: '#000',
+            }}
+          >
+            {selectedMember.description}
+          </p>
+        </div>
+      )}
+
+      <button
+        onClick={closeModal}
+        style={{
+          marginTop: '14px',
+          backgroundColor: '#007bff',
+          color: '#fff',
+          border: 'none',
+          padding: '10px 20px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+        }}
+      >
+        View Less
+      </button>
+    </div>
+  </div>
+)}
+   </>
   );
 }

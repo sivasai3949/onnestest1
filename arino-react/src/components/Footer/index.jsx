@@ -24,11 +24,11 @@ const serviceMenu = [
     href: '/service/service-details',
   },
   {
-    title: 'Manufacturing',
+    title: 'Material Simulations',
     href: '/service/service-details',
   },
   {
-    title: 'Material Simulations',
+    title: 'Cryogenic Testing',
     href: '/service/service-details',
   },
   {
@@ -36,7 +36,7 @@ const serviceMenu = [
     href: '/service/service-details',
   },
   {
-    title: 'Cryogenic Testing',
+    title: 'Manufacturing',
     href: '/service/service-details',
   },
 ];

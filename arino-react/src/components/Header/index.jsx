@@ -265,7 +265,7 @@ export default function Header({ variant }) {
 
                     <li className="menu-item-has-children">
                       <NavLink
-                        to="portfolio"
+                        to=""
                         onClick={() => setMobileToggle(false)}
                       >
                         Portfolio
@@ -274,7 +274,7 @@ export default function Header({ variant }) {
                         <ul>
                           <li>
                             <Link
-                              to="portfolio/portfolio-details"
+                              to="portfolio"
                               onClick={() => setMobileToggle(false)}
                             >
                               Product Portfolio
@@ -282,7 +282,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="portfolio/space-aerospace-defence"
+                              to="portfolio/portfolio-details"
                               onClick={() => setMobileToggle(false)}
                             >
                               Space - Aerospace - Defence
@@ -290,7 +290,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="portfolio/ground-based-storage"
+                              to="portfolio/portfolio-details"
                               onClick={() => setMobileToggle(false)}
                             >
                               Ground Based Storage
@@ -298,7 +298,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="portfolio/under-water-applications"
+                              to="portfolio/portfolio-details"
                               onClick={() => setMobileToggle(false)}
                             >
                               Under Water Applications

@@ -15,19 +15,25 @@ const CustomCursor = () => {
   });
 
   React.useEffect(() => {
-    document.addEventListener('mousemove', event => {
+    const handleMouseMove = event => {
       const { clientX, clientY } = event;
 
       const mouseX = clientX;
       const mouseY = clientY;
 
+      if (!cursorSm.current || !cursorLg.current) return;
+
       positionRef.current.mouseX = mouseX - cursorSm.current.clientWidth / 2;
       positionRef.current.mouseY = mouseY - cursorSm.current.clientHeight / 2;
       positionRef.current.mouseX = mouseX - cursorLg.current.clientWidth / 2;
       positionRef.current.mouseY = mouseY - cursorLg.current.clientHeight / 2;
-    });
+    };
 
-    return () => {};
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   React.useEffect(() => {
@@ -41,6 +47,9 @@ const CustomCursor = () => {
         distanceX,
         distanceY,
       } = positionRef.current;
+
+      if (!cursorSm.current || !cursorLg.current) return;
+
       if (!destinationX || !destinationY) {
         positionRef.current.destinationX = mouseX;
         positionRef.current.destinationY = mouseY;
@@ -59,11 +68,14 @@ const CustomCursor = () => {
           positionRef.current.destinationY += distanceY;
         }
       }
-      cursorSm.current.style.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`;
-      cursorLg.current.style.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`;
+
+      cursorSm.current.style.transform = `translate3d(${positionRef.current.destinationX}px, ${positionRef.current.destinationY}px, 0)`;
+      cursorLg.current.style.transform = `translate3d(${positionRef.current.destinationX}px, ${positionRef.current.destinationY}px, 0)`;
     };
+
     followMouse();
   }, []);
+
   return (
     <>
       <div className="cs-cursor_lg" ref={cursorLg}></div>

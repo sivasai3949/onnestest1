@@ -98,7 +98,7 @@ const portfolioData = [
 
 const categoryMenu = [
   { title: 'Space', category: 'web_design' },
-  { title: 'AeroSpace', category: 'ui_ux_design' },
+  { title: 'Aerospace', category: 'ui_ux_design' },
   { title: 'Defence', category: 'mobile_apps' },
   { title: 'Ground Based', category: 'logo_design' },
   { title: 'Under Water', category: 'under_water' },

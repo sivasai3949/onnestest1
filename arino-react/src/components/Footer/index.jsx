@@ -67,7 +67,7 @@ export default function Footer({ copyrightText, logoSrc, logoAlt, text }) {
             </Div>
             <Div className="col-lg-3 col-sm-6">
               <Div className="cs-footer_item">
-                <MenuWidget menuItems={serviceMenu} menuHeading="Services" />
+                <MenuWidget menuItems={serviceMenu} menuHeading="Offerings" />
               </Div>
             </Div>
             <Div className="col-lg-3 col-sm-6">

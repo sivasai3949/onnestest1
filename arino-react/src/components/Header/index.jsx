@@ -375,7 +375,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="blog-news"
+                              to="blog"
                               onClick={() => setMobileToggle(false)}
                             >
                               Blog & News
@@ -470,7 +470,7 @@ export default function Header({ variant }) {
           <Div className="cs-side_header_box">
             <Newsletter
               title="Subscribe"
-              subtitle="At vero eos et accusamus et iusto odio as part dignissimos ducimus qui blandit."
+              subtitle="Subscribe to our newsletters to get the latest news and updates"
               placeholder="example@gmail.com"
             />
           </Div>

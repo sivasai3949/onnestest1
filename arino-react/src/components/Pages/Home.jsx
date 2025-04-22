@@ -86,6 +86,12 @@ const portfolioData = [
     href: "/portfolio/portfolio-details",
     src: "/images/portfolio_3.jpeg",
   },
+  {
+    title: "Colorful Art Work",
+    subtitle: "See Details",
+    href: "/portfolio/portfolio-details",
+    src: "/images/portfolio_3.jpeg",
+  },
 ];
 
 export default function Home() {
@@ -140,82 +146,60 @@ export default function Home() {
       {/* End FunFact Section */}
 
       {/* Start Service Section */}
-      <Spacing lg="150" md="80" />
-      <Div id="service">
-        <Div className="container">
-          <Div className="row">
-            <Div className="col-xl-4">
-              <div className="cs-section_heading cs-style1">
-                <h3 className="cs-section_subtitle">Onnes Expertise Lies In</h3>
-                <h2 className="cs-section_title" style={{ fontSize: "40px" }}>
-                  Next Generation Tank Technology Integrated with Cryogenics
-                </h2>
-                <Spacing lg="45" md="20" />
-                <Button btnLink="/service" btnText="See All Services" />
-              </div>
-              <Spacing lg="90" md="45" />
-            </Div>
-            <Div className="col-xl-8">
-              <Div className="row">
-                <Div className="col-lg-3 col-sm-6 cs-hidden_mobile"></Div>
+<Spacing lg="150" md="80" />
+<Div id="service">
+  <Div className="container">
+    <Div className="row">
+      <Div className="col-xl-4">
+        <div className="cs-section_heading cs-style1">
+          <h3 className="cs-section_subtitle">Onnes Expertise Lies In</h3>
+          <h2 className="cs-section_title" style={{ fontSize: '40px' }}>
+            Next Generation Tank Technology Integrated with Cryogenics
+          </h2>
+          <Spacing lg="45" md="20" />
+          <Button btnLink="/service" btnText="See All Capabilities" />
+        </div>
+        <Spacing lg="90" md="45" />
+      </Div>
 
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="Product Design"
-                    link="/service/service-details"
-                    src="/images/productdesign.jpg"
-                    alt="Service"
-                  />
-                  <Spacing lg="30" md="30" />
-                </Div>
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="Material Simulations"
-                    link="/service/service-details"
-                    src="/images/materialsimulation.jpg"
-                    alt="Service"
-                  />
-                  <Spacing lg="30" md="30" />
-                </Div>
-
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="Assembly"
-                    link="/service/service-details"
-                    src="/images/assembly.jpg"
-                    alt="Service"
-                  />
-                  <Spacing lg="30" md="30" />
-                </Div>
-
-                <Div className="col-lg-3 col-sm-6 cs-hidden_mobile"></Div>
-
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="Cryogenic Testing"
-                    link="/service/service-details"
-                    src="/images/cryogenictesting.jpg"
-                    alt="Service"
-                  />
-                  <Spacing lg="30" md="30" />
-                </Div>
-
-                {/* ✅ New Card Added Below */}
-                <Div className="col-lg-3 col-sm-6">
-                  <Card
-                    title="Manufacturing"
-                    link="/service/service-details"
-                    src="/images/manufacturing.jpg" // Replace with actual image path
-                    alt="Service"
-                  />
-                  <Spacing lg="30" md="30" />
-                </Div>
-              </Div>
-            </Div>
-          </Div>
+      <Div className="col-xl-8">
+        <Div className="onnes-card-grid">
+          <Card
+            title="Product Design"
+            link="/service/service-details"
+            src="/images/productdesign.jpg"
+            alt="Service"
+          />
+          <Card
+            title="Material Simulations"
+            link="/service/service-details"
+            src="/images/materialsimulation.jpg"
+            alt="Service"
+          />
+          <Card
+            title="Cryogenic Testing"
+            link="/service/service-details"
+            src="/images/cryogenictesting.jpg"
+            alt="Service"
+          />
+          <Card
+            title="Assembly"
+            link="/service/service-details"
+            src="/images/assembly.jpg"
+            alt="Service"
+          />
+          <Card
+            title="Manufacturing"
+            link="/service/service-details"
+            src="/images/manufacturing.jpg"
+            alt="Service"
+          />
         </Div>
       </Div>
-      {/* End Service Section */}
+    </Div>
+  </Div>
+</Div>
+{/* End Service Section */}
 
       {/* Start Portfolio Section */}
       <Spacing lg="150" md="50" />
@@ -266,7 +250,7 @@ export default function Home() {
         <Spacing lg="70" md="70" />
         <VideoModal
           videoSrc="https://youtu.be/JRl4n6nj4HM?si=-zoX4xFuMUAhEqwL"
-          bgUrl="/images/video_bg.jpeg"
+          bgUrl="/images/rambackground1.1.webp"
         />
       </Div>
       {/* End Video Block Section */}
@@ -331,7 +315,7 @@ export default function Home() {
       {/* Start CTA Section */}
       <Div className="container">
         <Cta
-          title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> integrated with bespoke cryogenic systems"
+          title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
           btnText="Apply For Meeting"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"

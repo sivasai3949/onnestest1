@@ -13,7 +13,7 @@ const teamData = [
     memberDesignation: 'Founder & CEO',
     description: `Ram’s background is in low-temperature physics and quantum material science engineering, he holds a Ph.D. from the Max Planck Institute, Germany and Uni. St Andrews, UK for working on high-temperature superconductors and semiconductor electronics at cryogenic temperatures such as 1.6 K and 30 mK. After his Ph.D., Ram worked as a Research Scientist at the Leiden Institute of Physics in the Netherlands. Apart from having the tech edge in cryogenics and superconducting electronics, Ram also built an EdTech company from scratch and managed Bluetooth technology projects in Industry 4.0. During his doctoral studies, Ram has published his research findings in prestigious journals such as Science, Nature and American Physics Society Journals and he is an avid science communicator and takes an active part in science outreach activities and committed to net zero emissions through his energy ventures.`,
     memberSocial: {
-      linkedin: '/',
+      linkedin: 'https://www.linkedin.com/in/dr-ram-k-aluru-77608a3b/',
     },
   },
   {
@@ -22,7 +22,7 @@ const teamData = [
     memberDesignation: 'Founder & CTO ',
     description: `VIKRAM has a background in Applied Physics and Instrumentation with 10 yrs. of R&D and 4 yrs. of Industry experience in the carbon composites engineering sector. He has extensive experience in Materials science and specifically in Nanotechnology from Indian Institute of Science, Bangalore. He published 10 papers and has 4 patents in the area of Nanomaterials. He has deep insights into design, fabrication, and quality assurance that will be very useful to build efficient carbon fiber reinforced plastic composite fuel tanks for space and allied applications. Dr. Vikram is part of National Award Winning Team which developed the design and development of digitally controlled heating gloves and pads for soldiers in high mountain areas using carbon fiber composites. Vikram is the winner of the prestigious Global Challengers Research Funding Grant from University of Plymouth, UK.`,
     memberSocial: {
-      linkedin: '/',
+      linkedin: 'https://www.linkedin.com/in/vikram-srinivasa-raghavan-ph-d-5293481a3/',
     },
   },
   {
@@ -190,6 +190,25 @@ export default function TeamSlider() {
       }}
       onClick={(e) => e.stopPropagation()}
     >
+      {/* Close 'X' button */}
+      <button
+        onClick={closeModal}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          background: 'transparent',
+          border: 'none',
+          fontSize: '30px',
+          fontWeight: 'bold',
+          color: 'black',
+          cursor: 'pointer',
+        }}
+        aria-label="Close"
+      >
+        ×
+      </button>
+
       <img
         src={selectedMember.memberImage}
         alt={selectedMember.memberName}
@@ -198,7 +217,7 @@ export default function TeamSlider() {
           height: '150px',
           borderRadius: '50%',
           objectFit: 'cover',
-          marginBottom: '0px', // No gap between image and LinkedIn box
+          marginBottom: '0px',
           border: '2px solid #ccc',
         }}
       />
@@ -207,29 +226,32 @@ export default function TeamSlider() {
         {selectedMember.memberDesignation}
       </p>
 
-      {/* LinkedIn Icon and Text (No gap between image and LinkedIn box) */}
       {selectedMember.memberSocial && selectedMember.memberSocial.linkedin && (
         <div
           style={{
-            margin: '6px 0', // Keep minimal margin between LinkedIn box and profile picture
+            margin: '6px 0',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#0077b5', // Blue background for LinkedIn box
+            backgroundColor: '#0077b5',
             padding: '10px',
             borderRadius: '5px',
           }}
         >
           <FontAwesomeIcon
-            icon={faLinkedin} // LinkedIn logo icon
+            icon={faLinkedin}
             style={{
-              fontSize: '20px', // Icon size
-              color: '#fff', // White color for the icon
-              marginRight: '10px', // Space between the icon and the text
+              fontSize: '20px',
+              color: '#fff',
+              marginRight: '10px',
             }}
           />
           <a
-            href={selectedMember.memberName.includes('Ram') ? "https://www.linkedin.com/in/dr-ram-k-aluru-77608a3b/" : "https://www.linkedin.com/in/vikram-srinivasa-raghavan-ph-d-5293481a3/"}
+            href={
+              selectedMember.memberName.includes('Ram')
+                ? 'https://www.linkedin.com/in/dr-ram-k-aluru-77608a3b/'
+                : 'https://www.linkedin.com/in/vikram-srinivasa-raghavan-ph-d-5293481a3/'
+            }
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -244,12 +266,11 @@ export default function TeamSlider() {
         </div>
       )}
 
-      {/* Description immediately after LinkedIn icon */}
       {selectedMember.description && (
         <div
           style={{
             textAlign: 'left',
-            marginTop: '12px', // Some margin between LinkedIn box and description
+            marginTop: '12px',
           }}
         >
           <h4 style={{ marginBottom: '4px', color: '#000' }}>Description:</h4>
@@ -264,24 +285,10 @@ export default function TeamSlider() {
           </p>
         </div>
       )}
-
-      <button
-        onClick={closeModal}
-        style={{
-          marginTop: '14px',
-          backgroundColor: '#007bff',
-          color: '#fff',
-          border: 'none',
-          padding: '10px 20px',
-          borderRadius: '5px',
-          cursor: 'pointer',
-        }}
-      >
-        View Less
-      </button>
     </div>
   </div>
 )}
+
    </>
   );
 }

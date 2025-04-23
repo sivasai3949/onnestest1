@@ -2,34 +2,84 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px; // Vertical space between rows
+  gap: 40px;
 }
 
-.cs-partner_logo_wrap {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 0 -15px;
+.cs-partner_slider_container {
+  overflow: hidden;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1400px;
+  position: relative;
 }
 
-.cs-partner_logo_wrap.bottom {
-  justify-content: center;
+.cs-partner_logo_slider {
+  display: flex;
+  flex-wrap: nowrap;
+  animation: scroll-left 15s linear infinite; // Slightly faster
+  gap: 30px;
+  padding: 10px 0;
 }
 
 .cs-partner_logo {
-  padding: 15px;
+  flex: 0 0 auto;
+  width: 180px; // Reduced width from 220px
+  height: 120px; // Reduced height from 140px
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 .cs-partner_logo img {
   max-width: 100%;
-  height: auto;
-  filter: brightness(0) invert(1); // Makes logos appear white
+  max-height: 100%;
+  object-fit: contain;
+  // No filter: shows original logo colors
 }
 
-@media screen and (max-width: 575px) {
-  .cs-partner_logo_wrap {
-    margin: 0 -10px;
+.cs-partner_logo_wrap.bottom {
+  display: flex;
+  flex-wrap: nowrap; // Force into one row
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 0;
+  overflow-x: auto; // Optional: for smaller screens
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .cs-partner_logo {
+    width: 130px;
+    height: 90px;
+  }
+
+  .cs-partner_logo_slider {
+    gap: 20px;
+  }
+
+  .cs-partner_logo_wrap.bottom {
+    gap: 20px;
+  }
+}
+/* Special style for Partner 6 (top) */
+.cs-partner_logo.partner-6 {
+  width: 230px;  // Slightly increased
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;  // Consistent with other logos
+  margin-top: -10px;  // Moves the logo slightly up for alignment
+}
+
+

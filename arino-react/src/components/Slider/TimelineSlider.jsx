@@ -6,46 +6,46 @@ import Timeline from '../Timeline';
 const timelineData = [
   [
     {
-      year: '2019',
-      name: 'Google awards',
-      position: 'Website of the day',
-      type: 'Mobile exelence',
+      year: '2024',
+      name: 'Startup India',
+      position: 'Awarded grants',
+      type: 'Space and Ground',
     },
     {
-      year: '2021',
-      name: 'CSS awards design',
-      position: 'Honorable mention',
-      type: 'Desktop exelence',
+      year: '2025',
+      name: 'Venture Catalyst Space',
+      position: 'Dual use Technology ',
+      type: 'Built for Space, Access for Ground',
     },
   ],
   [
     {
-      year: '2020',
-      name: 'New technology innovation',
-      position: 'Honorable mention',
-      type: 'Desktop exelence',
+      year: '2024',
+      name: 'Starburst Astra Space',
+      position: 'Specialized in Defence & Space',
+      type: 'Pilots Access',
     },
     {
-      year: '2022',
-      name: 'UI/UX design of the month',
-      position: 'Website of the day',
-      type: 'Mobile exelence',
+      year: '2025',
+      name: 'South Australia Accelerator',
+      position: 'Green Energy',
+      type: 'Hydrogen Storage',
     },
   ],
-  [
-    {
-      year: '2019',
-      name: 'Google awards',
-      position: 'Website of the day',
-      type: 'Mobile exelence',
-    },
-    {
-      year: '2021',
-      name: 'CSS awards design',
-      position: 'Honorable mention',
-      type: 'Desktop exelence',
-    },
-  ],
+  // [
+  //   {
+  //     year: '2019',
+  //     name: 'Google awards',
+  //     position: 'Website of the day',
+  //     type: 'Mobile exelence',
+  //   },
+  //   {
+  //     year: '2021',
+  //     name: 'CSS awards design',
+  //     position: 'Honorable mention',
+  //     type: 'Desktop exelence',
+  //   },
+  // ],
 ];
 
 export default function TimelineSlider() {

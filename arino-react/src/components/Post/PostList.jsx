@@ -1,7 +1,7 @@
 import React from 'react';
 const postData = [
   {
-    title: 'How to keep fear from ruining your art business with confident',
+    title: 'How to keep  from runing your art business with confident',
     postHref: '/blog/blog-details',
     subtitle:
       'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium lorema doloremque laudantium, totam rem aperiam, eaque ipsa quae...',
@@ -13,7 +13,7 @@ const postData = [
     year: '2022',
   },
   {
-    title: 'A.I becomes more powerful day by day with new approaches',
+    title: 'A.I becomes more powerful day by day with  approaches',
     postHref: '/blog/blog-details',
     subtitle:
       'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium lorema doloremque laudantium, totam rem aperiam, eaque ipsa quae...',

@@ -201,7 +201,7 @@ export default function AboutPage() {
       <Spacing lg="150" md="80" />
       <Div className="container">
         <Cta
-          title="Let’s discuss make <br />something <i>cool</i> together"
+          title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
           btnText="Apply For Meeting"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"

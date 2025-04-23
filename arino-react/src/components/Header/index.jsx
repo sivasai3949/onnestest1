@@ -391,7 +391,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="founders"
+                              to="team"
                               onClick={() => setMobileToggle(false)}
                             >
                               Founders

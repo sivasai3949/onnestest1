@@ -3,29 +3,39 @@ import Div from '../Div';
 import './logolist.scss';
 
 const topPartners = [
-  { src: '/images/partner_1.svg', alt: 'Partner 1' },
-  { src: '/images/partner_2.svg', alt: 'Partner 2' },
-  { src: '/images/partner_3.svg', alt: 'Partner 3' },
-  { src: '/images/partner_4.svg', alt: 'Partner 4' },
-  { src: '/images/partner_5.svg', alt: 'Partner 5' },
+  { src: '/images/Partner_1.1.png', alt: 'Partner 1' },
+  { src: '/images/Partner_2.1.png', alt: 'Partner 2' },
+  { src: '/images/Partner_3.1.jpg', alt: 'Partner 3' },
+  { src: '/images/Partner_4.3.png', alt: 'Partner 4' },
+  { src: '/images/Partner_5.1.png', alt: 'Partner 5' },
+  { src: '/images/Partner_6.1.jpeg', alt: 'Partner 6' },
+  { src: '/images/Partner_7.1.png', alt: 'Partner 7' },
 ];
 
 const bottomPartners = [
-  { src: '/images/partner_6.svg', alt: 'Partner 6' },
-  { src: '/images/partner_7.svg', alt: 'Partner 7' },
-  { src: '/images/partner_8.svg', alt: 'Partner 8' },
+  { src: '/images/Client_1.png', alt: 'Partner 8' },
+  { src: '/images/Client_2.png', alt: 'Partner 9' },
+  { src: '/images/Client_3.png', alt: 'Partner 10' },
+  { src: '/images/Client_4.png', alt: 'Partner 11' },
+  { src: '/images/Investors_1.jpg', alt: 'Partner12' },
 ];
 
 export default function LogoList() {
   return (
     <Div className="cs-partner_logo_wrap_outer">
-      <Div className="cs-partner_logo_wrap top">
-        {topPartners.map((logo, index) => (
-          <div className="cs-partner_logo" key={`top-${index}`}>
-            <img src={logo.src} alt={logo.alt} />
-          </div>
-        ))}
+      <Div className="cs-partner_slider_container">
+        <div className="cs-partner_logo_slider">
+          {[...topPartners, ...topPartners].map((logo, index) => (
+            <div
+              className={`cs-partner_logo ${logo.alt === 'Partner 6' ? 'partner-6' : ''}`}
+              key={`top-${index}`}
+            >
+              <img src={logo.src} alt={logo.alt} />
+            </div>
+          ))}
+        </div>
       </Div>
+
       <Div className="cs-partner_logo_wrap bottom">
         {bottomPartners.map((logo, index) => (
           <div className="cs-partner_logo" key={`bottom-${index}`}>
@@ -36,3 +46,4 @@ export default function LogoList() {
     </Div>
   );
 }
+

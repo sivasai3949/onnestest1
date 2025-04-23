@@ -63,35 +63,36 @@ const funfaceData = [
 ];
 const portfolioData = [
   {
-    title: "Colorful Art Work",
-    subtitle: "See Details",
-    href: "/portfolio/portfolio-details",
-    src: "/images/portfolio_1.jpeg",
+    title: ' Deep Space Exploration',
+    subtitle: 'See Details',
+    href: '/portfolio/portfolio-details',
+    src: '/images/deepspace.png',
   },
   {
-    title: "Colorful Art Work",
-    subtitle: "See Details",
-    href: "/portfolio/portfolio-details",
-    src: "/images/portfolio_2.jpeg",
+    title: 'Hydrogen Powered Aviation',
+    subtitle: 'See Details',
+    href: '/portfolio/portfolio-details',
+    src: '/images/hydrogenpoweredaviation.jpg',
   },
   {
-    title: "Colorful Art Work",
-    subtitle: "See Details",
-    href: "/portfolio/portfolio-details",
-    src: "/images/portfolio_0.jpg",
+    title: 'Green Shipping Oceans',
+    subtitle: 'See Details',
+    href: '/portfolio/portfolio-details',
+    src: '/images/greenshippingoceans.png',
   },
   {
-    title: "Colorful Art Work",
-    subtitle: "See Details",
-    href: "/portfolio/portfolio-details",
-    src: "/images/portfolio_3.jpeg",
+    title: 'Hydrogen Storage',
+    subtitle: 'See Details',
+    href: '/portfolio/portfolio-details',
+    src: '/images/hydrogenstorage.png',
   },
   {
-    title: "Colorful Art Work",
-    subtitle: "See Details",
-    href: "/portfolio/portfolio-details",
-    src: "/images/portfolio_3.jpeg",
+    title: 'Green CBG Storage',
+    subtitle: 'See Details',
+    href: '/portfolio/portfolio-details',
+    src: '/images/greenstorage.png',
   },
+
 ];
 
 export default function Home() {
@@ -244,8 +245,7 @@ export default function Home() {
       <Spacing lg="130" md="70" />
       <Div className="container">
         <h2 className="cs-font_50 cs-m0 text-center cs-line_height_4">
-          Our agile process is ability to adapt and respond to change. Agile
-          organizations view change as an opportunity, not a threat.
+        Onnes product innovations push the boundaries of storage and transportation of cryogenic liquids and gases
         </h2>
         <Spacing lg="70" md="70" />
         <VideoModal
@@ -282,10 +282,10 @@ export default function Home() {
           <Div className="row">
             <Div className="col-xl-4">
               <SectionHeading
-                title="Explore recent publication"
+                title="Explore Onnes news in the press"
                 subtitle="Our Blog"
-                btnText="View More Blog"
-                btnLink="/blog"
+                btnText="View More"
+                btnLink="blog"
               />
               <Spacing lg="90" md="45" />
             </Div>

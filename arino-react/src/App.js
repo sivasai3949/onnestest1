@@ -26,7 +26,8 @@ import CreativeSolutionHome from './components/Pages/CreativeSolutionHome';
 import PersonalPortfolioHome from './components/Pages/PersonalPortfolioHome';
 import VideoShowcaseHome from './components/Pages/VideoShowcaseHome';
 import TechnologyPage from './components/Pages/TechnologyPage';
-import AISimulation from './components/Pages/AISimulation'; // ✅ Import added here
+import AISimulation from './components/Pages/AISimulation';
+import SpacePortfolio from './components/Pages/SpacePortfolio'; // ✅ Import added here
 
 function App() {
   return (
@@ -54,7 +55,8 @@ function App() {
           <Route path="/case-study/:caseStudyDetailsId" element={<CaseStudyDetailsPage />} />
           <Route path="faq" element={<FaqPage />} />
           <Route path="technology" element={<TechnologyPage />} />
-          <Route path="ai-simulation" element={<AISimulation />} /> {/* ✅ New route added */}
+          <Route path="ai-simulation" element={<AISimulation />} />
+          <Route path="spaceportfolio" element={<SpacePortfolio />} /> {/* ✅ New route added */}
         </Route>
 
         <Route path="/" element={<Layout headerVariant="cs-site_header_full_width" />}>

@@ -15,15 +15,15 @@
 .cs-partner_logo_slider {
   display: flex;
   flex-wrap: nowrap;
-  animation: scroll-left 15s linear infinite; // Slightly faster
+  animation: scroll-left 15s linear infinite;
   gap: 30px;
   padding: 10px 0;
 }
 
 .cs-partner_logo {
   flex: 0 0 auto;
-  width: 180px; // Reduced width from 220px
-  height: 120px; // Reduced height from 140px
+  width: 200px; // Increased from 180px
+  height: 135px; // Increased from 120px
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,20 +34,21 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  // No filter: shows original logo colors
 }
 
 .cs-partner_logo_wrap.bottom {
   display: flex;
-  flex-wrap: nowrap; // Force into one row
+  flex-wrap: nowrap; /* Keep everything in one row */
   justify-content: center;
   gap: 30px;
   width: 100%;
   max-width: 1200px;
   padding: 20px 0;
-  overflow-x: auto; // Optional: for smaller screens
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
+
+/* Animation keyframe */
 @keyframes scroll-left {
   0% {
     transform: translateX(0%);
@@ -57,10 +58,11 @@
   }
 }
 
+/* Mobile responsiveness */
 @media screen and (max-width: 768px) {
   .cs-partner_logo {
-    width: 130px;
-    height: 90px;
+    width: 150px; // Up from 130px
+    height: 105px; // Up from 90px
   }
 
   .cs-partner_logo_slider {
@@ -71,15 +73,28 @@
     gap: 20px;
   }
 }
-/* Special style for Partner 6 (top) */
+
+/* Special top partner (Partner 6) */
 .cs-partner_logo.partner-6 {
-  width: 230px;  // Slightly increased
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;  // Consistent with other logos
-  margin-top: -10px;  // Moves the logo slightly up for alignment
+  width: 250px;
+  height: 160px;
+  padding: 10px;
+  margin-top: -10px;
+}
+.cs-partner_logo.partner-4 {
+  width: 235px;
+  height: 155px;
 }
 
+/* Special bottom partner: Partner 8 (Client_1) */
+.cs-partner_logo.partner-8 {
+  width: 210px;
+  height: 140px;
+  margin-top: -8px;
+}
 
+/* Special bottom partner: Partner 11 (Client_4) */
+.cs-partner_logo.partner-11 {
+  width: 210px;
+  height: 140px;
+}

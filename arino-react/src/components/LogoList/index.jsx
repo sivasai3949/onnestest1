@@ -6,8 +6,8 @@ const topPartners = [
   { src: '/images/Partner_1.1.png', alt: 'Partner 1' },
   { src: '/images/Partner_2.1.png', alt: 'Partner 2' },
   { src: '/images/Partner_3.1.jpg', alt: 'Partner 3' },
-  { src: '/images/Partner_4.3.png', alt: 'Partner 4' },
-  { src: '/images/Partner_5.1.png', alt: 'Partner 5' },
+  { src: '/images/Partner_4.4.png', alt: 'Partner 4' },
+  { src: '/images/Partner_4.3.png', alt: 'Partner 5' },
   { src: '/images/Partner_6.1.jpeg', alt: 'Partner 6' },
   { src: '/images/Partner_7.1.png', alt: 'Partner 7' },
 ];
@@ -27,7 +27,9 @@ export default function LogoList() {
         <div className="cs-partner_logo_slider">
           {[...topPartners, ...topPartners].map((logo, index) => (
             <div
-              className={`cs-partner_logo ${logo.alt === 'Partner 6' ? 'partner-6' : ''}`}
+              className={`cs-partner_logo 
+                ${logo.alt === 'Partner 6' ? 'partner-6' : ''} 
+                ${logo.alt === 'Partner 4' ? 'partner-4' : ''}`}
               key={`top-${index}`}
             >
               <img src={logo.src} alt={logo.alt} />
@@ -37,13 +39,18 @@ export default function LogoList() {
       </Div>
 
       <Div className="cs-partner_logo_wrap bottom">
-        {bottomPartners.map((logo, index) => (
-          <div className="cs-partner_logo" key={`bottom-${index}`}>
-            <img src={logo.src} alt={logo.alt} />
-          </div>
-        ))}
+        {bottomPartners.map((logo, index) => {
+          const extraClass = 
+            logo.alt === 'Partner 8' ? 'partner-8' :
+            logo.alt === 'Partner 11' ? 'partner-11' : '';
+
+          return (
+            <div className={`cs-partner_logo ${extraClass}`} key={`bottom-${index}`}>
+              <img src={logo.src} alt={logo.alt} />
+            </div>
+          );
+        })}
       </Div>
     </Div>
   );
 }
-

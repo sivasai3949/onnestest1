@@ -1,0 +1,28 @@
+.vision-list {
+    list-style: none;
+    padding-left: 1.5rem;
+  }
+  
+  .vision-list li {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    color: #ccc; /* optional: lighter body text */
+  }
+  
+  .vision-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 0.6em;
+    height: 0.6em;
+    background-color: var(--accent);
+    border-radius: 50%;
+  }
+  
+  .vision-list li strong {
+    color: #fff;
+  }
+  
+  

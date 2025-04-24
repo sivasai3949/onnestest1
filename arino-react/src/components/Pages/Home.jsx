@@ -227,8 +227,8 @@ export default function Home() {
           <Div className="row">
             <Div className="col-xl-4">
               <SectionHeading
-                title="We get multiple awards"
-                subtitle="Our Awards"
+                title="We work with global mindset"
+                subtitle="Our Recognitions"
                 variant="cs-style1"
               />
               <Spacing lg="90" md="45" />
@@ -273,7 +273,7 @@ export default function Home() {
       {/* <TestimonialSlider /> */}
       {/* End Testimonial Section */}
 
-      {/* Start Blog Section */}
+     {/* Start Blog Section */}
       <Spacing lg="150" md="80" />
       <Div className="cs-shape_wrap_4">
         <Div className="cs-shape_4"></Div>

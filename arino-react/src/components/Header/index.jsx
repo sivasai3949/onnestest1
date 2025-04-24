@@ -202,9 +202,9 @@ export default function Header({ variant }) {
                               className="flex items-center gap-1"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Partners <span>›</span>
+                              Partners <span></span>
                             </Link>
-                            <DropDown className="absolute left-full top-0 ml-1 group-hover:block hidden">
+                            {/* <DropDown className="absolute left-full top-0 ml-1 group-hover:block hidden">
                               <ul>
                                 <li>
                                   <Link
@@ -231,7 +231,7 @@ export default function Header({ variant }) {
                                   </Link>
                                 </li>
                               </ul>
-                            </DropDown>
+                            </DropDown> */}
                           </li>
                         </ul>
                       </DropDown>
@@ -297,7 +297,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="portfolio/portfolio-details"
+                              to="spaceportfolio"
                               onClick={() => setMobileToggle(false)}
                             >
                               Space - Aerospace - Defence

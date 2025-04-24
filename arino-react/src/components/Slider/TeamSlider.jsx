@@ -30,7 +30,7 @@ const teamData = [
     memberName: 'Rajamani AR',
     memberDesignation: 'Head, Polymer Chemistry',
     memberSocial: {
-      linkedin: '/',
+      linkedin: 'https://www.linkedin.com/in/dr-rajamani-a-r-25518033/',
     },
   },
   {
@@ -38,7 +38,7 @@ const teamData = [
     memberName: 'Aditya AS ',
     memberDesignation: 'AI & Quantum Expert',
     memberSocial: {
-      linkedin: '/',
+      linkedin: 'https://www.linkedin.com/in/aditya-as-83a301278/',
     },
   },
   {
@@ -46,7 +46,7 @@ const teamData = [
     memberName: 'Manikanda',
     memberDesignation: 'Design Engineer',
     memberSocial: {
-      linkedin: '/',
+      linkedin: 'https://www.linkedin.com/in/manikanda-prabhu-921241224?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     },
   },
 ];
@@ -141,6 +141,7 @@ export default function TeamSlider() {
               memberDesignation={item.memberDesignation}
               memberSocial={item.memberSocial}
             />
+            
             {(item.memberName.includes('Ram') || item.memberName.includes('Vikram')) && (
               <div style={{ marginTop: '10px', textAlign: 'center' }}>
                 <button

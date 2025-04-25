@@ -27,12 +27,15 @@ import PersonalPortfolioHome from './components/Pages/PersonalPortfolioHome';
 import VideoShowcaseHome from './components/Pages/VideoShowcaseHome';
 import TechnologyPage from './components/Pages/TechnologyPage';
 import AISimulation from './components/Pages/AISimulation';
-import SpacePortfolio from './components/Pages/SpacePortfolio'; // ✅ Import added here
+import SpacePortfolio from './components/Pages/SpacePortfolio';
+import UpcomingEvents from './components/Pages/Upcomingevents';
+import CaseStudyDetails from './components/Pages/CaseStudyDetails';
 
 function App() {
   return (
     <>
       <Routes>
+        {/* Main Layout with Default Header */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="photography-agency" element={<PhotographyAgencyHome />} />
@@ -52,13 +55,17 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="team" element={<TeamPage />} />
           <Route path="team/:teamDetails" element={<TeamDetails />} />
-          <Route path="/case-study/:caseStudyDetailsId" element={<CaseStudyDetailsPage />} />
+          {/* <Route path="case-study/:caseStudyDetailsId" element={<CaseStudyDetailsPage />} /> */}
           <Route path="faq" element={<FaqPage />} />
           <Route path="technology" element={<TechnologyPage />} />
           <Route path="ai-simulation" element={<AISimulation />} />
-          <Route path="spaceportfolio" element={<SpacePortfolio />} /> {/* ✅ New route added */}
+          <Route path="spaceportfolio" element={<SpacePortfolio />} />
+          <Route path="upcoming-events" element={<UpcomingEvents />} />
+          <Route path="case-study-details" element={<CaseStudyDetails />} />
+
         </Route>
 
+        {/* Layout with a Different Header Variant */}
         <Route path="/" element={<Layout headerVariant="cs-site_header_full_width" />}>
           <Route path="creative-portfolio" element={<CreativePortfolioHome />} />
           <Route path="showcase-portfolio" element={<ShowcasePortfolioHome />} />
@@ -66,6 +73,7 @@ function App() {
           <Route path="video-showcase" element={<VideoShowcaseHome />} />
         </Route>
 
+        {/* Catch-All Route */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

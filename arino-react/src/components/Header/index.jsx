@@ -146,7 +146,7 @@ export default function Header({ variant }) {
                     </li>
                     <li className="menu-item-has-children">
                       <NavLink
-                        to="about"
+                        to="/about"
                         onClick={() => setMobileToggle(false)}
                       >
                         About
@@ -155,24 +155,58 @@ export default function Header({ variant }) {
                         <ul>
                           <li>
                             <Link
-                              to="about"
-                              onClick={() => setMobileToggle(false)}
+                              to="/about#about-us"
+                              onClick={() => {
+                                setMobileToggle(false);
+                                setTimeout(() => {
+                                  const element =
+                                    document.querySelector("#about-us");
+                                  if (element) {
+                                    element.scrollIntoView({
+                                      behavior: "smooth",
+                                    });
+                                  }
+                                }, 100);
+                              }}
                             >
                               About Us
                             </Link>
                           </li>
                           <li>
                             <Link
-                              to="about"
-                              onClick={() => setMobileToggle(false)}
+                              to="/about#why-onnes"
+                              onClick={() => {
+                                setMobileToggle(false);
+                                setTimeout(() => {
+                                  const element =
+                                    document.querySelector("#why-onnes");
+                                  if (element) {
+                                    element.scrollIntoView({
+                                      behavior: "smooth",
+                                    });
+                                  }
+                                }, 100);
+                              }}
                             >
                               Why Onnes
                             </Link>
                           </li>
                           <li>
                             <Link
-                              to="about"
-                              onClick={() => setMobileToggle(false)}
+                              to="/about#vision-mission"
+                              onClick={() => {
+                                setMobileToggle(false);
+                                setTimeout(() => {
+                                  const element =
+                                    document.querySelector("#vision-mission");
+                                  if (element) {
+                                    element.scrollIntoView({
+                                      behavior: "smooth",
+                                      block: "start", // Ensures the section aligns at the top
+                                    });
+                                  }
+                                }, 100);
+                              }}
                             >
                               Vision & Mission
                             </Link>
@@ -180,62 +214,80 @@ export default function Header({ variant }) {
                         </ul>
                       </DropDown>
                     </li>
+
                     <li className="menu-item-has-children">
-                      <NavLink to="team" onClick={() => setMobileToggle(false)}>
+                      <NavLink
+                        to="/team"
+                        onClick={() => setMobileToggle(false)}
+                      >
                         TEAM
                       </NavLink>
                       <DropDown>
                         <ul>
                           <li>
-                            <Link to="" onClick={() => setMobileToggle(false)}>
+                            <Link
+                              to="/team#founders"
+                              onClick={() => {
+                                setMobileToggle(false);
+                                setTimeout(() => {
+                                  const element =
+                                    document.querySelector("#founders");
+                                  if (element) {
+                                    element.scrollIntoView({
+                                      behavior: "smooth",
+                                      block: "start",
+                                    });
+                                  }
+                                }, 100);
+                              }}
+                            >
                               Founders
                             </Link>
                           </li>
                           <li>
-                            <Link to="" onClick={() => setMobileToggle(false)}>
+                            <Link
+                              to="/team#team-members"
+                              onClick={() => {
+                                setMobileToggle(false);
+                                setTimeout(() => {
+                                  const element =
+                                    document.querySelector("#team-members");
+                                  if (element) {
+                                    element.scrollIntoView({
+                                      behavior: "smooth",
+                                      block: "start",
+                                    });
+                                  }
+                                }, 100);
+                              }}
+                            >
                               Team Members
                             </Link>
                           </li>
-                          <li className="relative group">
+                          <li>
                             <Link
-                              to=""
-                              className="flex items-center gap-1"
-                              onClick={() => setMobileToggle(false)}
+                              to="/team#partners"
+                              onClick={() => {
+                                setMobileToggle(false);
+                                setTimeout(() => {
+                                  const element =
+                                    document.querySelector("#partners");
+                                  if (element) {
+                                    element.scrollIntoView({
+                                      behavior: "smooth",
+                                      block: "start",
+                                    });
+                                  }
+                                }, 100);
+                              }}
                             >
-                              Partners <span></span>
+                              Partners
                             </Link>
-                            {/* <DropDown className="absolute left-full top-0 ml-1 group-hover:block hidden">
-                              <ul>
-                                <li>
-                                  <Link
-                                    to=""
-                                    onClick={() => setMobileToggle(false)}
-                                  >
-                                    Partners
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    to=""
-                                    onClick={() => setMobileToggle(false)}
-                                  >
-                                    Clients
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    to=""
-                                    onClick={() => setMobileToggle(false)}
-                                  >
-                                    Investors
-                                  </Link>
-                                </li>
-                              </ul>
-                            </DropDown> */}
                           </li>
                         </ul>
                       </DropDown>
                     </li>
+
                     <li className="menu-item-has-children">
                       <NavLink
                         to="/technology"
@@ -324,7 +376,7 @@ export default function Header({ variant }) {
                     </li>
                     <li className="menu-item-has-children">
                       <NavLink
-                        to="ai-simulation"
+                        to="/ai-simulation"
                         onClick={() => setMobileToggle(false)}
                       >
                         AI SIMULATION
@@ -333,7 +385,7 @@ export default function Header({ variant }) {
                         <ul>
                           <li>
                             <Link
-                              to="ai-simulation"
+                              to="/ai-simulation#cfm"
                               onClick={() => setMobileToggle(false)}
                             >
                               CFM
@@ -341,7 +393,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="ai-simulation"
+                              to="/ai-simulation#quantum-cfd"
                               onClick={() => setMobileToggle(false)}
                             >
                               Quantum CFD
@@ -349,7 +401,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="ai-simulation"
+                              to="/ai-simulation#new-materials"
                               onClick={() => setMobileToggle(false)}
                             >
                               New Materials

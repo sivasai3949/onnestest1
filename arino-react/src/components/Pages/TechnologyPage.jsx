@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { pageTitle } from '../../helper';
 import PageHeading from '../PageHeading';
 import Div from '../Div';
@@ -8,9 +9,22 @@ import Spacing from '../Spacing';
 export default function TechnologyPage() {
   pageTitle('Technology');
 
+  const location = useLocation();
+
+  // Scroll to top + scroll to anchor section if hash exists
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    const hash = location.hash;
+    if (hash) {
+      // Allow the DOM to render before scrolling
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    }
+  }, [location]);
 
   return (
     <>
@@ -25,8 +39,7 @@ export default function TechnologyPage() {
 
       <Div className="container">
         {/* === Section 1: Carbon Fiber Tanks === */}
-        <Div className="row align-items-center mb-5">
-          {/* Section Theory */}
+        <Div className="row align-items-center mb-5" id="carbon-fiber">
           <Div className="col-lg-6">
             <h2 className="text-right">Carbon Fiber Tanks</h2>
             <p>
@@ -39,7 +52,6 @@ export default function TechnologyPage() {
           </Div>
         </Div>
 
-        {/* Photos for Carbon Fiber Tanks */}
         <Div className="row mb-5">
           <Div className="col-lg-6 mb-4">
             <img
@@ -58,8 +70,7 @@ export default function TechnologyPage() {
         </Div>
 
         {/* === Section 2: Cryogenics Systems === */}
-        <Div className="row align-items-center mb-5">
-          {/* Section Theory */}
+        <Div className="row align-items-center mb-5" id="cryogenics">
           <Div className="col-lg-6">
             <h2 className="text-right">Cryogenics Systems</h2>
             <p>
@@ -72,7 +83,6 @@ export default function TechnologyPage() {
           </Div>
         </Div>
 
-        {/* Photos for Cryogenics Systems */}
         <Div className="row mb-5">
           <Div className="col-lg-6 mb-4">
             <img
@@ -91,8 +101,7 @@ export default function TechnologyPage() {
         </Div>
 
         {/* === Section 3: Thermal Management === */}
-        <Div className="row align-items-center mb-5">
-          {/* Section Theory */}
+        <Div className="row align-items-center mb-5" id="thermal">
           <Div className="col-lg-6">
             <h2 className="text-right">Thermal Management</h2>
             <p>
@@ -104,7 +113,6 @@ export default function TechnologyPage() {
           </Div>
         </Div>
 
-        {/* Photos for Thermal Management */}
         <Div className="row mb-5">
           <Div className="col-lg-6 mb-4">
             <img
@@ -123,8 +131,7 @@ export default function TechnologyPage() {
         </Div>
 
         {/* === Section 4: Recycling of CFS === */}
-        <Div className="row align-items-center mb-5">
-          {/* Section Theory */}
+        <Div className="row align-items-center mb-5" id="recycling">
           <Div className="col-lg-6">
             <h2 className="text-right">Recycling of CFS</h2>
             <p>
@@ -136,7 +143,6 @@ export default function TechnologyPage() {
           </Div>
         </Div>
 
-        {/* Photos for Recycling of CFS */}
         <Div className="row mb-5">
           <Div className="col-lg-6 mb-4">
             <img

@@ -173,7 +173,7 @@ export default function BlogPage() {
       <Div className="container">
         <Cta
           title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
-          btnText="Apply For Meeting"
+          btnText="Contact Us"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"
         />

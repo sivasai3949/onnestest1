@@ -8,10 +8,10 @@ import Spacing from "../Spacing";
 import "./AboutPage.css";
 
 const funfaceData = [
-  { title: "Global Happy Clients", factNumber: "40K" },
-  { title: "Project Completed", factNumber: "50K" },
-  { title: "Team Members", factNumber: "245" },
-  { title: "Digital products", factNumber: "550" },
+  { title: "Global Happy Clients", factNumber: "20" },
+  { title: "Project Completed", factNumber: "12" },
+  { title: "Team Members", factNumber: "15" },
+  { title: "Spinoff products", factNumber: "50" },
 ];
 
 export default function AboutPage() {
@@ -48,75 +48,78 @@ export default function AboutPage() {
 
 
       {/* About Us Section */}
+{/* About Us Section */}
 <Spacing lg="150" md="80" />
-<Div className="container" id="about-us">
-  {/* First Row - Text + Image */}
-  <Div className="row align-items-center">
-    <Div className="col-lg-6">
-      <h1>ABOUT US</h1>
-      <Spacing lg="30" md="20" />
-      <p className="cs-m0" style={{ textAlign: 'justify' }}>
-        Onnes Cryogenics was formed in Hyderabad, India by physicists
-        Dr. Ram Aluru, who specialises in cryogenics, and
-        Dr. Vikram Srinivasa Raghavan, whose expertise is in composite
-        engineering and nanophysics. The founding team’s experience spans
-        across industries such as space, defence, cryogenics and high-pressure
-        gases with a perfect blend for cryogenic composites.
-      </p>
-      <Spacing lg="15" md="15" />
-      <p style={{ textAlign: 'justify' }}>
-        Inspired by India's space and atomic energy journey with phenomenal
-        contributions from physicists Dr. Vikram Sarabhai and
-        Dr. Homi J Bhabha, the team at Onnes are committed to innovating
-        next-generation storage technologies integrated with bespoke
-        cryogenic systems.
-      </p>
-      <Spacing lg="30" md="30" />
-      <Div className="cs-separator cs-accent_bg" />
-    </Div>
+      <Div className="container" id="about-us">
+        <Div className="row">
+          <Div className="col-xl-5 col-lg-7">
+            <h1>ABOUT US</h1>
+            <Spacing lg="30" md="20" />
+            <p className="cs-m0">
+              Onnes Cryogenics was formed in Hyderabad, India by physicists Dr.
+              Ram Aluru, who specialises in cryogenics, and Dr. Vikram Srinivasa
+              Raghavan, whose expertise is in composite engineering and
+              nanophysics. The founding team’s experience spans across
+              industries such as space, defence, cryogenics and high pressure
+              gases with a perfect blend for cryogenic composites.
+            </p>
+            <Spacing lg="15" md="15" />
+            <p>
+              Inspired by India's space and atomic energy journey with
+              phenomenal contributions from physicists Dr. Vikram Sarabhai and
+              Dr. Homi J Bhabha, the team at Onnes are committed to innovating
+              next-generation storage technologies integrated with bespoke
+              cryogenic systems.
+            </p>
+            <Spacing lg="30" md="30" />
+            <Div className="cs-separator cs-accent_bg" />
+            <Spacing lg="65" md="40" />
+          </Div>
 
-    <Div className="col-lg-6 d-flex justify-content-center">
-      <img
-        src="/images/aboutus_2.png"
-        alt="About"
-        className="w-100 cs-radius_15"
-        style={{ maxWidth: "450px" }}
-      />
-    </Div>
-  </Div>
+          <Div className="col-lg-5 offset-xl-2 d-flex align-items-center">
+            <img
+              src="/images/aboutus_2.png"
+              alt="About"
+              className="w-100 cs-radius_15"
+            />
+            <Spacing lg="25" md="25" />
+          </Div>
+        </Div>
 
-  <Spacing lg="75" md="55" />
-
-  {/* Second Row - Two Images */}
-  <Div className="row">
-    <Div className="col-md-6 mb-4 mb-md-0">
-      <img
-        src="/images/aboutus_1.jpg"
-        alt="About"
-        className="w-100 cs-radius_15"
-        style={{ objectFit: "cover", height: "100%", maxHeight: "400px" }}
-      />
-    </Div>
-    <Div className="col-md-6">
-      <img
-        src="/images/vikramsarabhai1.jpg"
-        alt="About"
-        className="w-100 cs-radius_15"
-        style={{ objectFit: "cover", height: "100%", maxHeight: "400px" }}
-      />
-    </Div>
-  </Div>
-</Div>
-<Spacing lg="75" md="55" />
-
+        <Div className="row">
+          <Div className="col-lg-7">
+            <img
+              src="/images/aboutus_1.jpg"
+              alt="About"
+              className="w-100 cs-radius_15"
+              style={{ marginTop: "20px" }}
+            />
+          </Div>
+          <Div className="col-lg-5">
+            <img
+              src="/images/vikramsarabhai1.jpg"
+              alt="About"
+              className="w-100 cs-radius_15"
+            />
+          </Div>
+        </Div>
+      </Div>
+      <Spacing lg="75" md="55" />
 
       {/* Fun Fact Section */}
       <Div className="container">
-        <FunFact
-          title="Our fun fact"
-          subtitle="Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
-          data={funfaceData}
-        />
+      <FunFact
+  title="Our fun fact"
+  subtitle={
+    <>
+      Cryogenics deals with the production, storage, and use of materials at very low temperatures, typically below 120 Kelvin (K) or -150°C. The word originates from the Greek words "kryos" meaning "frost" and{" "}
+      <span style={{ whiteSpace: "nowrap" }}>"genic" meaning "to produce."</span>
+    </>
+  }
+  
+  data={funfaceData}
+/>
+
       </Div>
 
       {/* Why Onnes Section */}
@@ -302,7 +305,7 @@ export default function AboutPage() {
       <Div className="container">
         <Cta
           title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
-          btnText="Apply For Meeting"
+          btnText="Contact Us"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"
         />

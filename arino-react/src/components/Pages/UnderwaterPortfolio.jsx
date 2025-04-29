@@ -9,10 +9,10 @@ import SectionHeading from '../SectionHeading';
 import Button from '../Button';
 
 const funfaceData = [
-  { title: 'Global Happy Clients', factNumber: '40K' },
-  { title: 'Project Completed', factNumber: '50K' },
-  { title: 'Team Members', factNumber: '245' },
-  { title: 'Digital products', factNumber: '550' },
+  { title: 'Global Happy Clients', factNumber: '20' },
+  { title: 'Project Completed', factNumber: '12' },
+  { title: 'Team Members', factNumber: '15' },
+  { title: 'Spinoff products', factNumber: '50' },
 ];
 
 const spaceProject = {
@@ -124,7 +124,7 @@ export default function SpacePortfolio() {
       <Div className="container">
         <Cta
           title="Let's discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
-          btnText="Apply For Meeting"
+          btnText="Contact Us"
           btnLink="/contact"
           bgSrc="about_img_1.jpeg"
         />

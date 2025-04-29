@@ -20,6 +20,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
 import Button from '../Button'; // Add this import with your other imports
+import { useLocation } from "react-router-dom";
 
 const heroImages = [
   "/images/Home_1.webp",
@@ -46,19 +47,19 @@ const heroSocialLinks = [
 const funfaceData = [
   {
     title: "Global Happy Clients",
-    factNumber: "40K",
+    factNumber: "20",
   },
   {
     title: "Project Completed",
-    factNumber: "50K",
+    factNumber: "12",
   },
   {
     title: "Team Members",
-    factNumber: "245",
+    factNumber: "15",
   },
   {
-    title: "Digital products",
-    factNumber: "550",
+    title: "Spinoff products",
+    factNumber: "50",
   },
 ];
 const portfolioData = [
@@ -67,6 +68,12 @@ const portfolioData = [
     subtitle: 'See Details',
     href: '/portfolio/portfolio-details',
     src: '/images/deepspace.png',
+  },
+  {
+    title: ' Deep Space Exploration',
+    subtitle: 'See Details',
+    href: '/portfolio/portfolio-details',
+    src: '/images/Home_8.webp',
   },
   {
     title: 'Hydrogen Powered Aviation',
@@ -101,6 +108,19 @@ export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+    const location = useLocation();
+
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
+
 
   const sliderSettings = {
     dots: false, // Hides dots for a cleaner look
@@ -158,7 +178,7 @@ export default function Home() {
             Next Generation Tank Technology Integrated with Cryogenics
           </h2>
           <Spacing lg="45" md="20" />
-          <Button btnLink="/service" btnText="See All Capabilities" />
+          <Button btnLink="/portfolio" btnText="See All Capabilities" />
         </div>
         <Spacing lg="90" md="45" />
       </Div>
@@ -306,7 +326,7 @@ export default function Home() {
       {/* End MovingText Section */}
 
       {/* Start LogoList Section */}
-      <Div className="container">
+      <Div className="container" id="partners">
         <LogoList />
       </Div>
       <Spacing lg="150" md="80" />
@@ -316,7 +336,7 @@ export default function Home() {
       <Div className="container">
         <Cta
           title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
-          btnText="Apply For Meeting"
+          btnText="Contact Us"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"
         />

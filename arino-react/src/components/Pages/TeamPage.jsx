@@ -10,6 +10,8 @@ import Team from '../Team';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Icon } from '@iconify/react';
+import { useLocation } from "react-router-dom";
+
 
 const teamData = [
   {
@@ -58,6 +60,18 @@ const teamData = [
 
 
 export default function TeamPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
 
@@ -120,7 +134,7 @@ export default function TeamPage() {
       />
       {/* === Founders Section === */}
       <Spacing lg="100" md="60" />
-      <Div className="container">
+      <Div className="container" id="founders">
         <SectionHeading
           title="Meet the Visionaries"
           subtitle="Our Founders"
@@ -141,7 +155,7 @@ export default function TeamPage() {
             <h3>Dr. Vikram - Founder 
             </h3>
             <p>
-            VIKRAM has a background in Applied Physics and Instrumentation with 10 yrs. of R&D and 4 yrs. of Industry experience in the carbon composites engineering sector. He has extensive experience in Materials science and specifically in Nanotechnology from Indian Institute of Science, Bangalore. He published 10 papers and has 4 patents in the area of Nanomaterials. He has deep insights into design, fabrication, and quality assurance that will be very useful to build efficient carbon fiber reinforced plastic composite fuel tanks for space and allied applications. Dr. Vikram is part of the National Award Winning Team which developed the design and development of digitally controlled heating gloves and pads for soldiers in high mountain areas using carbon fiber composites. Vikram is the winner of the prestigious Global Challengers Research Funding Grant from University of Plymouth, UK.
+            VIKRAM has a background in Applied Physics and Instrumentation with 10 yrs. of R&D and 4 yrs. of Industry experience in the carbon composites engineering sector. He has extensive experience in Materials science and specifically in Nanotechnology from Indian Institute of Science, Bangalore. He published 10 papers and has 4 patents in the area of Nanomaterials. He has deep insights into design, fabrication, and quality assurance that will be very useful to build efficient carbon fiber reinforced plastic composite fuel tanks for space and allied applications. Dr. Vikram is part of the National Award Winning Team which developed the design and development of digitally controlled heating gloves and pads for soldiers in high mountain areas using carbon fiber composites. Vikram is the winner of the prestigious Global Challengers Research Funding Grant from Uni. of Plymouth, UK.
 
 
             </p>
@@ -190,43 +204,12 @@ export default function TeamPage() {
         </Slider>
       </Div>
 
-      {/* === Partners Section === */}
-      <Spacing lg="100" md="60" />
-      <Div className="container text-center">
-        <SectionHeading
-          title="Our Strong Network"
-          subtitle="Partners, Clients & Investors"
-          variant="cs-style1 text-center"
-        />
-        <Spacing lg="50" md="30" />
-        <Div className="row justify-content-center text-center">
-          <Div className="col-lg-4 col-md-6 mb-4">
-            <div className="p-4 border rounded-3 shadow-sm h-100">
-              <h3>Partners</h3>
-              <p>We collaborate with world-class partners across industries.</p>
-            </div>
-          </Div>
-          <Div className="col-lg-4 col-md-6 mb-4">
-            <div className="p-4 border rounded-3 shadow-sm h-100">
-              <h3>Clients</h3>
-              <p>Our clients trust us to solve mission-critical challenges.</p>
-            </div>
-          </Div>
-          <Div className="col-lg-4 col-md-6 mb-4">
-            <div className="p-4 border rounded-3 shadow-sm h-100">
-              <h3>Investors</h3>
-              <p>Backed by passionate investors who believe in our vision.</p>
-            </div>
-          </Div>
-        </Div>
-      </Div>
-
       {/* === CTA Section === */}
       <Spacing lg="70" md="50" />
       <Div className="container">
         <Cta
          title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
-          btnText="Apply For Meeting"
+          btnText="Contact Us"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"
         />

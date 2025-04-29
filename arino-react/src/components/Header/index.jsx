@@ -225,64 +225,20 @@ export default function Header({ variant }) {
                       <DropDown>
                         <ul>
                           <li>
-                            <Link
-                              to="/team#founders"
-                              onClick={() => {
-                                setMobileToggle(false);
-                                setTimeout(() => {
-                                  const element =
-                                    document.querySelector("#founders");
-                                  if (element) {
-                                    element.scrollIntoView({
-                                      behavior: "smooth",
-                                      block: "start",
-                                    });
-                                  }
-                                }, 100);
-                              }}
-                            >
-                              Founders
-                            </Link>
+                          <Link to="/team#founders" onClick={() => setMobileToggle(false)}>
+                          Founders
+                          </Link>
+
                           </li>
                           <li>
-                            <Link
-                              to="/team#team-members"
-                              onClick={() => {
-                                setMobileToggle(false);
-                                setTimeout(() => {
-                                  const element =
-                                    document.querySelector("#team-members");
-                                  if (element) {
-                                    element.scrollIntoView({
-                                      behavior: "smooth",
-                                      block: "start",
-                                    });
-                                  }
-                                }, 100);
-                              }}
-                            >
-                              Team Members
-                            </Link>
+                          <Link to="/team#team-members" onClick={() => setMobileToggle(false)}>
+                          Team Members
+                          </Link>
                           </li>
                           <li>
-                            <Link
-                              to="/team#partners"
-                              onClick={() => {
-                                setMobileToggle(false);
-                                setTimeout(() => {
-                                  const element =
-                                    document.querySelector("#partners");
-                                  if (element) {
-                                    element.scrollIntoView({
-                                      behavior: "smooth",
-                                      block: "start",
-                                    });
-                                  }
-                                }, 100);
-                              }}
-                            >
-                              Partners
-                            </Link>
+                          <Link to="/#partners" onClick={() => setMobileToggle(false)}>
+                          Partners
+                          </Link>
                           </li>
                         </ul>
                       </DropDown>
@@ -417,14 +373,14 @@ export default function Header({ variant }) {
                       </Link>
                       <DropDown>
                         <ul>
-                          <li>
+                          {/* <li>
                             <Link
                               to="upcoming-events"
                               onClick={() => setMobileToggle(false)}
                             >
                               Upcoming Events
                             </Link>
-                          </li>
+                          </li> */}
                           <li>
                             <Link
                               to="blog"
@@ -443,20 +399,20 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="team"
+                              to="/team/#founders"
                               onClick={() => setMobileToggle(false)}
                             >
                               Founders
                             </Link>
                           </li>
-                          <li>
+                          {/* <li>
                             <Link
                               to="case-study-details"
                               onClick={() => setMobileToggle(false)}
                             >
                               Case Study Details
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </DropDown>
                     </li>

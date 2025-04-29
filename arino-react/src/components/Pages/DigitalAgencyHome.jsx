@@ -26,16 +26,16 @@ const heroSocialLinks = [
 ];
 const funfaceData = [
   {
-    title: 'Digital products',
-    factNumber: '550',
+    title: 'Spinoff products',
+    factNumber: '50',
   },
   {
     title: 'Global happy clients',
-    factNumber: '40K',
+    factNumber: '20',
   },
   {
     title: 'Project completed',
-    factNumber: '50k',
+    factNumber: '12',
   },
   {
     title: 'Team members',
@@ -331,7 +331,7 @@ export default function DigitalAgencyHome() {
       <Div className="container">
         <Cta
           title="Let’s disscuse make <br />something <i>cool</i> together"
-          btnText="Apply For Meeting"
+          btnText="Contact Us"
           btnLink="/contact"
           bgSrc="/images/cta_bg.jpeg"
         />

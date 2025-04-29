@@ -125,7 +125,7 @@ export default function ServiceDetailsPage() {
       <Div className="container">
         <Cta 
           title='Let’s disscuse make <br />something <i>cool</i> together' 
-          btnText='Apply For Meeting' 
+          btnText='Contact Us' 
           btnLink='/contact' 
           bgSrc='/images/cta_bg.jpeg'
         />

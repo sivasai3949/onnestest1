@@ -16,19 +16,19 @@ import GalleryStyle2 from '../Gallery/GalleryStyle2';
 const funfaceData = [
   {
     title: 'Global Happy Clients',
-    factNumber: '40K',
+    factNumber: '20',
   },
   {
     title: 'Project Completed',
-    factNumber: '50K',
+    factNumber: '12',
   },
   {
     title: 'Team Members',
-    factNumber: '245',
+    factNumber: '15',
   },
   {
-    title: 'Digital products',
-    factNumber: '550',
+    title: 'Spinoff products',
+    factNumber: '50',
   },
 ];
 const portfolioData = [

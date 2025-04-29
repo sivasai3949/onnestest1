@@ -35,16 +35,16 @@ const heroData = [
 ];
 const funfaceData = [
   {
-    title: 'Products',
-    factNumber: '550',
+    title: 'Spinoff products',
+    factNumber: '50',
   },
   {
     title: 'Global happy clients',
-    factNumber: '40K',
+    factNumber: '20',
   },
   {
     title: 'Project completed',
-    factNumber: '50k',
+    factNumber: '12',
   },
   {
     title: 'Team members',

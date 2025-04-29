@@ -756,3 +756,7 @@
 
 @media screen and (max-width: 450px) {
 }
+
+[id] {
+  scroll-margin-top: 100px; // Adjust to match your sticky header height
+}

@@ -376,7 +376,7 @@ export default function PersonalPortfolioHome() {
       {/* Start CTA Section */}
       <Cta
         title="Let’s disscuse make <br />something <i>cool</i> together"
-        btnText="Apply For Meeting"
+        btnText="Contact Us"
         btnLink="/contact"
         bgSrc="/images/cta_bg_5.jpeg"
         variant="cs-type_1"

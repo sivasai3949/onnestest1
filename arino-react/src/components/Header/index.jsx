@@ -357,7 +357,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="portfolio/portfolio-details"
+                              to="ground-storage"
                               onClick={() => setMobileToggle(false)}
                             >
                               Ground Based Storage
@@ -365,7 +365,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="portfolio/portfolio-details"
+                              to="underwater-portfolio"
                               onClick={() => setMobileToggle(false)}
                             >
                               Under Water Applications

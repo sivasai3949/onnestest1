@@ -1,14 +1,14 @@
-import { Icon } from '@iconify/react';
-import React, { useEffect } from 'react';
-import { pageTitle } from '../../helper';
-import Div from '../Div';
-import PageHeading from '../PageHeading';
-import SectionHeading from '../SectionHeading';
-import Spacing from '../Spacing';
-import ContactInfoWidget from '../Widget/ContactInfoWidget';
+import { Icon } from "@iconify/react";
+import React, { useEffect } from "react";
+import { pageTitle } from "../../helper";
+import Div from "../Div";
+import PageHeading from "../PageHeading";
+import SectionHeading from "../SectionHeading";
+import Spacing from "../Spacing";
+import ContactInfoWidget from "../Widget/ContactInfoWidget";
 
 export default function ContactPage() {
-  pageTitle('Contact Us');
+  pageTitle("Contact Us");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -43,18 +43,27 @@ export default function ContactPage() {
                 <input type="text" className="cs-form_field" />
                 <Spacing lg="20" md="20" />
               </Div>
-              <Div className="col-sm-6">
-                <label className="cs-primary_color">Project Type*</label>
-                <input type="text" className="cs-form_field" />
-                <Spacing lg="20" md="20" />
-              </Div>
+              <div className="col-sm-6">
+  <label className="cs-primary_color">Product Category</label>
+  <select className="cs-form_field">
+    <option value="" style={{ backgroundColor: '#000', color: '#fff' }}>Select Project Type</option>
+    <option value="SPACE" style={{ backgroundColor: '#000', color: '#fff' }} onMouseOver={(e) => e.target.style.backgroundColor = '#00B5F9'} onMouseOut={(e) => e.target.style.backgroundColor = '#000'}>SPACE</option>
+    <option value="DEFENCE" style={{ backgroundColor: '#000', color: '#fff' }} onMouseOver={(e) => e.target.style.backgroundColor = '#00B5F9'} onMouseOut={(e) => e.target.style.backgroundColor = '#000'}>DEFENCE</option>
+    <option value="GROUND" style={{ backgroundColor: '#000', color: '#fff' }} onMouseOver={(e) => e.target.style.backgroundColor = '#00B5F9'} onMouseOut={(e) => e.target.style.backgroundColor = '#000'}>GROUND</option>
+    <option value="OTHERS" style={{ backgroundColor: '#000', color: '#fff' }} onMouseOver={(e) => e.target.style.backgroundColor = '#00B5F9'} onMouseOut={(e) => e.target.style.backgroundColor = '#000'}>OTHERS</option>
+  </select>
+  <Spacing lg="20" md="20" />
+</div>
+
+
+
               <Div className="col-sm-6">
                 <label className="cs-primary_color">Mobile*</label>
                 <input type="text" className="cs-form_field" />
                 <Spacing lg="20" md="20" />
               </Div>
               <Div className="col-sm-12">
-                <label className="cs-primary_color">Mobile*</label>
+                <label className="cs-primary_color">Message*</label>
                 <textarea
                   cols="30"
                   rows="7"

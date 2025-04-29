@@ -30,6 +30,8 @@ import AISimulation from './components/Pages/AISimulation';
 import SpacePortfolio from './components/Pages/SpacePortfolio';
 import UpcomingEvents from './components/Pages/Upcomingevents';
 import CaseStudyDetails from './components/Pages/CaseStudyDetails';
+import GroundstoragePortfolio from './components/Pages/GroundstoragePortfolio';
+import UnderwaterPortfolio from './components/Pages/UnderwaterPortfolio';
 
 function App() {
   return (
@@ -60,6 +62,8 @@ function App() {
           <Route path="technology" element={<TechnologyPage />} />
           <Route path="ai-simulation" element={<AISimulation />} />
           <Route path="spaceportfolio" element={<SpacePortfolio />} />
+          <Route path="ground-storage" element={<GroundstoragePortfolio />} />
+          <Route path="underwater-portfolio" element={<UnderwaterPortfolio />} />
           <Route path="upcoming-events" element={<UpcomingEvents />} />
           <Route path="case-study-details" element={<CaseStudyDetails />} />
 

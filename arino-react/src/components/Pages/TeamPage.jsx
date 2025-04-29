@@ -129,18 +129,21 @@ export default function TeamPage() {
         <Spacing lg="60" md="40" />
         <Div className="row">
           <Div className="col-lg-6">
-            <h3>Founder 1 – John Doe</h3>
+            <h3>Dr. Ram K Aluru - Founder 
+            </h3>
             <p>
-              John is the brain behind our innovation and mission. With 15+ years of experience in
-              building high-performance tech teams, John drives the product vision and culture of
-              excellence.
+            Ram’s background is in low-temperature physics and quantum material science engineering, he holds a Ph.D. from the Max Planck Institute, Germany and Uni. St Andrews, UK for working on high-temperature superconductors and semiconductor electronics at cryogenic temperatures such as 1.6 K and 30 mK. After his Ph.D., Ram worked as a Research Scientist at the Leiden Institute of Physics in the Netherlands. Apart from having the tech edge in cryogenics and superconducting electronics, Ram also built an EdTech company from scratch and managed Bluetooth technology projects in Industry 4.0. During his doctoral studies, Ram has published his research findings in prestigious journals such as Science, Nature and American Physics Society Journals and he is an avid science communicator and takes an active part in science outreach activities and committed to net zero emissions through his energy ventures.
+
+
             </p>
           </Div>
           <Div className="col-lg-6">
-            <h3>Founder 2 – Jane Smith</h3>
+            <h3>Dr. Vikram - Founder 
+            </h3>
             <p>
-              Jane is the powerhouse of execution and growth. She's known for scaling startups into
-              sustainable businesses and leads our operations and strategy with unmatched clarity.
+            VIKRAM has a background in Applied Physics and Instrumentation with 10 yrs. of R&D and 4 yrs. of Industry experience in the carbon composites engineering sector. He has extensive experience in Materials science and specifically in Nanotechnology from Indian Institute of Science, Bangalore. He published 10 papers and has 4 patents in the area of Nanomaterials. He has deep insights into design, fabrication, and quality assurance that will be very useful to build efficient carbon fiber reinforced plastic composite fuel tanks for space and allied applications. Dr. Vikram is part of the National Award Winning Team which developed the design and development of digitally controlled heating gloves and pads for soldiers in high mountain areas using carbon fiber composites. Vikram is the winner of the prestigious Global Challengers Research Funding Grant from University of Plymouth, UK.
+
+
             </p>
           </Div>
         </Div>

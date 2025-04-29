@@ -5,6 +5,8 @@ import FunFact from '../FunFact';
 import PageHeading from '../PageHeading';
 import Div from '../Div';
 import Spacing from '../Spacing';
+import SectionHeading from '../SectionHeading';
+import Button from '../Button';
 
 const funfaceData = [
   { title: 'Global Happy Clients', factNumber: '40K' },
@@ -12,6 +14,56 @@ const funfaceData = [
   { title: 'Team Members', factNumber: '245' },
   { title: 'Digital products', factNumber: '550' },
 ];
+
+const spaceProjects = [
+  {
+    id: '1',
+    title: 'Space Cryogenic Tank System',
+    subtitle: 'Aerospace Engineering',
+    img: '/images/portfolio_details_1.jpeg',
+    category: 'Cryogenics',
+    location: 'International Space Station',
+    software: 'ANSYS, SolidWorks',
+    date: '12-Nov-2023',
+    client: 'NASA',
+    description: [
+      'Advanced cryogenic storage solutions for long-duration space missions with ultra-lightweight materials.',
+      'Innovative thermal management system to maintain optimal temperatures in zero-gravity environments.'
+    ]
+  },
+  {
+    id: '2',
+    title: 'Satellite Propulsion Module',
+    subtitle: 'Defence Technology',
+    img: '/images/portfolio_2.jpeg',
+    category: 'Propulsion',
+    location: 'Low Earth Orbit',
+    software: 'MATLAB, COMSOL',
+    date: '05-Mar-2024',
+    client: 'SpaceX',
+    description: [
+      'Compact propulsion system for next-generation communication satellites.',
+      'Fuel-efficient design with extended operational lifespan.'
+    ]
+  },
+  {
+    id: '3',
+    title: 'Satellite Propulsion Module',
+    subtitle: 'Defensce Technology',
+    img: '/images/portfolio_3.jpeg',
+    category: 'Propulsion',
+    location: 'Low Earth Orbit',
+    software: 'MATLAB, COMSOL',
+    date: '05-Mar-2024',
+    client: 'SpaceX',
+    description: [
+      'Compact propulsion system for next-generation communication satellites.',
+      'Fuel-efficient design with extended operational lifespan.'
+    ]
+  }
+];
+
+const sectionHeadings = ["SPACE", "AERO SPACE", "DEFENCE"];
 
 export default function SpacePortfolio() {
   pageTitle('Space Portfolio');
@@ -35,159 +87,107 @@ export default function SpacePortfolio() {
     <>
       {/* Page Heading Section */}
       <PageHeading
-        title="SPACE-AEROSPACE-DEFENSE"
+        title="SPACE-AEROSPACE-DEFENCE"
         bgSrc="images/about_hero_bg.jpeg"
         pageLinkText="Space Portfolio"
       />
 
-      {/* Space Portfolio Section */}
-      <Spacing lg="150" md="80" />
-      <Div className="container" id="space-portfolio">
-        <Div className="row">
-          <Div className="col-xl-5 col-lg-7">
-            <h1>SPACE</h1>
-            <Spacing lg="30" md="20" />
-            <p className="cs-m0">
-              This is the main factor that sets us apart from our competition
-              and allows us to deliver a specialist business consultancy
-              service. Our team applies its wide-ranging experience to
-              determining. Through our years of experience, we’ve also learned
-              that while each channel.
-            </p>
-            <Spacing lg="30" md="30" />
-            <Div className="cs-separator cs-accent_bg"></Div>
-            <Spacing lg="25" md="40" />
+      {/* Project Sections */}
+      {spaceProjects.map((project, idx) => (
+        <React.Fragment key={project.id}>
+          <Spacing lg="80" md="40" />
+          {/* Section Heading */}
+          <Div className="container">
+            <h2 className="cs-page_title cs-center cs-font_50 cs-font_30_sm cs-m0">
+              {sectionHeadings[idx]}
+            </h2>
           </Div>
-
-          <Div className="col-lg-5 offset-xl-2">
+          <Spacing lg="30" md="20" />
+          {/* Project Image */}
+          <Div className="container">
             <img
-              src="/images/about_img_1.jpeg"
-              alt="About"
-              className="w-100 cs-radius_15"
+              src={project.img}
+              alt={project.title}
+              className="cs-radius_15 w-100"
             />
-            <Spacing lg="25" md="25" />
           </Div>
+          <Spacing lg="75" md="55" />
 
-          <Div className="col-lg-7">
-            <img
-              src="/images/about_img_2.jpeg"
-              alt="About"
-              className="w-100 cs-radius_15"
-            />
-            <Spacing lg="25" md="25" />
-          </Div>
-
-          <Div className="col-lg-5">
-            <img
-              src="/images/about_img_3.jpeg"
-              alt="About"
-              className="w-100 cs-radius_15"
-            />
-            <Spacing lg="25" md="25" />
-          </Div>
-        </Div>
-      </Div>
-      <Spacing lg="75" md="55" />
-
-      {/* Fun Fact Section */}
-      <Div className="container">
-        <FunFact
-          title="Our fun fact"
-          subtitle="Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
-          data={funfaceData}
-        />
-      </Div>
-
-      {/* Why Onnes Section */}
-      <Spacing lg="100" md="80" />
-      <Div className="container" id="why-onnes">
-        <Div className="row">
-          <Div className="col-xl-5 col-lg-6">
-            <Div className="cs-image_layer cs-style1">
-              <Div className="cs-image_layer_in">
-                <img
-                  src="/images/about_img_4.jpeg"
-                  alt="About"
-                  className="w-100 cs-radius_15"
+          {/* Project Details */}
+          <Div className="container" id={`project-${project.id}`}>
+            <Spacing lg="90" md="40"/>
+            <Div className="row">
+              <Div className="col-lg-6">
+                <SectionHeading 
+                  title={project.title} 
+                  subtitle={project.subtitle} 
+                >
+                  <Spacing lg="40" md="20"/>
+                  {project.description.map((text, index) => (
+                    <p key={index}>{text}</p>
+                  ))}
+                </SectionHeading>
+              </Div>
+              <Div className="col-lg-5 offset-lg-1">
+                <Spacing lg="60" md="40"/>
+                <h2 className="cs-font_30 cs-font_26_sm cs-m0">Project Specifications</h2>
+                <Spacing lg="50" md="30"/>
+                <Div className="row">
+                  <Div className="col-6">
+                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Category:</h3>
+                    <p className="cs-m0">{project.category}</p>
+                    <Spacing lg="30" md="30"/>
+                  </Div>
+                  <Div className="col-6">
+                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Location:</h3>
+                    <p className="cs-m0">{project.location}</p>
+                    <Spacing lg="30" md="30"/>
+                  </Div>
+                  <Div className="col-6">
+                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Software:</h3>
+                    <p className="cs-m0">{project.software}</p>
+                    <Spacing lg="30" md="30"/>
+                  </Div>
+                  <Div className="col-6">
+                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Dated:</h3>
+                    <p className="cs-m0">{project.date}</p>
+                    <Spacing lg="30" md="30"/>
+                  </Div>
+                  <Div className="col-6">
+                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Client:</h3>
+                    <p className="cs-m0">{project.client}</p>
+                    <Spacing lg="30" md="30"/>
+                  </Div>
+                </Div>
+              </Div>
+            </Div>
+            <Spacing lg="65" md="10"/>
+            {/* Navigation Buttons */}
+            <Div className="cs-page_navigation cs-center">
+              <Div>
+                <Button 
+                  btnLink={`#project-${spaceProjects[(idx - 1 + spaceProjects.length) % spaceProjects.length].id}`} 
+                  btnText='Previous Project' 
+                  variant='cs-type1'
+                />
+              </Div>
+              <Div>
+                <Button 
+                  btnLink={`#project-${spaceProjects[(idx + 1) % spaceProjects.length].id}`} 
+                  btnText='Next Project'
                 />
               </Div>
             </Div>
-            <Spacing lg="0" md="40" />
           </Div>
-          <Div className="col-xl-5 offset-xl-1 col-lg-6">
-            <h2>AEROSPACE</h2>
-            <Spacing lg="30" md="20" />
-            <p className="cs-m0">
-              This is the main factor that sets us apart from our competition
-              and allows us to deliver a specialist business consultancy
-              service. Our team applies its wide-ranging experience to
-              determining. Through our years of experience, we’ve also learned
-              that while each channel.
-            </p>
-            <Spacing lg="15" md="15" />
-            <p className="cs-m0">
-              This is the main factor that sets us apart from our competition
-              and allows us to deliver a specialist business consultancy
-              service. Our team applies its wide-ranging experience to
-              determining.
-            </p>
-            <Spacing lg="30" md="30" />
-            <Div className="cs-separator cs-accent_bg"></Div>
-            <Spacing lg="25" md="0" />
-          </Div>
-        </Div>
-      </Div>
-
-      {/* Vision & Mission Section */}
-      <Spacing lg="145" md="80" />
-      <Div className="container" id="vision-mission">
-        <h2>DEFENSE</h2>
-        <p className="cs-m0">
-          Our vision is to build scalable, efficient, and impactful solutions for businesses.
-          Our mission is to empower organizations through creative and smart digital experiences.
-        </p>
-        <Div
-          className="cs-image-row"
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '20px',
-            marginTop: '40px',
-            justifyContent: 'space-between',
-          }}
-        >
-          <img
-            src="/images/about_img_1.jpeg"
-            alt="Example 1"
-            style={{
-              flex: '1 1 48%',
-              width: '100%',
-              height: 'auto',
-              borderRadius: '12px',
-              objectFit: 'cover',
-              minWidth: '250px',
-            }}
-          />
-          <img
-            src="/images/about_img_2.jpeg"
-            alt="Example 2"
-            style={{
-              flex: '1 1 48%',
-              width: '100%',
-              height: 'auto',
-              borderRadius: '12px',
-              objectFit: 'cover',
-              minWidth: '250px',
-            }}
-          />
-        </Div>
-      </Div>
+        </React.Fragment>
+      ))}
+      
 
       {/* CTA Section */}
       <Spacing lg="150" md="80" />
       <Div className="container">
         <Cta
-          title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
+          title="Let's discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
           btnText="Apply For Meeting"
           btnLink="/contact"
           bgSrc="about_img_1.jpeg"

@@ -20,7 +20,54 @@
     background-color: var(--accent);
     border-radius: 50%;
   }
-  
+  /* Rounded corners for images */
+.cs-radius_15 {
+  border-radius: 15px;
+}
+
+/* Separator line with accent color */
+.cs-separator {
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent); /* Uses your site's accent color */
+  margin-top: 20px;
+}
+
+/* Optional: Improve paragraph readability */
+#about-us p {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #ccc; /* Adjust if you want a lighter tone */
+  margin-bottom: 1rem;
+}
+
+/* Optional: Consistent h1 styling */
+#about-us h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Responsive image max height for visual consistency */
+#about-us img {
+  object-fit: cover;
+}
+
+/* Ensure proper spacing on smaller screens */
+@media (max-width: 768px) {
+  .cs-separator {
+    margin: 20px auto;
+  }
+
+  #about-us h1 {
+    text-align: center;
+  }
+
+  #about-us p {
+    text-align: justify;
+  }
+}
+
   .vision-list li strong {
     color: #fff;
   }

@@ -58,7 +58,7 @@ const funfaceData = [
     factNumber: "15",
   },
   {
-    title: "Spinoff products",
+    title: "Spin-off products",
     factNumber: "50",
   },
 ];
@@ -73,7 +73,7 @@ const portfolioData = [
     title: ' Deep Space Exploration',
     subtitle: 'See Details',
     href: '/portfolio/portfolio-details',
-    src: '/images/Home_8.webp',
+    src: '/images/Home_8.jpg',
   },
   {
     title: 'Hydrogen Powered Aviation',

@@ -27,7 +27,7 @@ const funfaceData = [
     factNumber: '15',
   },
   {
-    title: 'Spinoff products',
+    title: 'Spin-off products',
     factNumber: '50',
   },
 ];

@@ -11,13 +11,13 @@ export default function PortfolioSlider({ data }) {
     infinite: true,
     centerPadding: '0',
     slidesToShow: 3,
-    speed: 2000,
+    speed: 1000,
     autoplay: true,
-    autoplaySpeed: 0,
-    cssEase: 'linear',
+    autoplaySpeed: 800,
+    cssEase: 'ease-in-out',
     dots: false,
     arrows: false,
-    pauseOnHover: false,
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 768,
@@ -27,7 +27,7 @@ export default function PortfolioSlider({ data }) {
       },
     ],
   };
-
+  
   return (
     <>
       <style>{`

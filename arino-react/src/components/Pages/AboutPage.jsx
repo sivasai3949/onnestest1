@@ -11,7 +11,7 @@ const funfaceData = [
   { title: "Global Happy Clients", factNumber: "20" },
   { title: "Project Completed", factNumber: "12" },
   { title: "Team Members", factNumber: "15" },
-  { title: "Spinoff products", factNumber: "50" },
+  { title: "Spin-off products", factNumber: "50" },
 ];
 
 export default function AboutPage() {

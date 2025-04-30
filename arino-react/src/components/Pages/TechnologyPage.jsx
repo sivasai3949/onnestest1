@@ -11,64 +11,67 @@ const funfaceData = [
   { title: 'Global Happy Clients', factNumber: '20' },
   { title: 'Project Completed', factNumber: '12' },
   { title: 'Team Members', factNumber: '15' },
-  { title: 'Spinoff products', factNumber: '50' },
+  { title: 'Spin-off products', factNumber: '50' },
 ];
 
 const spaceProjects = [
   {
     id: '1',
-    title: 'Space Cryogenic Tank System',
-    subtitle: 'Aerospace Engineering',
-    img: '/images/portfolio_details_1.jpeg',
-    category: 'Cryogenics',
-    location: 'International Space Station',
-    software: 'ANSYS, SolidWorks',
-    date: '12-Nov-2023',
-    client: 'NASA',
+    title: 'Next Generation Carbon Fiber Pressure Vessel Technology',
+    subtitle: 'Composite and Polymer Engineering',
+    img: '/images/carbonfibertanks.jpg',
+    category: 'High Pressure Gases',
+    TypeofTanks: 'Type-3 and Type-4 tanks ',
+    RelevantSegments: 'Space, Ground, Defence',
+    OperatingPressures: 'Starting from 200 bar onwards',
     description: [
-      'Advanced cryogenic storage solutions for long-duration space missions with ultra-lightweight materials.',
-      'Innovative thermal management system to maintain optimal temperatures in zero-gravity environments.'
+      'Carbon Fibre Reinforced Plastic (CFRP) tanks represent a cutting-edge solution for gas and cryogens storage, addressing crucial challenges in the clean energy sector. These cylinders are engineered with lightweight, high-strength carbon fibre materials, making them exceptionally durable and efficient. Their unique design, with continuous filament winding blended with resins and nanofillers, ensures superior structural integrity, enabling them to withstand extreme pressures and harsh environments. The key advantage of carbon fibre filament-wound cylinders lies in their ability to store hydrogen at high pressures, maximizing storage capacity while minimizing weight. This makes them ideal for various applications, including fuel cell vehicles and renewable energy storage systems. By enabling safe and efficient hydrogen storage, these cylinders play a pivotal role in advancing the use of hydrogen as a clean, sustainable energy source, contributing to a greener future.'
     ]
   },
   {
     id: '2',
-    title: 'Satellite Propulsion Module',
-    subtitle: 'Defence Technology',
-    img: '/images/portfolio_2.jpeg',
-    category: 'Propulsion',
-    location: 'Low Earth Orbit',
-    software: 'MATLAB, COMSOL',
-    date: '05-Mar-2024',
+    title: 'Fuel Tanks with Cryogenics Systems',
+    subtitle: 'Deep Space Exploration',
+    img: '/images/Home_8.jpg',
+    category: 'Cryogenic Liquids (LoX, LH2)',
+    TypeofTanks: 'Type 3 and Type 4 ',
+    RelevantSegments: 'Space, Ground, Defence',
+    OperatingPressures: 'from 2 bar onwards',
     client: 'SpaceX',
     description: [
-      'Compact propulsion system for next-generation communication satellites.',
-      'Fuel-efficient design with extended operational lifespan.'
+      'Cryogenics involves the production, storage, and transportation of materials at ultra-low temperatures—often below -160°C. From liquefied natural gas (LNG) systems to superconducting applications, cryogenic environments demand materials engineered for extreme cold, high performance, and long-term stability.',
+      'Specialized composites maintain strength, dimensional stability, and electrical insulation even in frigid conditions—making them ideal for structural supports, insulators, valve components, and other critical parts in cryogenic systems. Onnes expertise lies in building composite pressure vessels for storing cryogenic liquid fuels such as liquid oxygen and liquid hydrogen fuels through innovative advanced cryogenic carbon fiber composites for space applications. The storage of cryogenic fuels in carbon fiber pressure vessels is emerging as an area for energy efficient storage as they offer potential weight savings relative to the existing metal tanks or composite overwrapped metal tankss.'
     ]
   },
   {
     id: '3',
-    title: 'Satellite Propulsion Module',
-    subtitle: 'Defensce Technology',
-    img: '/images/portfolio_3.jpeg',
+    title: 'Thermal Management',
+    subtitle: 'Engineered Cryocoolers',
+    img: '/images/thermal_management1.jpg',
     category: 'Propulsion',
-    location: 'Low Earth Orbit',
-    software: 'MATLAB, COMSOL',
-    date: '05-Mar-2024',
+    TypeofTanks: 'Low Earth Orbit',
+    RelevantSegments: 'MATLAB, COMSOL',
+    OperatingPressures: '05-Mar-2024',
     client: 'SpaceX',
     description: [
-      'Compact propulsion system for next-generation communication satellites.',
-      'Fuel-efficient design with extended operational lifespan.'
+      'Cryogenic cooling is considered the ultimate mode of thermal management for electronic systems. Achieved through cryocoolers, these systems are used in specialty electronics such as aerospace, military, space, medical equipment, and high-speed, high-capacity computing.',
+      'A cryocooler is a mechanical refrigerator designed to cool applications down to cryogenic temperatures. These are typically below around 123 K, which equals -150°C or -238°F.',
+      'In this temperature range, many physical phenomena begin to change significantly compared to room temperature, and new effects become increasingly important.',
+      'The field of cryogenics involves unique disciplines, operational constraints, and testing methodologies specific to low temperatures.',
+      'A key area is the development of cryogenic refrigerators—called cryocoolers. Applications range from hospital MRI machines, to space telescopes, to night-vision scopes used on military battlefields.',
+      'Cryogenic refrigeration is achieved through different types of cryocoolers. Depending on the end application, cryocoolers are classified as Stirling, Gifford-McMahon (G-M), Joule-Thomson (J-T) and Pulse Tube Cryocoolers. Onnes constantly innovates to push the technological limits of cryocoolers to make them suited for the macroscopic and miniature applications on ground, space and water by integrating them into our composite tank technology. '
     ]
   },
+  
   {
     id: '4',
     title: 'Satellite Propulsion Module',
     subtitle: 'Defensce Technology',
     img: '/images/portfolio_2.jpeg',
     category: 'Propulsion',
-    location: 'Low Earth Orbit',
-    software: 'MATLAB, COMSOL',
-    date: '05-Mar-2024',
+    TypeofTanks: 'Low Earth Orbit',
+    RelevantSegments: 'MATLAB, COMSOL',
+    OperatingPressures: '05-Mar-2024',
     client: 'SpaceX',
     description: [
       'Compact propulsion system for next-generation communication satellites.',
@@ -147,40 +150,299 @@ export default function SpacePortfolio() {
                   ))}
                 </SectionHeading>
               </Div>
-              <Div className="col-lg-5 offset-lg-1">
-                <Spacing lg="60" md="40"/>
-                <h2 className="cs-font_30 cs-font_26_sm cs-m0">Project Specifications</h2>
-                <Spacing lg="50" md="30"/>
-                <Div className="row">
-                  <Div className="col-6">
-                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Category:</h3>
-                    <p className="cs-m0">{project.category}</p>
-                    <Spacing lg="30" md="30"/>
-                  </Div>
-                  <Div className="col-6">
-                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Location:</h3>
-                    <p className="cs-m0">{project.location}</p>
-                    <Spacing lg="30" md="30"/>
-                  </Div>
-                  <Div className="col-6">
-                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Software:</h3>
-                    <p className="cs-m0">{project.software}</p>
-                    <Spacing lg="30" md="30"/>
-                  </Div>
-                  <Div className="col-6">
-                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Dated:</h3>
-                    <p className="cs-m0">{project.date}</p>
-                    <Spacing lg="30" md="30"/>
-                  </Div>
-                  <Div className="col-6">
-                    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Client:</h3>
-                    <p className="cs-m0">{project.client}</p>
-                    <Spacing lg="30" md="30"/>
+              {project.id === '2' ? (
+  <Div className="col-lg-5 offset-lg-1 d-flex align-items-center">
+  <Div
+    className="cs-radius_15 position-relative"
+    style={{
+      backgroundImage: `url('/images/cryogenicsystem_projectspeci.jpg')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      padding: '40px',
+      borderRadius: '15px',
+      boxShadow: '0 0 20px rgba(0, 0, 0, 0.4)',
+      color: '#000',
+    }}
+  >
+    {/* Text Content */}
+    <Div>
+      <h2
+        className="cs-font_26 cs-font_22_sm cs-m0"
+        style={{
+          fontSize: '24px',
+          fontWeight: 'bold',
+          textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+        }}
+      >
+        Project Specifications
+      </h2>
+      <Spacing lg="30" md="20" />
+      <Div className="row">
+        <Div className="col-6">
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              color: '#00ccff',
+              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+            }}
+          >
+            Category:
+          </h3>
+          <p
+            className="cs-m0"
+            style={{
+              fontSize: '14px',
+              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+            }}
+          >
+            {project.category}
+          </p>
+          <Spacing lg="20" md="20" />
+        </Div>
+
+        <Div className="col-6">
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              color: '#00ccff',
+              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+            }}
+          >
+            Type of Tanks:
+          </h3>
+          <p
+            className="cs-m0"
+            style={{
+              fontSize: '14px',
+              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+            }}
+          >
+            {project.TypeofTanks}
+          </p>
+          <Spacing lg="20" md="20" />
+        </Div>
+
+        <Div className="col-6">
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              color: '#00ccff',
+              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+            }}
+          >
+            Relevant Segments:
+          </h3>
+          <p
+            className="cs-m0"
+            style={{
+              fontSize: '14px',
+              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+            }}
+          >
+            {project.RelevantSegments}
+          </p>
+          <Spacing lg="20" md="20" />
+        </Div>
+
+        <Div className="col-6">
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              color: '#00ccff',
+              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+            }}
+          >
+            Operating Pressures:
+          </h3>
+          <p
+            className="cs-m0"
+            style={{
+              fontSize: '14px',
+              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+            }}
+          >
+            {project.OperatingPressures}
+          </p>
+          <Spacing lg="20" md="20" />
+        </Div>
+      </Div>
+    </Div>
+  </Div>
+</Div>
+
+) : (
+  <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center">
+    <Spacing lg="60" md="40"/>
+    <h2 className="cs-font_30 cs-font_26_sm cs-m0">Project Specifications</h2>
+    <Spacing lg="50" md="30"/>
+    <Div className="row">
+      <Div className="col-6">
+        <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Category:</h3>
+        <p className="cs-m0">{project.category}</p>
+        <Spacing lg="30" md="30"/>
+      </Div>
+      <Div className="col-6">
+        <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Type of Tanks:</h3>
+        <p className="cs-m0">{project.TypeofTanks}</p>
+        <Spacing lg="30" md="30"/>
+      </Div>
+      <Div className="col-6">
+        <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Relevant Segments:</h3>
+        <p className="cs-m0">{project.RelevantSegments}</p>
+        <Spacing lg="30" md="30"/>
+      </Div>
+      <Div className="col-6">
+        <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Operating Pressures:</h3>
+        <p className="cs-m0">{project.OperatingPressures}</p>
+        <Spacing lg="30" md="30"/>
+      </Div>
+    </Div>
+  </Div>
+)}
+
+            </Div>
+            {project.id === '1' && (
+              <>
+                <Spacing lg="50" md="30" />
+                <Div className="container">
+                  <Div className="row" style={{ display: 'flex', alignItems: 'stretch' }}>
+                    <Div className="col-lg-6 mb-4 d-flex flex-column">
+                      <Div className="flex-grow-1 d-flex flex-column">
+                        <img
+                          src="/images/Onnes 2L Type-3.jpeg"
+                          alt="Description 1"
+                          className="w-100 h-100 cs-radius_15"
+                          style={{ objectFit: 'cover' }}
+                        />
+                        <p className="cs-center mt-2">Caption for Image 1</p>
+                      </Div>
+                    </Div>
+
+                    <Div className="col-lg-6 mb-4 d-flex flex-column">
+                      <Div className="flex-grow-1 d-flex flex-column mb-3" style={{ flexBasis: '20%' }}>
+                        <img
+                          src="/images/Onnes 2L 4sets Type-3.jpeg"
+                          alt="Description 2"
+                          className="w-100 h-100 cs-radius_15"
+                          style={{ objectFit: 'cover' }}
+                        />
+                        <p className="cs-center mt-2">Caption for Image 2</p>
+                      </Div>
+
+                      <Div className="flex-grow-1 d-flex flex-column" style={{ flexBasis: '25%' }}>
+                        <img
+                          src="/images/Onnes 20L Type-3.jpeg"
+                          alt="Description 3"
+                          className="w-100 h-100 cs-radius_15"
+                          style={{ objectFit: 'cover' }}
+                        />
+                        <p className="cs-center mt-2">Caption for Image 3</p>
+                      </Div>
+                    </Div>
                   </Div>
                 </Div>
-              </Div>
-            </Div>
+
+                {/* Full-width Image Section */}
+                <Spacing lg="50" md="30" />
+                <Div className="container-fluid px-0">
+                  <img
+                    src="/images/carbonfibertank2.jpg"
+                    alt="Carbon Fiber Tanks"
+                    className="w-100  cs-radius_15"
+                    style={{ maxHeight: '700px', objectFit: 'cover' }}
+                  />
+                  <p className="cs-center mt-2">Caption for Image 3</p>
+                </Div>
+              </>
+            )}
+
             <Spacing lg="65" md="10"/>
+            {project.id === '2' && (
+              <Div className="container-fluid px-0">
+                <img
+                  src="/images/cryogenicsystem2_techpage.jpg"
+                  alt="Cryogenic System Full Width"
+                  className="w-100 cs-radius_15"
+                  style={{ maxHeight: '700px', objectFit: 'cover' }}
+                />
+                <p className="cs-center mt-2">Cryogenic fuel tank integrated with composite system</p>
+              </Div>
+            )}
+            <Spacing lg="65" md="10"/>
+
+            <Spacing lg="65" md="10"/>
+{project.id === '3' && (
+  <>
+    <Div className="container-fluid px-0">
+      <img
+        src="/images/thermal_management2.png"
+        alt="Thermal Management System"
+        className="w-100 cs-radius_15"
+        style={{ maxHeight: '700px', objectFit: 'cover' }}
+      />
+      <p className="cs-center mt-2">Advanced thermal management solutions for cryogenic systems</p>
+    </Div>
+
+    {/* 4 Images Grid */}
+    <Spacing lg="50" md="30" />
+    <Div className="container">
+      <h3 className="cs-font_30 cs-font_26_sm cs-m0 cs-center">Cryocooler Variants</h3>
+      <Spacing lg="30" md="20" />
+      <Div className="row g-4" style={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
+        {/* Image 1 */}
+        <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
+          <img
+            src="/images/Cryocooler 1.PNG"
+            alt="Stirling Cryocooler"
+            className="w-100 cs-radius_15"
+            style={{ height: '300px', objectFit: 'cover' }}
+          />
+          <p className="cs-center mt-2 cs-m0">a) Stirling Cryocooler</p>
+        </Div>
+
+        {/* Image 2 */}
+        <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
+          <img
+            src="/images/Cryocooler 2.PNG"
+            alt="Gifford-McMahon Cryocooler"
+            className="w-100 cs-radius_15"
+            style={{ height: '300px', objectFit: 'cover' }}
+          />
+          <p className="cs-center mt-2 cs-m0">b) Gifford-McMahon Cryocooler</p>
+        </Div>
+
+        {/* Image 3 */}
+        <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
+          <img
+            src="/images/Cryocooler 3.PNG"
+            alt="Joule-Thomson Cryocooler"
+            className="w-100 cs-radius_15"
+            style={{ height: '300px', objectFit: 'cover' }}
+          />
+          <p className="cs-center mt-2 cs-m0">c) Joule-Thomson Cryocooler</p>
+        </Div>
+
+        {/* Image 4 */}
+        <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
+          <img
+            src="/images/Cryocooler 4.PNG"
+            alt="Pulse Tube Cryocooler"
+            className="w-100 cs-radius_15"
+            style={{ height: '300px', objectFit: 'cover' }}
+          />
+          <p className="cs-center mt-2 cs-m0">d) Pulse Tube Cryocooler</p>
+        </Div>
+      </Div>
+    </Div>
+  </>
+)}
+<Spacing lg="65" md="10"/>
+            
+
             {/* Navigation Buttons */}
             <Div className="cs-page_navigation cs-center">
               <Div>

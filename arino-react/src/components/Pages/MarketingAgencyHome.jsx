@@ -26,7 +26,7 @@ const heroSocialLinks = [
 ];
 const funfaceData = [
   {
-    title: 'Spinoff products',
+    title: 'Spin-off products',
     factNumber: '50',
   },
   {

@@ -1,72 +1,149 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { pageTitle } from "../../helper";
+import Cta from "../Cta";
+import FunFact from "../FunFact";
+import PageHeading from "../PageHeading";
 import Div from "../Div";
 import Spacing from "../Spacing";
+import "./AboutPage.css";
 
-export default function AISimulation() {
-  const location = useLocation();
+const funfaceData = [
+  { title: "Global Happy Clients", factNumber: "40K" },
+  { title: "Project Completed", factNumber: "50K" },
+  { title: "Team Members", factNumber: "245" },
+  { title: "Digital products", factNumber: "550" },
+];
+
+export default function AboutPage() {
+  // Set page title dynamically
+  pageTitle("AI Simulation | Onnes Cryogenics");
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    const hash = location.hash;
-    if (hash) {
-      setTimeout(() => {
+    // Function to handle smooth scroll to the section
+    const handleScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
         const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
-      }, 0);
-    }
-  }, [location]);
+      }
+    };
+
+    // Trigger scroll on initial load
+    handleScroll();
+    
+    // Event listener to handle hash change
+    window.addEventListener("hashchange", handleScroll);
+
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener("hashchange", handleScroll);
+    };
+  }, []);
 
   return (
-    <Div className="container">
-      {/* Section 1: CFM */}
-      <Spacing lg="100" md="60" />
-      <div id="cfm">
-        <h1>CFM</h1>
-        <p>
-          Computational Fluid Mechanics (CFM) deals with the simulation of fluid flow using numerical methods and algorithms. 
-          It helps in analyzing complex engineering systems without the need for physical prototypes.
-        </p>
-        <Div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '30px' }}>
-          <img src="/images/cfm1.jpg" alt="CFM 1" style={{ flex: '1 1 30%', maxWidth: '30%', borderRadius: '12px', minWidth: '250px' }} />
-          <img src="/images/cfm2.jpg" alt="CFM 2" style={{ flex: '1 1 30%', maxWidth: '30%', borderRadius: '12px', minWidth: '250px' }} />
-          <img src="/images/cfm3.jpg" alt="CFM 3" style={{ flex: '1 1 30%', maxWidth: '30%', borderRadius: '12px', minWidth: '250px' }} />
-        </Div>
-      </div>
+    <>
+      {/* Page Heading */}
+      <PageHeading
+        title="AI SIMULATION"
+        bgSrc="images/about_hero_bg.jpeg"
+        pageLinkText="AI SIMULATION"
+      />
 
-      {/* Section 2: Quantum CFD */}
-      <Spacing lg="100" md="60" />
-      <div id="quantum-cfd">
-        <h1>Quantum CFD</h1>
-        <p>
-          Quantum Computational Fluid Dynamics (Quantum CFD) explores the use of quantum computing for simulating and solving 
-          fluid mechanics problems that are computationally intensive for classical computers.
-        </p>
-        <Div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '30px' }}>
-          <img src="/images/qcfd1.jpg" alt="Quantum CFD 1" style={{ flex: '1 1 45%', maxWidth: '45%', borderRadius: '12px', minWidth: '250px' }} />
-          <img src="/images/qcfd2.jpg" alt="Quantum CFD 2" style={{ flex: '1 1 45%', maxWidth: '45%', borderRadius: '12px', minWidth: '250px' }} />
-          <img src="/images/qcfd3.jpg" alt="Quantum CFD 3" style={{ flex: '1 1 45%', maxWidth: '45%', borderRadius: '12px', minWidth: '250px' }} />
+      {/* CFM Section */}
+      <Spacing lg="150" md="80" />
+      <Div className="container" id="cfm">
+        <Div className="row">
+          <Div className="col-xl-5 col-lg-7">
+            <h1>CFM</h1>
+            <Spacing lg="30" md="20" />
+            <p className="cs-m0">
+              AI Simulation CFM is a cutting-edge integration of Artificial
+              Intelligence with Computational Fluid Mechanics. This advanced
+              technology enhances the simulation of fluid flow through
+              data-driven algorithms...
+            </p>
+            <Spacing lg="30" md="30" />
+            <Div className="cs-separator cs-accent_bg" />
+            <Spacing lg="65" md="40" />
+          </Div>
+          <Div className="col-lg-5 offset-xl-2 d-flex align-items-center">
+            <img
+              src="https://via.placeholder.com/600x400"
+              alt="About"
+              className="w-100 cs-radius_15"
+            />
+            <Spacing lg="25" md="25" />
+          </Div>
         </Div>
-      </div>
+      </Div>
+      <Spacing lg="75" md="55" />
 
-      {/* Section 3: New Materials */}
-      <Spacing lg="100" md="60" />
-      <div id="new-materials">
-        <h1>New Materials</h1>
-        <p>
-          The development of new materials is crucial for advancing technologies in AI, simulation, aerospace, electronics, and energy. 
-          Simulation allows us to predict material behaviors under various conditions.
-        </p>
-        <Div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '30px' }}>
-          <img src="/images/material1.jpg" alt="Material 1" style={{ flex: '1 1 30%', maxWidth: '30%', borderRadius: '12px', minWidth: '250px' }} />
-          <img src="/images/material2.jpg" alt="Material 2" style={{ flex: '1 1 30%', maxWidth: '30%', borderRadius: '12px', minWidth: '250px' }} />
-          <img src="/images/material3.jpg" alt="Material 3" style={{ flex: '1 1 30%', maxWidth: '30%', borderRadius: '12px', minWidth: '250px' }} />
+      {/* Quantum CFD Section */}
+      <Spacing lg="100" md="80" />
+      <Div className="container" id="quantum-cfd">
+        <Div className="row d-flex align-items-center">
+          <Div className="col-xl-5 col-lg-6">
+            <Div className="cs-image_layer cs-style1">
+              <Div className="cs-image_layer_in">
+                <img
+                  src="https://via.placeholder.com/600x400"
+                  alt="Quantum CFD"
+                  className="w-100 cs-radius_15"
+                />
+              </Div>
+            </Div>
+            <Spacing lg="0" md="40" />
+          </Div>
+          <Div className="col-xl-5 offset-xl-1 col-lg-6">
+            <h2>QUANTUM CFD</h2>
+            <p className="cs-m0">
+              Quantum CFD (Computational Fluid Dynamics) is an emerging field
+              that explores the application of quantum computing to fluid flow
+              simulations...
+            </p>
+            <Spacing lg="30" md="30" />
+            <Div className="cs-separator cs-accent_bg" />
+            <Spacing lg="25" md="0" />
+          </Div>
         </Div>
-      </div>
+      </Div>
 
-      <Spacing lg="100" md="60" />
-    </Div>
+      {/* New Materials Section */}
+      <Spacing lg="150" md="80" />
+      <Div className="container" id="new-materials">
+        <Div className="row d-flex align-items-start">
+          <Div className="col-lg-6" style={{ marginTop: "100px" }}>
+            <img
+              src="https://via.placeholder.com/600x400"
+              alt="Vision"
+              className="w-100 cs-radius_15"
+            />
+          </Div>
+          <Div className="col-lg-6">
+            <h2>NEW MATERIALS</h2>
+            <Spacing lg="20" md="15" />
+            <p className="cs-m0">
+              Quantum CFD (Computational Fluid Dynamics) is an emerging field
+              that explores the application of quantum computing...
+            </p>
+            <Spacing lg="30" md="30" />
+            <Div className="cs-separator cs-accent_bg" />
+          </Div>
+        </Div>
+      </Div>
+
+      {/* CTA */}
+      <Spacing lg="150" md="80" />
+      <Div className="container">
+        <Cta
+          title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
+          btnText="Apply For Meeting"
+          btnLink="/contact"
+          bgSrc="https://via.placeholder.com/1200x600"
+        />
+      </Div>
+    </>
   );
 }

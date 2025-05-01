@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Card from "../Card";
 import FunFact from "../FunFact";
 import Hero from "../Hero";
@@ -19,7 +19,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
-import Button from '../Button'; // Add this import with your other imports
+import Button from '../Button'; // Add this import with your other imports
 
 const heroImages = [
   "/images/Home_1.webp",
@@ -29,17 +29,6 @@ const heroImages = [
   "/images/Home_5.webp",
   "/images/Home_6.webp",
   "/images/Home_7.webp",
-];
-// Hero Social Links
-const heroSocialLinks = [
-  {
-    name: "Behance",
-    links: "/",
-  },
-  {
-    name: "Twitter",
-    links: "/",
-  },
 ];
 
 // FunFact Data
@@ -92,7 +81,6 @@ const portfolioData = [
     href: '/portfolio/portfolio-details',
     src: '/images/greenstorage.png',
   },
-
 ];
 
 export default function Home() {
@@ -102,6 +90,8 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
 
+  const sliderRef = useRef(null); // Create a reference for the slider
+
   const sliderSettings = {
     dots: false, // Hides dots for a cleaner look
     infinite: true, // Ensures looping
@@ -110,17 +100,36 @@ export default function Home() {
     slidesToScroll: 1, // Scrolls one image at a time
     autoplay: true, // Enables automatic sliding
     autoplaySpeed: 2500, // Adjusts speed for a natural feel
-    pauseOnHover: false, // Prevents pausing when hovered
+    pauseOnHover: false, // Will handle hover manually now
     swipeToSlide: true, // Allows smooth swiping
     arrows: false, // Hides arrows for a cleaner look
     cssEase: "ease-in-out", // Ensures smooth easing
+  };
+
+  // Function to stop the slider (pause autoplay)
+  const handleMouseEnter = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPause(); // Pause the slider on hover
+    }
+  };
+
+  // Function to resume the slider (play autoplay)
+  const handleMouseLeave = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPlay(); // Resume the slider after hover
+    }
   };
 
   return (
     <>
       {/* Start Hero Section */}
       <div className="hero-slider">
-        <Slider {...sliderSettings}>
+        <Slider
+          {...sliderSettings}
+          ref={sliderRef} // Set the reference to the slider
+          onMouseEnter={handleMouseEnter} // Pause on hover
+          onMouseLeave={handleMouseLeave} // Resume on mouse leave
+        >
           {heroImages.map((image, index) => (
             <div key={index} className="hero-slide-wrapper">
               <img
@@ -132,7 +141,6 @@ export default function Home() {
           ))}
         </Slider>
       </div>
-
       {/* End Hero Section */}
 
       {/* Start FunFact Section */}
@@ -147,60 +155,60 @@ export default function Home() {
       {/* End FunFact Section */}
 
       {/* Start Service Section */}
-<Spacing lg="150" md="80" />
-<Div id="service">
-  <Div className="container">
-    <Div className="row">
-      <Div className="col-xl-4">
-        <div className="cs-section_heading cs-style1">
-          <h3 className="cs-section_subtitle">Onnes Expertise Lies In</h3>
-          <h2 className="cs-section_title" style={{ fontSize: '40px' }}>
-            Next Generation Tank Technology Integrated with Cryogenics
-          </h2>
-          <Spacing lg="45" md="20" />
-          <Button btnLink="/service" btnText="See All Capabilities" />
-        </div>
-        <Spacing lg="90" md="45" />
-      </Div>
+      <Spacing lg="150" md="80" />
+      <Div id="service">
+        <Div className="container">
+          <Div className="row">
+            <Div className="col-xl-4">
+              <div className="cs-section_heading cs-style1">
+                <h3 className="cs-section_subtitle">Onnes Expertise Lies In</h3>
+                <h2 className="cs-section_title" style={{ fontSize: '40px' }}>
+                  Next Generation Tank Technology Integrated with Cryogenics
+                </h2>
+                <Spacing lg="45" md="20" />
+                <Button btnLink="/service" btnText="See All Capabilities" />
+              </div>
+              <Spacing lg="90" md="45" />
+            </Div>
 
-      <Div className="col-xl-8">
-        <Div className="onnes-card-grid">
-          <Card
-            title="Product Design"
-            link="/service/service-details"
-            src="/images/productdesign.jpg"
-            alt="Service"
-          />
-          <Card
-            title="Material Simulations"
-            link="/service/service-details"
-            src="/images/materialsimulation.jpg"
-            alt="Service"
-          />
-          <Card
-            title="Cryogenic Testing"
-            link="/service/service-details"
-            src="/images/cryogenictesting.jpg"
-            alt="Service"
-          />
-          <Card
-            title="Assembly"
-            link="/service/service-details"
-            src="/images/assembly.jpg"
-            alt="Service"
-          />
-          <Card
-            title="Manufacturing"
-            link="/service/service-details"
-            src="/images/manufacturing.jpg"
-            alt="Service"
-          />
+            <Div className="col-xl-8">
+              <Div className="onnes-card-grid">
+                <Card
+                  title="Product Design"
+                  link="/service/service-details"
+                  src="/images/productdesign.jpg"
+                  alt="Service"
+                />
+                <Card
+                  title="Material Simulations"
+                  link="/service/service-details"
+                  src="/images/materialsimulation.jpg"
+                  alt="Service"
+                />
+                <Card
+                  title="Cryogenic Testing"
+                  link="/service/service-details"
+                  src="/images/cryogenictesting.jpg"
+                  alt="Service"
+                />
+                <Card
+                  title="Assembly"
+                  link="/service/service-details"
+                  src="/images/assembly.jpg"
+                  alt="Service"
+                />
+                <Card
+                  title="Manufacturing"
+                  link="/service/service-details"
+                  src="/images/manufacturing.jpg"
+                  alt="Service"
+                />
+              </Div>
+            </Div>
+          </Div>
         </Div>
       </Div>
-    </Div>
-  </Div>
-</Div>
-{/* End Service Section */}
+      {/* End Service Section */}
 
       {/* Start Portfolio Section */}
       <Spacing lg="150" md="50" />
@@ -245,7 +253,7 @@ export default function Home() {
       <Spacing lg="130" md="70" />
       <Div className="container">
         <h2 className="cs-font_50 cs-m0 text-center cs-line_height_4">
-        Onnes product innovations push the boundaries of storage and transportation of cryogenic liquids and gases
+          Onnes product innovations push the boundaries of storage and transportation of cryogenic liquids and gases
         </h2>
         <Spacing lg="70" md="70" />
         <VideoModal
@@ -273,7 +281,7 @@ export default function Home() {
       {/* <TestimonialSlider /> */}
       {/* End Testimonial Section */}
 
-     {/* Start Blog Section */}
+      {/* Start Blog Section */}
       <Spacing lg="150" md="80" />
       <Div className="cs-shape_wrap_4">
         <Div className="cs-shape_4"></Div>

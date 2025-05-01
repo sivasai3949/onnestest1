@@ -33,6 +33,10 @@ import CaseStudyDetails from './components/Pages/CaseStudyDetails';
 import GroundstoragePortfolio from './components/Pages/GroundstoragePortfolio';
 import UnderwaterPortfolio from './components/Pages/UnderwaterPortfolio';
 
+// Admin imports
+import AdminLogin from '../src/AdminDashboard/pages/AdminLogin'; // Admin Login page import
+import AdminDashboard from '../src/AdminDashboard/pages/AdminDashboard'; // Admin Dashboard page import
+
 function App() {
   return (
     <>
@@ -57,7 +61,6 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="team" element={<TeamPage />} />
           <Route path="team/:teamDetails" element={<TeamDetails />} />
-          {/* <Route path="case-study/:caseStudyDetailsId" element={<CaseStudyDetailsPage />} /> */}
           <Route path="faq" element={<FaqPage />} />
           <Route path="technology" element={<TechnologyPage />} />
           <Route path="ai-simulation" element={<AISimulation />} />
@@ -66,17 +69,12 @@ function App() {
           <Route path="underwater-portfolio" element={<UnderwaterPortfolio />} />
           <Route path="upcoming-events" element={<UpcomingEvents />} />
           <Route path="case-study-details" element={<CaseStudyDetails />} />
-
         </Route>
 
-        {/* Layout with a Different Header Variant */}
-        <Route path="/" element={<Layout headerVariant="cs-site_header_full_width" />}>
-          <Route path="creative-portfolio" element={<CreativePortfolioHome />} />
-          <Route path="showcase-portfolio" element={<ShowcasePortfolioHome />} />
-          <Route path="case-study-showcase" element={<CaseStudyShowcaseHome />} />
-          <Route path="video-showcase" element={<VideoShowcaseHome />} />
-        </Route>
-
+        {/* Admin Routes */}
+        <Route path="/admin-login" element={<AdminLogin />} /> {/* Admin Login Route */}
+        <Route path="/admin-dashboard/*" element={<AdminDashboard />} /> {/* Admin Dashboard Route */}
+        
         {/* Catch-All Route */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>

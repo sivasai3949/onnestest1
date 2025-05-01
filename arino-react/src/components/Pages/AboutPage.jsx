@@ -56,21 +56,16 @@ export default function AboutPage() {
             <h1>ABOUT US</h1>
             <Spacing lg="30" md="20" />
             <p className="cs-m0">
-              Onnes Cryogenics was formed in Hyderabad, India by physicists Dr.
-              Ram Aluru, who specialises in cryogenics, and Dr. Vikram Srinivasa
-              Raghavan, whose expertise is in composite engineering and
-              nanophysics. The founding team’s experience spans across
-              industries such as space, defence, cryogenics and high pressure
-              gases with a perfect blend for cryogenic composites.
-            </p>
-            <Spacing lg="15" md="15" />
-            <p>
-              Inspired by India's space and atomic energy journey with
-              phenomenal contributions from physicists Dr. Vikram Sarabhai and
-              Dr. Homi J Bhabha, the team at Onnes are committed to innovating
-              next-generation storage technologies integrated with bespoke
-              cryogenic systems.
-            </p>
+  Onnes Cryogenics was formed in Hyderabad, India by physicists
+  <span className="nowrap"> Dr. Ram Aluru</span>, who specialises in cryogenics, and
+  <span className="nowrap"> Dr. Vikram Srinivasa Raghavan</span>, whose expertise is in composite engineering and nanophysics. The founding team’s experience spans across industries such as space, defence, cryogenics and high pressure gases with a perfect blend for cryogenic composites.
+</p>
+<p>
+  Inspired by India's space and atomic energy journey with phenomenal contributions from physicists
+  <span className="nowrap"> Dr. Vikram Sarabhai</span> and
+  <span className="nowrap"> Dr. Homi J Bhabha</span>, the team at Onnes are committed to innovating next-generation storage technologies integrated with bespoke cryogenic systems.
+</p>
+
             <Spacing lg="30" md="30" />
             <Div className="cs-separator cs-accent_bg" />
             <Spacing lg="65" md="40" />
@@ -107,20 +102,20 @@ export default function AboutPage() {
       <Spacing lg="75" md="55" />
 
       {/* Fun Fact Section */}
-      <Div className="container">
-      <FunFact
-  title="Our fun fact"
-  subtitle={
-    <>
-      Cryogenics deals with the production, storage, and use of materials at very low temperatures, typically below 120 Kelvin (K) or -150°C. The word originates from the Greek words "kryos" meaning "frost" and{" "}
-      <span style={{ whiteSpace: "nowrap" }}>"genic" meaning "to produce."</span>
-    </>
-  }
-  
-  data={funfaceData}
-/>
+<Div className="container">
+  <FunFact
+    title="Our fun fact"
+    subtitle={
+      <>
+        Cryogenics deals with the production, storage, and use of materials at very low temperatures, typically below{" "}
+        <span style={{ whiteSpace: "nowrap" }}>120 Kelvin (K)</span> or -150°C. The word originates from the Greek words "kryos" meaning "frost" and{" "}
+        <span style={{ whiteSpace: "nowrap" }}>"genic" meaning "to produce."</span>
+      </>
+    }
+    data={funfaceData}
+  />
+</Div>
 
-      </Div>
 
       {/* Why Onnes Section */}
       <Spacing lg="100" md="80" />

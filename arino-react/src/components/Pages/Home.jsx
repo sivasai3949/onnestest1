@@ -70,7 +70,7 @@ const portfolioData = [
     src: '/images/deepspace.png',
   },
   {
-    title: ' Deep Space Exploration',
+    title: ' Liquid Space Fuels',
     subtitle: 'See Details',
     href: '/portfolio/portfolio-details',
     src: '/images/Home_8.jpg',

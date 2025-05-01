@@ -71,5 +71,13 @@
   .vision-list li strong {
     color: #fff;
   }
+  .nowrap {
+    white-space: nowrap;
+  }
   
+  @media (max-width: 768px) {
+    #about-us p {
+      text-align: left;
+    }
+  }
   

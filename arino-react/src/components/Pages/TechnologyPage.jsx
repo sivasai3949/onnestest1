@@ -65,19 +65,22 @@ const spaceProjects = [
   
   {
     id: '4',
-    title: 'Satellite Propulsion Module',
-    subtitle: 'Defensce Technology',
-    img: '/images/portfolio_2.jpeg',
+    title: 'Recyclability of Carbon Fiber Tanks',
+    subtitle: 'Sustainability and Recycling',
+    img: '/images/Carbon-Fiber-Reinforced-Polymer.jpg',
     category: 'Propulsion',
     TypeofTanks: 'Low Earth Orbit',
     RelevantSegments: 'MATLAB, COMSOL',
     OperatingPressures: '05-Mar-2024',
     client: 'SpaceX',
     description: [
-      'Compact propulsion system for next-generation communication satellites.',
-      'Fuel-efficient design with extended operational lifespan.'
+      "We are extremely cautious and committed to sustainability and green manufacturing of the tanks and cryogenic systems. Our Type 3 and Type 4 tanks have a significantly reduced environmental impact compared to the manufacturing of traditional Type 1 and Type 2 cylinders.",
+      "The fully recyclable materials used in the tanks' manufacturing and the composite tanks' exceptional lightness reduce CO2 emissions during mobility applications and play a significant role in the storage and transportation of sustainable gases, liquids, and cryogens for space, aviation, and underwater applications.",
+      "Onnes Cryogenics' commitment to sustainability is reflected at every stage of the tank and cryogenic systems manufacturing process—from the choice of materials to product design—promoting a greener future for the planet and the cosmos.",
+      "The weight reduction of the tanks directly translates to optimization of transport loads, improving logistics efficiency and reducing fuel consumption."
     ]
   }
+  
 ];
 
 const sectionHeadings = [
@@ -151,131 +154,90 @@ export default function SpacePortfolio() {
                 </SectionHeading>
               </Div>
               {project.id === '2' ? (
-  <Div className="col-lg-5 offset-lg-1 d-flex align-items-center">
-  <Div
-    className="cs-radius_15 position-relative"
-    style={{
-      backgroundImage: `url('/images/cryogenicsystem_projectspeci.jpg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      padding: '40px',
-      borderRadius: '15px',
-      boxShadow: '0 0 20px rgba(0, 0, 0, 0.4)',
-      color: '#000',
-    }}
-  >
-    {/* Text Content */}
-    <Div>
-      <h2
-        className="cs-font_26 cs-font_22_sm cs-m0"
-        style={{
-          fontSize: '24px',
-          fontWeight: 'bold',
-          textShadow: '0 1px 3px rgba(0,0,0,0.8)',
-        }}
-      >
-        Project Specifications
-      </h2>
+  <Div className="col-lg-5 offset-lg-1 d-flex align-items-center" style={{ paddingTop: '180px' }}>
+    <Div
+      className="cs-radius_15 position-relative"
+      style={{
+        backgroundImage: `url('/images/cryogenicsystem_projectspeci.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        padding: '40px',
+        borderRadius: '15px',
+        color: '#000',
+        boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)'
+      }}
+    >
+      <h2 className="cs-font_30 cs-font_26_sm cs-m0" style={{ textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)' }}
+      >Project Specifications</h2>
       <Spacing lg="30" md="20" />
       <Div className="row">
         <Div className="col-6">
-          <h3
-            style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#00ccff',
-              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-            }}
-          >
-            Category:
-          </h3>
-          <p
-            className="cs-m0"
-            style={{
-              fontSize: '14px',
-              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-            }}
-          >
-            {project.category}
-          </p>
+          <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
+          >Category:</h3>
+          <p className="cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
+          >{project.category}</p>
           <Spacing lg="20" md="20" />
         </Div>
-
         <Div className="col-6">
-          <h3
-            style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#00ccff',
-              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-            }}
-          >
-            Type of Tanks:
-          </h3>
-          <p
-            className="cs-m0"
-            style={{
-              fontSize: '14px',
-              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-            }}
-          >
-            {project.TypeofTanks}
-          </p>
+          <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
+          >Type of Tanks:</h3>
+          <p className="cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
+          >{project.TypeofTanks}</p>
           <Spacing lg="20" md="20" />
         </Div>
-
         <Div className="col-6">
-          <h3
-            style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#00ccff',
-              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-            }}
-          >
-            Relevant Segments:
-          </h3>
-          <p
-            className="cs-m0"
-            style={{
-              fontSize: '14px',
-              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-            }}
-          >
-            {project.RelevantSegments}
-          </p>
+          <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
+          >Relevant Segments:</h3>
+          <p className="cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
+          >{project.RelevantSegments}</p>
           <Spacing lg="20" md="20" />
         </Div>
-
         <Div className="col-6">
-          <h3
-            style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#00ccff',
-              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-            }}
-          >
-            Operating Pressures:
-          </h3>
-          <p
-            className="cs-m0"
-            style={{
-              fontSize: '14px',
-              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-            }}
-          >
-            {project.OperatingPressures}
-          </p>
+          <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
+          >Operating Pressures:</h3>
+          <p className="cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
+          >{project.OperatingPressures}</p>
           <Spacing lg="20" md="20" />
         </Div>
       </Div>
     </Div>
   </Div>
+  ) : project.id === '3' ? (
+   <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-start align-items-start" style={{paddingTop: 140}}>
+  <h2 className="cs-font_30 cs-font_26_sm cs-m0">Project Specifications</h2>
+  <Spacing lg="50" md="30"/>
+  <Div className="row">
+    <Div className="col-6">
+      <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Category:</h3>
+      <p className="cs-m0">{project.category}</p>
+      <Spacing lg="30" md="30"/>
+    </Div>
+    <Div className="col-6">
+      <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Type of Tanks:</h3>
+      <p className="cs-m0">{project.TypeofTanks}</p>
+      <Spacing lg="30" md="30"/>
+    </Div>
+    <Div className="col-6">
+      <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Relevant Segments:</h3>
+      <p className="cs-m0">{project.RelevantSegments}</p>
+      <Spacing lg="30" md="30"/>
+    </Div>
+    <Div className="col-6">
+      <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Operating Pressures:</h3>
+      <p className="cs-m0">{project.OperatingPressures}</p>
+      <Spacing lg="30" md="30"/>
+    </Div>
+  </Div>
+  {/* Add your image here */}
+  <img
+    src="/images/thermal_management2.png"
+    alt="Thermal Management Details"
+    style={{ width: '100%', marginTop: '40px', borderRadius: '15px', objectFit: 'cover' }}
+  />
 </Div>
 
 ) : (
-  <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center">
+    <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center" style={{paddingTop:'140px'}}>
     <Spacing lg="60" md="40"/>
     <h2 className="cs-font_30 cs-font_26_sm cs-m0">Project Specifications</h2>
     <Spacing lg="50" md="30"/>
@@ -315,8 +277,8 @@ export default function SpacePortfolio() {
                         <img
                           src="/images/Onnes 2L Type-3.jpeg"
                           alt="Description 1"
-                          className="w-100 h-100 cs-radius_15"
-                          style={{ objectFit: 'cover' }}
+                          className="w-100 cs-radius_15"
+                          style={{ objectFit: 'cover', height: '700px' }}
                         />
                         <p className="cs-center mt-2">Caption for Image 1</p>
                       </Div>
@@ -327,8 +289,8 @@ export default function SpacePortfolio() {
                         <img
                           src="/images/Onnes 2L 4sets Type-3.jpeg"
                           alt="Description 2"
-                          className="w-100 h-100 cs-radius_15"
-                          style={{ objectFit: 'cover' }}
+                          className="w-100 cs-radius_15"
+                          style={{ objectFit: 'cover', height: '300px' }}
                         />
                         <p className="cs-center mt-2">Caption for Image 2</p>
                       </Div>
@@ -337,8 +299,8 @@ export default function SpacePortfolio() {
                         <img
                           src="/images/Onnes 20L Type-3.jpeg"
                           alt="Description 3"
-                          className="w-100 h-100 cs-radius_15"
-                          style={{ objectFit: 'cover' }}
+                          className="w-100 cs-radius_15"
+                          style={{ objectFit: 'cover', height: '330px' }}
                         />
                         <p className="cs-center mt-2">Caption for Image 3</p>
                       </Div>
@@ -372,77 +334,64 @@ export default function SpacePortfolio() {
                 <p className="cs-center mt-2">Cryogenic fuel tank integrated with composite system</p>
               </Div>
             )}
-            <Spacing lg="65" md="10"/>
-
-            <Spacing lg="65" md="10"/>
 {project.id === '3' && (
   <>
-    <Div className="container-fluid px-0">
-      <img
-        src="/images/thermal_management2.png"
-        alt="Thermal Management System"
-        className="w-100 cs-radius_15"
-        style={{ maxHeight: '700px', objectFit: 'cover' }}
-      />
-      <p className="cs-center mt-2">Advanced thermal management solutions for cryogenic systems</p>
-    </Div>
 
     {/* 4 Images Grid */}
-    <Spacing lg="50" md="30" />
-    <Div className="container">
-      <h3 className="cs-font_30 cs-font_26_sm cs-m0 cs-center">Cryocooler Variants</h3>
-      <Spacing lg="30" md="20" />
-      <Div className="row g-4" style={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
-        {/* Image 1 */}
-        <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
-          <img
-            src="/images/Cryocooler 1.PNG"
-            alt="Stirling Cryocooler"
-            className="w-100 cs-radius_15"
-            style={{ height: '300px', objectFit: 'cover' }}
-          />
-          <p className="cs-center mt-2 cs-m0">a) Stirling Cryocooler</p>
-        </Div>
-
-        {/* Image 2 */}
-        <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
-          <img
-            src="/images/Cryocooler 2.PNG"
-            alt="Gifford-McMahon Cryocooler"
-            className="w-100 cs-radius_15"
-            style={{ height: '300px', objectFit: 'cover' }}
-          />
-          <p className="cs-center mt-2 cs-m0">b) Gifford-McMahon Cryocooler</p>
-        </Div>
-
-        {/* Image 3 */}
-        <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
-          <img
-            src="/images/Cryocooler 3.PNG"
-            alt="Joule-Thomson Cryocooler"
-            className="w-100 cs-radius_15"
-            style={{ height: '300px', objectFit: 'cover' }}
-          />
-          <p className="cs-center mt-2 cs-m0">c) Joule-Thomson Cryocooler</p>
-        </Div>
-
-        {/* Image 4 */}
-        <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
-          <img
-            src="/images/Cryocooler 4.PNG"
-            alt="Pulse Tube Cryocooler"
-            className="w-100 cs-radius_15"
-            style={{ height: '300px', objectFit: 'cover' }}
-          />
-          <p className="cs-center mt-2 cs-m0">d) Pulse Tube Cryocooler</p>
-        </Div>
-      </Div>
+{/* <Spacing lg="50" md="30" /> */}
+<Div className="container">
+  <h3 className="cs-font_30 cs-font_26_sm cs-m0 cs-center">Cryocooler Variants</h3>
+  <Spacing lg="30" md="20" />
+  <Div className="row g-4" style={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
+    {/* Image 1 */}
+    <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
+      <img
+        src="/images/Cryocooler 1.PNG"
+        alt="Stirling Cryocooler"
+        className="w-100 cs-radius_15"
+        style={{ height: '300px', objectFit: 'contain' }}
+      />
+      <p className="cs-center mt-2 cs-m0">a) Stirling Cryocooler</p>
     </Div>
+
+    {/* Image 2 */}
+    <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
+      <img
+        src="/images/Cryocooler 2.PNG"
+        alt="Gifford-McMahon Cryocooler"
+        className="w-100 cs-radius_15"
+        style={{ height: '300px', objectFit: 'cover' }}
+      />
+      <p className="cs-center mt-2 cs-m0">b) Gifford-McMahon Cryocooler</p>
+    </Div>
+
+    {/* Image 3 */}
+    <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
+      <img
+        src="/images/Cryocooler 3.PNG"
+        alt="Joule-Thomson Cryocooler"
+        className="w-100 cs-radius_15"
+        style={{ height: '300px', objectFit: 'cover' }}
+      />
+      <p className="cs-center mt-2 cs-m0">c) Joule-Thomson Cryocooler</p>
+    </Div>
+
+    {/* Image 4 */}
+    <Div className="col-lg-3 col-md-6" style={{ flex: '0 0 auto', width: '25%' }}>
+      <img
+        src="/images/Cryocooler 4.PNG"
+        alt="Pulse Tube Cryocooler"
+        className="w-100 cs-radius_15"
+        style={{ height: '300px', objectFit: 'cover' }}
+      />
+      <p className="cs-center mt-2 cs-m0">d) Pulse Tube Cryocooler</p>
+    </Div>
+  </Div>
+</Div>
   </>
 )}
 <Spacing lg="65" md="10"/>
             
-
             {/* Navigation Buttons */}
             <Div className="cs-page_navigation cs-center">
               <Div>

@@ -58,7 +58,7 @@ const spaceProjects = [
       'A cryocooler is a mechanical refrigerator designed to cool applications down to cryogenic temperatures. These are typically below around 123 K, which equals -150°C or -238°F.',
       'In this temperature range, many physical phenomena begin to change significantly compared to room temperature, and new effects become increasingly important.',
       'The field of cryogenics involves unique disciplines, operational constraints, and testing methodologies specific to low temperatures.',
-      'A key area is the development of cryogenic refrigerators—called cryocoolers. Applications range from hospital MRI machines, to space telescopes, to night-vision scopes used on military battlefields.',
+      'A key area is the development of cryogenic refrigerators called cryocoolers. Applications range from hospital MRI machines, to space telescopes, to night-vision scopes used on military battlefields.',
       'Cryogenic refrigeration is achieved through different types of cryocoolers. Depending on the end application, cryocoolers are classified as Stirling, Gifford-McMahon (G-M), Joule-Thomson (J-T) and Pulse Tube Cryocoolers. Onnes constantly innovates to push the technological limits of cryocoolers to make them suited for the macroscopic and miniature applications on ground, space and water by integrating them into our composite tank technology. '
     ]
   },
@@ -67,7 +67,7 @@ const spaceProjects = [
     id: '4',
     title: 'Recyclability of Carbon Fiber Tanks',
     subtitle: 'Sustainability and Recycling',
-    img: '/images/Carbon-Fiber-Reinforced-Polymer.jpg',
+    img: '/images/Carbon-Fiber-Reinforced-Polymer1.jpg',
     category: 'Propulsion',
     TypeofTanks: 'Low Earth Orbit',
     RelevantSegments: 'MATLAB, COMSOL',
@@ -76,7 +76,7 @@ const spaceProjects = [
     description: [
       "We are extremely cautious and committed to sustainability and green manufacturing of the tanks and cryogenic systems. Our Type 3 and Type 4 tanks have a significantly reduced environmental impact compared to the manufacturing of traditional Type 1 and Type 2 cylinders.",
       "The fully recyclable materials used in the tanks' manufacturing and the composite tanks' exceptional lightness reduce CO2 emissions during mobility applications and play a significant role in the storage and transportation of sustainable gases, liquids, and cryogens for space, aviation, and underwater applications.",
-      "Onnes Cryogenics' commitment to sustainability is reflected at every stage of the tank and cryogenic systems manufacturing process—from the choice of materials to product design—promoting a greener future for the planet and the cosmos.",
+      "Onnes Cryogenics' commitment to sustainability is reflected at every stage of the tank and cryogenic systems manufacturing process from the choice of materials to product design—promoting a greener future for the planet and the cosmos.",
       "The weight reduction of the tanks directly translates to optimization of transport loads, improving logistics efficiency and reducing fuel consumption."
     ]
   }
@@ -87,7 +87,7 @@ const sectionHeadings = [
   "CARBON FIBER TANKS",
   "CRYOGENICS SYSTEMS",
   "THERMAL MANAGEMENT",
-  "RECYCLING OF CFRP TANKS"
+  "SUSTAINABILITY AND RECYCLING "
 ];
 
 export default function SpacePortfolio() {
@@ -161,13 +161,14 @@ export default function SpacePortfolio() {
         backgroundImage: `url('/images/cryogenicsystem_projectspeci.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        minHeight: '330px',
         padding: '40px',
         borderRadius: '15px',
         color: '#000',
         boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)'
       }}
     >
-      <h2 className="cs-font_30 cs-font_26_sm cs-m0" style={{ textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)' }}
+      <h2 className="cs-font_30 cs-font_26_sm cs-m0 pt-3" style={{ textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)' }}
       >Project Specifications</h2>
       <Spacing lg="30" md="20" />
       <Div className="row">
@@ -185,20 +186,29 @@ export default function SpacePortfolio() {
           >{project.TypeofTanks}</p>
           <Spacing lg="20" md="20" />
         </Div>
-        <Div className="col-6">
-          <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
-          >Relevant Segments:</h3>
-          <p className="cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
-          >{project.RelevantSegments}</p>
-          <Spacing lg="20" md="20" />
-        </Div>
-        <Div className="col-6">
-          <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
-          >Operating Pressures:</h3>
-          <p className="cs-m0" style={{ textShadow: '1px 1px 4px rgb(0, 0, 0)' }}
-          >{project.OperatingPressures}</p>
-          <Spacing lg="20" md="20" />
-        </Div>
+        <Div className="row">
+  <Div className="col-6" style={{ paddingRight: '25px' }}>
+    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0"
+        style={{ whiteSpace: 'nowrap', textShadow: '1px 1px 4px rgb(0, 0, 0)' }}>
+      Relevant Segments:
+    </h3>
+    <p className="cs-m0"
+       style={{ whiteSpace: 'nowrap', textShadow: '1px 1px 4px rgb(0, 0, 0)' }}>
+      {project.RelevantSegments}
+    </p>
+  </Div>
+  <Div className="col-6" style={{ paddingLeft: '25px' }}>
+    <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0"
+        style={{ whiteSpace: 'nowrap', textShadow: '1px 1px 4px rgb(0, 0, 0)' }}>
+      Operating Pressures:
+    </h3>
+    <p className="cs-m0"
+       style={{ whiteSpace: 'nowrap', textShadow: '1px 1px 4px rgb(0, 0, 0)' }}>
+      {project.OperatingPressures}
+    </p>
+  </Div>
+</Div>
+
       </Div>
     </Div>
   </Div>
@@ -235,6 +245,16 @@ export default function SpacePortfolio() {
     style={{ width: '100%', marginTop: '40px', borderRadius: '15px', objectFit: 'cover' }}
   />
 </Div>
+) : project.id === '4' ? (
+  <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '100px' }}>
+    <img
+      src="/images/recycling_tech_speci.png"
+      alt="Recycling Technology Specifications"
+      className="cs-radius_15"
+      style={{ width: '100%', maxWidth: '500px', objectFit: 'contain', }}
+    />
+  </Div>
+
 
 ) : (
     <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center" style={{paddingTop:'140px'}}>
@@ -393,25 +413,26 @@ export default function SpacePortfolio() {
 <Spacing lg="65" md="10"/>
             
             {/* Navigation Buttons */}
-            <Div className="cs-page_navigation cs-center">
-              <Div>
-                {idx !== 0 && (
-                  <Button 
-                    btnLink={`#project-${spaceProjects[(idx - 1 + spaceProjects.length) % spaceProjects.length].id}`} 
-                    btnText='Previous Project' 
-                    variant='cs-type1'
-                  />
-                )}
-              </Div>
-              <Div>
-                {idx !== spaceProjects.length - 1 && (
-                  <Button 
-                    btnLink={`#project-${spaceProjects[(idx + 1) % spaceProjects.length].id}`} 
-                    btnText='Next Project'
-                  />
-                )}
-              </Div>
-            </Div>
+            <Div className="cs-page_navigation cs-center nav-fix-align">
+  <Div>
+    {idx !== 0 && (
+      <Button 
+        btnLink={`#project-${spaceProjects[(idx - 1 + spaceProjects.length) % spaceProjects.length].id}`} 
+        btnText='Previous Project' 
+        variant='cs-type1'
+      />
+    )}
+  </Div>
+  <Div>
+    {idx !== spaceProjects.length - 1 && (
+      <Button 
+        btnLink={`#project-${spaceProjects[(idx + 1) % spaceProjects.length].id}`} 
+        btnText='Next Project'
+      />
+    )}
+  </Div>
+</Div>
+
           </Div>
         </React.Fragment>
       ))}

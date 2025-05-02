@@ -282,7 +282,7 @@ export default function Header({ variant }) {
                               to="/technology#recycling"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Recycling of CFs
+                              Sustainability And Recycling 
                             </Link>
                           </li>
                         </ul>
@@ -355,14 +355,14 @@ export default function Header({ variant }) {
                               Quantum CFD
                             </Link>
                           </li>
-                          <li>
+                          {/* <li>
                             <Link
                               to="/ai-simulation#new-materials"
                               onClick={() => setMobileToggle(false)}
                             >
                               New Materials
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </DropDown>
                     </li>

@@ -1,0 +1,217 @@
+/* Background container */
+.admin-login-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8F4FA
+
+  ; /* PURE white background */
+  position: fixed; /* Cover the entire screen */
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Stay on top */
+}
+
+/* Card */
+.admin-login-card {
+  background: #ffffff;
+  padding: 50px 40px; /* Increased padding for a slightly larger card */
+  border-radius: 16px;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 450px; /* Increased max width for larger card */
+}
+
+/* Logo */
+.logo-container {
+  text-align: center; /* Center the logo */
+  margin-bottom: 20px;
+}
+
+.logo-image {
+  height: 40px; /* Reduced size of logo */
+  margin: 0 auto; /* Ensure it's centered */
+}
+
+/* Title */
+.admin-login-title {
+  font-size: 28px;
+  color: #0488f2; /* Azure Radiance */
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Form */
+.admin-login-form .form-group {
+  margin-bottom: 20px;
+}
+
+.admin-login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333333;
+  font-weight: 600;
+}
+
+.admin-login-form input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  color: #000000; /* Add this */
+  background-color: #ffffff; /* Ensure background is white */
+}
+
+
+/* Password field with eye icon */
+.password-group {
+  position: relative;
+}
+
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* space for the eye icon */
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Focus state */
+.admin-login-form input:focus {
+  border-color: #0488f2;
+  outline: none;
+}
+
+/* Button */
+.admin-login-button {
+  width: 100%;
+  background-color: #0488f2;
+  color: white;
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-login-button:hover {
+  background-color: #0369c9; /* darker blue on hover */
+}
+
+/* Error message */
+/* Overall Layout */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #0488f2;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar h2 {
+  margin-bottom: 40px;
+  font-size: 24px;
+}
+
+.sidebar button {
+  background-color: white;
+  color: #0488f2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  background-color: #f5f7fa;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* Table Container */
+.table-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-container h2 {
+  margin-bottom: 20px;
+  color: #0488f2;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #0488f2;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Welcome Message */
+.welcome-message {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.welcome-message h2 {
+  color: #0488f2;
+}
+
+.welcome-message p {
+  color: #333;
+  font-size: 18px;
+}

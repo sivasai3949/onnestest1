@@ -90,6 +90,14 @@ const sectionHeadings = [
   "SUSTAINABILITY AND RECYCLING "
 ];
 
+const sectionIds = [
+  "carbon-fiber",
+  "cryogenics",
+  "thermal",
+  "recycling"
+];
+
+
 export default function SpacePortfolio() {
   pageTitle('Space Portfolio');
 
@@ -139,7 +147,7 @@ export default function SpacePortfolio() {
           <Spacing lg="75" md="55" />
 
           {/* Project Details */}
-          <Div className="container" id={`project-${project.id}`}>
+          <Div className="container" id={sectionIds[idx]}>
             <Spacing lg="90" md="40"/>
             <Div className="row">
               <Div className="col-lg-6">

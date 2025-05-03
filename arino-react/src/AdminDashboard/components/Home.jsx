@@ -40,9 +40,9 @@ const HomeDashboard = () => {
     const fetchCounts = async () => {
       try {
         const [contactRes, visitorRes, subRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/admin-contact/count"),
-          axios.get("http://localhost:5000/api/admin-visitors/count"),
-          axios.get("http://localhost:5000/api/admin-subscribe/count"),
+          axios.get("api/admin-contact/count"),
+          axios.get("/api/admin-visitors/count"),
+          axios.get("/api/admin-subscribe/count"),
         ]);
         setCounts({
           contacts: contactRes.data.count || 0,

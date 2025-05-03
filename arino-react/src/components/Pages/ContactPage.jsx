@@ -36,7 +36,7 @@ export default function ContactPage() {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/admin-contact', contactData);
+      await axios.post('/api/admin-contact', contactData);
       setStatus('Message sent successfully!');
       // Clear form
       setFullName('');

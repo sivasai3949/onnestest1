@@ -23,7 +23,7 @@ const VisitorsList = () => {
   useEffect(() => {
     const fetchVisitors = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin-visitors');
+        const res = await axios.get('/api/admin-visitors');
         setVisitors(res.data);
         setFilteredVisitors(res.data);
       } catch (err) {

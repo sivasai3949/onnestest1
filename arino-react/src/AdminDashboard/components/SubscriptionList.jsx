@@ -23,7 +23,7 @@ const SubscriptionList = () => {
   useEffect(() => {
     const fetchSubscriptions = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/admin-subscribe");
+        const res = await axios.get("/api/admin-subscribe");
         setSubscriptions(res.data);
         setFilteredSubscriptions(res.data);
       } catch (err) {

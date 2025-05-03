@@ -16,7 +16,7 @@ export default function Newsletter({ title, subtitle, placeholder }) {
 
     try {
       // Make the API request to save the email
-      const res = await axios.post('http://localhost:5000/api/admin-subscribe', { email });
+      const res = await axios.post('/api/admin-subscribe', { email });
 
       if (res.status === 201) {
         setMessage('Subscription successful!');

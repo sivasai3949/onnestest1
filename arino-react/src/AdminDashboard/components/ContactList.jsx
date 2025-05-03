@@ -21,7 +21,7 @@ const ContactList = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/admin-contact");
+        const res = await axios.get("/api/admin-contact");
         setContacts(res.data);
         setFilteredContacts(res.data);
       } catch (err) {

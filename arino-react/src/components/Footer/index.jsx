@@ -21,23 +21,23 @@ const copyrightLinks = [
 const serviceMenu = [
   {
     title: 'Product Design',
-    href: '/service/service-details',
+    // href: '/service/service-details',
   },
   {
     title: 'Material Simulations',
-    href: '/service/service-details',
+    // href: '/service/service-details',
   },
   {
     title: 'Cryogenic Testing',
-    href: '/service/service-details',
+    // href: '/service/service-details',
   },
   {
     title: 'Assembly',
-    href: '/service/service-details',
+    // href: '/service/service-details',
   },
   {
     title: 'Manufacturing',
-    href: '/service/service-details',
+    // href: '/service/service-details',
   },
 ];
 

@@ -37,26 +37,38 @@ const HomeDashboard = () => {
 
   // Fetch counts from the API
   useEffect(() => {
-    const fetchCounts = async () => {
-      try {
-        const [contactRes, visitorRes, subRes] = await Promise.all([
-          axios.get("api/admin-contact/count"),
-          axios.get("/api/admin-visitors/count"),
-          axios.get("/api/admin-subscribe/count"),
-        ]);
-        setCounts({
-          contacts: contactRes.data.count || 0,
-          visitors: visitorRes.data.count || 0,
-          subscribers: subRes.data.count || 0,
-        });
-        setLoading(false); // Stop loading once data is fetched
-      } catch (err) {
-        console.error("Failed to fetch counts:", err);
-        setLoading(false);
-      }
-    };
+    // Check if counts are already in localStorage
+    const savedCounts = localStorage.getItem("counts");
+    if (savedCounts) {
+      // If counts are found in localStorage, use them
+      setCounts(JSON.parse(savedCounts));
+      setLoading(false);
+    } else {
+      // If not, fetch the counts from the API
+      const fetchCounts = async () => {
+        try {
+          const [contactRes, visitorRes, subRes] = await Promise.all([
+            axios.get("/api/admin-contact/count"),
+            axios.get("/api/admin-visitors/count"),
+            axios.get("/api/admin-subscribe/count"),
+          ]);
+          const newCounts = {
+            contacts: contactRes.data.count || 0,
+            visitors: visitorRes.data.count || 0,
+            subscribers: subRes.data.count || 0,
+          };
 
-    fetchCounts();
+          // Save the fetched counts to localStorage
+          localStorage.setItem("counts", JSON.stringify(newCounts));
+          setCounts(newCounts);
+          setLoading(false); // Stop loading once data is fetched
+        } catch (err) {
+          console.error("Failed to fetch counts:", err);
+          setLoading(false);
+        }
+      };
+      fetchCounts();
+    }
   }, []);
 
   // Format data for charts

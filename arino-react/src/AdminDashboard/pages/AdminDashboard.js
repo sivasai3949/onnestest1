@@ -12,6 +12,7 @@ import {
 import assessalogo from "../../logos/onnes-adminlogo.jpg";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./AdminStyles.css";
 
 export default function AdminDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true);

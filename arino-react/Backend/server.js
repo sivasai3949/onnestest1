@@ -10,8 +10,16 @@ const adminAuthRoutes = require('../Backend/Admin/routes/adminAuthRoutes');
 const subscriptionRoutes = require('../Backend/Admin/routes/subscriptionRoutes'); // New Subscription Routes
 const visitorRoutes = require('../Backend/Admin/routes/VisitorRoute'); // New Visitor Routes
 
+// Load environment variables
 dotenv.config();
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+
+// CORS configuration to allow requests from both testweb.onnes.in and www.testweb.onnes.in
+app.use(cors({
+  origin: ['https://testweb.onnes.in', 'https://www.testweb.onnes.in'],
+  credentials: true
+}));
+
+// Middleware for parsing JSON requests
 app.use(express.json());
 
 // Connect to MongoDB
@@ -22,13 +30,13 @@ mongoose.connect(process.env.MONGO_URI, {
   console.log('MongoDB connected');
 }).catch((err) => console.error('MongoDB connection error:', err));
 
-// API Routes
+// Define API routes
 app.use('/api/admin-contact', contactRoutes);
 app.use('/api/admin', adminAuthRoutes);
-app.use('/api/admin-subscribe', subscriptionRoutes); // Add subscription routes
-app.use('/api/admin-visitors', visitorRoutes); 
+app.use('/api/admin-subscribe', subscriptionRoutes); // Subscription routes
+app.use('/api/admin-visitors', visitorRoutes); // Visitor routes
 
-// Start server
+// Start the server on the specified port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

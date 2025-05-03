@@ -6,6 +6,7 @@ import Div from '../Div';
 import Spacing from '../Spacing';
 import SectionHeading from '../SectionHeading';
 import Button from '../Button';
+import { useLocation } from 'react-router-dom'; // <-- ADD THIS
 
 const funfaceData = [
   { title: 'Global Happy Clients', factNumber: '20' },
@@ -89,24 +90,25 @@ const sectionHeadings = [
   "THERMAL MANAGEMENT",
   "SUSTAINABILITY AND RECYCLING "
 ];
+const sectionIds = [
+  "carbon-fiber",
+  "cryogenics",
+  "thermal",
+  "recycling"
+];
 
 export default function SpacePortfolio() {
+  const location = useLocation(); // <-- ADD THIS
   pageTitle('Space Portfolio');
 
   useEffect(() => {
-    const handleScroll = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
       }
-    };
-    handleScroll();
-    window.addEventListener('hashchange', handleScroll);
-    return () => window.removeEventListener('hashchange', handleScroll);
-  }, []);
+    }
+  }, [location]); // <-- DEPEND ON locatio
 
   return (
     <>
@@ -115,6 +117,7 @@ export default function SpacePortfolio() {
         title="TECHNOLOGY"
         bgSrc="images/about_hero_bg.jpeg"
         pageLinkText="TECHNOLOGY"
+        id="technology"
       />
 
       {/* Project Sections */}
@@ -123,7 +126,10 @@ export default function SpacePortfolio() {
           <Spacing lg="80" md="40" />
           {/* Section Heading */}
           <Div className="container">
-            <h2 className="cs-page_title cs-center cs-font_50 cs-font_30_sm cs-m0">
+            <h2
+              id={sectionIds[idx]} 
+              className="cs-page_title cs-center cs-font_50 cs-font_30_sm cs-m0"
+            >
               {sectionHeadings[idx]}
             </h2>
           </Div>
@@ -139,7 +145,7 @@ export default function SpacePortfolio() {
           <Spacing lg="75" md="55" />
 
           {/* Project Details */}
-          <Div className="container" id={`project-${project.id}`}>
+          <Div className="container">
             <Spacing lg="90" md="40"/>
             <Div className="row">
               <Div className="col-lg-6">

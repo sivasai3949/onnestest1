@@ -246,7 +246,7 @@ export default function Header({ variant }) {
 
                     <li className="menu-item-has-children">
                       <NavLink
-                        to="/technology"
+                        to="/technology#technology"
                         onClick={() => setMobileToggle(false)}
                       >
                         TECHNOLOGY

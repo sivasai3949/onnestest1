@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useLocation, Outlet } from "react-router-dom";
+import { Link, useLocation, Outlet } from "react-router-dom";
 import {
   FaEnvelope,
   FaUserPlus,
@@ -12,12 +12,6 @@ import {
 import assessalogo from "../../logos/onnes-adminlogo.jpg";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import ContactList from '../components/ContactList';
-import SubscriptionList from '../components/SubscriptionList';
-import VisitorsList from '../components/VisitorsList';
-import HomeDashboard from '../components/Home'; // ✅ Dashboard Home
-import PrivateRoute from '../components/PrivateRoute';
 
 export default function AdminDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -39,17 +33,8 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Routes */}
-        <Routes>
-          {/* Wrap all private dashboard routes under PrivateRoute */}
-          <Route path="/" element={<PrivateRoute />}>
-            <Route index element={<HomeDashboard />} />
-            <Route path="admin-home" element={<HomeDashboard />} />
-            <Route path="admin-contact" element={<ContactList />} />
-            <Route path="admin-subscribe" element={<SubscriptionList />} />
-            <Route path="admin-visitors" element={<VisitorsList />} />
-          </Route>
-        </Routes>
+        {/* Outlet for nested routes */}
+        <Outlet />
       </div>
     </div>
   );

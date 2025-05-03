@@ -36,7 +36,11 @@ import UnderwaterPortfolio from './components/Pages/UnderwaterPortfolio';
 // Admin imports
 import AdminLogin from '../src/AdminDashboard/pages/AdminLogin';
 import AdminDashboard from '../src/AdminDashboard/pages/AdminDashboard';
-import PrivateRoute from './AdminDashboard/components/PrivateRoute'; // ✅ Added import
+import PrivateRoute from './AdminDashboard/components/PrivateRoute';
+import HomeDashboard from './AdminDashboard/components/Home';
+import ContactList from './AdminDashboard/components/ContactList';
+import SubscriptionList from './AdminDashboard/components/SubscriptionList';
+import VisitorsList from './AdminDashboard/components/VisitorsList';
 
 function App() {
   return (
@@ -74,8 +78,14 @@ function App() {
 
         {/* Admin Routes */}
         <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/admin-dashboard/*" element={<PrivateRoute />}>
-          <Route path="" element={<AdminDashboard />} />
+        <Route path="/admin-dashboard" element={<PrivateRoute />}>
+          <Route element={<AdminDashboard />}>
+            <Route index element={<HomeDashboard />} />
+            <Route path="admin-home" element={<HomeDashboard />} />
+            <Route path="admin-contact" element={<ContactList />} />
+            <Route path="admin-subscribe" element={<SubscriptionList />} />
+            <Route path="admin-visitors" element={<VisitorsList />} />
+          </Route>
         </Route>
 
         {/* Catch-All Route */}

@@ -17,11 +17,6 @@ router.post('/', async (req, res) => {
   try {
     const { fullName, email, product, mobile, message } = req.body;
 
-    // Validate required fields
-    if (!fullName || !email || !product || !mobile || !message) {
-      return res.status(400).json({ message: "All fields are required." });
-    }
-
     const newContact = new Contact({
       fullName,
       email,
@@ -36,7 +31,6 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: "Error saving contact message.", error });
   }
 });
-
 router.get('/count', async (req, res) => {
   try {
     const count = await Contact.countDocuments();
@@ -47,4 +41,3 @@ router.get('/count', async (req, res) => {
   }
 });
 module.exports = router;
-

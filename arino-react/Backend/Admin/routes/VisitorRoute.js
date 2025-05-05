@@ -1,16 +1,14 @@
-// VisitorRoute.js
 const express = require('express');
 const axios = require('axios');
 const requestIp = require('request-ip');
 const Visitor = require('../models/Visitor');
 const dotenv = require('dotenv');
 
-// Load environment variables
 dotenv.config();
 
 const router = express.Router();
 
-// ✅ Add this GET route
+// ✅ GET all visitors
 router.get('/', async (req, res) => {
   try {
     const visitors = await Visitor.find().sort({ createdAt: -1 });
@@ -20,22 +18,26 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Your existing POST route
+// ✅ Log visitor data
 router.post('/admin-visitor', async (req, res) => {
-  const forwarded = req.headers['x-forwarded-for'];
-  const realIp = forwarded ? forwarded.split(',')[0] : requestIp.getClientIp(req);
-  const clientIp = realIp?.replace('::ffff:', '') || '0.0.0.0';
-
   try {
+    // Trust proxy should be set in main server file
+    let clientIp = req.ip || requestIp.getClientIp(req);
+
+    // Clean up IP (e.g., "::ffff:192.0.2.1" → "192.0.2.1")
+    if (clientIp?.includes('::ffff:')) {
+      clientIp = clientIp.split('::ffff:')[1];
+    }
+
     const response = await axios.get(`https://ipapi.co/${clientIp}/json`);
-    const { city, region, country, postal } = response.data;
+    const { city, region, country_name, postal } = response.data;
 
     const newVisitor = new Visitor({
-      ip: clientIp,
+      ip: clientIp || '0.0.0.0',
       city: city || 'Unknown',
       region: region || 'Unknown',
       postalCode: postal || 'Unknown',
-      country: country || 'Unknown'
+      country: country_name || 'Unknown'  // ✅ Full country name used
     });
 
     await newVisitor.save();
@@ -46,8 +48,7 @@ router.post('/admin-visitor', async (req, res) => {
   }
 });
 
-
-  // Add this route
+// ✅ Count route
 router.get('/count', async (req, res) => {
   try {
     const count = await Visitor.countDocuments();
@@ -58,5 +59,4 @@ router.get('/count', async (req, res) => {
   }
 });
 
-  
-  module.exports = router;
+module.exports = router;

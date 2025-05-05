@@ -5,12 +5,14 @@ import Div from '../Div';
 export default function Newsletter({ title, subtitle, placeholder }) {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
 
     if (!email) {
       setMessage('Please enter a valid email.');
+      setIsSuccess(false);
       return;
     }
 
@@ -20,10 +22,12 @@ export default function Newsletter({ title, subtitle, placeholder }) {
 
       if (res.status === 201) {
         setMessage('Subscription successful!');
+        setIsSuccess(true);
         setEmail(''); // Clear the input field
       }
     } catch (err) {
       setMessage('Error subscribing. Please try again later.');
+      setIsSuccess(false);
       console.error(err);
     }
   };
@@ -46,9 +50,15 @@ export default function Newsletter({ title, subtitle, placeholder }) {
           </button>
         </form>
         <Div className="cs-newsletter_text">{subtitle}</Div>
-        {message && <div className="cs-message">{message}</div>}
+        {message && (
+          <div
+            className="cs-message"
+            style={{ color: isSuccess ? 'blue' : 'red' }}
+          >
+            {message}
+          </div>
+        )}
       </Div>
     </>
   );
 }
-

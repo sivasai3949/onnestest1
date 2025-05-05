@@ -15,15 +15,14 @@ export default function ContactPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Form state
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [product, setProduct] = useState('');
   const [mobile, setMobile] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
+  const [statusType, setStatusType] = useState(''); // success or error
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,7 +37,7 @@ export default function ContactPage() {
     try {
       await axios.post('/api/admin-contact', contactData);
       setStatus('Message sent successfully!');
-      // Clear form
+      setStatusType('success');
       setFullName('');
       setEmail('');
       setProduct('');
@@ -46,7 +45,13 @@ export default function ContactPage() {
       setMessage('');
     } catch (error) {
       setStatus('Error sending message. Please try again.');
+      setStatusType('error');
     }
+
+    setTimeout(() => {
+      setStatus('');
+      setStatusType('');
+    }, 5000);
   };
 
   return (
@@ -114,8 +119,13 @@ export default function ContactPage() {
                   type="text"
                   className="cs-form_field"
                   value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
+                  onChange={(e) => {
+                    const input = e.target.value;
+                    if (/^\d{0,10}$/.test(input)) setMobile(input);
+                  }}
                   required
+                  maxLength="10"
+                  placeholder="Enter 10-digit mobile number"
                 />
                 <Spacing lg="20" md="20" />
               </Div>
@@ -139,7 +149,14 @@ export default function ContactPage() {
               </Div>
               {status && (
                 <Div className="col-sm-12 mt-3">
-                  <p>{status}</p>
+                  <p
+                    className="font-semibold"
+                    style={{
+                      color: statusType === 'success' ? 'blue' : 'red', // Inline styling
+                    }}
+                  >
+                    {status}
+                  </p>
                 </Div>
               )}
             </form>
@@ -147,7 +164,6 @@ export default function ContactPage() {
         </Div>
       </Div>
       <Spacing lg="150" md="80" />
-      {/* Embedded Google Map with T-Hub Location */}
       <div className="cs-google_map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.5387246675623!2d78.3762381736905!3d17.43391080146618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93bd18410b0f%3A0x8d7e3fea891858ce!2sT-Hub!5e0!3m2!1sen!2sin!4v1745926796929!5m2!1sen!2sin"

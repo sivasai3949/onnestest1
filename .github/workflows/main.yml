@@ -1,36 +1,31 @@
-name: 🚀 Frontend Live Deployment
+name: 🚀 Deploy Fullstack App to EC2 via SSH
 
+# 🎯 Trigger this workflow when pushing to the specified branch (e.g., "pipelinetesting")
 on:
   push:
     branches:
-      - 'pipelinetesting'
-    tags:
-      - 'live-deploy'
+      - pipelinetesting  # 🔁 Adjust this to the branch you want to deploy from
 
 jobs:
   deploy:
-    name: 🌍 Deploy to EC2
-    runs-on: ubuntu-latest
+    name: 🌍 Fullstack EC2 Deployment
+    runs-on: ubuntu-latest  # 💻 GitHub runner OS
 
     steps:
-    - name: 📦 Checkout Code
-      uses: actions/checkout@v3
 
-    - name: 🚚 Upload frontend project to EC2 (entire folder)
-      uses: appleboy/scp-action@master
+    # Step 1: 🧰 Setup SSH Agent with your private key from GitHub Secrets
+    - name: 🔐 Setup SSH Agent
+      uses: webfactory/ssh-agent@v0.5.3
       with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        source: "arino-react"
-        target: "/home/ubuntu/onnestest1"
+        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}  # 🗝️ Add this secret in GitHub settings
 
-    - name: 🔐 SSH - Run deploy.sh on EC2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          echo "✅ Running deploy.sh script on EC2..."
-          sudo bash /home/ubuntu/deploy.sh
+    # Step 2: 📦 SSH into EC2 and trigger remote deployment script
+    - name: 🚀 SSH into EC2 and Run deploy.sh
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@testweb.onnes.in << 'EOF'
+          echo "📍 Connected to EC2..."
+          cd /home/ubuntu/skillnaav-fullstack || { echo "❌ Directory not found"; exit 1; }
+
+          echo "🔄 Running deploy.sh with branch pipelinetesting..."
+          ./deploy.sh pipelinetesting  # 🧠 Branch name passed as argument to script
+        EOF

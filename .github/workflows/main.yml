@@ -3,7 +3,7 @@ name: 🚀 Frontend Live Deployment
 on:
   push:
     branches:
-      - '22-04-25'
+      - 'pipelinetesting'
     tags:
       - 'live-deploy'
 

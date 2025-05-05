@@ -13,9 +13,12 @@ const visitorRoutes = require('../Backend/Admin/routes/VisitorRoute'); // New Vi
 // Load environment variables
 dotenv.config();
 
+// Set the trust proxy for production (important for correct IP handling)
+app.set('trust proxy', true); // <-- Add this line here to handle IPs correctly
+
 // CORS configuration to allow requests from both testweb.onnes.in and www.testweb.onnes.in
 app.use(cors({
-  origin: ['https://testweb.onnes.in', 'https://www.testweb.onnes.in'],
+  origin: ['https://testweb.onnes.in', 'http://localhost:3000', 'https://www.testweb.onnes.in'],
   credentials: true
 }));
 

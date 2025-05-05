@@ -22,27 +22,31 @@ router.get('/', async (req, res) => {
 
 // Your existing POST route
 router.post('/admin-visitor', async (req, res) => {
-    const clientIp = requestIp.getClientIp(req);
-  
-    try {
-      const response = await axios.get(`http://ipinfo.io/${clientIp}/json?token=${process.env.IPINFO_API_TOKEN}`);
-      const { city, region, country, postal } = response.data;
-  
-      const newVisitor = new Visitor({
-        ip: clientIp,
-        city,
-        region,
-        postalCode: postal,
-        country
-      });
-  
-      await newVisitor.save();
-      res.status(200).send('Visitor data logged successfully!');
-    } catch (err) {
-      console.error("Error logging visitor:", err);
-      res.status(500).send('Error logging visitor data');
-    }
-  });
+  const forwarded = req.headers['x-forwarded-for'];
+  const realIp = forwarded ? forwarded.split(',')[0] : requestIp.getClientIp(req);
+  const clientIp = realIp?.replace('::ffff:', '') || '0.0.0.0';
+
+  try {
+    const response = await axios.get(`https://ipapi.co/${clientIp}/json`);
+    const { city, region, country, postal } = response.data;
+
+    const newVisitor = new Visitor({
+      ip: clientIp,
+      city: city || 'Unknown',
+      region: region || 'Unknown',
+      postalCode: postal || 'Unknown',
+      country: country || 'Unknown'
+    });
+
+    await newVisitor.save();
+    res.status(200).send('Visitor data logged successfully!');
+  } catch (err) {
+    console.error("Error logging visitor:", err.message);
+    res.status(500).send('Error logging visitor data');
+  }
+});
+
+
   // Add this route
 router.get('/count', async (req, res) => {
   try {

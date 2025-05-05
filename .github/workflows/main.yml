@@ -1,31 +1,27 @@
-name: 🚀 Deploy Fullstack App to EC2 via SSH
+name: Deploy to Server
 
-# 🎯 Trigger this workflow when pushing to the specified branch (e.g., "pipelinetesting")
 on:
   push:
     branches:
-      - pipelinetesting  # 🔁 Adjust this to the branch you want to deploy from
+      - pipelinetesting  # Adjust this branch as necessary
 
 jobs:
   deploy:
-    name: 🌍 Fullstack EC2 Deployment
-    runs-on: ubuntu-latest  # 💻 GitHub runner OS
+    runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    # Step 1: 🧰 Setup SSH Agent with your private key from GitHub Secrets
-    - name: 🔐 Setup SSH Agent
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}  # 🗝️ Add this secret in GitHub settings
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}  # Ensure this matches the secret name
 
-    # Step 2: 📦 SSH into EC2 and trigger remote deployment script
-    - name: 🚀 SSH into EC2 and Run deploy.sh
-      run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@testweb.onnes.in << 'EOF'
-          echo "📍 Connected to EC2..."
-          cd /home/ubuntu/skillnaav-fullstack || { echo "❌ Directory not found"; exit 1; }
-
-          echo "🔄 Running deploy.sh with branch pipelinetesting..."
-          ./deploy.sh pipelinetesting  # 🧠 Branch name passed as argument to script
-        EOF
+      - name: Run deployment script
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@testweb.onnes.in << 'EOF'
+            echo "📍 Connected to EC2..."
+            cd /home/ubuntu || { echo "❌ Directory not found"; exit 1; }
+            ./deploy.sh pipelinetesting   # Pass the branch name directly
+          EOF

@@ -1,27 +1,27 @@
-import { Icon } from '@iconify/react';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { pageTitle } from '../../helper';
-import Div from '../Div';
-import PageHeading from '../PageHeading';
-import SectionHeading from '../SectionHeading';
-import Spacing from '../Spacing';
-import ContactInfoWidget from '../Widget/ContactInfoWidget';
+import { Icon } from "@iconify/react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { pageTitle } from "../../helper";
+import Div from "../Div";
+import PageHeading from "../PageHeading";
+import SectionHeading from "../SectionHeading";
+import Spacing from "../Spacing";
+import ContactInfoWidget from "../Widget/ContactInfoWidget";
 
 export default function ContactPage() {
-  pageTitle('Contact Us');
+  pageTitle("Contact Us");
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [product, setProduct] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('');
-  const [statusType, setStatusType] = useState(''); // success or error
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [product, setProduct] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState(""); // success or error
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,22 +35,22 @@ export default function ContactPage() {
     };
 
     try {
-      await axios.post('/api/admin-contact', contactData);
-      setStatus('Message sent successfully!');
-      setStatusType('success');
-      setFullName('');
-      setEmail('');
-      setProduct('');
-      setMobile('');
-      setMessage('');
+      await axios.post("/api/admin-contact", contactData);
+      setStatus("Message sent successfully!");
+      setStatusType("success");
+      setFullName("");
+      setEmail("");
+      setProduct("");
+      setMobile("");
+      setMessage("");
     } catch (error) {
-      setStatus('Error sending message. Please try again.');
-      setStatusType('error');
+      setStatus("Error sending message. Please try again.");
+      setStatusType("error");
     }
 
     setTimeout(() => {
-      setStatus('');
-      setStatusType('');
+      setStatus("");
+      setStatusType("");
     }, 5000);
   };
 
@@ -105,11 +105,21 @@ export default function ContactPage() {
                   onChange={(e) => setProduct(e.target.value)}
                   required
                 >
-                  <option className="bg-black text-white">Select Project Type</option>
-                  <option className="bg-black text-white hover:bg-blue-500">SPACE</option>
-                  <option className="bg-black text-white hover:bg-blue-500">DEFENCE</option>
-                  <option className="bg-black text-white hover:bg-blue-500">GROUND</option>
-                  <option className="bg-black text-white hover:bg-blue-500">OTHERS</option>
+                  <option className="bg-black text-white">
+                    Select Project Type
+                  </option>
+                  <option className="bg-black text-white hover:bg-blue-500">
+                    SPACE
+                  </option>
+                  <option className="bg-black text-white hover:bg-blue-500">
+                    DEFENCE
+                  </option>
+                  <option className="bg-black text-white hover:bg-blue-500">
+                    GROUND
+                  </option>
+                  <option className="bg-black text-white hover:bg-blue-500">
+                    OTHERS
+                  </option>
                 </select>
                 <Spacing lg="20" md="20" />
               </Div>
@@ -152,7 +162,7 @@ export default function ContactPage() {
                   <p
                     className="font-semibold"
                     style={{
-                      color: statusType === 'success' ? 'blue' : 'red', // Inline styling
+                      color: statusType === "success" ? "#00B5F9ff" : "red", // Inline styling
                     }}
                   >
                     {status}

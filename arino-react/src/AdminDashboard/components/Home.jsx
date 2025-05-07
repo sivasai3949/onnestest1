@@ -42,9 +42,9 @@ const HomeDashboard = () => {
       const fetchCounts = async () => {
         try {
           const [contactRes, visitorRes, subRes] = await Promise.all([
-            axios.get("http://localhost:5000/api/admin-contact/count"),
-            axios.get("http://localhost:5000/api/admin-visitors/count"),
-            axios.get("http://localhost:5000/api/admin-subscribe/count"),
+            axios.get("/api/admin-contact/count"),
+            axios.get("/api/admin-visitors/count"),
+            axios.get("/api/admin-subscribe/count"),
           ]);
           const newCounts = {
             contacts: contactRes.data.count || 0,
@@ -165,7 +165,7 @@ const HomeDashboard = () => {
               }}>
                 {!loading ? (
                   <>
-                    {index === 0 && '$ '}
+                    {/* {index === 0 && '$ '} */}
                     <CountUp 
                       end={item.value} 
                       duration={2.5} 

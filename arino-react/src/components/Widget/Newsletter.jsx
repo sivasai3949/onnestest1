@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Div from '../Div';
+import React, { useState } from "react";
+import axios from "axios";
+import Div from "../Div";
 
 export default function Newsletter({ title, subtitle, placeholder }) {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
 
     if (!email) {
-      setMessage('Please enter a valid email.');
+      setMessage("Please enter a valid email.");
       setIsSuccess(false);
       return;
     }
 
     try {
       // Make the API request to save the email
-      const res = await axios.post('/api/admin-subscribe', { email });
+      const res = await axios.post("/api/admin-subscribe", { email });
 
       if (res.status === 201) {
-        setMessage('Subscription successful!');
+        setMessage("Subscription successful!");
         setIsSuccess(true);
-        setEmail(''); // Clear the input field
+        setEmail(""); // Clear the input field
       }
     } catch (err) {
-      setMessage('Error subscribing. Please try again later.');
+      setMessage("Error subscribing. Please try again later.");
       setIsSuccess(false);
       console.error(err);
     }
@@ -53,7 +53,7 @@ export default function Newsletter({ title, subtitle, placeholder }) {
         {message && (
           <div
             className="cs-message"
-            style={{ color: isSuccess ? 'blue' : 'red' }}
+            style={{ color: isSuccess ? "#00B5F9ff" : "red" }}
           >
             {message}
           </div>

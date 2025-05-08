@@ -1,147 +1,276 @@
 import React, { useEffect } from "react";
 import { pageTitle } from "../../helper";
 import Cta from "../Cta";
-import FunFact from "../FunFact";
 import PageHeading from "../PageHeading";
 import Div from "../Div";
 import Spacing from "../Spacing";
-import "./AboutPage.css";
+import SectionHeading from "../SectionHeading";
+import Button from "../Button";
+import { useLocation } from "react-router-dom";
+import "./AISimulation.css";
 
-const funfaceData = [
-  { title: "Global Happy Clients", factNumber: "20" },
-  { title: "Project Completed", factNumber: "12" },
-  { title: "Team Members", factNumber: "15" },
-  { title: "Spin-off products", factNumber: "50" },
+const spaceProjects = [
+  {
+    id: "1",
+    title: "Cryogenic Fluid Management (CFM)",
+    subtitle: "Deep Space Exploration",
+    img: "/images/cfg.webp",
+    category: "High Pressure Gases",
+    TypeofTanks: "Type-3 and Type-4 tanks",
+    RelevantSegments: "Space, Ground, Defence",
+    OperatingPressures: "Starting from 200 bar onwards",
+    description: (
+      <div className="ai-description">
+        <p className="ai-paragraph">
+          <strong>Cryogenic Fluid Management (CFM)</strong> refers to a suite of technologies 
+          designed to store, transfer, and measure ultra-cold fluids such as liquid hydrogen, 
+          liquid oxygen, and liquid methane. These cryogenic fluids serve as the primary 
+          propellants for space exploration missions, making CFM technologies essential to 
+          future endeavors in both exploration and science.
+        </p>
+        
+        <p className="ai-paragraph">
+          To support its long-term vision for space, deep space exploration requires 
+          high-performance propulsion systems—including chemical, electric, and nuclear options. 
+          Cryogens will play a critical role in these systems, enabling missions ranging from 
+          Earth-to-orbit transportation to deep space exploration.
+        </p>
+        
+        <p className="ai-heading"><strong>CFM integrated tank technologies will be pivotal in supporting:</strong></p>
+        <ul className="vision-list">
+          <li>Human missions to the Moon and Mars</li>
+          <li>Robotic planetary exploration</li>
+          <li>In-situ resource utilization (ISRU) for propellant production</li>
+          <li>The development of surface and in-space refueling depots for cryogenic propellants</li>
+        </ul>
+        
+        <p className="ai-paragraph">
+          Together, these capabilities will ensure the sustainability and efficiency of 
+          future space missions.
+        </p>
+        
+        <p className="ai-paragraph">
+          One of the major challenges in <strong>cryogenic fluid storage</strong> is the continual 
+          loss of cryogens over time, caused by their tendency to <strong>boil off at warmer 
+          temperatures</strong>. To minimize this loss, <strong>multilayer insulation</strong> is 
+          used as a passive control method. While this helps reduce boil-off for short durations, 
+          it is not sufficient for long-term storage.
+        </p>
+        
+        <p className="ai-paragraph">
+          To actively prevent heat from reaching the cryogenic propellants, <strong>cryocoolers</strong> 
+          are employed. These function similarly to refrigerators by removing heat, resulting in 
+          <strong> minimal or zero propellant loss</strong> — a system known as a 
+          <strong> "zero-boiloff system."</strong>
+        </p>
+        
+        <p className="ai-heading"><strong>Zero-boiloff technology offers significant advantages:</strong></p>
+        <ul className="vision-list">
+          <li>Eliminates the need for oversized tanks</li>
+          <li>Reduces the amount of extra propellant required</li>
+          <li>Minimizes launch vehicle mass by decreasing the propellant load</li>
+        </ul>
+        
+        <p className="ai-paragraph">
+          Every kilogram of propellant saved allows for more payload capacity — critical for 
+          deep space missions.
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: "2",
+    title: "Quantum AI CFD Cryogenic Fluid Management",
+    subtitle: "Quantum Computation Fluid Dynamics",
+    img: "/images/quantum-cfd.webp",
+    category: "Cryogenic Liquids (LoX, LH2)",
+    TypeofTanks: "Type 3 and Type 4",
+    RelevantSegments: "Space, Ground, Defence",
+    OperatingPressures: "from 2 bar onwards",
+    client: "SpaceX",
+    description: (
+      <div className="ai-description">
+        <p className="ai-paragraph">
+        Quantum AI Computational Fluid Dynamics play a key role in modelling fluid dynamics, heat transfers and multi physics material phenomena which is critical for the development of tank technologies that contain cryogenic liquids in extreme space conditions. 
+        </p>
+        <strong>Advancing Cryogenic Fluid Management for Future Space Missions</strong>
+        <p className="ai-paragraph">
+        A significant advancement beyond the current state of the art in fluid management is essential to make cryogenic propellants viable for use in high-performance nuclear thermal and chemical propulsion systems. These systems are critical for future long-duration space exploration missions.
+        </p>
+        <p>
+        To achieve this advancement, Onnes is focusing on <strong>Zero Boil-Off (ZBO)</strong> and <strong>Reduced Boil-Off (RBO)</strong> strategies. Unlike current short-duration, gravity-insensitive, passive pressure control systems, ZBO and RBO rely on<strong>active operations</strong> to ensure reliable, cost-effective, and efficient storage and transfer of cryogenic propellants with <strong>minimal fuel loss.
+        </strong>.
+        </p>
+        <p>
+        These advanced strategies involve a <strong>complex combination of dynamic forced mixing and energy removal </strong> in a two-phase, multi-component propellant system. The goal is to control tank temperature and pressure throughout various storage and transfer operations.
+        </p>
+        <p>
+        A future large-scale <strong>Cryogenic Fluid Management (CFM) Demonstration</strong> for in-space refueling will aim to test these operations. These may involve <strong>
+        either segregated or interpenetrated fluid phases,</strong> which can be composed of single or multiple condensable and non-condensable species.
+        </p>
+      </div>
+    ),
+    fullImageCaption:
+      "e) Type-4 and Type-5 composite tanks for space fuels storage (liquid oxygen and liquid hydrogen etc.,)",
+  },
 ];
 
-export default function AboutPage() {
-  // Set page title dynamically
-  pageTitle("AI Simulation | Onnes Cryogenics");
+const sectionHeadings = ["CFM", "QUANTUM CFD"];
+const sectionIds = ["carbon-fiber", "cryogenics"];
+
+export default function AISimulation() {
+  const location = useLocation();
+  pageTitle("AI Simulation");
 
   useEffect(() => {
-    // Function to handle smooth scroll to the section
-    const handleScroll = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
       }
-    };
-
-    // Trigger scroll on initial load
-    handleScroll();
-    
-    // Event listener to handle hash change
-    window.addEventListener("hashchange", handleScroll);
-
-    // Cleanup the event listener
-    return () => {
-      window.removeEventListener("hashchange", handleScroll);
-    };
-  }, []);
+    }
+  }, [location]);
 
   return (
     <>
-      {/* Page Heading */}
       <PageHeading
         title="AI SIMULATION"
         bgSrc="images/about_hero_bg.jpeg"
-        pageLinkText="AI SIMULATION"
+        pageLinkText="AI Simulation"
+        id="technology"
       />
 
-      {/* CFM Section */}
-      <Spacing lg="150" md="80" />
-      <Div className="container" id="cfm">
-        <Div className="row">
-          <Div className="col-xl-5 col-lg-7">
-            <h1>CFM</h1>
-            <Spacing lg="30" md="20" />
-            <p className="cs-m0">
-              AI Simulation CFM is a cutting-edge integration of Artificial
-              Intelligence with Computational Fluid Mechanics. This advanced
-              technology enhances the simulation of fluid flow through
-              data-driven algorithms...
-            </p>
-            <Spacing lg="30" md="30" />
-            <Div className="cs-separator cs-accent_bg" />
-            <Spacing lg="65" md="40" />
+      {spaceProjects.map((project, idx) => (
+        <React.Fragment key={project.id}>
+          <Spacing lg="80" md="40" />
+          <Div className="container">
+            <h2
+              id={sectionIds[idx]}
+              className="cs-page_title cs-center cs-font_50 cs-font_30_sm cs-m0"
+            >
+              {sectionHeadings[idx]}
+            </h2>
           </Div>
-          <Div className="col-lg-5 offset-xl-2 d-flex align-items-center">
+          <Spacing lg="30" md="20" />
+          
+          <Div className="container">
             <img
-              src="https://via.placeholder.com/600x400"
-              alt="About"
-              className="w-100 cs-radius_15"
+              src={project.img}
+              alt={project.title}
+              className="cs-radius_15 w-100"
             />
-            <Spacing lg="25" md="25" />
+            {project.id === "2" && <p className="cs-center mt-2"></p>}
           </Div>
-        </Div>
-      </Div>
-      <Spacing lg="75" md="55" />
 
-      {/* Quantum CFD Section */}
-      <Spacing lg="100" md="80" />
-      <Div className="container" id="quantum-cfd">
-        <Div className="row d-flex align-items-center">
-          <Div className="col-xl-5 col-lg-6">
-            <Div className="cs-image_layer cs-style1">
-              <Div className="cs-image_layer_in">
-                <img
-                  src="https://via.placeholder.com/600x400"
-                  alt="Quantum CFD"
-                  className="w-100 cs-radius_15"
-                />
+          <Spacing lg="75" md="55" />
+
+          <Div className="container">
+            <Spacing lg="90" md="40" />
+            <Div className="row">
+              <Div className="col-lg-6">
+                <SectionHeading title={project.title} subtitle={project.subtitle}>
+                  <Spacing lg="40" md="20" />
+                  {project.description}
+                </SectionHeading>
+              </Div>
+              
+              {/* Right column content */}
+              <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center">
+                {project.id === "1" ? (
+                  // Project 1 content (CFM-b image)
+                  <div className="d-flex flex-column align-items-center">
+                    <img
+                      src="/images/cfm-b.webp"
+                      alt="Tank Technology with MLI"
+                      className="img-fluid cs-radius_15"
+                      style={{ maxHeight: "710px", width: "100%" }}
+                    />
+                    <p className="mt-2 text-center">
+                      b) Tank Technology integrated with Cryogenics Systems with MLI
+                    </p>
+                  </div>
+                ) : (
+                  // Project 2 content (two quantum images side by side)
+                  <div className="d-flex flex-column">
+                    <div className="d-flex flex-row" style={{ gap: "20px" }}>
+                      <div className="flex-grow-1">
+                        <img
+                          src="/images/quantum-1.jpg"
+                          alt="Quantum CFD 1"
+                          className="img-fluid cs-radius_15"
+                          style={{ width: "100%", height: "auto" }}
+                        />
+                      </div>
+                      <div className="flex-grow-1">
+                        <img
+                          src="/images/quantum-2.jpg"
+                          alt="Quantum CFD 2"
+                          className="img-fluid cs-radius_15"
+                          style={{ width: "100%", height: "auto" }}
+                        />
+                      </div>
+                    </div>
+                    <p className="mt-2 text-center">
+                    a)&nbsp;&nbsp;Variation in velocity field in the liquid Hydrogen tank at different (Reference Image) 
+                    </p>
+                  </div>
+                )}
               </Div>
             </Div>
-            <Spacing lg="0" md="40" />
-          </Div>
-          <Div className="col-xl-5 offset-xl-1 col-lg-6">
-            <h2>QUANTUM CFD</h2>
-            <p className="cs-m0">
-              Quantum CFD (Computational Fluid Dynamics) is an emerging field
-              that explores the application of quantum computing to fluid flow
-              simulations...
-            </p>
-            <Spacing lg="30" md="30" />
-            <Div className="cs-separator cs-accent_bg" />
-            <Spacing lg="25" md="0" />
-          </Div>
-        </Div>
-      </Div>
 
-      {/* New Materials Section */}
-      <Spacing lg="150" md="80" />
-      <Div className="container" id="new-materials">
-        <Div className="row d-flex align-items-start">
-          <Div className="col-lg-6" style={{ marginTop: "100px" }}>
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Vision"
-              className="w-100 cs-radius_15"
-            />
-          </Div>
-          <Div className="col-lg-6">
-            <h2>NEW MATERIALS</h2>
-            <Spacing lg="20" md="15" />
-            <p className="cs-m0">
-              Quantum CFD (Computational Fluid Dynamics) is an emerging field
-              that explores the application of quantum computing...
-            </p>
-            <Spacing lg="30" md="30" />
-            <Div className="cs-separator cs-accent_bg" />
-          </Div>
-        </Div>
-      </Div>
+            {/* Additional images for project 1 (only CFM-a remains) */}
+            {project.id === "1" && (
+              <>
+                <Spacing lg="50" md="30" />
+                <div className="container px-3 px-md-5 ">
+                  <div className="mb-4 d-flex flex-column align-items-center ">
+                    <img
+                      src="/images/cfm-a.webp"
+                      alt="Cryogenic Fuels"
+                      className="img-fluid cs-radius_15"
+                      style={{ maxHeight: "400px", width: "80%" }}
+                    />
+                    <p className="mt-2 text-center">
+                      a) Cryogenic Fuels are critical for deep space missions to moon and mars
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
 
-      {/* CTA */}
+            <Spacing lg="65" md="10" />
+            
+            {/* Navigation buttons */}
+            <Div className="cs-page_navigation cs-center nav-fix-align">
+              <Div>
+                {idx !== 0 && (
+                  <Button
+                    btnLink={`#${sectionIds[idx-1]}`}
+                    btnText="Previous Project"
+                    variant="cs-type1"
+                  />
+                )}
+              </Div>
+              <Div>
+                {idx !== spaceProjects.length - 1 && (
+                  <Button
+                    btnLink={`#${sectionIds[idx+1]}`}
+                    btnText="Next Project"
+                  />
+                )}
+              </Div>
+            </Div>
+          </Div>
+        </React.Fragment>
+      ))}
+
       <Spacing lg="150" md="80" />
       <Div className="container">
         <Cta
-          title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
+          title="Let's discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
           btnText="Contact Us"
           btnLink="/contact"
-          bgSrc="https://via.placeholder.com/1200x600"
+          bgSrc="/images/cta_bg.jpeg"
         />
       </Div>
     </>

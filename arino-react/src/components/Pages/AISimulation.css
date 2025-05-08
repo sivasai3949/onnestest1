@@ -1,0 +1,17 @@
+.vision-list li {
+    position: relative;
+    padding-left: 1.5em; /* Make space for the bullet */
+    list-style: none;    /* Remove default bullet */
+  }
+  
+  .vision-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 0.6em;
+    height: 0.6em;
+    background-color: #00b5F9ff; /* Use your desired color */
+    border-radius: 50%;          /* Makes it a circle */
+  }
+  

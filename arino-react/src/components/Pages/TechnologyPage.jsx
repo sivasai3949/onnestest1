@@ -20,7 +20,7 @@ const spaceProjects = [
     id: "1",
     title: "Next Generation Carbon Fiber Pressure Vessel Technology",
     subtitle: "Composite and Polymer Engineering",
-    img: "/images/carbonfibertanks.jpg",
+    img: "/images/carbonfibertanks.webp",
     category: "High Pressure Gases",
     TypeofTanks: "Type-3 and Type-4 tanks ",
     RelevantSegments: "Space, Ground, Defence",
@@ -33,7 +33,7 @@ const spaceProjects = [
     id: "2",
     title: "Fuel Tanks with Cryogenics Systems",
     subtitle: "Deep Space Exploration",
-    img: "/images/Home_8.jpg",
+    img: "/images/Home_8.webp",
     category: "Cryogenic Liquids (LoX, LH2)",
     TypeofTanks: "Type 3 and Type 4 ",
     RelevantSegments: "Space, Ground, Defence",
@@ -50,11 +50,11 @@ const spaceProjects = [
     id: "3",
     title: "Thermal Management",
     subtitle: "Engineered Cryocoolers",
-    img: "/images/thermal_management1.jpg",
-    category: "Propulsion",
-    TypeofTanks: "Low Earth Orbit",
-    RelevantSegments: "MATLAB, COMSOL",
-    OperatingPressures: "05-Mar-2024",
+    img: "/images/thermal_management1.webp",
+    category: "High Pressure Gases",
+    TypeofTanks: "Type-3 and Type-4 tanks",
+    RelevantSegments: "Space, Ground, Defence",
+    OperatingPressures: "From 10 bar onwards",
     client: "SpaceX",
     description: [
       "Cryogenic cooling is considered the ultimate mode of thermal management for electronic systems. Achieved through cryocoolers, these systems are used in specialty electronics such as aerospace, military, space, medical equipment, and high-speed, high-capacity computing.",
@@ -70,11 +70,11 @@ const spaceProjects = [
     id: "4",
     title: "Recyclability of Carbon Fiber Tanks",
     subtitle: "Sustainability and Recycling",
-    img: "/images/Carbon-Fiber-Reinforced-Polymer1.jpg",
-    category: "Propulsion",
-    TypeofTanks: "Low Earth Orbit",
-    RelevantSegments: "MATLAB, COMSOL",
-    OperatingPressures: "05-Mar-2024",
+    img: "/images/Carbon-Fiber-Reinforced-Polymer1.webp",
+    category: "High Pressure Gases",
+    TypeofTanks: "Type-3 and Type-4 tanks",
+    RelevantSegments: "Space, Ground, Defence",
+    OperatingPressures: "From 10 bar onwards",
     client: "SpaceX",
     description: [
       "We are extremely cautious and committed to sustainability and green manufacturing of the tanks and cryogenic systems. Our Type 3 and Type 4 tanks have a significantly reduced environmental impact compared to the manufacturing of traditional Type 1 and Type 2 cylinders.",
@@ -307,7 +307,7 @@ export default function SpacePortfolio() {
                   </Div>
                   {/* Add your image here */}
                   <img
-                    src="/images/thermal_management2.png"
+                    src="/images/thermal_management2.webp"
                     alt="Thermal Management Details"
                     style={{
                       width: "100%",
@@ -387,7 +387,7 @@ export default function SpacePortfolio() {
                     <Div className="col-lg-6 mb-4 d-flex flex-column">
                       <Div className="flex-grow-1 d-flex flex-column">
                         <img
-                          src="/images/Onnes-2L-Type-3.jpeg"
+                          src="/images/Onnes-2L-Type-3.webp"
                           alt="Description 1"
                           className="w-100 cs-radius_15"
                           style={{ objectFit: "cover", height: "700px" }}
@@ -405,7 +405,7 @@ export default function SpacePortfolio() {
                         style={{ flexBasis: "20%" }}
                       >
                         <img
-                          src="/images/Onnes-2L-4sets-Type-3.jpeg"
+                          src="/images/Onnes-2L-4sets-Type-3.webp"
                           alt="Description 2"
                           className="w-100 cs-radius_15"
                           style={{ objectFit: "cover", height: "300px" }}
@@ -421,7 +421,7 @@ export default function SpacePortfolio() {
                         style={{ flexBasis: "25%" }}
                       >
                         <img
-                          src="/images/Onnes-20L-Type-3.jpeg"
+                          src="/images/Onnes-20L-Type-3.webp"
                           alt="Description 3"
                           className="w-100 cs-radius_15"
                           style={{ objectFit: "cover", height: "330px" }}
@@ -439,7 +439,7 @@ export default function SpacePortfolio() {
                 <Spacing lg="50" md="30" />
                 <Div className="container-fluid px-0">
                   <img
-                    src="/images/carbonfibertank2.jpg"
+                    src="/images/carbonfibertank2.webp"
                     alt="Carbon Fiber Tanks"
                     className="w-100  cs-radius_15"
                     style={{ maxHeight: "700px", objectFit: "cover" }}
@@ -489,7 +489,7 @@ export default function SpacePortfolio() {
                       style={{ flex: "0 0 auto", width: "25%" }}
                     >
                       <img
-                        src="/images/Cryocooler-1.png"
+                        src="/images/Cryocooler-1.webp"
                         alt="Stirling Cryocooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "contain" }}
@@ -505,13 +505,13 @@ export default function SpacePortfolio() {
                       style={{ flex: "0 0 auto", width: "25%" }}
                     >
                       <img
-                        src="/images/Cryocooler-2.png"
-                        alt="Gifford-McMahon Cryocooler"
+                        src="/images/Cryocooler-2.webp"
+                        alt="Pulse Tube Crycooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
                       />
                       <p className="cs-center mt-2 cs-m0">
-                        b) Gifford-McMahon Cryocooler
+                        b) Pulse Tube Crycooler
                       </p>
                     </Div>
 
@@ -521,13 +521,13 @@ export default function SpacePortfolio() {
                       style={{ flex: "0 0 auto", width: "25%" }}
                     >
                       <img
-                        src="/images/Cryocooler-3.png"
-                        alt="Joule-Thomson Cryocooler"
+                        src="/images/Cryocooler-3.webp"
+                        alt="JT Cryocooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
                       />
                       <p className="cs-center mt-2 cs-m0">
-                        c) Joule-Thomson Cryocooler
+                        c) JT Cryocooler
                       </p>
                     </Div>
 
@@ -537,13 +537,15 @@ export default function SpacePortfolio() {
                       style={{ flex: "0 0 auto", width: "25%" }}
                     >
                       <img
-                        src="/images/Cryocooler-4.png"
-                        alt="Pulse Tube Cryocooler"
+                        src="/images/Cryocooler-4.webp"
+                        alt="GM Crycooler 
+"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
                       />
                       <p className="cs-center mt-2 cs-m0">
-                        d) Pulse Tube Cryocooler
+                        d) GM Crycooler 
+
                       </p>
                     </Div>
                   </Div>

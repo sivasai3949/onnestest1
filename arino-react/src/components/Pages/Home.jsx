@@ -73,7 +73,7 @@ const portfolioData = [
     title: ' Liquid Space Fuels',
     subtitle: 'See Details',
     href: '/portfolio/portfolio-details',
-    src: '/images/Home_8.jpg',
+    src: '/images/Home_8.webp',
   },
   {
     title: 'Hydrogen Powered Aviation',

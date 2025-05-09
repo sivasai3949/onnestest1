@@ -23,7 +23,7 @@ jobs:
       # Run the deployment script on the EC2 instance
       - name: Run deployment script
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@testweb.onnes.in << 'EOF' 
+          ssh -o StrictHostKeyChecking=no ubuntu@testweb.onnes.in << "EOF" 
              echo "✅ Running deploy.sh script on EC2..." 
-             sudo bash /home/ubuntu/deploy.sh ${GITHUB_REF##*/}  # Pass the branch name as an argument
-          EOF
+             sudo bash /home/ubuntu/deploy.sh ${GITHUB_REF##*/}
+          EOF

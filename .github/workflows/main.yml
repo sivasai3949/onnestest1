@@ -1,41 +1,29 @@
-name: 🚀 Fullstack Live Deployment
+name: Deploy to Server
 
 on:
   push:
     branches:
-      - 'pipelinetesting'   # 🎯 Trigger this when pushing to 'prod-deploy' branch
-    tags:
-      - 'live-deploy'   # 🏷️ Optional: can also trigger via Git tag
+      - admin9changes  # Adjust the branch as necessary 
 
 jobs:
   deploy:
-    name: 🌍 Deploy Fullstack App to EC2
-    runs-on: ubuntu-latest  # 💻 Run on Ubuntu environment
+    runs-on: ubuntu-latest
 
     steps:
-    
-    # Step 1: 🧾 Checkout your GitHub repository code
-    - name: 📦 Checkout Repository
-      uses: actions/checkout@v3
+      # Checkout the code from the GitHub repository
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    # Step 2: 🚚 Upload fullstack project (frontend + backend)
-    - name: 🚚 Upload Fullstack Code to EC2
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}       # 🔐 EC2 IP (from secrets)
-        username: ${{ secrets.EC2_USER }}   # 🔐 e.g., "ubuntu"
-        key: ${{ secrets.EC2_SSH_KEY }}     # 🔐 Private SSH key
-        source: "arino-react"               # 📂 Folder to upload (contains both frontend + backend)
-        target: "/home/ubuntu/onnestest1"   # 📍 Upload location on EC2
+      # Set up SSH for connecting to the EC2 instance
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}  # Ensure this matches the secret name
 
-    # Step 3: 🖥️ SSH into EC2 and run the deployment script
-    - name: 🔐 SSH - Run deploy.sh Script on EC2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          echo "✅ Starting Remote Deployment via deploy.sh..."
-          cd /home/ubuntu || exit 1
-          sudo bash deploy.sh  # Run the deploy script directly
+      # Run the deployment script on the EC2 instance
+      - name: Run deployment script
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@testweb.onnes.in << 'EOF' 
+             echo "✅ Running deploy.sh script on EC2..." 
+             sudo bash /home/ubuntu/deploy.sh ${GITHUB_REF##*/}  # Pass the branch name as an argument
+          EOF

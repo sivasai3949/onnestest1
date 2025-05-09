@@ -116,7 +116,7 @@ const spaceProjects = [
 ];
 
 const sectionHeadings = ["CFM", "QUANTUM CFD"];
-const sectionIds = ["carbon-fiber", "cryogenics"];
+const sectionIds = ["cfm", "quantum-cfd"];
 
 export default function AISimulation() {
   const location = useLocation();
@@ -167,56 +167,83 @@ export default function AISimulation() {
           <Div className="container">
             <Spacing lg="90" md="40" />
             <Div className="row">
-              <Div className="col-lg-6">
-                <SectionHeading title={project.title} subtitle={project.subtitle}>
-                  <Spacing lg="40" md="20" />
-                  {project.description}
-                </SectionHeading>
-              </Div>
-              
-              {/* Right column content */}
-              <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center">
-                {project.id === "1" ? (
-                  // Project 1 content (CFM-b image)
-                  <div className="d-flex flex-column align-items-center">
-                    <img
-                      src="/images/cfm-b.webp"
-                      alt="Tank Technology with MLI"
-                      className="img-fluid cs-radius_15"
-                      style={{ maxHeight: "710px", width: "100%" }}
-                    />
-                    <p className="mt-2 text-center">
-                      b) Tank Technology integrated with Cryogenics Systems with MLI
-                    </p>
-                  </div>
-                ) : (
-                  // Project 2 content (two quantum images side by side)
-                  <div className="d-flex flex-column">
-                    <div className="d-flex flex-row" style={{ gap: "20px" }}>
-                      <div className="flex-grow-1">
-                        <img
-                          src="/images/quantum-1.jpg"
-                          alt="Quantum CFD 1"
-                          className="img-fluid cs-radius_15"
-                          style={{ width: "100%", height: "auto" }}
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <img
-                          src="/images/quantum-2.jpg"
-                          alt="Quantum CFD 2"
-                          className="img-fluid cs-radius_15"
-                          style={{ width: "100%", height: "auto" }}
-                        />
-                      </div>
-                    </div>
-                    <p className="mt-2 text-center">
-                    a)&nbsp;&nbsp;Variation in velocity field in the liquid Hydrogen tank at different (Reference Image) 
-                    </p>
-                  </div>
-                )}
-              </Div>
-            </Div>
+  {project.id === "2" ? (
+    <Div className="col-lg-12">
+      <SectionHeading title={project.title} subtitle={project.subtitle}>
+        <Spacing lg="40" md="20" />
+        {project.description}
+      </SectionHeading>
+
+      {/* Images stacked vertically below the text */}
+      <Spacing lg="40" md="30" />
+      <div className="d-flex flex-column align-items-center">
+  <div className="d-flex flex-row justify-content-center flex-wrap" style={{ gap: "40px", width: "100%" }}>
+    <img
+      src="/images/quantum-1.jpg"
+      alt="Quantum CFD 1"
+      className="img-fluid cs-radius_15"
+      style={{ width: "35%", maxWidth: "400px" }}
+    />
+    <img
+      src="/images/quantum-2.jpg"
+      alt="Quantum CFD 2"
+      className="img-fluid cs-radius_15"
+      style={{ width: "35%", maxWidth: "400px" }}
+    />
+  </div>
+  <p className="mt-2 text-center">
+    a)&nbsp;&nbsp;Variation in velocity field in the liquid Hydrogen tank at different (Reference Image)
+  </p>
+</div>
+<Spacing lg="40" md="30" />
+<div className="container">
+  <p className="ai-heading"><strong>The Cryogenic fluid behavior in space infrastructure systems is governed by:</strong></p>
+  <ul className="vision-list">
+    <li>Complex dynamic interactions between forced mixing and gravity-dependent transport mechanisms in both vapor and liquid phases.</li>
+    <li>Condensation and evaporation processes at the moving and deforming vapor-liquid interfaces.</li>
+    <li>Gas or liquid injection into bulk phases.</li>
+    <li>Boiling, condensation, and cavitation occurring at solid boundaries.</li>
+  </ul>
+
+  <p className="ai-paragraph">
+    These phenomena result in complex, interpenetrating phase distributions that must be accurately captured and understood.
+    Due to the highly intricate physical processes involved, there is an increasing reliance on 
+    <strong> first-principles computational models</strong>. These models are essential to guide and optimize future propellant 
+    tank designs across varying spatial scales, fluid types, and gravitational environments.
+  </p>
+  <p className="ai-paragraph">
+  To address this need, both the space community and ONNES have increasingly leaned toward the use of <strong>industry-standard, multipurpose Computational Fluid Dynamics (CFD) codes</strong> to support and guide the design process.However, the <strong>direct, off-the-shelf application</strong> of these CFD tools to simulate the complex processes involved in <strong>propellant tank pressurization, pressure control, and transfer—particularly under microgravity conditions—has proven challenging.</strong> Therefore more tailored modelling approaches are needed to achieve effective results for storage of cryogens and CFM in space conditions.
+  </p>
+</div>
+
+
+    </Div>
+  ) : (
+    <>
+      <Div className="col-lg-6">
+        <SectionHeading title={project.title} subtitle={project.subtitle}>
+          <Spacing lg="40" md="20" />
+          {project.description}
+        </SectionHeading>
+      </Div>
+
+      <Div className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center">
+        <div className="d-flex flex-column align-items-center">
+          <img
+            src="/images/cfm-b.webp"
+            alt="Tank Technology with MLI"
+            className="img-fluid cs-radius_15"
+            style={{ maxHeight: "500px", width: "80%" }}
+          />
+          <p className="mt-2 text-center">
+            b) Tank Technology integrated with Cryogenics Systems with MLI
+          </p>
+        </div>
+      </Div>
+    </>
+  )}
+</Div>
+
 
             {/* Additional images for project 1 (only CFM-a remains) */}
             {project.id === "1" && (

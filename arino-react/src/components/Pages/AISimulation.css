@@ -14,4 +14,30 @@
     background-color: #00b5F9ff; /* Use your desired color */
     border-radius: 50%;          /* Makes it a circle */
   }
-  
+  .quantum-image-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.image-row img {
+  width: 320px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.image-caption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}

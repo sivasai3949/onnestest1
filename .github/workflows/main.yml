@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - admin9changes  # Adjust the branch as necessary 
+      - admin9changes  # Trigger only on this branch
 
 jobs:
   deploy:
@@ -18,12 +18,12 @@ jobs:
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}  # Ensure this matches the secret name
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
       # Run the deployment script on the EC2 instance
       - name: Run deployment script
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@testweb.onnes.in << "EOF" 
-             echo "✅ Running deploy.sh script on EC2..." 
-             sudo bash /home/ubuntu/deploy.sh ${GITHUB_REF##*/}
-          EOF
+          ssh -o StrictHostKeyChecking=no ubuntu@testweb.onnes.in <<EOF
+            echo "✅ Running deploy.sh script on EC2..." 
+            sudo bash /home/ubuntu/deploy.sh admin9changes
+          EOF

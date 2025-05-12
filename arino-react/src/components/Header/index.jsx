@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import SocialWidget from "../Widget/SocialWidget";
 import Newsletter from "../Widget/Newsletter";
 import "./header.scss";
@@ -7,10 +7,14 @@ import ContactInfoWidget from "../Widget/ContactInfoWidget";
 import Div from "../Div";
 import DropDown from "./DropDown";
 import logos from "../../../src/logos/OnnesLogo.png";
+
 export default function Header({ variant }) {
+  const location = useLocation();
   const [isSticky, setIsSticky] = useState(false);
   const [sideHeaderToggle, setSideHeaderToggle] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
+
+  // Sticky header effect
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
@@ -20,6 +24,25 @@ export default function Header({ variant }) {
       }
     });
   }, []);
+
+  // 👇 Scroll to sections on /technology?focus=space
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const focus = params.get("focus");
+
+    if (location.pathname === "/technology" && focus === "space") {
+      const scrollTo = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+
+      // Scroll to cryogenics first, then thermal
+      scrollTo("cryogenics");
+      setTimeout(() => scrollTo("thermal"), 600);
+    }
+  }, [location]);
 
   return (
     <>
@@ -46,103 +69,7 @@ export default function Header({ variant }) {
                       <NavLink to="/" onClick={() => setMobileToggle(false)}>
                         Home
                       </NavLink>
-                      {/* <DropDown>
-                        <ul>
-                          <li>
-                            <Link to="/" onClick={() => setMobileToggle(false)}>
-                              Main Home
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="photography-agency"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Photography Agency
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="creative-portfolio"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Creative Portfolio
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="digital-agency"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Digital Agency
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="marketing-agency"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Marketing Agency
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="freelancer-agency"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Freelancer Agency
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="architecture-agency"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Architecture Agency
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="creative-solution"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Creative Solution
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="personal-portfolio"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Personal Portfolio
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="showcase-portfolio"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Showcase Portfolio
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="case-study-showcase"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Case Study Showcase
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="video-showcase"
-                              onClick={() => setMobileToggle(false)}
-                            >
-                              Video Showcase
-                            </Link>
-                          </li>
-                        </ul>
-                      </DropDown> */}
+
                     </li>
                     <li className="menu-item-has-children">
                       <NavLink
@@ -290,18 +217,18 @@ export default function Header({ variant }) {
                     </li>
 
                     <li className="menu-item-has-children">
-                      <NavLink to="/portfolio" onClick={() => setMobileToggle(false)}>
+                      <NavLink to="" onClick={() => setMobileToggle(false)}>
                         Portfolio
                       </NavLink>
                       <DropDown>
                         <ul>
                           <li>
-                            <Link
+                            {/* <Link
                               to="portfolio"
                               onClick={() => setMobileToggle(false)}
                             >
                               Product Portfolio
-                            </Link>
+                            </Link> */}
                           </li>
                           <li>
                             <Link

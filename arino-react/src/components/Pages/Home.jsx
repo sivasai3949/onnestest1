@@ -64,43 +64,43 @@ const funfaceData = [
 ];
 const portfolioData = [
   {
-    title: ' Deep Space Exploration',
+    title: 'Deep Space Exploration',
     subtitle: 'See Details',
-    href: '/portfolio/portfolio-details',
+    href: '/spaceportfolio',
     src: '/images/deepspace.png',
   },
   {
-    title: ' Liquid Space Fuels',
+    title: 'Liquid Space Fuels',
     subtitle: 'See Details',
-    href: '/portfolio/portfolio-details',
+    href: '/spaceportfolio',
     src: '/images/Home_8.webp',
   },
   {
     title: 'Hydrogen Powered Aviation',
     subtitle: 'See Details',
-    href: '/portfolio/portfolio-details',
+    href: '/spaceportfolio',
     src: '/images/hydrogenpoweredaviation.jpg',
   },
   {
     title: 'Green Shipping Oceans',
     subtitle: 'See Details',
-    href: '/portfolio/portfolio-details',
+    href: '/underwater-portfolio',
     src: '/images/greenshippingoceans.png',
   },
   {
     title: 'Hydrogen Storage',
     subtitle: 'See Details',
-    href: '/portfolio/portfolio-details',
+    href: '/ground-storage',
     src: '/images/hydrogenstorage.png',
   },
   {
     title: 'Green CBG Storage',
     subtitle: 'See Details',
-    href: '/portfolio/portfolio-details',
+    href: '/ground-storage',
     src: '/images/greenstorage.png',
   },
-
 ];
+
 
 export default function Home() {
   pageTitle("Home");
@@ -187,31 +187,31 @@ export default function Home() {
         <Div className="onnes-card-grid">
           <Card
             title="Product Design"
-            link="/service/service-details"
+            // link="/service/service-details"
             src="/images/productdesign.jpg"
             alt="Service"
           />
           <Card
             title="Material Simulations"
-            link="/service/service-details"
+            // link="/service/service-details"
             src="/images/materialsimulation.jpg"
             alt="Service"
           />
           <Card
             title="Cryogenic Testing"
-            link="/service/service-details"
+            // link="/service/service-details"
             src="/images/cryogenictesting.jpg"
             alt="Service"
           />
           <Card
             title="Assembly"
-            link="/service/service-details"
+            // link="/service/service-details"
             src="/images/assembly.jpg"
             alt="Service"
           />
           <Card
             title="Manufacturing"
-            link="/service/service-details"
+            // link="/service/service-details"
             src="/images/manufacturing.jpg"
             alt="Service"
           />

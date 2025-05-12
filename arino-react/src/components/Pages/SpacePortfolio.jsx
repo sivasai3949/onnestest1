@@ -1,4 +1,4 @@
- import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { pageTitle } from "../../helper";
 import Cta from "../Cta";
 import PageHeading from "../PageHeading";
@@ -6,7 +6,7 @@ import Div from "../Div";
 import Spacing from "../Spacing";
 import SectionHeading from "../SectionHeading";
 import Button from "../Button";
-import { useLocation } from "react-router-dom"; // <-- ADD THIS
+import { useLocation } from "react-router-dom";
 
 const funfaceData = [
   { title: "Global Happy Clients", factNumber: "20" },
@@ -16,19 +16,6 @@ const funfaceData = [
 ];
 
 const spaceProjects = [
-  // {
-  //   id: "1",
-  //   title: "Next Generation Carbon Fiber Pressure Vessel Technology",
-  //   subtitle: "Composite and Polymer Engineering",
-  //   img: "/images/carbonfibertanks.webp",
-  //   category: "High Pressure Gases",
-  //   TypeofTanks: "Type-3 and Type-4 tanks ",
-  //   RelevantSegments: "Space, Ground, Defence",
-  //   OperatingPressures: "Starting from 200 bar onwards",
-  //   description: [
-  //     "Carbon Fibre Reinforced Plastic (CFRP) tanks represent a cutting-edge solution for gas and cryogens storage, addressing crucial challenges in the clean energy sector. These cylinders are engineered with lightweight, high-strength carbon fibre materials, making them exceptionally durable and efficient. Their unique design, with continuous filament winding blended with resins and nanofillers, ensures superior structural integrity, enabling them to withstand extreme pressures and harsh environments. The key advantage of carbon fibre filament-wound cylinders lies in their ability to store hydrogen at high pressures, maximizing storage capacity while minimizing weight. This makes them ideal for various applications, including fuel cell vehicles and renewable energy storage systems. By enabling safe and efficient hydrogen storage, these cylinders play a pivotal role in advancing the use of hydrogen as a clean, sustainable energy source, contributing to a greener future.",
-  //   ],
-  // },
   {
     id: "2",
     title: "Fuel Tanks with Cryogenics Systems",
@@ -65,36 +52,41 @@ const spaceProjects = [
       "Cryogenic refrigeration is achieved through different types of cryocoolers. Depending on the end application, cryocoolers are classified as Stirling, Gifford-McMahon (G-M), Joule-Thomson (J-T) and Pulse Tube Cryocoolers. Onnes constantly innovates to push the technological limits of cryocoolers to make them suited for the macroscopic and miniature applications on ground, space and water by integrating them into our composite tank technology. ",
     ],
   },
-
-  // {
-  //   id: "4",
-  //   title: "Recyclability of Carbon Fiber Tanks",
-  //   subtitle: "Sustainability and Recycling",
-  //   img: "/images/Carbon-Fiber-Reinforced-Polymer1.webp",
-  //   category: "High Pressure Gases",
-  //   TypeofTanks: "Type-3 and Type-4 tanks",
-  //   RelevantSegments: "Space, Ground, Defence",
-  //   OperatingPressures: "From 10 bar onwards",
-  //   client: "SpaceX",
-  //   description: [
-  //     "We are extremely cautious and committed to sustainability and green manufacturing of the tanks and cryogenic systems. Our Type 3 and Type 4 tanks have a significantly reduced environmental impact compared to the manufacturing of traditional Type 1 and Type 2 cylinders.",
-  //     "The fully recyclable materials used in the tanks' manufacturing and the composite tanks' exceptional lightness reduce CO2 emissions during mobility applications and play a significant role in the storage and transportation of sustainable gases, liquids, and cryogens for space, aviation, and underwater applications.",
-  //     "Onnes Cryogenics' commitment to sustainability is reflected at every stage of the tank and cryogenic systems manufacturing process from the choice of materials to product design—promoting a greener future for the planet and the cosmos.",
-  //     "The weight reduction of the tanks directly translates to optimization of transport loads, improving logistics efficiency and reducing fuel consumption.",
-  //   ],
-  // },
+  {
+    id: "1",
+    title: "Next Generation Carbon Fiber Pressure Vessel Technology",
+    subtitle: "Composite and Polymer Engineering",
+    img: "/images/carbonfibertanks.webp",
+    category: "High Pressure Gases",
+    TypeofTanks: "Type-3 and Type-4 tanks ",
+    RelevantSegments: "Space, Ground, Defence",
+    OperatingPressures: "Starting from 200 bar onwards",
+    description: [
+      "Carbon Fibre Reinforced Plastic (CFRP) tanks represent a cutting-edge solution for gas and cryogens storage, addressing crucial challenges in the clean energy sector. These cylinders are engineered with lightweight, high-strength carbon fibre materials, making them exceptionally durable and efficient. Their unique design, with continuous filament winding blended with resins and nanofillers, ensures superior structural integrity, enabling them to withstand extreme pressures and harsh environments. The key advantage of carbon fibre filament-wound cylinders lies in their ability to store hydrogen at high pressures, maximizing storage capacity while minimizing weight. This makes them ideal for various applications, including fuel cell vehicles and renewable energy storage systems. By enabling safe and efficient hydrogen storage, these cylinders play a pivotal role in advancing the use of hydrogen as a clean, sustainable energy source, contributing to a greener future.",
+    ],
+  },
 ];
+
+const underwaterProject = {
+  id: "4",
+  title: "Tank Integrated Systems Underwater",
+  subtitle: "Cryogenics for Ocean Tech",
+  img: "/images/underwater1.webp",
+  category: "Gases, Cryogens",
+  TypeofTanks: "Type-3 and Type-4 tanks",
+  RelevantSegments: "Underwater Storage & Transportation",
+  OperatingPressures: "Customized to the need",
+};
 
 const sectionHeadings = [
-  // "CARBON FIBER TANKS",
   "CRYOGENICS SYSTEMS",
   "THERMAL MANAGEMENT",
-  // "SUSTAINABILITY AND RECYCLING ",
+  "CARBON FIBER TANKS",
 ];
-const sectionIds = ["carbon-fiber", "cryogenics", "thermal", "recycling"];
+const sectionIds = ["cryogenics", "thermal", "carbon-fiber"];
 
 export default function SpacePortfolio() {
-  const location = useLocation(); // <-- ADD THIS
+  const location = useLocation();
   pageTitle("Space Portfolio");
 
   useEffect(() => {
@@ -104,11 +96,10 @@ export default function SpacePortfolio() {
         el.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }, [location]); // <-- DEPEND ON locatio
+  }, [location]);
 
   return (
     <>
-      {/* Page Heading Section */}
       <PageHeading
         title="SPACE-AEROSPACE-DEFENCE"
         bgSrc="images/about_hero_bg.jpeg"
@@ -116,7 +107,6 @@ export default function SpacePortfolio() {
         id="technology"
       />
 
-      {/* Project Sections */}
       {spaceProjects.map((project, idx) => (
         <React.Fragment key={project.id}>
           <Spacing lg="80" md="40" />
@@ -141,8 +131,8 @@ export default function SpacePortfolio() {
             {/* Show caption only for the Cryogenics Systems project (id === "2") */}
             {project.id === "2" && (
               <p className="cs-center mt-2">
-                e)&nbsp;&nbsp;Type-4 and Type-5 composite tanks for space fuels storage
-                (liquid oxygen and liquid hydrogen etc.,)
+                e)&nbsp;&nbsp;Type-4 and Type-5 composite tanks for space fuels
+                storage (liquid oxygen and liquid hydrogen etc.,)
               </p>
             )}
           </Div>
@@ -317,23 +307,23 @@ export default function SpacePortfolio() {
                     }}
                   />
                 </Div>
-              ) : project.id === "4" ? (
-                <Div
-                  className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center align-items-center"
-                  style={{ paddingTop: "100px" }}
-                >
-                  <img
-                    src="/images/recycling_tech_speci.png"
-                    alt="Recycling Technology Specifications"
-                    className="cs-radius_15"
-                    style={{
-                      width: "100%",
-                      maxWidth: "500px",
-                      objectFit: "contain",
-                    }}
-                  />
-                </Div>
               ) : (
+                // ) : project.id === "4" ? (
+                //   <Div
+                //     className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center align-items-center"
+                //     style={{ paddingTop: "100px" }}
+                //   >
+                //     <img
+                //       src="/images/recycling_tech_speci.png"
+                //       alt="Recycling Technology Specifications"
+                //       className="cs-radius_15"
+                //       style={{
+                //         width: "100%",
+                //         maxWidth: "500px",
+                //         objectFit: "contain",
+                //       }}
+                //     />
+                //   </Div>
                 <Div
                   className="col-lg-5 offset-lg-1 d-flex flex-column justify-content-center"
                   style={{ paddingTop: "140px" }}
@@ -526,9 +516,7 @@ export default function SpacePortfolio() {
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
                       />
-                      <p className="cs-center mt-2 cs-m0">
-                        c) JT Cryocooler
-                      </p>
+                      <p className="cs-center mt-2 cs-m0">c) JT Cryocooler</p>
                     </Div>
 
                     {/* Image 4 */}
@@ -538,15 +526,11 @@ export default function SpacePortfolio() {
                     >
                       <img
                         src="/images/Cryocooler-4.webp"
-                        alt="GM Crycooler 
-"
+                        alt="GM Crycooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
                       />
-                      <p className="cs-center mt-2 cs-m0">
-                        d) GM Crycooler 
-
-                      </p>
+                      <p className="cs-center mt-2 cs-m0">d) GM Crycooler</p>
                     </Div>
                   </Div>
                 </Div>
@@ -584,7 +568,180 @@ export default function SpacePortfolio() {
         </React.Fragment>
       ))}
 
-      {/* CTA Section */}
+      {/* Underwater Portfolio Section */}
+      <Spacing lg="80" md="40" />
+      <Div className="container text-center" id="underwater">
+        <h2 className="text-3xl font-bold mb-6">UNDER WATER APPLICATIONS</h2>
+        <img
+          src={underwaterProject.img}
+          alt={underwaterProject.title}
+          className="cs-radius_15 w-100"
+        />
+      </Div>
+      <Spacing lg="75" md="55" />
+      <Div className="container">
+        <Spacing lg="90" md="40" />
+        <Div className="row">
+          <Div className="col-lg-6">
+            <SectionHeading
+              title={underwaterProject.title}
+              subtitle={underwaterProject.subtitle}
+            >
+              <Spacing lg="40" md="20" />
+              <div className="underwater-description">
+                <p>
+                  <strong>
+                    The Critical Role of Carbon Fiber Pressure Vessels in
+                    High-Endurance Underwater Autonomous Vehicles.
+                  </strong>
+                </p>
+                <p>
+                  Carbon fiber pressure vessels are revolutionizing the design
+                  and operational efficiency of high-endurance autonomous
+                  underwater vehicles (AUVs). These vessels serve as integral
+                  components, significantly enhancing performance through
+                  several key advantages:
+                </p>
+                <p>
+                  <strong>Lightweight Structural Integrity</strong>
+                </p>
+                <ul>
+                  <li>
+                    <strong>Low Weight-to-Strength Ratio:</strong> Carbon fiber
+                    composites offer exceptional mechanical strength while being
+                    substantially lighter than traditional materials such as
+                    titanium or steel. This directly translates to extended
+                    mission durations due to reduced energy consumption and
+                    increased payload capacity.
+                  </li>
+                  <li>
+                    <strong>Improved Buoyancy Control:</strong> The low density
+                    of carbon fiber allows better buoyancy balance, minimizing
+                    the need for additional ballast or compensatory mechanisms.
+                  </li>
+                </ul>
+                <p>
+                  <strong>Efficient Storage of High-Pressure Gases</strong>
+                </p>
+                <ul>
+                  <li>
+                    <strong>Compressed Gas Storage:</strong> Carbon fiber
+                    vessels are ideal for storing high-pressure gases (e.g.,
+                    oxygen, helium, or compressed air) critical for life support
+                    systems or buoyancy control. Their high tensile strength
+                    ensures safety and reliability at great depths.
+                  </li>
+                  <li>
+                    <strong>Structural Resilience:</strong> These vessels
+                    maintain integrity under cyclic pressure loading, common in
+                    deep-sea operations.
+                  </li>
+                </ul>
+              </div>
+            </SectionHeading>
+          </Div>
+          <Div className="col-lg-5 offset-lg-1">
+            <Spacing lg="60" md="40" />
+            <h2 className="cs-font_30 cs-font_26_sm cs-m0">
+              Project Specifications
+            </h2>
+            <Spacing lg="50" md="30" />
+            <Div className="row">
+              <Div className="col-6">
+                <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">
+                  Category:
+                </h3>
+                <p className="cs-m0">{underwaterProject.category}</p>
+                <Spacing lg="30" md="30" />
+              </Div>
+              <Div className="col-6">
+                <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">
+                  Type of Tanks:
+                </h3>
+                <p className="cs-m0">{underwaterProject.TypeofTanks}</p>
+                <Spacing lg="30" md="30" />
+              </Div>
+              <Div className="col-6">
+                <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">
+                  Relevant Segments:
+                </h3>
+                <p className="cs-m0">{underwaterProject.RelevantSegments}</p>
+                <Spacing lg="30" md="30" />
+              </Div>
+              <Div className="col-6">
+                <h3 className="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">
+                  Operating Pressures:
+                </h3>
+                <p className="cs-m0">{underwaterProject.OperatingPressures}</p>
+                <Spacing lg="30" md="30" />
+              </Div>
+            </Div>
+          </Div>
+        </Div>
+      </Div>
+
+      <Spacing lg="80" md="40" />
+      <Div className="container text-center">
+        <img
+          src="/images/underwater2.webp"
+          alt="Underwater Tank"
+          className="cs-radius_15"
+          style={{ width: "540px", height: "360px", objectFit: "contain" }}
+        />
+        <div style={{ fontSize: "12px", marginTop: "10px" }}>
+          <p>
+            a) Tank Integrated Cryogenic Systems Play an Integral Role in AUV’s
+          </p>
+        </div>
+      </Div>
+
+      <Spacing lg="90" md="40" />
+      <Div className="container">
+        <SectionHeading title="" subtitle="Cryogenic Liquid Compatibility">
+          <div className="underwater-description">
+            <ul>
+              <li>
+                <strong>Insulated Storage:</strong> Carbon fiber composites are
+                compatible with the storage of cryogenic liquids (e.g., liquid
+                oxygen or liquid hydrogen), thanks to their thermal insulation
+                properties and resistance to extreme cold.
+              </li>
+              <li>
+                <strong>Minimal Boil-Off Loss:</strong> Superior insulation
+                reduces thermal ingress, minimizing boil-off and preserving
+                energy density for longer missions.
+              </li>
+            </ul>
+            <p>
+              <strong>Superior Thermal Management</strong>
+            </p>
+            <ul>
+              <li>
+                <strong>Thermal Stability:</strong> Carbon fiber materials
+                exhibit low thermal conductivity, helping to insulate sensitive
+                internal components from external temperature gradients.
+              </li>
+              <li>
+                <strong>Reduced Thermal Expansion:</strong> The dimensional
+                stability of carbon fiber prevents micro-leaks or deformations,
+                crucial for maintaining pressure integrity in variable thermal
+                environments.
+              </li>
+            </ul>
+            <p>
+              Carbon fiber pressure vessels are pivotal in enabling the next
+              generation of underwater autonomous systems, allowing longer
+              missions, deeper dives, and more robust performance. Their
+              unmatched combination of light weight, high-pressure tolerance,
+              and efficient thermal properties positions them as a core enabler
+              of advanced maritime robotics and surveillance platforms.
+            </p>
+          </div>
+        </SectionHeading>
+      </Div>
+      
+      
+
       <Spacing lg="150" md="80" />
       <Div className="container">
         <Cta
@@ -594,6 +751,28 @@ export default function SpacePortfolio() {
           bgSrc="/images/cta_bg.jpeg"
         />
       </Div>
+
+      <style jsx>{`
+        .underwater-description ul {
+          list-style: none;
+          padding-left: 1.2em;
+        }
+        .underwater-description ul li {
+          position: relative;
+          padding-left: 1.5em;
+          margin-bottom: 0.8em;
+        }
+        .underwater-description ul li::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0.6em;
+          width: 0.6em;
+          height: 0.6em;
+          background-color: #00b5f9;
+          border-radius: 50%;
+        }
+      `}</style>
     </>
   );
 }

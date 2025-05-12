@@ -217,7 +217,7 @@ export default function Header({ variant }) {
                     </li>
 
                     <li className="menu-item-has-children">
-                      <NavLink to="" onClick={() => setMobileToggle(false)}>
+                      <NavLink to="spaceportfolio" onClick={() => setMobileToggle(false)}>
                         Portfolio
                       </NavLink>
                       <DropDown>
@@ -232,7 +232,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="spaceportfolio"
+                              to="spaceportfolio#cryogenics"
                               onClick={() => setMobileToggle(false)}
                             >
                               Space - Aerospace - Defence
@@ -240,7 +240,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="ground-storage"
+                              to="spaceportfolio#carbon-fiber"
                               onClick={() => setMobileToggle(false)}
                             >
                               Ground Based Storage
@@ -248,7 +248,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="underwater-portfolio"
+                              to="spaceportfolio#underwater"
                               onClick={() => setMobileToggle(false)}
                             >
                               Under Water Applications

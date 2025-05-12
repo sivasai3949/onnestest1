@@ -66,37 +66,37 @@ const portfolioData = [
   {
     title: 'Deep Space Exploration',
     subtitle: 'See Details',
-    href: '/spaceportfolio',
+    href: '/spaceportfolio#cryogenics',
     src: '/images/deepspace.png',
   },
   {
     title: 'Liquid Space Fuels',
     subtitle: 'See Details',
-    href: '/spaceportfolio',
+    href: '/spaceportfolio#cryogenics',
     src: '/images/Home_8.webp',
   },
   {
     title: 'Hydrogen Powered Aviation',
     subtitle: 'See Details',
-    href: '/spaceportfolio',
+    href: '/spaceportfolio#cryogenics',
     src: '/images/hydrogenpoweredaviation.jpg',
   },
   {
     title: 'Green Shipping Oceans',
     subtitle: 'See Details',
-    href: '/underwater-portfolio',
+    href: 'spaceportfolio#underwater',
     src: '/images/greenshippingoceans.png',
   },
   {
     title: 'Hydrogen Storage',
     subtitle: 'See Details',
-    href: '/ground-storage',
+    href: 'spaceportfolio#carbon-fiber',
     src: '/images/hydrogenstorage.png',
   },
   {
     title: 'Green CBG Storage',
     subtitle: 'See Details',
-    href: '/ground-storage',
+    href: 'spaceportfolio#carbon-fiber',
     src: '/images/greenstorage.png',
   },
 ];

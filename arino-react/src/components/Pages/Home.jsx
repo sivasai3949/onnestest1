@@ -84,19 +84,19 @@ const portfolioData = [
   {
     title: 'Green Shipping Oceans',
     subtitle: 'See Details',
-    href: 'spaceportfolio#underwater',
+    href: '/spaceportfolio#underwater',
     src: '/images/greenshippingoceans.png',
   },
   {
     title: 'Hydrogen Storage',
     subtitle: 'See Details',
-    href: 'spaceportfolio#carbon-fiber',
+    href: '/spaceportfolio#carbon-fiber',
     src: '/images/hydrogenstorage.png',
   },
   {
     title: 'Green CBG Storage',
     subtitle: 'See Details',
-    href: 'spaceportfolio#carbon-fiber',
+    href: '/spaceportfolio#carbon-fiber',
     src: '/images/greenstorage.png',
   },
 ];

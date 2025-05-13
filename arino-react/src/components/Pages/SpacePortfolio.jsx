@@ -549,7 +549,8 @@ export default function SpacePortfolio() {
                       ].id
                     }`}
                     btnText="Previous Project"
-                    variant="cs-type1"
+                    iconPosition="left"
+                    variant="cs-left"
                   />
                 )}
               </Div>
@@ -688,11 +689,10 @@ export default function SpacePortfolio() {
           className="cs-radius_15"
           style={{ width: "540px", height: "360px", objectFit: "contain" }}
         />
-        <div style={{ fontSize: "12px", marginTop: "10px" }}>
-          <p>
-            a) Tank Integrated Cryogenic Systems Play an Integral Role in AUV’s
-          </p>
-        </div>
+        <p className="cs-center mt-2">
+          a)&nbsp;&nbsp;Tank Integrated Cryogenic Systems Play an Integral Role
+          in AUV’s and Cryogenic Storage
+        </p>
       </Div>
 
       <Spacing lg="90" md="40" />
@@ -739,8 +739,6 @@ export default function SpacePortfolio() {
           </div>
         </SectionHeading>
       </Div>
-      
-      
 
       <Spacing lg="150" md="80" />
       <Div className="container">

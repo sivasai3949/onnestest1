@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { pageTitle } from "../../helper";
 import Div from "../Div";
@@ -11,9 +12,18 @@ import ContactInfoWidget from "../Widget/ContactInfoWidget";
 export default function ContactPage() {
   pageTitle("Contact Us");
 
+  const formRef = useRef(null);
+  const location = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    // Scroll to contact form if URL contains #contact-form
+    if (location.hash === "#contact-form" && formRef.current) {
+      setTimeout(() => {
+        formRef.current.scrollIntoView({ behavior: "smooth" });
+      }, 100); // slight delay to ensure DOM is ready
+    }
+  }, [location]);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -74,7 +84,12 @@ export default function ContactPage() {
             <Spacing lg="0" md="50" />
           </Div>
           <Div className="col-lg-6">
-            <form onSubmit={handleSubmit} className="row">
+            <form
+              id="contact-form"
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="row"
+            >
               <Div className="col-sm-6">
                 <label className="cs-primary_color">Full Name*</label>
                 <input
@@ -162,7 +177,7 @@ export default function ContactPage() {
                   <p
                     className="font-semibold"
                     style={{
-                      color: statusType === "success" ? "#00B5F9ff" : "red", // Inline styling
+                      color: statusType === "success" ? "#00B5F9ff" : "red",
                     }}
                   >
                     {status}

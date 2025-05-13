@@ -1,4 +1,4 @@
- import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { pageTitle } from "../../helper";
 import Cta from "../Cta";
 import PageHeading from "../PageHeading";
@@ -7,6 +7,7 @@ import Spacing from "../Spacing";
 import SectionHeading from "../SectionHeading";
 import Button from "../Button";
 import { useLocation } from "react-router-dom"; // <-- ADD THIS
+import { Icon } from "@iconify/react";
 
 const funfaceData = [
   { title: "Global Happy Clients", factNumber: "20" },
@@ -141,8 +142,8 @@ export default function SpacePortfolio() {
             {/* Show caption only for the Cryogenics Systems project (id === "2") */}
             {project.id === "2" && (
               <p className="cs-center mt-2">
-                e)&nbsp;&nbsp;Type-4 and Type-5 composite tanks for space fuels storage
-                (liquid oxygen and liquid hydrogen etc.,)
+                e)&nbsp;&nbsp;Type-4 and Type-5 composite tanks for space fuels
+                storage (liquid oxygen and liquid hydrogen etc.,)
               </p>
             )}
           </Div>
@@ -526,9 +527,7 @@ export default function SpacePortfolio() {
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
                       />
-                      <p className="cs-center mt-2 cs-m0">
-                        c) JT Cryocooler
-                      </p>
+                      <p className="cs-center mt-2 cs-m0">c) JT Cryocooler</p>
                     </Div>
 
                     {/* Image 4 */}
@@ -538,15 +537,11 @@ export default function SpacePortfolio() {
                     >
                       <img
                         src="/images/Cryocooler-4.webp"
-                        alt="GM Crycooler 
-"
+                        alt="GM Crycooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
                       />
-                      <p className="cs-center mt-2 cs-m0">
-                        d) GM Crycooler 
-
-                      </p>
+                      <p className="cs-center mt-2 cs-m0">d) GM Crycooler</p>
                     </Div>
                   </Div>
                 </Div>
@@ -555,31 +550,34 @@ export default function SpacePortfolio() {
             <Spacing lg="65" md="10" />
 
             {/* Navigation Buttons */}
-            <Div className="cs-page_navigation cs-center nav-fix-align">
-              <Div>
-                {idx !== 0 && (
-                  <Button
-                    btnLink={`#project-${
-                      spaceProjects[
-                        (idx - 1 + spaceProjects.length) % spaceProjects.length
-                      ].id
-                    }`}
-                    btnText="Previous Project"
-                    variant="cs-type1"
-                  />
-                )}
-              </Div>
-              <Div>
-                {idx !== spaceProjects.length - 1 && (
-                  <Button
-                    btnLink={`#project-${
-                      spaceProjects[(idx + 1) % spaceProjects.length].id
-                    }`}
-                    btnText="Next Project"
-                  />
-                )}
-              </Div>
-            </Div>
+            {/* Navigation Buttons */}
+           <Div className="cs-page_navigation cs-center nav-fix-align">
+  <Div>
+    {idx > 0 && (
+  <Button
+  btnLink={`#${sectionIds[idx - 1]}`}
+  btnText="Previous Project"
+  iconPosition="left"
+  variant="cs-left"
+/>
+
+
+    )}
+  </Div>
+
+  <Div>
+    {idx < spaceProjects.length - 1 && (
+    <Button
+  btnLink={`#${sectionIds[idx + 1]}`}
+  btnText="Next Project"
+  iconPosition="right"
+  variant="cs-right"
+/>
+
+    )}
+  </Div>
+</Div>
+
           </Div>
         </React.Fragment>
       ))}

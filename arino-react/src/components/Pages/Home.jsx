@@ -178,7 +178,7 @@ export default function Home() {
             Next Generation Tank Technology Integrated with Cryogenics
           </h2>
           <Spacing lg="45" md="20" />
-          <Button btnLink="/portfolio" btnText="See All Capabilities" />
+          <Button btnLink="" btnText="See All Capabilities" />
         </div>
         <Spacing lg="90" md="45" />
       </Div>

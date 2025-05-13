@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import SocialWidget from "../Widget/SocialWidget";
 import Newsletter from "../Widget/Newsletter";
 import "./header.scss";
@@ -10,6 +10,7 @@ import logos from "../../../src/logos/OnnesLogo.png";
 
 export default function Header({ variant }) {
   const location = useLocation();
+  const navigate = useNavigate(); // ✅ used to navigate to "/"
   const [isSticky, setIsSticky] = useState(false);
   const [sideHeaderToggle, setSideHeaderToggle] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
@@ -25,7 +26,7 @@ export default function Header({ variant }) {
     });
   }, []);
 
-  // 👇 Scroll to sections on /technology?focus=space
+  // Scroll to sections on /technology?focus=space
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const focus = params.get("focus");
@@ -66,10 +67,17 @@ export default function Header({ variant }) {
                     style={{ display: `${mobileToggle ? "block" : "none"}` }}
                   >
                     <li>
-                      <NavLink to="/" onClick={() => setMobileToggle(false)}>
+                      <NavLink
+                        to="/"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setMobileToggle(false);
+
+                          window.location.href = "/"; // This causes a full page reload
+                        }}
+                      >
                         Home
                       </NavLink>
-
                     </li>
                     <li className="menu-item-has-children">
                       <NavLink
@@ -152,20 +160,28 @@ export default function Header({ variant }) {
                       <DropDown>
                         <ul>
                           <li>
-                          <Link to="/team#founders" onClick={() => setMobileToggle(false)}>
-                          Founders
-                          </Link>
-
+                            <Link
+                              to="/team#founders"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Founders
+                            </Link>
                           </li>
                           <li>
-                          <Link to="/team#team-members" onClick={() => setMobileToggle(false)}>
-                          Team Members
-                          </Link>
+                            <Link
+                              to="/team#team-members"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Team Members
+                            </Link>
                           </li>
                           <li>
-                          <Link to="/#partners" onClick={() => setMobileToggle(false)}>
-                          Partners
-                          </Link>
+                            <Link
+                              to="/#partners"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Partners
+                            </Link>
                           </li>
                         </ul>
                       </DropDown>
@@ -209,7 +225,7 @@ export default function Header({ variant }) {
                               to="/technology#recycling"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Sustainability And Recycling 
+                              Sustainability And Recycling
                             </Link>
                           </li>
                         </ul>
@@ -217,7 +233,10 @@ export default function Header({ variant }) {
                     </li>
 
                     <li className="menu-item-has-children">
-                      <NavLink to="spaceportfolio" onClick={() => setMobileToggle(false)}>
+                      <NavLink
+                        to="spaceportfolio"
+                        onClick={() => setMobileToggle(false)}
+                      >
                         Portfolio
                       </NavLink>
                       <DropDown>
@@ -232,7 +251,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="spaceportfolio#cryogenics"
+                              to="/spaceportfolio#cryogenics"
                               onClick={() => setMobileToggle(false)}
                             >
                               Space - Aerospace - Defence
@@ -240,7 +259,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="spaceportfolio#carbon-fiber"
+                              to="/spaceportfolio#carbon-fiber"
                               onClick={() => setMobileToggle(false)}
                             >
                               Ground Based Storage
@@ -248,7 +267,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="spaceportfolio#underwater"
+                              to="/spaceportfolio#underwater"
                               onClick={() => setMobileToggle(false)}
                             >
                               Under Water Applications
@@ -318,7 +337,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="contact"
+                              to="/contact#contact-form"
                               onClick={() => setMobileToggle(false)}
                             >
                               Contact

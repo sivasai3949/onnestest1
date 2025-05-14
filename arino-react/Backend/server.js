@@ -18,7 +18,7 @@ app.set('trust proxy', true); // <-- Add this line here to handle IPs correctly
 
 // CORS configuration to allow requests from both testweb.onnes.in and www.testweb.onnes.in
 app.use(cors({
-  origin: ['https://testweb.onnes.in', 'http://localhost:3000', 'https://www.testweb.onnes.in'],
+  origin: ['https://testweb.onnes.in', 'http://localhost:3000', 'https://www.testweb.onnes.in','https://onnes.in','https://www.onnes.in' ],
   credentials: true
 }));
 

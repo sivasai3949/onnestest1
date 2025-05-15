@@ -99,12 +99,12 @@ app.get('/team', (req, res) => {
 });
 
 // 3) /technology (note: ignoring the #technology anchor here)
-app.get('/technology', (req, res) => {
+app.get('/technology#technology', (req, res) => {
   sendMetaPage(res, {
     title: 'Technology at Onnes Cryogenics',
     description: 'Carbon Fibre Reinforced Plastic (CFRP) tanks represent a cutting-edge solution for gas and cryogens storage, addressing crucial challenges in the clean energy sector.',
     imageUrl: `${BASE_URL}/images/Onnes-2L-Type-3.webp`,
-    url: `${BASE_URL}/technology`
+    url: `${BASE_URL}/technology#technology`
   });
 });
 
@@ -124,7 +124,7 @@ app.get('/ai-simulation', (req, res) => {
     title: 'AI Simulation - Onnes Cryogenics',
     description: 'Cryogenic Fluid Management (CFM) refers to technologies designed to store, transfer, and measure ultra-cold fluids such as liquid hydrogen, oxygen, and methane.',
     imageUrl: `${BASE_URL}/images/cfg.webp`,
-    url: `${BASE_URL}/ai-simulatIon`
+    url: `${BASE_URL}/ai-simulation`
   });
 });
 

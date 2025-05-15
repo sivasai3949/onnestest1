@@ -93,7 +93,7 @@ app.get('/team', (req, res) => {
   sendMetaPage(res, {
     title: 'Our Team - Onnes Cryogenics',
     description: 'Dr. Ram K Aluru and Dr. Vikram are founders with expertise in cryogenics, composite engineering, and nanophysics. Ram holds a Ph.D. in quantum material science, and Vikram has 14 years of experience in applied physics and carbon composites.',
-    imageUrl: `${BASE_URL}/images/team-og.jpg`,
+    imageUrl: `${BASE_URL}/images/ram-k-aluru.jpg`,
     url: `${BASE_URL}/team`
   });
 });
@@ -103,7 +103,7 @@ app.get('/technology', (req, res) => {
   sendMetaPage(res, {
     title: 'Technology at Onnes Cryogenics',
     description: 'Carbon Fibre Reinforced Plastic (CFRP) tanks represent a cutting-edge solution for gas and cryogens storage, addressing crucial challenges in the clean energy sector.',
-    imageUrl: `${BASE_URL}/images/Home_8.webp`,
+    imageUrl: `${BASE_URL}/images/Onnes-2L-Type-3.webp`,
     url: `${BASE_URL}/technology`
   });
 });
@@ -119,7 +119,7 @@ app.get('/spaceportfolio', (req, res) => {
 });
 
 // 5) /ai-simulatIon
-app.get('/ai-simulatIon', (req, res) => {
+app.get('/ai-simulation', (req, res) => {
   sendMetaPage(res, {
     title: 'AI Simulation - Onnes Cryogenics',
     description: 'Cryogenic Fluid Management (CFM) refers to technologies designed to store, transfer, and measure ultra-cold fluids such as liquid hydrogen, oxygen, and methane.',

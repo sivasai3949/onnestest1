@@ -19,7 +19,7 @@ app.set('trust proxy', true); // <-- Add this line here to handle IPs correctly
 
 // CORS configuration to allow requests from both testweb.onnes.in and www.testweb.onnes.in
 app.use(cors({
-  origin: ['https://testweb.onnes.in', 'http://localhost:3000', 'https://www.testweb.onnes.in','https://onnes.in','https://www.onnes.in' ],
+  origin: [ 'http://localhost:3000', 'https://onnes.in','https://www.onnes.in' ],
   credentials: true
 }));
 
@@ -44,6 +44,9 @@ app.use('/api/admin-visitors', visitorRoutes); // Visitor routes
 
 // Helper function to send minimal HTML with meta tags for SEO/social previews
 function sendMetaPage(res, { title, description, imageUrl, url }) {
+  // Add Cache-Control header to cache publicly for 1 hour
+  res.set('Cache-Control', 'public, max-age=3600');
+
   res.send(`
     <!DOCTYPE html>
     <html lang="en">

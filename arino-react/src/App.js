@@ -25,7 +25,8 @@ import ArchitectureAgencyHome from './components/Pages/ArchitectureAgencyHome';
 import CreativeSolutionHome from './components/Pages/CreativeSolutionHome';
 import PersonalPortfolioHome from './components/Pages/PersonalPortfolioHome';
 import VideoShowcaseHome from './components/Pages/VideoShowcaseHome';
-import TechnologyPage from './components/Pages/TechnologyPage';
+// import TechnologyPage from './components/Pages/TechnologyPage';
+import TechnologyController from './components/Pages/TechnologyController';
 import AISimulation from './components/Pages/AISimulation';
 import SpacePortfolio from './components/Pages/SpacePortfolio';
 import UpcomingEvents from './components/Pages/Upcomingevents';
@@ -67,7 +68,8 @@ function App() {
           <Route path="team" element={<TeamPage />} />
           <Route path="team/:teamDetails" element={<TeamDetails />} />
           <Route path="faq" element={<FaqPage />} />
-          <Route path="technology" element={<TechnologyPage />} />
+          {/* <Route path="technology" element={<TechnologyPage />} /> */}
+          <Route path="technology" element={<TechnologyController />} />
           <Route path="ai-simulation" element={<AISimulation />} />
           <Route path="spaceportfolio" element={<SpacePortfolio />} />
           <Route path="ground-storage" element={<GroundstoragePortfolio />} />

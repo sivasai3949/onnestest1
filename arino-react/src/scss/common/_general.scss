@@ -156,6 +156,11 @@ hr {
   align-items: center;
   justify-content: center;
 }
+.cs-center-mobile {
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+}
 .nav-fix-align {
   align-items: flex-start !important;
 }

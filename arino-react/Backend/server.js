@@ -8,25 +8,25 @@ const path = require('path');
 // Import routes
 const contactRoutes = require('../Backend/Admin/routes/contactRoutes');
 const adminAuthRoutes = require('../Backend/Admin/routes/adminAuthRoutes');
-const subscriptionRoutes = require('../Backend/Admin/routes/subscriptionRoutes'); // New Subscription Routes
-const visitorRoutes = require('../Backend/Admin/routes/VisitorRoute'); // New Visitor Routes
+const subscriptionRoutes = require('../Backend/Admin/routes/subscriptionRoutes');
+const visitorRoutes = require('../Backend/Admin/routes/VisitorRoute');
 
 // Load environment variables
 dotenv.config();
 
-// Set the trust proxy for production (important for correct IP handling)
-app.set('trust proxy', true); // <-- Add this line here to handle IPs correctly
+// Trust proxy setting for accurate IP handling
+app.set('trust proxy', true);
 
-// CORS configuration to allow requests from both testweb.onnes.in and www.testweb.onnes.in
+// CORS configuration
 app.use(cors({
-  origin: [ 'http://localhost:3000', 'https://onnes.in','https://www.onnes.in' ],
+  origin: ['http://localhost:3000', 'https://onnes.in', 'https://www.onnes.in'],
   credentials: true
 }));
 
-// Middleware for parsing JSON requests
+// Middleware
 app.use(express.json());
 
-// Connect to MongoDB
+// MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -34,19 +34,15 @@ mongoose.connect(process.env.MONGO_URI, {
   console.log('MongoDB connected');
 }).catch((err) => console.error('MongoDB connection error:', err));
 
-// Define API routes
+// API routes
 app.use('/api/admin-contact', contactRoutes);
 app.use('/api/admin', adminAuthRoutes);
-app.use('/api/admin-subscribe', subscriptionRoutes); // Subscription routes
-app.use('/api/admin-visitors', visitorRoutes); // Visitor routes
+app.use('/api/admin-subscribe', subscriptionRoutes);
+app.use('/api/admin-visitors', visitorRoutes);
 
-// --------- New Routes for Rich Link Previews ---------
-
-// Helper function to send minimal HTML with meta tags for SEO/social previews
+// Helper function for bot-friendly meta HTML
 function sendMetaPage(res, { title, description, imageUrl, url }) {
-  // Add Cache-Control header to cache publicly for 1 hour
   res.set('Cache-Control', 'public, max-age=3600');
-
   res.send(`
     <!DOCTYPE html>
     <html lang="en">
@@ -54,15 +50,11 @@ function sendMetaPage(res, { title, description, imageUrl, url }) {
       <title>${title}</title>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      
-      <!-- Open Graph / Facebook -->
       <meta property="og:type" content="website" />
       <meta property="og:title" content="${title}" />
       <meta property="og:description" content="${description}" />
       <meta property="og:image" content="${imageUrl}" />
       <meta property="og:url" content="${url}" />
-
-      <!-- Twitter -->
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="${title}" />
       <meta name="twitter:description" content="${description}" />
@@ -78,15 +70,25 @@ function sendMetaPage(res, { title, description, imageUrl, url }) {
 
 const BASE_URL = 'https://onnes.in';
 
-// 1) /about
+// --------- Rich Preview Routes ---------
+
+// 1) /about (bot detection added)
 app.get('/about', (req, res) => {
-  sendMetaPage(res, {
-    title: 'About Onnes Cryogenics',
-    description: 'Onnes Cryogenics was formed in Hyderabad, India by physicists Dr. Ram Aluru, who specialises in cryogenics, and Dr. Vikram Srinivasa Raghavan, whose expertise is in composite engineering and nanophysics.',
-    imageUrl: `${BASE_URL}/images/aboutus_2.png`,
-    url: `${BASE_URL}/about`
-  });
+  const userAgent = req.headers['user-agent'] || '';
+  const isBot = /bot|facebookexternalhit|whatsapp|crawler|spider|facebook|twitter/i.test(userAgent);
+
+  if (isBot) {
+    sendMetaPage(res, {
+      title: 'About Onnes Cryogenics',
+      description: 'Onnes Cryogenics was formed in Hyderabad, India by physicists Dr. Ram Aluru, who specialises in cryogenics, and Dr. Vikram Srinivasa Raghavan, whose expertise is in composite engineering and nanophysics.',
+      imageUrl: `${BASE_URL}/images/aboutus_2.png`,
+      url: `${BASE_URL}/about`
+    });
+  } else {
+    res.sendFile(path.join(__dirname, '../../build/index.html'));
+  }
 });
+
 
 // 2) /team
 app.get('/team', (req, res) => {
@@ -98,13 +100,13 @@ app.get('/team', (req, res) => {
   });
 });
 
-// 3) /technology (note: ignoring the #technology anchor here)
-app.get('/technology#technology', (req, res) => {
+// 3) /technology
+app.get('/technology', (req, res) => {
   sendMetaPage(res, {
     title: 'Technology at Onnes Cryogenics',
     description: 'Carbon Fibre Reinforced Plastic (CFRP) tanks represent a cutting-edge solution for gas and cryogens storage, addressing crucial challenges in the clean energy sector.',
     imageUrl: `${BASE_URL}/images/Onnes-2L-Type-3.webp`,
-    url: `${BASE_URL}/technology#technology`
+    url: `${BASE_URL}/technology`
   });
 });
 
@@ -118,7 +120,7 @@ app.get('/spaceportfolio', (req, res) => {
   });
 });
 
-// 5) /ai-simulatIon
+// 5) /ai-simulation
 app.get('/ai-simulation', (req, res) => {
   sendMetaPage(res, {
     title: 'AI Simulation - Onnes Cryogenics',
@@ -128,9 +130,18 @@ app.get('/ai-simulation', (req, res) => {
   });
 });
 
-// --------- End of new routes ---------
+// --------- End of Rich Preview Routes ---------
 
-// Start the server on the specified port
+/// Serve React static files
+app.use(express.static(path.join(__dirname, '../../build')));
+
+// Fallback to React app for any unmatched routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../build/index.html'));
+});
+
+
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

@@ -19,7 +19,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
-import Button from '../Button'; // Add this import with your other imports
+import Button from "../Button"; // Add this import with your other imports
 import { useLocation } from "react-router-dom";
 
 const heroImages = [
@@ -64,42 +64,43 @@ const funfaceData = [
 ];
 const portfolioData = [
   {
-    title: 'Deep Space Exploration',
-    subtitle: 'See Details',
-    href: '/spaceportfolio#cryogenics',
-    src: '/images/deepspace.png',
+    title: "Deep Space Exploration",
+    subtitle: "See Details",
+    href: "/spaceportfolio#cryogenics",
+    src: "/images/deepspace.png",
   },
   {
-    title: 'Liquid Space Fuels',
-    subtitle: 'See Details',
-    href: '/spaceportfolio#cryogenics',
-    src: '/images/Home_8.webp',
+    title: "Liquid Space Fuels",
+    subtitle: "See Details",
+    href: "/spaceportfolio#thermal",  // Changed from cryogenics to thermal
+    src: "/images/Home_8.webp",
   },
   {
-    title: 'Hydrogen Powered Aviation',
-    subtitle: 'See Details',
-    href: '/spaceportfolio#cryogenics',
-    src: '/images/hydrogenpoweredaviation.jpg',
+    title: "Hydrogen Powered Aviation",
+    subtitle: "See Details",
+    href: "/spaceportfolio#cryogenics",
+    src: "/images/hydrogenpoweredaviation.jpg",
   },
   {
-    title: 'Green Shipping Oceans',
-    subtitle: 'See Details',
-    href: '/spaceportfolio#underwater',
-    src: '/images/greenshippingoceans.png',
+    title: "Green Shipping Oceans",
+    subtitle: "See Details",
+    href: "/spaceportfolio#underwater",
+    src: "/images/greenshippingoceans.png",
   },
   {
-    title: 'Hydrogen Storage',
-    subtitle: 'See Details',
-    href: '/spaceportfolio#carbon-fiber',
-    src: '/images/hydrogenstorage.png',
+    title: "Hydrogen Storage",
+    subtitle: "See Details",
+    href: "/spaceportfolio#carbon-fiber",
+    src: "/images/hydrogenstorage.png",
   },
   {
-    title: 'Green CBG Storage',
-    subtitle: 'See Details',
-    href: '/spaceportfolio#carbon-fiber',
-    src: '/images/greenstorage.png',
+    title: "Green CBG Storage",
+    subtitle: "See Details",
+    href: "/spaceportfolio#carbon-fiber",
+    src: "/images/greenstorage.png",
   },
 ];
+
 
 
 export default function Home() {
@@ -109,7 +110,7 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
 
-    const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     const hash = location.hash;
@@ -120,7 +121,6 @@ export default function Home() {
       }
     }
   }, [location]);
-
 
   const sliderSettings = {
     dots: false, // Hides dots for a cleaner look
@@ -167,60 +167,60 @@ export default function Home() {
       {/* End FunFact Section */}
 
       {/* Start Service Section */}
-<Spacing lg="150" md="80" />
-<Div id="service">
-  <Div className="container">
-    <Div className="row">
-      <Div className="col-xl-4">
-        <div className="cs-section_heading cs-style1">
-          <h3 className="cs-section_subtitle">Onnes Expertise Lies In</h3>
-          <h2 className="cs-section_title" style={{ fontSize: '40px' }}>
-            Next Generation Tank Technology Integrated with Cryogenics
-          </h2>
-          <Spacing lg="45" md="20" />
-          <Button btnLink="" btnText="See All Capabilities" />
-        </div>
-        <Spacing lg="90" md="45" />
-      </Div>
+      <Spacing lg="150" md="80" />
+      <Div id="service">
+        <Div className="container">
+          <Div className="row">
+            <Div className="col-xl-4">
+              <div className="cs-section_heading cs-style1">
+                <h3 className="cs-section_subtitle">Onnes Expertise Lies In</h3>
+                <h2 className="cs-section_title" style={{ fontSize: "40px" }}>
+                  Next Generation Tank Technology Integrated with Cryogenics
+                </h2>
+                <Spacing lg="45" md="20" />
+                <Button btnLink="" btnText="See All Capabilities" />
+              </div>
+              <Spacing lg="90" md="45" />
+            </Div>
 
-      <Div className="col-xl-8">
-        <Div className="onnes-card-grid">
-          <Card
-            title="Product Design"
-            // link="/service/service-details"
-            src="/images/productdesign.jpg"
-            alt="Service"
-          />
-          <Card
-            title="Material Simulations"
-            // link="/service/service-details"
-            src="/images/materialsimulation.jpg"
-            alt="Service"
-          />
-          <Card
-            title="Cryogenic Testing"
-            // link="/service/service-details"
-            src="/images/cryogenictesting.jpg"
-            alt="Service"
-          />
-          <Card
-            title="Assembly"
-            // link="/service/service-details"
-            src="/images/assembly.jpg"
-            alt="Service"
-          />
-          <Card
-            title="Manufacturing"
-            // link="/service/service-details"
-            src="/images/manufacturing.jpg"
-            alt="Service"
-          />
+            <Div className="col-xl-8">
+              <Div className="onnes-card-grid">
+                <Card
+                  title="Product Design"
+                  // link="/service/service-details"
+                  src="/images/productdesign.jpg"
+                  alt="Service"
+                />
+                <Card
+                  title="Material Simulations"
+                  // link="/service/service-details"
+                  src="/images/materialsimulation.jpg"
+                  alt="Service"
+                />
+                <Card
+                  title="Cryogenic Testing"
+                  // link="/service/service-details"
+                  src="/images/cryogenictesting.jpg"
+                  alt="Service"
+                />
+                <Card
+                  title="Assembly"
+                  // link="/service/service-details"
+                  src="/images/assembly.jpg"
+                  alt="Service"
+                />
+                <Card
+                  title="Manufacturing"
+                  // link="/service/service-details"
+                  src="/images/manufacturing.jpg"
+                  alt="Service"
+                />
+              </Div>
+            </Div>
+          </Div>
         </Div>
       </Div>
-    </Div>
-  </Div>
-</Div>
-{/* End Service Section */}
+      {/* End Service Section */}
 
       {/* Start Portfolio Section */}
       <Spacing lg="150" md="50" />
@@ -265,7 +265,8 @@ export default function Home() {
       <Spacing lg="130" md="70" />
       <Div className="container">
         <h2 className="cs-font_50 cs-m0 text-center cs-line_height_4">
-        Onnes product innovations push the boundaries of storage and transportation of cryogenic liquids and gases
+          Onnes product innovations push the boundaries of storage and
+          transportation of cryogenic liquids and gases
         </h2>
         <Spacing lg="70" md="70" />
         <VideoModal
@@ -293,7 +294,7 @@ export default function Home() {
       {/* <TestimonialSlider /> */}
       {/* End Testimonial Section */}
 
-     {/* Start Blog Section */}
+      {/* Start Blog Section */}
       <Spacing lg="150" md="80" />
       <Div className="cs-shape_wrap_4">
         <Div className="cs-shape_4"></Div>
@@ -337,10 +338,11 @@ export default function Home() {
         <Cta
           title="Let’s discuss to make <br /> ultra <i>cool</i> and <i>light</i> tanks integrated with bespoke cryogenic systems"
           btnText="Contact Us"
-          btnLink="/contact"
+          btnLink="/contact#contact-form"
           bgSrc="/images/cta_bg.jpeg"
         />
       </Div>
+
       {/* End CTA Section */}
     </>
   );

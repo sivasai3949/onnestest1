@@ -377,7 +377,7 @@ export default function SpacePortfolio() {
                     <Div className="col-lg-6 mb-4 d-flex flex-column">
                       <Div className="flex-grow-1 d-flex flex-column">
                         <img
-                          src="/images/Onnes-2L-Type-3.webp"
+                          src="/images/2ltype3.webp"
                           alt="Description 1"
                           className="w-100 cs-radius_15"
                           style={{ objectFit: "cover", height: "700px" }}
@@ -395,7 +395,7 @@ export default function SpacePortfolio() {
                         style={{ flexBasis: "20%" }}
                       >
                         <img
-                          src="/images/Onnes-2L-4sets-Type-3.webp"
+                          src="/images/2L4setstype3.webp"
                           alt="Description 2"
                           className="w-100 cs-radius_15"
                           style={{ objectFit: "cover", height: "300px" }}
@@ -411,7 +411,7 @@ export default function SpacePortfolio() {
                         style={{ flexBasis: "25%" }}
                       >
                         <img
-                          src="/images/Onnes-20L-Type-3.webp"
+                          src="/images/20ltype3.webp"
                           alt="Description 3"
                           className="w-100 cs-radius_15"
                           style={{ objectFit: "cover", height: "330px" }}
@@ -479,7 +479,7 @@ export default function SpacePortfolio() {
                       style={{ flex: "0 0 auto", width: "25%" }}
                     >
                       <img
-                        src="/images/Cryocooler-1.webp"
+                        src="/images/Cryocooler1.webp"
                         alt="Stirling Cryocooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "contain" }}
@@ -495,7 +495,7 @@ export default function SpacePortfolio() {
                       style={{ flex: "0 0 auto", width: "25%" }}
                     >
                       <img
-                        src="/images/Cryocooler-2.webp"
+                        src="/images/Cryocooler2.webp"
                         alt="Pulse Tube Crycooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
@@ -511,7 +511,7 @@ export default function SpacePortfolio() {
                       style={{ flex: "0 0 auto", width: "25%" }}
                     >
                       <img
-                        src="/images/Cryocooler-3.webp"
+                        src="/images/Cryocooler3.webp"
                         alt="JT Cryocooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}
@@ -525,7 +525,7 @@ export default function SpacePortfolio() {
                       style={{ flex: "0 0 auto", width: "25%" }}
                     >
                       <img
-                        src="/images/Cryocooler-4.webp"
+                        src="/images/Cryocooler4.webp"
                         alt="GM Crycooler"
                         className="w-100 cs-radius_15"
                         style={{ height: "300px", objectFit: "cover" }}

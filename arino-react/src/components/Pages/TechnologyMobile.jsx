@@ -137,7 +137,7 @@ export default function TechnologyMobile() {
               className="cs-radius_15 w-100 h-auto"
             />
             {project.id === '2' && (
-              <p className="cs-center mt-2">Type-4 and Type-5 composite tanks for space fuels storage (liquid oxygen and liquid hydrogen etc.,)</p>
+              <p className="cs-center mt-2">e) Type-4 and Type-5 composite tanks for space fuels storage (liquid oxygen and liquid hydrogen etc.,)</p>
             )}
           </Div>
           <Spacing lg="75" md="55" />
@@ -300,7 +300,7 @@ export default function TechnologyMobile() {
           className="w-100 cs-radius_15"
         />
         <p className="cs-center mt-1" style={{ fontSize: '14px', lineHeight: '1.3' }}>
-          2 L Composite tanks for space applications
+          a) 2 L Composite tanks for space applications
         </p>
       </Div>
       
@@ -312,7 +312,7 @@ export default function TechnologyMobile() {
           className="w-100 cs-radius_15"
         />
         <p className="cs-center mt-1" style={{ fontSize: '14px', lineHeight: '1.3' }}>
-          5 L Composite tanks for<br />Drone and UAV applications
+          b) 5 L Composite tanks for<br />Drone and UAV applications
         </p>
       </Div>
       <Div className="col-6 ps-1"> {/* Left padding for spacing */}
@@ -322,7 +322,7 @@ export default function TechnologyMobile() {
           className="w-100 cs-radius_15"
         />
         <p className="cs-center mt-1" style={{ fontSize: '14px', lineHeight: '1.3' }}>
-          20 L Composite tanks for<br />CBG and Hydrogen Storage
+          c) 20 L Composite tanks for<br />CBG and Hydrogen Storage
         </p>
       </Div>
     </Div>
@@ -336,7 +336,7 @@ export default function TechnologyMobile() {
       className="w-100 cs-radius_15 mb-3"
     />
     <p className="cs-center" style={{ fontSize: '14px', lineHeight: '1.3' }}>
-      Cascade of Composite Tanks for CBG, Hydrogen and Cryogenic Storage
+      d) Cascade of Composite Tanks for CBG, Hydrogen and Cryogenic Storage
     </p>
   </>
 )}

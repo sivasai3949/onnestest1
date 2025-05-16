@@ -201,7 +201,7 @@ export default function SpacePortfolioMobile() {
           className="w-100 cs-radius_15"
         />
         <p className="cs-center mt-1" style={{ fontSize: '14px', lineHeight: '1.3' }}>
-          2 L Composite tanks for space applications
+          a) 2 L Composite tanks for space applications
         </p>
       </Div>
       <Div className="col-6 pe-1">
@@ -211,7 +211,7 @@ export default function SpacePortfolioMobile() {
           className="w-100 cs-radius_15"
         />
         <p className="cs-center mt-1" style={{ fontSize: '14px', lineHeight: '1.3' }}>
-          5 L Composite tanks for<br />Drone and UAV applications
+          b) 5 L Composite tanks for<br />Drone and UAV applications
         </p>
       </Div>
       <Div className="col-6 ps-1">
@@ -221,7 +221,7 @@ export default function SpacePortfolioMobile() {
           className="w-100 cs-radius_15"
         />
         <p className="cs-center mt-1" style={{ fontSize: '14px', lineHeight: '1.3' }}>
-          20 L Composite tanks for<br />CBG and Hydrogen Storage
+         c) 20 L Composite tanks for<br />CBG and Hydrogen Storage
         </p>
       </Div>
     </Div>
@@ -232,7 +232,7 @@ export default function SpacePortfolioMobile() {
       className="w-100 cs-radius_15 mb-3"
     />
     <p className="cs-center" style={{ fontSize: '14px', lineHeight: '1.3' }}>
-      Cascade of Composite Tanks for CBG, Hydrogen and Cryogenic Storage
+      d) Cascade of Composite Tanks for CBG, Hydrogen and Cryogenic Storage
     </p>
   </>
 )}

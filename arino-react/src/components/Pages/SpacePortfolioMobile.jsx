@@ -206,7 +206,7 @@ export default function SpacePortfolioMobile() {
       </Div>
       <Div className="col-6 pe-1">
         <img
-          src="/images/2L4setstype3.webp"
+          src="/images/2l4setstype3.webp"
           alt="5L Type 3 Tanks"
           className="w-100 cs-radius_15"
         />

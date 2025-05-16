@@ -6,33 +6,36 @@ export default function Button({
   btnLink,
   btnText,
   variant,
-  icon,               // optional override
-  iconPosition = 'right', // 'left' or 'right'
+  icon, // optional override
+  iconPosition = 'right',
 }) {
-  // default arrows
-  const rightArrow = <Icon icon="bi:arrow-right" />;
-  const leftArrow  = <Icon icon="bi:arrow-left" />;
+  // Set default icon based on text or position
+  let chosenIcon;
 
-  // choose icon: explicit icon prop wins,
-  // otherwise pick based on position
-  const chosenIcon = icon
-    ? icon
-    : iconPosition === 'left'
-      ? leftArrow
-      : rightArrow;
+  if (icon) {
+    chosenIcon = icon;
+  } else if (btnText.toLowerCase().includes('previous')) {
+    chosenIcon = <Icon icon="bi:arrow-left" />;
+  } else if (btnText.toLowerCase().includes('next')) {
+    chosenIcon = <Icon icon="bi:arrow-right" />;
+  } else {
+    chosenIcon = iconPosition === 'left'
+      ? <Icon icon="bi:arrow-left" />
+      : <Icon icon="bi:arrow-right" />;
+  }
 
   return (
     <Link
       to={btnLink}
       className={
         variant
-          ? `cs-text_btn ${variant}`    // ← backticks around the template literal
+          ? `cs-text_btn ${variant}`
           : 'cs-text_btn'
       }
     >
-     {iconPosition === 'left' && <span className="cs-icon">{chosenIcon}</span>}
-                    <span className="cs-btn-text">{btnText}</span>
+      {iconPosition === 'left' && <span className="cs-icon">{chosenIcon}</span>}
+      <span className="cs-btn-text">{btnText}</span>
       {iconPosition === 'right' && <span className="cs-icon">{chosenIcon}</span>}
-    </Link>
-  );
+    </Link>
+  );
 }

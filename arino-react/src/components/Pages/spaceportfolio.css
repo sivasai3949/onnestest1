@@ -1,0 +1,53 @@
+div[id] {
+  scroll-margin-top: 80px; /* Match your fixed header height */
+}
+
+/* spaceportfolioMobile.css */
+
+/* Base mobile styles */
+.cs-font_12 { font-size: 12px; }
+.cs-font_14 { font-size: 14px; }
+.cs-font_16 { font-size: 16px; }
+.cs-font_20 { font-size: 20px; }
+.cs-font_26 { font-size: 26px; }
+.cs-font_30 { font-size: 30px; }
+
+/* Project specs grid for mobile */
+.cs-mobile-specs {
+  background: rgba(0,0,0,0.05);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.cs-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.cs-spec-item {
+  margin-bottom: 15px;
+}
+
+/* Navigation buttons */
+.cs-page_navigation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Adjust section headings */
+.cs-page_title {
+  line-height: 1.3;
+}
+
+/* Underwater list styles */
+.underwater-description ul {
+  padding-left: 15px;
+}
+
+.underwater-description ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}

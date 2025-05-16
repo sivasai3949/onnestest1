@@ -23,6 +23,7 @@
   .hero-slider,
   .hero-slide-wrapper,
   .hero-image {
+    padding-top: 25px;
     height: 35vh;
   }
 }

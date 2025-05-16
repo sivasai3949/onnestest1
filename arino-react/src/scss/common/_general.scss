@@ -218,18 +218,11 @@ hr {
     font-size: 24px;
   }
 
-  // Handle icon spacing
-  .cs-icon:first-child {
-    margin-right: 15px;
-  }
-
-  .cs-icon:last-child {
-    margin-left: 15px;
-  }
-
+  // Remove position-based logic here
   .cs-btn-text {
     display: inline-block;
     position: relative;
+    margin: 0 10px; // add spacing around text instead (safer)
 
     &::before {
       content: '';
@@ -253,9 +246,8 @@ hr {
   &.cs-type1 {
     flex-direction: row-reverse;
 
-    .cs-icon:first-child {
-      margin-left: 0;
-      margin-right: 15px;
+    .cs-btn-text {
+      margin: 0 10px;
     }
 
     .cs-btn-text::before {
@@ -266,12 +258,6 @@ hr {
 
     &:hover .cs-btn-text::before {
       transform: scaleX(1) rotateY(180deg);
-    }
-  }
-
-  &.cs-previous {
-    .cs-icon {
-      transform: rotate(180deg);
     }
   }
 }

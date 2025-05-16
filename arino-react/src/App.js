@@ -28,7 +28,8 @@ import VideoShowcaseHome from './components/Pages/VideoShowcaseHome';
 // import TechnologyPage from './components/Pages/TechnologyPage';
 import TechnologyController from './components/Pages/TechnologyController';
 import AISimulation from './components/Pages/AISimulation';
-import SpacePortfolio from './components/Pages/SpacePortfolio';
+// import SpacePortfolio from './components/Pages/SpacePortfolio';
+import SpacePortfolioController from './components/Pages/spaceportfolioController';
 import UpcomingEvents from './components/Pages/Upcomingevents';
 import CaseStudyDetails from './components/Pages/CaseStudyDetails';
 import GroundstoragePortfolio from './components/Pages/GroundstoragePortfolio';
@@ -71,7 +72,8 @@ function App() {
           {/* <Route path="technology" element={<TechnologyPage />} /> */}
           <Route path="technology" element={<TechnologyController />} />
           <Route path="ai-simulation" element={<AISimulation />} />
-          <Route path="spaceportfolio" element={<SpacePortfolio />} />
+          {/* <Route path="spaceportfolio" element={<SpacePortfolio />} /> */}
+          <Route path="spaceportfolio" element={<SpacePortfolioController />} />
           <Route path="ground-storage" element={<GroundstoragePortfolio />} />
           <Route path="underwater-portfolio" element={<UnderwaterPortfolio />} />
           <Route path="upcoming-events" element={<UpcomingEvents />} />

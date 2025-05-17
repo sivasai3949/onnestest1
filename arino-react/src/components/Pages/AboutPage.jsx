@@ -63,7 +63,7 @@ export default function AboutPage() {
 <p>
   Inspired by India's space and atomic energy journey with phenomenal contributions from physicists
   <span className="nowrap"> Dr. Vikram Sarabhai</span> and
-  <span className="nowrap"> Dr. Homi J Bhabha</span>, the team at Onnes are committed to innovating next-generation storage technologies integrated with bespoke cryogenic systems.
+  <span className="nowrap"> Dr. Homi J Bhabha</span>, who are bestowed with a rare combination of a scientist - innovator - industrialist and a visionary, the team at Onnes are committed to innovate next generation storage technologies integrated with bespoke cryogenic systems.
 </p>
 
             <Spacing lg="30" md="30" />

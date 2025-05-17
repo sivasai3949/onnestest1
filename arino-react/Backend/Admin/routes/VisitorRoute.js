@@ -1,3 +1,5 @@
+// ✅ Updated Visitor route.js to exclude localhost IPs
+
 const express = require('express');
 const axios = require('axios');
 const requestIp = require('request-ip');
@@ -21,12 +23,17 @@ router.get('/', async (req, res) => {
 // ✅ Log visitor data
 router.post('/admin-visitor', async (req, res) => {
   try {
-    // Trust proxy should be set in main server file
     let clientIp = req.ip || requestIp.getClientIp(req);
 
     // Clean up IP (e.g., "::ffff:192.0.2.1" → "192.0.2.1")
     if (clientIp?.includes('::ffff:')) {
       clientIp = clientIp.split('::ffff:')[1];
+    }
+
+    // Exclude localhost IPs
+    const isLocalhost = ['::1', '127.0.0.1', '0.0.0.0'].includes(clientIp);
+    if (isLocalhost) {
+      return res.status(200).send('Localhost IP ignored');
     }
 
     const response = await axios.get(`https://ipapi.co/${clientIp}/json`);
@@ -37,7 +44,7 @@ router.post('/admin-visitor', async (req, res) => {
       city: city || 'Unknown',
       region: region || 'Unknown',
       postalCode: postal || 'Unknown',
-      country: country_name || 'Unknown'  // ✅ Full country name used
+      country: country_name || 'Unknown'
     });
 
     await newVisitor.save();

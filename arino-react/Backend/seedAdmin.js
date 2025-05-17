@@ -20,10 +20,10 @@ const seedAdmin = async () => {
       return process.exit(0);
     }
 
-    const hashedPassword = await bcrypt.hash('test123', 10);
+    const hashedPassword = await bcrypt.hash('1@#$@@!#$', 10); //example for password
 
     const admin = new AdminUser({
-      email: 'onnes@gmail.com',
+      email: 'onnes123.com',
       password: hashedPassword,
     });
 

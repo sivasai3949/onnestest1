@@ -1,5 +1,3 @@
-// backend/metaTags.js
-
 module.exports = {
   "/": {
     title: "Onnes – Advanced Cryogenics",

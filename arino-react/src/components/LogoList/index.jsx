@@ -10,6 +10,7 @@ const topPartners = [
   { src: '/images/Partner_4.3.png', alt: 'Partner 5' },
   { src: '/images/Partner_6.1.jpeg', alt: 'Partner 6' },
   { src: '/images/Partner_7.1.png', alt: 'Partner 7' },
+  { src: '/images/Partner_nvidia.png', alt: 'Partner 7.1' }, // Nvidia logo
 ];
 
 const bottomPartners = [
@@ -21,26 +22,34 @@ const bottomPartners = [
 ];
 
 export default function LogoList() {
+  // Duplicate topPartners twice for infinite scroll
+  const duplicatedPartners = [...topPartners, ...topPartners];
+
   return (
     <Div className="cs-partner_logo_wrap_outer">
       <Div className="cs-partner_slider_container">
-        <div className="cs-partner_logo_slider">
-          {[...topPartners, ...topPartners].map((logo, index) => (
-            <div
-              className={`cs-partner_logo 
-                ${logo.alt === 'Partner 6' ? 'partner-6' : ''} 
-                ${logo.alt === 'Partner 4' ? 'partner-4' : ''}`}
-              key={`top-${index}`}
-            >
-              <img src={logo.src} alt={logo.alt} />
-            </div>
-          ))}
+        <div className="cs-partner_logo_slider" aria-label="Top Partners logos scrolling">
+          {duplicatedPartners.map((logo, index) => {
+            // Add 'last-logo' class to last logo of each duplicated set
+            const isLastOfSet = index === topPartners.length - 1 || index === duplicatedPartners.length - 1;
+            return (
+              <div
+                className={`cs-partner_logo 
+                  ${logo.alt === 'Partner 6' ? 'partner-6' : ''} 
+                  ${logo.alt === 'Partner 4' ? 'partner-4' : ''} 
+                  ${isLastOfSet ? 'last-logo' : ''}`}
+                key={`top-${index}`}
+              >
+                <img src={logo.src} alt={logo.alt} />
+              </div>
+            );
+          })}
         </div>
       </Div>
 
-      <Div className="cs-partner_logo_wrap bottom">
+      <Div className="cs-partner_logo_wrap bottom" aria-label="Bottom Partners logos">
         {bottomPartners.map((logo, index) => {
-          const extraClass = 
+          const extraClass =
             logo.alt === 'Partner 8' ? 'partner-8' :
             logo.alt === 'Partner 11' ? 'partner-11' : '';
 

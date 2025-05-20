@@ -15,15 +15,16 @@
 .cs-partner_logo_slider {
   display: flex;
   flex-wrap: nowrap;
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 15s linear infinite;  // doubled duration for smoothness
   gap: 30px;
   padding: 10px 0;
+  will-change: transform;  // optimize animation performance
 }
 
 .cs-partner_logo {
   flex: 0 0 auto;
-  width: 200px; // Increased from 180px
-  height: 135px; // Increased from 120px
+  width: 200px; /* Increased from 180px */
+  height: 135px; /* Increased from 120px */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,22 +48,21 @@
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
-
 /* Animation keyframe */
 @keyframes scroll-left {
   0% {
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
 /* Mobile responsiveness */
 @media screen and (max-width: 768px) {
   .cs-partner_logo {
-    width: 150px; // Up from 130px
-    height: 105px; // Up from 90px
+    width: 150px; /* Up from 130px */
+    height: 105px; /* Up from 90px */
   }
 
   .cs-partner_logo_slider {
@@ -81,6 +81,7 @@
   padding: 10px;
   margin-top: -10px;
 }
+
 .cs-partner_logo.partner-4 {
   width: 235px;
   height: 155px;

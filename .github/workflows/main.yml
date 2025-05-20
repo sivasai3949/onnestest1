@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - pre-container   # Trigger only on this 
+      - admin20changes   # Trigger only on this 
 
 jobs:
   deploy:
@@ -25,5 +25,5 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@onnes.in <<EOF
             echo "✅ Running deploy.sh script on EC2..." 
-            sudo bash /home/ubuntu/deploy.sh pre-container
+            sudo bash /home/ubuntu/deploy.sh admin20changes
           EOF

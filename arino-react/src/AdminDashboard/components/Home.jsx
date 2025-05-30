@@ -25,14 +25,26 @@ const HomeDashboard = () => {
     visitors: 0,
     subscribers: 0,
   });
-
   const [loading, setLoading] = useState(true);
+
+  // weekly-over-week data & pct-change
+  const [weekData, setWeekData] = useState({
+    contacts: { current: 0, previousWeek: 0 },
+    visitors: { current: 0, previousWeek: 0 },
+    subscribers: { current: 0, previousWeek: 0 },
+  });
+  const [pctChange, setPctChange] = useState({
+    contacts: 0,
+    visitors: 0,
+    subscribers: 0,
+  });
 
   // Media queries for responsive design
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isDesktop = useMediaQuery({ minWidth: 1024 });
 
+  // Fetch total counts
   useEffect(() => {
     const savedCounts = localStorage.getItem("counts");
     if (savedCounts) {
@@ -63,6 +75,39 @@ const HomeDashboard = () => {
     }
   }, []);
 
+  // Fetch week-over-week data
+  useEffect(() => {
+    const fetchWeekData = async () => {
+      try {
+        const [c, v, s] = await Promise.all([
+          axios.get("/api/week-data/contacts"),
+          axios.get("/api/week-data/visitors"),
+          axios.get("/api/week-data/subscribers"),
+        ]);
+
+        const data = {
+          contacts: c.data,
+          visitors: v.data,
+          subscribers: s.data,
+        };
+        setWeekData(data);
+
+        // compute % change
+        const pct = {};
+        Object.entries(data).forEach(([key, { current, previousWeek }]) => {
+          pct[key] = previousWeek === 0
+            ? null
+            : ((current - previousWeek) / previousWeek) * 100;
+        });
+        setPctChange(pct);
+      } catch (err) {
+        console.error("Failed to fetch weekly data:", err);
+      }
+    };
+
+    fetchWeekData();
+  }, []);
+
   const chartData = [
     { name: "Contacts", value: counts.contacts },
     { name: "Visitors", value: counts.visitors },
@@ -75,21 +120,10 @@ const HomeDashboard = () => {
     'rgba(251, 122, 58, 0.8)',
   ];
 
-  // Responsive grid columns
-  const getGridColumns = () => {
-    if (isMobile) return '1fr';
-    if (isTablet) return 'repeat(2, 1fr)';
-    return 'repeat(3, 1fr)';
-  };
-
-  // Responsive chart container height
-  const getChartHeight = () => {
-    if (isMobile) return 250;
-    return 320;
-  };
+  const getChartHeight = () => (isMobile ? 250 : 320);
 
   return (
-    <div style={{ 
+    <div style={{
       padding: isMobile ? '16px' : '24px',
       backgroundColor: '#f0f4f8',
       minHeight: '100vh',
@@ -109,106 +143,118 @@ const HomeDashboard = () => {
       {/* Stats Cards */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
+        gridTemplateColumns: isMobile
+          ? '1fr'
+          : 'repeat(auto-fit, minmax(280px, 1fr))',
         gap: isMobile ? '16px' : '24px',
         marginBottom: isMobile ? '24px' : '32px'
       }}>
-        {chartData.map((item, index) => (
-          <div key={item.name} style={{
-            background: index === 0 ? 'linear-gradient(135deg, #667eea, #764ba2)' : 
-                        index === 1 ? 'linear-gradient(135deg, #43e97b, #38f9d7)' : 
-                        'linear-gradient(135deg, #fe9496, #ff6b6b)',
-            borderRadius: '16px',
-            padding: isMobile ? '16px' : '24px',
-            boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
-            position: 'relative',
-            overflow: 'hidden',
-            color: 'white',
-            minHeight: isMobile ? '120px' : '160px'
-          }}>
-            
-            {/* Large overlapping circle */}
-            <div style={{
-              position: 'absolute',
-              right: '-30px',
-              top: '-30px',
-              width: '120px',
-              height: '120px',
-              borderRadius: '50%',
-              background: 'rgba(255, 255, 255, 0.15)'
-            }}></div>
-            
-            {/* Small overlapping circle */}
-            <div style={{
-              position: 'absolute',
-              right: '20px',
-              top: '20px',
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              background: 'rgba(255, 255, 255, 0.2)'
-            }}></div>
-            
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <p style={{
-                fontSize: isMobile ? '0.9rem' : '1rem',
-                marginBottom: isMobile ? '12px' : '16px',
-                fontWeight: '500',
-                opacity: 0.9
-              }}>{item.name}</p>
-              
-              <p style={{
-                fontSize: isMobile ? '1.5rem' : '1.8rem',
-                fontWeight: '700',
-                margin: '0 0 8px 0',
-                lineHeight: '1.2'
-              }}>
-                {!loading ? (
-                  <>
-                    {/* {index === 0 && '$ '} */}
-                    <CountUp 
-                      end={item.value} 
-                      duration={2.5} 
-                      separator=","
-                    />
-                  </>
-                ) : '--'}
-              </p>
-              
-              {/* Trend indicator */}
+        {chartData.map((item, index) => {
+          // derive delta & direction
+          const key   = item.name.toLowerCase();        // "contacts" | "visitors" | "subscribers"
+          const delta = pctChange[key];
+          const hasPrev = delta !== null;               // null means no prior data
+          const isUp  = delta > 0;
+
+          return (
+            <div key={item.name} style={{
+              background: index === 0
+                ? 'linear-gradient(135deg, #667eea, #764ba2)'
+                : index === 1
+                  ? 'linear-gradient(135deg, #43e97b, #38f9d7)'
+                  : 'linear-gradient(135deg, #fe9496, #ff6b6b)',
+              borderRadius: '16px',
+              padding: isMobile ? '16px' : '24px',
+              boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
+              position: 'relative',
+              overflow: 'hidden',
+              color: 'white',
+              minHeight: isMobile ? '120px' : '160px'
+            }}>
+              {/* Large overlapping circle */}
               <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                fontSize: isMobile ? '0.8rem' : '0.9rem',
-                opacity: 0.9
-              }}>
+                position: 'absolute',
+                right: '-30px',
+                top: '-30px',
+                width: '120px',
+                height: '120px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.15)'
+              }} />
+              {/* Small overlapping circle */}
+              <div style={{
+                position: 'absolute',
+                right: '20px',
+                top: '20px',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.2)'
+              }} />
+
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <p style={{
+                  fontSize: isMobile ? '0.9rem' : '1rem',
+                  marginBottom: isMobile ? '12px' : '16px',
+                  fontWeight: '500',
+                  opacity: 0.9
+                }}>{item.name}</p>
+
+                <p style={{
+                  fontSize: isMobile ? '1.5rem' : '1.8rem',
+                  fontWeight: '700',
+                  margin: '0 0 8px 0',
+                  lineHeight: '1.2'
+                }}>
+                  {!loading
+                    ? <CountUp end={item.value} duration={2.5} separator="," />
+                    : '--'
+                  }
+                </p>
+
+                {/* Trend indicator */}
                 <div style={{
-                  width: '24px',
-                  height: '24px',
-                  borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: '8px'
+                  fontSize: isMobile ? '0.8rem' : '0.9rem',
+                  opacity: 0.9
                 }}>
-                  {index !== 1 ? (
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 15l7-7 7 7" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ) : (
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  )}
+                  <div style={{
+                    width: '24px',
+                    height: '24px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: '8px'
+                  }}>
+                    {hasPrev ? (
+                      isUp ? (
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M5 15l7-7 7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      ) : (
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )
+                    ) : (
+                      /* no prior data – show nothing or a dash */
+                      <span style={{ color: 'rgba(255,255,255,0.6)' }}>–</span>
+                    )}
+                  </div>
+                  <span>
+                    {hasPrev
+                      ? `${isUp ? 'Increased' : 'Decreased'} by ${Math.abs(delta).toFixed(1)}%`
+                      : 'N/A'
+                    }
+                  </span>
                 </div>
-                <span>
-                  {index !== 1 ? 'Increased' : 'Decreased'} by {index === 0 ? '40%' : index === 1 ? '10%' : '5%'}
-                </span>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Charts Section */}

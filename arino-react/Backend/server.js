@@ -9,6 +9,7 @@ const contactRoutes = require('../Backend/Admin/routes/contactRoutes');
 const adminAuthRoutes = require('../Backend/Admin/routes/adminAuthRoutes');
 const subscriptionRoutes = require('../Backend/Admin/routes/subscriptionRoutes'); // New Subscription Routes
 const visitorRoutes = require('../Backend/Admin/routes/VisitorRoute'); // New Visitor Routes
+const weekdataRoutes = require('../Backend/Admin/routes/WeekDataRoute');
 
 // Load environment variables
 dotenv.config();
@@ -38,6 +39,7 @@ app.use('/api/admin-contact', contactRoutes);
 app.use('/api/admin', adminAuthRoutes);
 app.use('/api/admin-subscribe', subscriptionRoutes); // Subscription routes
 app.use('/api/admin-visitors', visitorRoutes); // Visitor routes
+app.use('/api/week-data', weekdataRoutes);
 
 // Start the server on the specified port
 const PORT = process.env.PORT || 5000;

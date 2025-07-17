@@ -12,7 +12,7 @@ export default function ContactInfoWidget({withIcon, title}) {
         </li> */}
         <li>
           {withIcon?<span className='cs-accent_color'><Icon icon="mdi:envelope" /></span>:''}
-          info@onnes.com
+          info@onnes.in
         </li>
         {/* <li>
           {withIcon?<span className='cs-accent_color'><Icon icon="mdi:map-marker" /></span>:''}

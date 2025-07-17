@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 30px; // Vertical gap between rows
 }
 
+// ----------------------------
+// TOP SLIDER ROW
+// ----------------------------
 .cs-partner_slider_container {
   overflow: hidden;
   width: 100%;
@@ -15,16 +18,16 @@
 .cs-partner_logo_slider {
   display: flex;
   flex-wrap: nowrap;
-  animation: scroll-left 15s linear infinite;  // doubled duration for smoothness
+  animation: scroll-left 15s linear infinite;
   gap: 30px;
-  padding: 10px 0;
-  will-change: transform;  // optimize animation performance
+  padding: 50px 0;
+  will-change: transform;
 }
 
 .cs-partner_logo {
   flex: 0 0 auto;
-  width: 200px; /* Increased from 180px */
-  height: 135px; /* Increased from 120px */
+  width: 200px;
+  height: 135px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,48 +40,62 @@
   object-fit: contain;
 }
 
+// ----------------------------
+// BOTTOM STATIC ROW
+// ----------------------------
 .cs-partner_logo_wrap.bottom {
   display: flex;
-  flex-wrap: nowrap; /* Keep everything in one row */
   justify-content: center;
+  flex-wrap: wrap;
   gap: 30px;
   width: 100%;
   max-width: 1200px;
   padding: 20px 0;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: hidden;
 }
 
-/* Animation keyframe */
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+// ----------------------------
+// EXTRA BOTTOM STATIC ROW
+// ----------------------------
+.cs-partner_logo_wrap.extra-bottom {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 0;
+  overflow-x: hidden;
 }
 
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-  .cs-partner_logo {
-    width: 150px; /* Up from 130px */
-    height: 105px; /* Up from 90px */
-  }
-
-  .cs-partner_logo_slider {
-    gap: 20px;
-  }
-
-  .cs-partner_logo_wrap.bottom {
-    gap: 20px;
-  }
+// Individual logo sizing in extra-bottom row
+.cs-partner_logo.extra-mufg {
+  width: 280px;
+  height: 190px;
 }
 
-/* Special top partner (Partner 6) */
+.cs-partner_logo.extra-deepak {
+  width: 250px;
+  height: 180px;
+}
+
+.cs-partner_logo.extra-cse {
+  width: 260px;
+  height: 180px;
+}
+
+.cs-partner_logo.extra-newtrace {
+  width: 270px;
+  height: 180px;
+  // removed manual margin — spacing now controlled via gap
+}
+
+// ----------------------------
+// SPECIAL CASES (TOP/BOTTOM)
+// ----------------------------
 .cs-partner_logo.partner-6 {
   width: 250px;
   height: 160px;
-  padding: 10px;
   margin-top: -10px;
 }
 
@@ -87,15 +104,72 @@
   height: 155px;
 }
 
-/* Special bottom partner: Partner 8 (Client_1) */
 .cs-partner_logo.partner-8 {
   width: 210px;
   height: 140px;
   margin-top: -8px;
 }
 
-/* Special bottom partner: Partner 11 (Client_4) */
 .cs-partner_logo.partner-11 {
   width: 210px;
   height: 140px;
+}
+
+/* Shared styles for all rows */
+.cs-partner_logo_wrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+/* Manually push Newtrace slightly to the right */
+.extra-newtrace {
+  margin-left: 15px;
+}
+// ----------------------------
+// MOBILE RESPONSIVENESS
+// ----------------------------
+@media screen and (max-width: 768px) {
+  .cs-partner_logo {
+    width: 140px;
+    height: 100px;
+    padding: 5px;
+  }
+
+  .cs-partner_logo_slider,
+  .cs-partner_logo_wrap.bottom,
+  .cs-partner_logo_wrap.extra-bottom,
+  .cs-partner_logo_wrap {
+    gap: 20px;
+    padding: 15px 0;
+  }
+
+  .cs-partner_logo.extra-mufg,
+  .cs-partner_logo.extra-deepak,
+  .cs-partner_logo.extra-cse,
+  .cs-partner_logo.extra-newtrace {
+    width: 180px;
+    height: 120px;
+  }
+
+  .cs-partner_logo.partner-6,
+  .cs-partner_logo.partner-4,
+  .cs-partner_logo.partner-8,
+  .cs-partner_logo.partner-11 {
+    width: 160px;
+    height: 110px;
+    margin-top: 0; // neutralize negative margin for better mobile stacking
+  }
+}
+
+// ----------------------------
+// Animation
+// ----------------------------
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }

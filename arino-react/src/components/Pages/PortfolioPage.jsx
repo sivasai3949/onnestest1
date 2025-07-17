@@ -189,7 +189,7 @@ export default function PortfolioPage() {
       </Div>
       <Spacing lg="145" md="80" />
       <Cta
-        title="info@onnes.com"
+        title="info@onnes.in"
         bgSrc="/images/cta_bg_2.jpeg"
         variant="rounded-0"
       />

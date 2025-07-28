@@ -40,6 +40,7 @@ router.get('/:resource', async (req, res) => {
       Model.countDocuments({ createdAt: { $gte: startCurrent } }),
       Model.countDocuments({ createdAt: { $gte: startPrevious, $lt: startCurrent } })
     ]);
+    console.log(`📊 ${resource} — Current: ${current}, Previous Week: ${previousWeek}`); // <== ADD THIS LINE
 
     res.status(200).json({ current, previousWeek });
   } catch (error) {

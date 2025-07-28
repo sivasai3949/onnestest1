@@ -12,6 +12,7 @@ const Visitor = require('../models/Visitor');
  * Returns JSON: { current: Number, previousWeek: Number }
  */
 router.get('/:resource', async (req, res) => {
+  console.log("📥 WeekDataRoute hit with resource:", req.params.resource); // <-- Add this
   try {
     const { resource } = req.params;
     let Model;

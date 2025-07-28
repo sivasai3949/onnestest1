@@ -40,6 +40,7 @@ app.use('/api/admin', adminAuthRoutes);
 app.use('/api/admin-subscribe', subscriptionRoutes); // Subscription routes
 app.use('/api/admin-visitors', visitorRoutes); // Visitor routes
 app.use('/api/week-data', weekdataRoutes);
+console.log("✅ Mounted: /api/week-data route"); // <-- Add this
 
 // Start the server on the specified port
 const PORT = process.env.PORT || 5000;

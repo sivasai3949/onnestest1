@@ -21,6 +21,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
 import Button from "../Button"; // Add this import with your other imports
 import { useLocation } from "react-router-dom";
+import ChatBot from "../ChatBot/ChatBot";
 
 const heroImages = [
   "/images/Home_1.webp",
@@ -344,6 +345,8 @@ export default function Home() {
       </Div>
 
       {/* End CTA Section */}
+      {/* ChatBot Component */}
+      <ChatBot />
     </>
   );
 }

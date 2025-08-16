@@ -1,4 +1,4 @@
-/* ChatBot.css (Updated) */
+/* ChatBot.css (No Changes Needed, Same as Previous) */
 
 /* ChatBot Icon */
 .chatbot-icon {
@@ -315,4 +315,24 @@
   .country-select { width: 70px; min-width: 70px; max-width: 100px; font-size: 11px; }
   .phone-number-input { font-size: 12px; padding: 8px; }
   .phone-submit-btn { width: 30px; height: 30px; }
+}
+
+/* FIX: Prevent chat jump and let background be visible on mobile */
+@media (max-width: 600px) {
+  .chatbot-container {
+    position: fixed;
+    bottom: 90px !important;
+    right: 20px !important;
+    left: auto !important;
+    width: min(380px, 90vw) !important;
+    height: 500px !important;
+    max-height: 80dvh !important; /* Keyboard will not cause upward jump */
+    border-radius: 15px !important;
+    background: #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    z-index: 1000;
+  }
+  .chatbot-input-form input:focus {
+    scroll-margin-bottom: 120px;
+  }
 }

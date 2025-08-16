@@ -1,4 +1,4 @@
-// ChatBot.jsx (Updated)
+// ChatBot.jsx (Fully Updated with Fixes for Email Validation, Question Progression, and Name Validation Allowing Spaces)
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Icon } from '@iconify/react';
 import axios from 'axios';
@@ -93,13 +93,16 @@ const ChatBot = () => {
       {
         field: 'fullName',
         question: "Hi! I'm Onnes Cryo Assistant. I'd love to help you get in touch with our team. May I have your Name?",
-        validation: (value) => /^[a-zA-Z\\s]+$/.test(value.trim()),
+        validation: (value) => {
+          const trimmed = value.trim();
+          return trimmed.length > 0 && /^[a-zA-Z\s]+$/.test(trimmed);
+        },
         errorMessage: 'Please enter a valid name using only alphabets and spaces.'
       },
       {
         field: 'email',
         question: 'Great! Now, could you please provide your email?',
-        validation: (value) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value.trim()),
+        validation: (value) => /^[^\s@]+@[^\s@]+$/.test(value.trim()),
         errorMessage: 'Please enter a valid email address.'
       },
       {
@@ -286,9 +289,9 @@ const ChatBot = () => {
     setFormData(updatedForm);
 
     if (currentStep < questions.length - 1) {
+      setCurrentStep(currentStep + 1);
       setTimeout(() => {
         addBotMessage(questions[currentStep + 1].question);
-        setCurrentStep(currentStep + 1);
       }, 200);
     } else {
       setTimeout(() => {
@@ -361,13 +364,14 @@ const ChatBot = () => {
       setFormData(updatedForm);
 
       if (currentStep < questions.length - 1) {
-        const nextQ = questions[currentStep + 1];
+        const nextStep = currentStep + 1;
+        setCurrentStep(nextStep);
+        const nextQ = questions[nextStep];
         setTimeout(() => {
           addBotMessage(nextQ.question, {
             showOptions: !!nextQ.showOptions,
             showPhone: !!nextQ.showPhoneInput
           });
-          setCurrentStep(currentStep + 1);
         }, 200);
       } else {
         setTimeout(() => {

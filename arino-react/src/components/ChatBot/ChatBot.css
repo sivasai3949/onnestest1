@@ -1,3 +1,4 @@
+/* chatbot.css */
 /* ChatBot Icon */
 .chatbot-icon {
   position: fixed;
@@ -192,7 +193,6 @@
 }
 .phone-input-wrapper::-webkit-scrollbar { display: none; }
 
-
 /* Country Select FINAL */
 .country-select {
   background: #333;
@@ -258,18 +258,21 @@
     bottom: 0;
     width: 100vw;
     max-width: 100vw;
-    height: 100dvh; /* Dynamic viewport height to handle keyboard */
-    max-height: 100dvh;
-    border-radius: 0; /* Full-screen feel on mobile */
+    border-radius: 20px 20px 0 0; /* Rounded top for modal feel */
     margin: 0;
-    animation: none; /* Disable slide-in for instant open on mobile to prevent jumping */
+    animation: slideUp 0.3s ease-out; /* Slide up animation */
     box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
+    transition: height 0.3s ease-out; /* Smooth height changes */
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
   }
   .chatbot-icon { right: 20px; bottom: 20px; width: 55px; height: 55px; }
   .chatbot-icon svg { font-size: 24px; }
   .chatbot-messages {
     padding: 15px; /* Slightly reduce padding for small screens */
-    max-height: calc(100dvh - 140px); /* Adjust based on header + input heights */
+    /* Removed max-height; let flex and JS handle */
   }
   .project-options-container {
     gap: 8px; /* Tighter spacing on mobile */
@@ -284,7 +287,6 @@
   }
 }
 
-
 /* More granular media query for devices like iPhone 15/Samsung S22 (~360-430px width) */
 @media (max-width: 430px) {
   .chatbot-container {
@@ -294,12 +296,11 @@
     bottom: 0;
     width: 100vw;
     max-width: 100vw;
-    height: 100dvh; /* Dynamic viewport height to handle keyboard */
-    max-height: 100dvh;
-    border-radius: 0; /* Full-screen feel on mobile */
+    border-radius: 20px 20px 0 0;
     margin: 0;
-    animation: none; /* Disable animation */
+    animation: slideUp 0.3s ease-out;
     box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
+    transition: height 0.3s ease-out;
   }
   .chatbot-icon {
     right: 10px;
@@ -309,7 +310,7 @@
   }
   .chatbot-messages {
     padding: 10px;
-    max-height: calc(100dvh - 140px); /* Adjust based on header + input heights */
+    /* Removed max-height; let flex and JS handle */
   }
   .project-options-container {
     gap: 8px;

@@ -1,3 +1,4 @@
+// ChatBot.jsx
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Icon } from '@iconify/react';
 import axios from 'axios';
@@ -37,6 +38,7 @@ const ChatBot = () => {
   // Refs
   const phoneInputRef = useRef(null);
   const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
   const inputRef = useRef(null);
   const countryChangeTimeoutRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
@@ -135,11 +137,11 @@ const ChatBot = () => {
   const scrollToBottom = useCallback(() => {
     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     scrollTimeoutRef.current = setTimeout(() => {
-      if (messagesEndRef.current && !showPhoneInput) {
-        messagesEndRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'end',
-          inline: 'nearest'
+      const container = messagesContainerRef.current;
+      if (container && !showPhoneInput) {
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: 'smooth'
         });
       }
     }, 100);
@@ -172,27 +174,46 @@ const ChatBot = () => {
     };
   }, []);
 
-  // NEW: Fix for mobile keyboard resizing the viewport - dynamically set container height
+  // UPDATED: Enhanced fix for mobile keyboard resizing, with half-screen coverage and background visibility
   useEffect(() => {
+    if (!isOpen) return;
+
+    const initialHeight = window.innerHeight;
+
     const fixChatbotHeight = () => {
       const chatContainer = document.querySelector('.chatbot-container');
-      if (chatContainer && window.innerWidth <= 480) { // Apply only on mobile-sized screens
-        const visibleHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-        chatContainer.style.height = `${visibleHeight}px`;
+      if (chatContainer && window.innerWidth <= 480) {
+        const visibleHeight = window.visualViewport?.height || window.innerHeight;
+        const maxChatHeight = initialHeight * 0.7; // Cover ~70% of screen for background visibility
+        chatContainer.style.height = `${Math.min(maxChatHeight, visibleHeight)}px`;
       }
     };
 
-    window.addEventListener('resize', fixChatbotHeight);
-    window.addEventListener('orientationchange', fixChatbotHeight);
+    fixChatbotHeight();
 
-    // Initial call
-    if (isOpen) {
-      fixChatbotHeight();
+    const handleViewportChange = () => fixChatbotHeight();
+
+    window.addEventListener('resize', handleViewportChange);
+    window.addEventListener('orientationchange', handleViewportChange);
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleViewportChange);
+      window.visualViewport.addEventListener('scroll', handleViewportChange);
+    }
+
+    // Prevent background scrolling on mobile
+    if (window.innerWidth <= 480) {
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      window.removeEventListener('resize', fixChatbotHeight);
-      window.removeEventListener('orientationchange', fixChatbotHeight);
+      window.removeEventListener('resize', handleViewportChange);
+      window.removeEventListener('orientationchange', handleViewportChange);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', handleViewportChange);
+        window.visualViewport.removeEventListener('scroll', handleViewportChange);
+      }
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -461,7 +482,7 @@ const ChatBot = () => {
             </button>
           </div>
 
-          <div className="chatbot-messages">
+          <div className="chatbot-messages" ref={messagesContainerRef}>
             {messages.map((m, i) => (
               <div key={`message-${i}-${m.timestamp}`} className={`message ${m.type}`}>
                 <div className="message-content">

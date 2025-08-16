@@ -37,7 +37,7 @@
   height: 500px;
   max-width: 90vw; /* Prevent overflow on very narrow screens */
   max-height: 80vh; /* Ensure it doesn't exceed viewport height */
-  background: rgba(26, 26, 26, 0.7); /* Semi-transparent background */
+  background: #1a1a1a;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   z-index: 1000;
@@ -48,7 +48,6 @@
   animation: slideIn 0.2s ease-out;
   transform: translateZ(0);
   will-change: transform;
-  backdrop-filter: blur(5px); /* Optional blur effect for glass-like appearance */
 }
 @keyframes slideIn {
   from { opacity: 0; transform: translateY(20px) scale(0.95); }
@@ -84,7 +83,7 @@
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  background: transparent; /* Make messages area transparent to show container's background */
+  background: #1a1a1a;
   scrollbar-width: thin;
   scrollbar-color: #333 #1a1a1a;
   will-change: scroll-position;
@@ -130,7 +129,7 @@
 /* Input Form */
 .chatbot-input-form {
   padding: 15px 20px;
-  background: rgba(34, 34, 34, 0.7); /* Semi-transparent for input area */
+  background: #222;
   border-top: 1px solid #333;
 }
 .input-container {
@@ -264,8 +263,6 @@
     animation: slideUp 0.3s ease-out; /* Slide up animation */
     box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
     transition: height 0.3s ease-out; /* Smooth height changes */
-    background: rgba(26, 26, 26, 0.6); /* Slightly more transparent on mobile */
-    backdrop-filter: blur(5px); /* Optional blur effect */
   }
   @keyframes slideUp {
     from { transform: translateY(100%); }
@@ -275,7 +272,6 @@
   .chatbot-icon svg { font-size: 24px; }
   .chatbot-messages {
     padding: 15px; /* Slightly reduce padding for small screens */
-    background: transparent; /* Transparent on mobile */
     /* Removed max-height; let flex and JS handle */
   }
   .project-options-container {
@@ -288,9 +284,6 @@
   .phone-submit-btn { width: 32px; height: 32px; }
   .input-container input {
     font-size: 13px;
-  }
-  .chatbot-input-form {
-    background: rgba(34, 34, 34, 0.6); /* Semi-transparent on mobile */
   }
 }
 
@@ -308,8 +301,6 @@
     animation: slideUp 0.3s ease-out;
     box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
     transition: height 0.3s ease-out;
-    background: rgba(26, 26, 26, 0.6); /* Slightly more transparent on mobile */
-    backdrop-filter: blur(5px); /* Optional blur effect */
   }
   .chatbot-icon {
     right: 10px;
@@ -319,7 +310,6 @@
   }
   .chatbot-messages {
     padding: 10px;
-    background: transparent; /* Transparent on mobile */
     /* Removed max-height; let flex and JS handle */
   }
   .project-options-container {
@@ -334,7 +324,4 @@
   .country-select { width: 70px; min-width: 70px; max-width: 100px; font-size: 11px; }
   .phone-number-input { font-size: 12px; padding: 8px; }
   .phone-submit-btn { width: 30px; height: 30px; }
-  .chatbot-input-form {
-    background: rgba(34, 34, 34, 0.6); /* Semi-transparent on mobile */
-  }
 }

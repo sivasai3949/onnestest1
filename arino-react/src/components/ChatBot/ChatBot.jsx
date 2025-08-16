@@ -92,13 +92,13 @@ const ChatBot = () => {
       {
         field: 'fullName',
         question: "Hi! I'm Onnes Cryo Assistant. I'd love to help you get in touch with our team. May I have your Name?",
-        validation: (value) => /^[a-zA-Z\\s]+$/.test(value.trim()),
+        validation: (value) => /^[a-zA-Z\s]+$/.test(value.trim()),
         errorMessage: 'Please enter a valid name using only alphabets and spaces.'
       },
       {
         field: 'email',
         question: 'Great! Now, could you please provide your email?',
-        validation: (value) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value.trim()),
+        validation: (value) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value.trim()),
         errorMessage: 'Please enter a valid email address.'
       },
       {

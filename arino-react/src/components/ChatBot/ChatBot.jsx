@@ -92,13 +92,13 @@ const ChatBot = () => {
       {
         field: 'fullName',
         question: "Hi! I'm Onnes Cryo Assistant. I'd love to help you get in touch with our team. May I have your Name?",
-        validation: (value) => /^[a-zA-Z\s]+$/.test(value.trim()),
+        validation: (value) => /^[a-zA-Z\\s]+$/.test(value.trim()),
         errorMessage: 'Please enter a valid name using only alphabets and spaces.'
       },
       {
         field: 'email',
         question: 'Great! Now, could you please provide your email?',
-        validation: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
+        validation: (value) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value.trim()),
         errorMessage: 'Please enter a valid email address.'
       },
       {
@@ -149,12 +149,14 @@ const ChatBot = () => {
     if (messages.length > 0) scrollToBottom();
   }, [messages, scrollToBottom]);
 
-  useEffect(() => {
-    if (isOpen && inputRef.current && !showProjectOptions && !showPhoneInput) {
-      const id = setTimeout(() => inputRef.current && inputRef.current.focus(), 50);
-      return () => clearTimeout(id);
-    }
-  }, [isOpen, showProjectOptions, showPhoneInput]);
+  // REMOVED: Auto-focus on open to prevent immediate keyboard popup and "going up" on mobile
+  // If you want a delayed focus, uncomment and adjust the timeout:
+  // useEffect(() => {
+  //   if (isOpen && inputRef.current && !showProjectOptions && !showPhoneInput) {
+  //     const id = setTimeout(() => inputRef.current && inputRef.current.focus(), 500);
+  //     return () => clearTimeout(id);
+  //   }
+  // }, [isOpen, showProjectOptions, showPhoneInput]);
 
   useEffect(() => {
     if (showPhoneInput && phoneInputRef.current) {
@@ -218,7 +220,7 @@ const ChatBot = () => {
     }, 200);
   }, []);
 
-   const handlePhoneValueChange = useCallback((val) => {
+  const handlePhoneValueChange = useCallback((val) => {
     if (!val) {
       setPhoneValue('');
       setNationalNumber('');

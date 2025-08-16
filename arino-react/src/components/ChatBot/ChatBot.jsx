@@ -172,6 +172,30 @@ const ChatBot = () => {
     };
   }, []);
 
+  // NEW: Fix for mobile keyboard resizing the viewport - dynamically set container height
+  useEffect(() => {
+    const fixChatbotHeight = () => {
+      const chatContainer = document.querySelector('.chatbot-container');
+      if (chatContainer && window.innerWidth <= 480) { // Apply only on mobile-sized screens
+        const visibleHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        chatContainer.style.height = `${visibleHeight}px`;
+      }
+    };
+
+    window.addEventListener('resize', fixChatbotHeight);
+    window.addEventListener('orientationchange', fixChatbotHeight);
+
+    // Initial call
+    if (isOpen) {
+      fixChatbotHeight();
+    }
+
+    return () => {
+      window.removeEventListener('resize', fixChatbotHeight);
+      window.removeEventListener('orientationchange', fixChatbotHeight);
+    };
+  }, [isOpen]);
+
   const addBotMessage = useCallback((text, options = {}) => {
     const { showOptions = false, showPhone = false } = options;
     setIsTyping(true);

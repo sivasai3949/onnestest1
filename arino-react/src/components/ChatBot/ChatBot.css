@@ -192,6 +192,7 @@
 }
 .phone-input-wrapper::-webkit-scrollbar { display: none; }
 
+
 /* Country Select FINAL */
 .country-select {
   background: #333;
@@ -251,14 +252,24 @@
 /* Responsive - Enhanced for 6.1-inch devices and smaller screens */
 @media (max-width: 480px) {
   .chatbot-container {
-    width: calc(100vw - 40px); height: calc(100vh - 140px);
-    right: 20px; bottom: 90px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh; /* Dynamic viewport height to handle keyboard */
+    max-height: 100dvh;
+    border-radius: 0; /* Full-screen feel on mobile */
+    margin: 0;
     animation: none; /* Disable slide-in for instant open on mobile to prevent jumping */
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
   }
   .chatbot-icon { right: 20px; bottom: 20px; width: 55px; height: 55px; }
   .chatbot-icon svg { font-size: 24px; }
   .chatbot-messages {
     padding: 15px; /* Slightly reduce padding for small screens */
+    max-height: calc(100dvh - 140px); /* Adjust based on header + input heights */
   }
   .project-options-container {
     gap: 8px; /* Tighter spacing on mobile */
@@ -273,14 +284,22 @@
   }
 }
 
+
 /* More granular media query for devices like iPhone 15/Samsung S22 (~360-430px width) */
 @media (max-width: 430px) {
   .chatbot-container {
-    width: calc(100vw - 20px); /* Tighter margins */
-    height: calc(100vh - 100px); /* More screen coverage */
-    right: 10px;
-    bottom: 80px; /* Adjust position to stick better to bottom */
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh; /* Dynamic viewport height to handle keyboard */
+    max-height: 100dvh;
+    border-radius: 0; /* Full-screen feel on mobile */
+    margin: 0;
     animation: none; /* Disable animation */
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
   }
   .chatbot-icon {
     right: 10px;
@@ -290,6 +309,7 @@
   }
   .chatbot-messages {
     padding: 10px;
+    max-height: calc(100dvh - 140px); /* Adjust based on header + input heights */
   }
   .project-options-container {
     gap: 8px;

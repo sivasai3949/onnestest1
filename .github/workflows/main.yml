@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - updatechatbot   # Trigger only on this 
+      - updatephoneui   # Trigger only on this 
 
 jobs:
   deploy:
@@ -25,5 +25,5 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@onnes.in <<EOF
             echo "✅ Running deploy.sh script on EC2..." 
-            sudo bash /home/ubuntu/deploy.sh updatechatbot
+            sudo bash /home/ubuntu/deploy.sh updatephoneui
           EOF

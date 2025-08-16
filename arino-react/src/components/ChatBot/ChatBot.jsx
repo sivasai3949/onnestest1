@@ -1,14 +1,13 @@
+// ChatBot.jsx (Updated)
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Icon } from '@iconify/react';
 import axios from 'axios';
 import './ChatBot.css';
 
-
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input/input';
 import { getCountries, getCountryCallingCode } from 'react-phone-number-input';
 import en from 'react-phone-number-input/locale/en';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
-
 
 // Utility: build emoji flag from ISO code
 const getCountryFlag = (countryCode) => {
@@ -21,24 +20,20 @@ const getCountryFlag = (countryCode) => {
   }
 };
 
-
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-
   // UI states
   const [showProjectOptions, setShowProjectOptions] = useState(false);
   const [showPhoneInput, setShowPhoneInput] = useState(false);
-
 
   // Phone states
   const [country, setCountry] = useState('IN');
   const [phoneValue, setPhoneValue] = useState('');
   const [nationalNumber, setNationalNumber] = useState('');
-
 
   // Refs
   const phoneInputRef = useRef(null);
@@ -46,7 +41,6 @@ const ChatBot = () => {
   const inputRef = useRef(null);
   const countryChangeTimeoutRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
-
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -56,7 +50,6 @@ const ChatBot = () => {
     message: ''
   });
 
-
   const [messages, setMessages] = useState([
     {
       type: 'bot',
@@ -65,7 +58,6 @@ const ChatBot = () => {
     }
   ]);
   const [userInput, setUserInput] = useState('');
-
 
   // Country option list (compact display)
   const countryOptions = useMemo(() => {
@@ -86,7 +78,6 @@ const ChatBot = () => {
     });
   }, []);
 
-
   const projectOptions = useMemo(
     () => [
       { value: 'SPACE', label: '🚀 SPACE' },
@@ -96,7 +87,6 @@ const ChatBot = () => {
     ],
     []
   );
-
 
   const questions = useMemo(
     () => [
@@ -143,7 +133,6 @@ const ChatBot = () => {
     [phoneValue]
   );
 
-
   const scrollToBottom = useCallback(() => {
     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     scrollTimeoutRef.current = setTimeout(() => {
@@ -157,11 +146,9 @@ const ChatBot = () => {
     }, 100);
   }, [showPhoneInput]);
 
-
   useEffect(() => {
     if (messages.length > 0) scrollToBottom();
   }, [messages, scrollToBottom]);
-
 
   // REMOVED: Auto-focus on open to prevent immediate keyboard popup and "going up" on mobile
   // If you want a delayed focus, uncomment and adjust the timeout:
@@ -172,14 +159,12 @@ const ChatBot = () => {
   //   }
   // }, [isOpen, showProjectOptions, showPhoneInput]);
 
-
   useEffect(() => {
     if (showPhoneInput && phoneInputRef.current) {
       const id = setTimeout(() => phoneInputRef.current && phoneInputRef.current.focus(), 200);
       return () => clearTimeout(id);
     }
   }, [showPhoneInput]);
-
 
   useEffect(() => {
     return () => {
@@ -188,6 +173,8 @@ const ChatBot = () => {
     };
   }, []);
 
+  // REMOVED: The fixChatbotHeight useEffect to prevent dynamic height changes that may cause "screen moving up".
+  // Relying on CSS max-height with dvh for dynamic adjustment on keyboard open/close.
 
   const addBotMessage = useCallback((text, options = {}) => {
     const { showOptions = false, showPhone = false } = options;
@@ -201,11 +188,9 @@ const ChatBot = () => {
     return () => clearTimeout(id);
   }, []);
 
-
   const addUserMessage = useCallback((text) => {
     setMessages((prev) => [...prev, { type: 'user', text, timestamp: new Date().toLocaleTimeString() }]);
   }, []);
-
 
   const normalizeProjectType = useCallback((input) => {
     const x = input.toLowerCase();
@@ -215,7 +200,6 @@ const ChatBot = () => {
     if (x === '4' || x === 'others') return 'OTHERS';
     return input.toUpperCase();
   }, []);
-
 
   const handleProjectOptionSelect = useCallback(
     (selectedValue) => {
@@ -232,7 +216,6 @@ const ChatBot = () => {
     [addUserMessage, formData, questions, currentStep, addBotMessage]
   );
 
-
   const handlePhoneCountryChange = useCallback((newCountryCode) => {
     if (countryChangeTimeoutRef.current) clearTimeout(countryChangeTimeoutRef.current);
     countryChangeTimeoutRef.current = setTimeout(() => {
@@ -241,7 +224,6 @@ const ChatBot = () => {
     }, 200);
   }, []);
 
-
   const handlePhoneValueChange = useCallback((val) => {
     if (!val) {
       setPhoneValue('');
@@ -249,14 +231,11 @@ const ChatBot = () => {
       return;
     }
 
-
     // Extract only digits
     const digits = val.replace(/\D/g, '');
 
-
     // Default length
     let maxLen = Infinity;
-
 
     const parsed = parsePhoneNumberFromString(val);
     if (parsed && parsed.country) {
@@ -274,7 +253,6 @@ const ChatBot = () => {
       }
     }
 
-
     let trimmedVal = val;
     if (parsed?.countryCallingCode) {
       const cc = parsed.countryCallingCode;
@@ -290,10 +268,8 @@ const ChatBot = () => {
       setNationalNumber(trimmedDigits);
     }
 
-
     setPhoneValue(trimmedVal);
   }, []);
-
 
   const handlePhoneSubmit = useCallback(() => {
     if (!phoneValue || !isValidPhoneNumber(phoneValue)) {
@@ -301,16 +277,13 @@ const ChatBot = () => {
       return;
     }
 
-
     setShowPhoneInput(false);
     const selectedCountry = countryOptions.find((c) => c.value === country);
     const displayText = `${selectedCountry?.flag} ${selectedCountry?.name} ${phoneValue}`;
     addUserMessage(displayText);
 
-
     const updatedForm = { ...formData, mobile: phoneValue };
     setFormData(updatedForm);
-
 
     if (currentStep < questions.length - 1) {
       setTimeout(() => {
@@ -335,7 +308,6 @@ const ChatBot = () => {
     questions,
     addBotMessage
   ]);
-
 
   const submitToBackend = async (finalData) => {
     setIsSubmitting(true);
@@ -365,20 +337,16 @@ const ChatBot = () => {
     }
   };
 
-
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
       if (!userInput.trim() || isSubmitting) return;
 
-
       const q = questions[currentStep];
       const val = userInput.trim();
 
-
       addUserMessage(val);
       setUserInput('');
-
 
       if (!q.validation(val)) {
         const errorMsg = typeof q.errorMessage === 'function' ? q.errorMessage() : q.errorMessage;
@@ -386,14 +354,11 @@ const ChatBot = () => {
         return;
       }
 
-
       let processed = val;
       if (q.field === 'product') processed = normalizeProjectType(val);
 
-
       const updatedForm = { ...formData, [q.field]: processed };
       setFormData(updatedForm);
-
 
       if (currentStep < questions.length - 1) {
         const nextQ = questions[currentStep + 1];
@@ -415,7 +380,6 @@ const ChatBot = () => {
     },
     [userInput, isSubmitting, questions, currentStep, addUserMessage, addBotMessage, normalizeProjectType, formData]
   );
-
 
   const resetChat = useCallback(() => {
     setCurrentStep(0);
@@ -442,9 +406,7 @@ const ChatBot = () => {
     setUserInput('');
   }, []);
 
-
   const toggleChat = useCallback(() => setIsOpen(prev => !prev), []);
-
 
   // FIXED: Handle Enter key for phone input
   const handlePhoneKeyDown = useCallback((e) => {
@@ -454,14 +416,12 @@ const ChatBot = () => {
     }
   }, [handlePhoneSubmit]);
 
-
   return (
     <>
       {/* Floating Chat Icon */}
       <div className={`chatbot-icon ${isOpen ? 'active' : ''}`} onClick={toggleChat}>
         <Icon icon={isOpen ? 'material-symbols:close' : 'material-symbols:chat'} />
       </div>
-
 
       {/* Chat Window */}
       {isOpen && (
@@ -481,7 +441,6 @@ const ChatBot = () => {
             </button>
           </div>
 
-
           <div className="chatbot-messages">
             {messages.map((m, i) => (
               <div key={`message-${i}-${m.timestamp}`} className={`message ${m.type}`}>
@@ -491,7 +450,6 @@ const ChatBot = () => {
                 </div>
               </div>
             ))}
-
 
             {/* Project Options */}
             {showProjectOptions && (
@@ -507,7 +465,6 @@ const ChatBot = () => {
                 ))}
               </div>
             )}
-
 
             {/* Phone Input Section - FIXED */}
             {showPhoneInput && (
@@ -559,7 +516,6 @@ const ChatBot = () => {
               </div>
             )}
 
-
             {(isTyping || isSubmitting) && (
               <div className="message bot">
                 <div className="message-content typing">
@@ -573,7 +529,6 @@ const ChatBot = () => {
             )}
             <div ref={messagesEndRef} />
           </div>
-
 
           {/* Main input form */}
           <form className="chatbot-input-form" onSubmit={handleSubmit}>
@@ -613,6 +568,5 @@ const ChatBot = () => {
     </>
   );
 };
-
 
 export default ChatBot;

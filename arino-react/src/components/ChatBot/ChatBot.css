@@ -1,3 +1,5 @@
+/* ChatBot.css (Updated) */
+
 /* ChatBot Icon */
 .chatbot-icon {
   position: fixed;
@@ -35,7 +37,7 @@
   width: 380px;
   height: 500px;
   max-width: 90vw; /* Prevent overflow on very narrow screens */
-  max-height: 80vh; /* Ensure it doesn't exceed viewport height */
+  max-height: 80dvh; /* Use dynamic vh for keyboard handling */
   background: #1a1a1a;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -192,7 +194,6 @@
 }
 .phone-input-wrapper::-webkit-scrollbar { display: none; }
 
-
 /* Country Select FINAL */
 .country-select {
   background: #333;
@@ -249,27 +250,23 @@
   border-color: #00B5F9;
   box-shadow: none;
 }
-/* Responsive - Enhanced for 6.1-inch devices and smaller screens */
+/* Responsive - Enhanced for 6.1-inch devices and smaller screens. Adjusted to not cover full screen, positioned to the right side for background visibility. Use dvh for keyboard handling. */
 @media (max-width: 480px) {
   .chatbot-container {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    max-width: 100vw;
-    height: 100dvh; /* Dynamic viewport height to handle keyboard */
-    max-height: 100dvh;
-    border-radius: 0; /* Full-screen feel on mobile */
+    width: min(380px, 90vw);
+    height: 500px;
+    max-height: 80dvh;
+    right: 20px;
+    bottom: 90px;
+    border-radius: 15px; /* Keep rounded corners */
     margin: 0;
-    animation: none; /* Disable slide-in for instant open on mobile to prevent jumping */
-    box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
+    animation: slideIn 0.3s ease-out; /* Keep animation for smooth open */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
   .chatbot-icon { right: 20px; bottom: 20px; width: 55px; height: 55px; }
   .chatbot-icon svg { font-size: 24px; }
   .chatbot-messages {
     padding: 15px; /* Slightly reduce padding for small screens */
-    max-height: calc(100dvh - 140px); /* Adjust based on header + input heights */
   }
   .project-options-container {
     gap: 8px; /* Tighter spacing on mobile */
@@ -284,22 +281,18 @@
   }
 }
 
-
-/* More granular media query for devices like iPhone 15/Samsung S22 (~360-430px width) */
+/* More granular media query for devices like iPhone 15/Samsung S22 (~360-430px width). Adjusted similarly for side positioning and background visibility. */
 @media (max-width: 430px) {
   .chatbot-container {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    max-width: 100vw;
-    height: 100dvh; /* Dynamic viewport height to handle keyboard */
-    max-height: 100dvh;
-    border-radius: 0; /* Full-screen feel on mobile */
+    width: min(380px, 90vw);
+    height: 500px;
+    max-height: 80dvh;
+    right: 10px;
+    bottom: 80px;
+    border-radius: 15px; /* Keep rounded corners */
     margin: 0;
-    animation: none; /* Disable animation */
-    box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
   .chatbot-icon {
     right: 10px;
@@ -309,7 +302,6 @@
   }
   .chatbot-messages {
     padding: 10px;
-    max-height: calc(100dvh - 140px); /* Adjust based on header + input heights */
   }
   .project-options-container {
     gap: 8px;

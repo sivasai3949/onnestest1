@@ -8,7 +8,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const teamData = [
   {
-    memberImage: '/images/ram-k-aluru.jpg',
+    memberImage: '/images/ramk.jpg',
     memberName: 'Ram K Aluru ',
     memberDesignation: 'Founder & CEO',
     description: `Ram’s background is in low-temperature physics and quantum material science engineering, he holds a Ph.D. from the Max Planck Institute, Germany and Uni. St Andrews, UK for working on high-temperature superconductors and semiconductor electronics at cryogenic temperatures such as 1.6 K and 30 mK. After his Ph.D., Ram worked as a Research Scientist at the Leiden Institute of Physics in the Netherlands. Apart from having the tech edge in cryogenics and superconducting electronics, Ram also built an EdTech company from scratch and managed Bluetooth technology projects in Industry 4.0. During his doctoral studies, Ram has published his research findings in prestigious journals such as Science, Nature and American Physics Society Journals and he is an avid science communicator and takes an active part in science outreach activities and committed to net zero emissions through his energy ventures.`,

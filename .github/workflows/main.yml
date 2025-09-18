@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - feature/team-hover  # Trigger only on this 
+      - sitemap  # Trigger only on this 
 
 jobs:
   deploy:
@@ -25,5 +25,5 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@onnes.in <<EOF
             echo "✅ Running deploy.sh script on EC2..." 
-            sudo bash /home/ubuntu/deploy.sh feature/team-hover
+            sudo bash /home/ubuntu/deploy.sh sitemap
           EOF

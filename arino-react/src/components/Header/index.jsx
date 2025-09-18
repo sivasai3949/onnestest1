@@ -189,7 +189,7 @@ export default function Header({ variant }) {
 
                     <li className="menu-item-has-children">
                       <NavLink
-                        to="/technology#technology"
+                        to="/technology"
                         onClick={() => setMobileToggle(false)}
                       >
                         TECHNOLOGY
@@ -314,9 +314,9 @@ export default function Header({ variant }) {
                     </li>
 
                     <li className="menu-item-has-children">
-                      <Link to="/" onClick={() => setMobileToggle(false)}>
-                        MORE
-                      </Link>
+                      <NavLink to="/contact" onClick={() => setMobileToggle(false)}>
+                        CONTACT
+                      </NavLink>
                       <DropDown>
                         <ul>
                           {/* <li>

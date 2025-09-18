@@ -22,6 +22,8 @@ import "./Home.css";
 import Button from "../Button"; // Add this import with your other imports
 import { useLocation } from "react-router-dom";
 import ChatBot from "../ChatBot/ChatBot";
+import { Helmet } from "react-helmet-async";
+
 
 const heroImages = [
   "/images/Home_1.webp",
@@ -139,6 +141,16 @@ export default function Home() {
 
   return (
     <>
+    <Helmet>
+    <title>Onnes - Next Generation Cryogenic Tank Technology</title>
+    <meta
+      name="description"
+      content="Onnes develops advanced cryogenic tanks for aerospace, shipping, and hydrogen storage. Explore our expertise in design, simulation, and manufacturing."
+    />
+    <meta name="keywords" content="Cryogenics, Hydrogen Storage, Aerospace, Onnes Technology, Tank Manufacturing" />
+    <link rel="canonical" href="https://onnes.in/" />
+  </Helmet>
+  
       {/* Start Hero Section */}
       <div className="hero-slider">
         <Slider {...sliderSettings}>

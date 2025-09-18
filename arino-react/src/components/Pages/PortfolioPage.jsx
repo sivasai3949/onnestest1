@@ -7,6 +7,8 @@ import Portfolio from '../Portfolio';
 import Div from '../Div';
 import SectionHeading from '../SectionHeading';
 import Spacing from '../Spacing';
+import { Helmet } from "react-helmet-async";
+
 
 // Portfolio Data (Under Water moved up)
 const portfolioData = [
@@ -121,6 +123,19 @@ export default function PortfolioPage() {
 
   return (
     <>
+    <Helmet>
+    <title>Onnes Portfolio - Space, Defence & Cryogenic Technology Projects</title>
+    <meta
+      name="description"
+      content="Explore Onnes portfolio showcasing projects in space exploration, aerospace, defence, ground-based systems, and underwater cryogenic technology."
+    />
+    <meta
+      name="keywords"
+      content="Onnes Portfolio, Cryogenics, Space Projects, Defence Technology, Aerospace Engineering, Underwater Systems"
+    />
+    <link rel="canonical" href="https://onnes.in/portfolio" />
+  </Helmet>
+  
       <PageHeading
         title="Portfolio"
         bgSrc="images/portfolio_hero_bg.jpeg"

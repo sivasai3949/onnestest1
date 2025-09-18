@@ -8,6 +8,7 @@ import SectionHeading from "../SectionHeading";
 import Button from "../Button";
 import { useLocation } from "react-router-dom"; // <-- ADD THIS
 import { Icon } from "@iconify/react";
+import { Helmet } from "react-helmet-async"; 
 
 const funfaceData = [
   { title: "Global Happy Clients", factNumber: "20" },
@@ -109,6 +110,27 @@ export default function SpacePortfolio() {
 
   return (
     <>
+    {/* ✅ Helmet for SEO */}
+      <Helmet>
+        <title>Technology | Onnes Cryogenics</title>
+        <meta
+          name="description"
+          content="Explore Onnes Cryogenics' advanced technologies: carbon fiber tanks, cryogenic fuel systems, thermal management with cryocoolers, and sustainable recycling solutions."
+        />
+        <meta
+          name="keywords"
+          content="Carbon Fiber Tanks, Cryogenics Systems, Thermal Management, Cryocoolers, Recycling, Hydrogen Storage"
+        />
+        <meta property="og:title" content="Technology | Onnes Cryogenics" />
+        <meta
+          property="og:description"
+          content="Cutting-edge carbon fiber tanks, cryogenic systems, and thermal management technologies for space, defense, and sustainability."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://onnesspace.com/technology" />
+        <meta property="og:image" content="https://onnesspace.com/images/technology_og.jpg" />
+      </Helmet>
+
       {/* Page Heading Section */}
       <PageHeading
         title="TECHNOLOGY"

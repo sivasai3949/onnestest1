@@ -6,6 +6,8 @@ import PageHeading from "../PageHeading";
 import Div from "../Div";
 import Spacing from "../Spacing";
 import "./AboutPage.css";
+import { Helmet } from "react-helmet-async";
+
 
 const funfaceData = [
   { title: "Global Happy Clients", factNumber: "20" },
@@ -38,6 +40,14 @@ export default function AboutPage() {
 
   return (
     <>
+    {/* ✅ SEO META TAGS */}
+      <Helmet>
+        <title>About Onnes | Cryogenics & Space Technology</title>
+        <meta
+          name="description"
+          content="Onnes Cryogenics was founded in Hyderabad, India by physicists pioneering cryogenic storage, composites, and space technology. Learn about our mission and vision."
+        />
+      </Helmet>
       {/* Page Heading */}
       <PageHeading
   title="About Us"

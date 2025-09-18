@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Icon } from '@iconify/react';
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; 
 
 
 const teamData = [
@@ -126,6 +127,15 @@ export default function TeamPage() {
 
   return (
     <>
+    {/* ✅ Helmet SEO Tags */}
+      <Helmet>
+        <title>Meet the Team - Onnes Cryogenics & Space Technology</title>
+        <meta 
+          name="description" 
+          content="Meet the founders and team behind Onnes Cryogenics and Space Technology. Experts in cryogenics, nanomaterials, AI, and quantum research." 
+        />
+      </Helmet>
+
      {/* === Page Banner === */}
      <PageHeading
         title="Meet the Founders & Team"

@@ -8,6 +8,8 @@ import PageHeading from "../PageHeading";
 import SectionHeading from "../SectionHeading";
 import Spacing from "../Spacing";
 import ContactInfoWidget from "../Widget/ContactInfoWidget";
+import { Helmet } from "react-helmet-async";
+
 
 export default function ContactPage() {
   pageTitle("Contact Us");
@@ -66,6 +68,19 @@ export default function ContactPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Contact Onnes | Space, Defence & Cryogenic Solutions</title>
+        <meta
+          name="description"
+          content="Get in touch with Onnes for innovative solutions in space, defence, ground-based and cryogenic technologies. Contact us via form, email, or visit our office at T-Hub Hyderabad."
+        />
+        <meta
+          name="keywords"
+          content="Contact Onnes, Onnes India, Cryogenic Technology, Space Simulation, Defence Projects, Aerospace, T-Hub Hyderabad"
+        />
+        <link rel="canonical" href="https://onnes.in/contact" />
+      </Helmet>
+
       <PageHeading
         title="Contact Us"
         bgSrc="/images/contact_hero_bg.jpeg"

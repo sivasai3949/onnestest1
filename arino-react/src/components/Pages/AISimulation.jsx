@@ -8,6 +8,8 @@ import SectionHeading from "../SectionHeading";
 import Button from "../Button";
 import { useLocation } from "react-router-dom";
 import "./AISimulation.css";
+import { Helmet } from "react-helmet-async";
+
 
 const spaceProjects = [
   {
@@ -177,6 +179,19 @@ export default function AISimulation() {
 
   return (
     <>
+    <Helmet>
+  <title>AI Simulation | Onnes Cryogenic Fluid Management & Quantum CFD</title>
+  <meta
+    name="description"
+    content="Discover ONNES AI-driven simulations in cryogenic fluid management (CFM) and quantum computational fluid dynamics (CFD). Explore deep space propulsion, zero-boiloff tanks, and advanced cryogenic technologies for space, ground, and defence missions."
+  />
+  <meta
+    name="keywords"
+    content="AI Simulation, Cryogenic Fluid Management, Quantum CFD, Zero Boil-Off, Cryogenic Tanks, Space Propulsion, Onnes Cryogenics"
+  />
+  <link rel="canonical" href="https://onnes.in/ai-simulation" />
+</Helmet>
+
       <PageHeading
         title="AI SIMULATION"
         bgSrc="images/about_hero_bg.jpeg"

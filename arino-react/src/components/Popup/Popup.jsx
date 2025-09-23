@@ -80,10 +80,18 @@ export default function Popup() {
               style={{
                 fontSize: "18px",
                 fontWeight: "500",
-                color: "#00aced", // light blue highlight for email
               }}
             >
-              info@onnes.in
+              <Link
+                to="/contact#contact-form"
+                style={{
+                  color: "#00aced", // highlight color
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                }}
+              >
+                info@onnes.in
+              </Link>
             </p>
           </Div>
         </Div>

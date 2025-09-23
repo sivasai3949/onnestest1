@@ -47,6 +47,7 @@ export default function AboutPage() {
           name="description"
           content="Onnes Cryogenics was founded in Hyderabad, India by physicists pioneering cryogenic storage, composites, and space technology. Learn about our mission and vision."
         />
+         <link rel="canonical" href="https://onnes.in/about" />
       </Helmet>
       {/* Page Heading */}
       <PageHeading

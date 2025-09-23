@@ -134,6 +134,8 @@ export default function TeamPage() {
           name="description" 
           content="Meet the founders and team behind Onnes Cryogenics and Space Technology. Experts in cryogenics, nanomaterials, AI, and quantum research." 
         />
+
+         <link rel="canonical" href="https://onnes.in/team" />
       </Helmet>
 
      {/* === Page Banner === */}

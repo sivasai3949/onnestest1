@@ -129,6 +129,8 @@ export default function SpacePortfolio() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://onnesspace.com/technology" />
         <meta property="og:image" content="https://onnesspace.com/images/technology_og.jpg" />
+
+         <link rel="canonical" href="https://onnes.in/technology" />
       </Helmet>
 
       {/* Page Heading Section */}

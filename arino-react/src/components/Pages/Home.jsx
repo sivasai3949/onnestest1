@@ -23,6 +23,7 @@ import Button from "../Button"; // Add this import with your other imports
 import { useLocation } from "react-router-dom";
 import ChatBot from "../ChatBot/ChatBot";
 import { Helmet } from "react-helmet-async";
+import Popup from "../Popup/Popup";
 
 
 const heroImages = [
@@ -359,6 +360,8 @@ export default function Home() {
       {/* End CTA Section */}
       {/* ChatBot Component */}
       <ChatBot />
+      {/* Popup Component */}
+      <Popup />
     </>
   );
 }

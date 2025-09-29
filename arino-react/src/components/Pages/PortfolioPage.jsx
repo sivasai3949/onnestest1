@@ -133,7 +133,7 @@ export default function PortfolioPage() {
       name="keywords"
       content="Onnes Portfolio, Cryogenics, Space Projects, Defence Technology, Aerospace Engineering, Underwater Systems"
     />
-    <link rel="canonical" href="https://onnes.in/portfolio" />
+    <link rel="canonical" href="https://onnes.in/spaceportfolio" />
   </Helmet>
   
       <PageHeading

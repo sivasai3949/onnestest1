@@ -127,8 +127,8 @@ export default function SpacePortfolio() {
           content="Cutting-edge carbon fiber tanks, cryogenic systems, and thermal management technologies for space, defense, and sustainability."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://onnesspace.com/technology" />
-        <meta property="og:image" content="https://onnesspace.com/images/technology_og.jpg" />
+        <meta property="og:url" content="https://onnes.in/technology" />
+      
 
          <link rel="canonical" href="https://onnes.in/technology" />
       </Helmet>

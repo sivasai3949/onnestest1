@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://onnes.in/</loc>
+    <lastmod>2025-09-29</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://onnes.in/about</loc>
+    <lastmod>2025-09-29</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://onnes.in/team</loc>
+    <lastmod>2025-09-29</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://onnes.in/technology</loc>
+    <lastmod>2025-09-29</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://onnes.in/spaceportfolio</loc>
+    <lastmod>2025-09-29</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://onnes.in/ai-simulation</loc>
+    <lastmod>2025-09-29</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://onnes.in/contact</loc>
+    <lastmod>2025-09-29</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>

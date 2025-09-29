@@ -10,7 +10,6 @@ import Spacing from "../Spacing";
 import ContactInfoWidget from "../Widget/ContactInfoWidget";
 import { Helmet } from "react-helmet-async";
 
-
 export default function ContactPage() {
   pageTitle("Contact Us");
 
@@ -27,6 +26,7 @@ export default function ContactPage() {
     }
   }, [location]);
 
+  // Form state
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [product, setProduct] = useState("");
@@ -34,36 +34,121 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
   const [statusType, setStatusType] = useState(""); // success or error
+  
+  // Submission prevention state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    console.log("📝 Form submission attempted at:", new Date().toISOString());
+    
+    // Prevent multiple submissions
+    if (isSubmitting) {
+      console.log("⚠️ Already submitting, preventing duplicate...");
+      return;
+    }
+
+    // Prevent rapid successive submissions (within 5 seconds)
+    const now = Date.now();
+    if (now - lastSubmissionTime < 5000) {
+      setStatus("Please wait a moment before submitting again.");
+      setStatusType("error");
+      setTimeout(() => {
+        setStatus("");
+        setStatusType("");
+      }, 3000);
+      return;
+    }
+
+    // Validate required fields
+    if (!fullName.trim() || !email.trim() || !product || !mobile.trim() || !message.trim()) {
+      setStatus("Please fill in all required fields.");
+      setStatusType("error");
+      setTimeout(() => {
+        setStatus("");
+        setStatusType("");
+      }, 3000);
+      return;
+    }
+
+    // Validate mobile number
+    if (!/^\d{10}$/.test(mobile)) {
+      setStatus("Please enter a valid 10-digit mobile number.");
+      setStatusType("error");
+      setTimeout(() => {
+        setStatus("");
+        setStatusType("");
+      }, 3000);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setLastSubmissionTime(now);
+    setStatus("Sending message...");
+    setStatusType("sending");
 
     const contactData = {
-      fullName,
-      email,
+      fullName: fullName.trim(),
+      email: email.trim(),
       product,
-      mobile,
-      message,
+      mobile: mobile.trim(),
+      message: message.trim(),
     };
 
     try {
-      await axios.post("/api/admin-contact", contactData);
-      setStatus("Message sent successfully!");
+      console.log("📤 Sending contact form data:", { ...contactData, message: contactData.message.substring(0, 50) + "..." });
+      
+      const response = await axios.post("/api/admin-contact", contactData, {
+        timeout: 10000, // 10 second timeout
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      
+      console.log("✅ Form submitted successfully:", response.data);
+      
+      setStatus("Message sent successfully! We'll get back to you soon.");
       setStatusType("success");
+      
+      // Reset form fields on success
       setFullName("");
       setEmail("");
       setProduct("");
       setMobile("");
       setMessage("");
+      
     } catch (error) {
-      setStatus("Error sending message. Please try again.");
+      console.error("❌ Error submitting form:", error);
+      
+      let errorMessage = "Error sending message. Please try again.";
+      
+      if (error.code === 'ECONNABORTED') {
+        errorMessage = "Request timed out. Please check your connection and try again.";
+      } else if (error.response) {
+        // Server responded with error status
+        errorMessage = error.response.data?.message || errorMessage;
+      } else if (error.request) {
+        // Network error
+        errorMessage = "Network error. Please check your connection and try again.";
+      }
+      
+      setStatus(errorMessage);
       setStatusType("error");
+    } finally {
+      // Re-enable submission after 3 seconds minimum
+      setTimeout(() => {
+        setIsSubmitting(false);
+        console.log("🔓 Form re-enabled for submission");
+      }, 3000);
     }
 
+    // Clear status message after 8 seconds
     setTimeout(() => {
       setStatus("");
       setStatusType("");
-    }, 5000);
+    }, 8000);
   };
 
   return (
@@ -112,6 +197,7 @@ export default function ContactPage() {
                   className="cs-form_field"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  disabled={isSubmitting}
                   required
                 />
                 <Spacing lg="20" md="20" />
@@ -123,6 +209,7 @@ export default function ContactPage() {
                   className="cs-form_field"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSubmitting}
                   required
                 />
                 <Spacing lg="20" md="20" />
@@ -133,6 +220,7 @@ export default function ContactPage() {
                   className="cs-form_field bg-black text-white border border-gray-700 focus:border-blue-500 focus:ring-blue-500 focus:ring-1 rounded"
                   value={product}
                   onChange={(e) => setProduct(e.target.value)}
+                  disabled={isSubmitting}
                   required
                 >
                   <option className="bg-black text-white">
@@ -163,6 +251,7 @@ export default function ContactPage() {
                     const input = e.target.value;
                     if (/^\d{0,10}$/.test(input)) setMobile(input);
                   }}
+                  disabled={isSubmitting}
                   required
                   maxLength="10"
                   placeholder="Enter 10-digit mobile number"
@@ -177,13 +266,25 @@ export default function ContactPage() {
                   className="cs-form_field"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  disabled={isSubmitting}
                   required
                 ></textarea>
                 <Spacing lg="25" md="25" />
               </Div>
               <Div className="col-sm-12">
-                <button type="submit" className="cs-btn cs-style1">
-                  <span>Send Message</span>
+                <button 
+                  type="submit" 
+                  className={`cs-btn cs-style1 ${isSubmitting ? 'cs-btn-disabled' : ''}`}
+                  disabled={isSubmitting}
+                  style={{
+                    opacity: isSubmitting ? 0.7 : 1,
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <span>
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </span>
                   <Icon icon="bi:arrow-right" />
                 </button>
               </Div>
@@ -192,9 +293,27 @@ export default function ContactPage() {
                   <p
                     className="font-semibold"
                     style={{
-                      color: statusType === "success" ? "#00B5F9ff" : "red",
+                      color: 
+                        statusType === "success" ? "#00B5F9ff" : 
+                        statusType === "sending" ? "#00B5F9ff" : 
+                        "red",
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px'
                     }}
                   >
+                    {statusType === 'success' && (
+                      <Icon 
+                        icon="bi:check-circle-fill" 
+                        style={{ color: "#00B5F9ff" }}
+                      />
+                    )}
+                    {statusType === 'error' && (
+                      <Icon 
+                        icon="bi:exclamation-triangle-fill" 
+                        style={{ color: "red" }}
+                      />
+                    )}
                     {status}
                   </p>
                 </Div>

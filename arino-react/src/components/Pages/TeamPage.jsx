@@ -36,7 +36,7 @@ const teamData = [
   {
     memberImage: '/images/rajamani-athimotlu-raju.jpg',
     memberName: 'Rajamani AR',
-    memberDesignation: 'Head, Polymer Chemistry',
+    memberDesignation: 'Senior Manager, Operations',
     memberSocial: {
       linkedin: 'https://www.linkedin.com/in/dr-rajamani-a-r-25518033/',
     },

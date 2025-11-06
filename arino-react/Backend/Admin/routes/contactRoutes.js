@@ -7,6 +7,30 @@ const sendMail = require('../utils/mailer');
 // In-memory store to track recent submissions (use Redis in production)
 const recentSubmissions = new Set();
 
+// Simple HTML escape helper
+function escapeHTML(str = "") {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// Helper to format current time in IST
+function getISTTime() {
+  return new Date().toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+    hour12: true,
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }) + " (IST)";
+}
+
 // GET - Fetch all contact messages
 router.get('/', async (req, res) => {
   try {
@@ -20,7 +44,7 @@ router.get('/', async (req, res) => {
 
 // POST - Save a new contact message and send to multiple emails individually
 router.post('/', async (req, res) => {
-  console.log("📧 POST /contact route called at:", new Date().toISOString());
+  console.log("📧 POST /contact route called at:", getISTTime());
 
   try {
     const { fullName, email, product, mobile, message } = req.body;
@@ -55,25 +79,50 @@ router.post('/', async (req, res) => {
     await newContact.save();
     console.log("✅ Contact message saved successfully!");
 
-    // Send emails - with flag to prevent multiple sends
+    // Send emails
     let emailsSent = false;
 
     if (!emailsSent) {
       try {
-        const subject = `Onnes-New Enquiry from ${fullName}`;
+        const subject = `Onnes - New Enquiry from ${fullName}`;
+        const submissionTime = getISTTime();
+
+        // Escape and safely format message for HTML email
+        const escapedMessage = escapeHTML(message)
+          .replace(/(.{100})/g, "$1<br/>"); // soft wrap long lines
+
         const htmlContent = `
-  <h3>You have a new contact message</h3>
-  <p><b>Name:</b> ${fullName}</p>
-  <p><b>Email:</b> ${email}</p>
-  <p><b>Mobile:</b> ${mobile}</p>
-  <p><b>Product:</b> ${product}</p>
-  <p><b>Message:</b> ${message}</p>
-  <p><b>Submission Time:</b> ${new Date().toISOString()}</p>
-  <br/>
-  <p style="text-align:left; margin-top:20px;">
-    <img src="cid:companyLogo" alt="Onnes Cryogenics Logo" style="width:160px; height:auto;"/>
-  </p>
-`;
+          <h3>You have a new contact message</h3>
+          <p><b>Name:</b> ${escapeHTML(fullName)}</p>
+          <p><b>Email:</b> ${escapeHTML(email)}</p>
+          <p><b>Mobile:</b> ${escapeHTML(mobile)}</p>
+          <p><b>Product:</b> ${escapeHTML(product)}</p>
+          <p><b>Message:</b></p>
+          <pre style="white-space:pre-wrap;word-break:break-word;
+              background:#f9f9f9;padding:10px;border-radius:8px;">
+${escapedMessage}
+          </pre>
+          <p><b>Submission Time:</b> ${submissionTime}</p>
+          <br/>
+          <p style="text-align:left; margin-top:20px;">
+            <img src="cid:companyLogo" alt="Onnes Cryogenics Logo" style="width:160px; height:auto;"/>
+          </p>
+        `;
+
+        // Plain text version (guaranteed delivery even if HTML fails)
+        const plainText = `
+New contact message received:
+
+Name: ${fullName}
+Email: ${email}
+Mobile: ${mobile}
+Product: ${product}
+
+Message:
+${message}
+
+Submission Time: ${submissionTime}
+        `;
 
         // Path to your logo inside utils folder
         const logoPath = path.join(__dirname, "../utils/onnes-logo.jpg");
@@ -82,7 +131,7 @@ router.post('/', async (req, res) => {
         const recipients = [
           process.env.TEST_EMAIL_1,
           process.env.TEST_EMAIL_2,
-        ].filter(email => email); // Remove undefined/null emails
+        ].filter(email => email);
 
         console.log(`📤 Sending emails to ${recipients.length} recipients...`);
 
@@ -90,32 +139,34 @@ router.post('/', async (req, res) => {
         for (let i = 0; i < recipients.length; i++) {
           const recipient = recipients[i];
 
-          // Add small delay between emails to prevent rate limiting
           if (i > 0) {
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
 
-          await sendMail(recipient, subject, htmlContent, [
-            {
-              filename: "onnes-logo.jpg",
-              path: logoPath,
-              cid: "companyLogo", // Must match "cid:companyLogo" in htmlContent
-            }
-          ]);
+          await sendMail(
+            recipient,
+            subject,
+            htmlContent,
+            [
+              {
+                filename: "onnes-logo.jpg",
+                path: logoPath,
+                cid: "companyLogo",
+              }
+            ],
+            plainText
+          );
 
           console.log(`✅ Email ${i + 1}/${recipients.length} sent to ${recipient}`);
         }
 
         emailsSent = true;
         console.log("🎉 All emails sent successfully!");
-
       } catch (mailError) {
         console.error("❌ Error sending emails:", mailError);
-        // Don't throw error - still return success for saved contact
       }
     }
 
-    // Always return success response with proper status
     return res.status(201).json({
       message: "Contact message saved successfully!",
       submissionId: submissionId

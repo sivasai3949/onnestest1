@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      -  smtp/email # Trigger only on this 
+      -  email-change # Trigger only on this 
 
 jobs:
   deploy:
@@ -20,10 +20,10 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-      # Run the deployment script on the EC2 instance
+      # Run the deployment script on the EC2 instan
       - name: Run deployment script
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@onnes.in <<EOF
             echo "✅ Running deploy.sh script on EC2..." 
-            sudo bash /home/ubuntu/deploy.sh smtp/email
+            sudo bash /home/ubuntu/deploy.sh email-change
           EOF
